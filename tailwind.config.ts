@@ -8,9 +8,10 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      animation: {
+        'fadeIn': 'fadeIn 0.8s ease-out forwards',
+        'fadeInUp': 'fadeInUp 0.8s ease-out forwards',
+        'bounce-gentle': 'bounceGentle 3s infinite ease-in-out',
       },
     },
   },

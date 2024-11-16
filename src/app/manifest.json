@@ -1,0 +1,13 @@
+{
+    "name": "LegaSint",
+    "short_name": "LegaSint",
+    "description": "Innovation Made Seamless - Transform your business with cutting-edge technology solutions",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1E40AF",
+    "theme_color": "#1E40AF",
+    "orientation": "portrait-primary",
+    "icons": [
+      
+    ]
+  }
