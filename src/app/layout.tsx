@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/public/favicon.ico',
+    icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
     other: {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     creator: '@legasint',
     title: 'LegaSint - Innovation Made Seamless',
     description: 'Transform your business with cutting-edge technology solutions. LegaSint delivers seamless innovation for the modern enterprise.',
-    images: ['/twitter-image.png'], // Imagen de 1200x600px
+    images: ['/og-image.png'], // Imagen de 1200x600px
   },
   
   // Robots
