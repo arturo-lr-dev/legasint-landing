@@ -94,7 +94,7 @@ const SocialImpactSection: React.FC = () => {
   if (!mounted) return null;
 
   return (
-    <div className="w-full bg-gradient-to-br from-purple-900 to-blue-900 py-20 -mt-1">
+    <div className="w-full bg-gradient-to-br from-blue-900 to-purple-900 py-20 -mt-1">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Title */}
         <AnimatedElement>

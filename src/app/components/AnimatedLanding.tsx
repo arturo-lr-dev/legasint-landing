@@ -92,7 +92,7 @@ const AnimatedLanding = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
             
             {/* Button content */}
-            <a href="tel:34649355701" className="relative flex items-center justify-center gap-2">
+            <a href="mailto:contact@legasint.com" className="relative flex items-center justify-center gap-2">
               Contact Us
               <svg 
                 className="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" 

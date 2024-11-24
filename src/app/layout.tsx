@@ -18,13 +18,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: '/apple-touch-icon-precomposed.png',
-    },
+    icon: '/favicon.ico?v=1'
   },
   manifest: '/manifest.json',
   
@@ -77,25 +71,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
-      {/* Canonical URL */}
-      <link rel="canonical" href="https://legasint.com" />
-        
-      {/* PWA tags */}
-      <meta name="application-name" content="LegaSint" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-title" content="LegaSint" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="msapplication-TileColor" content="#2B5797" />
-      <meta name="theme-color" content="#1E40AF" />
-      
-      {/* Color del navegador en móviles */}
-      <meta name="theme-color" content="#1E40AF" />
-      
-      {/* Prevención de cacheo telefónico */}
-      <meta name="format-detection" content="telephone=no" />
-
       <body
         className={`${inter.className} antialiased`}
       >

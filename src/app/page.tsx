@@ -2,17 +2,18 @@
 import { useMemo } from 'react';
 import AnimatedLanding from './components/AnimatedLanding';
 import SocialImpactSection from './social/page';
+import PortfolioSection from './project/page';
 
 export default function Home() {
 
   useMemo(() => {
     // Estilos para el texto en la consola
     const styles = `
-    color: #581c87;
-    font-size: 20px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    padding: 10px;
+      color: #581c87;
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      padding: 10px;
     `;
 
     // Mensaje principal
@@ -20,9 +21,9 @@ export default function Home() {
 
     // Submensaje con estilo diferente
     const subStyles = `
-    color: #ffffff;
-    font-size: 16px;
-    font-style: italic;
+      color: #ffffff;
+      font-size: 16px;
+      font-style: italic;
     `;
 
     console.log('%cYour Vision, Our Technology', subStyles);
@@ -31,6 +32,7 @@ export default function Home() {
   return (
     <>
       <AnimatedLanding />
+      <PortfolioSection />
       <SocialImpactSection />
     </>
   );
