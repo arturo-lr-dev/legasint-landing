@@ -83,18 +83,32 @@ const PortfolioSection: React.FC = () => {
   
   const projects: Project[] = [
     {
+      title: "OffPeaks",
+      description: "Discover your city",
+      imageUrl: "/projects/offpeaks.png",
+      projectUrl: "https://offpeaks.es",
+      tags: ["Ionic", "React", "Java", "Spring", "Auth0", "Stripe", "Postgres"]
+    },
+    {
+      title: "SF Education",
+      description: "Change the way of learning",
+      imageUrl: "/projects/sfeducation.png",
+      projectUrl: "https://sfeducation.es",
+      tags: ["next.js", "Serverless", "SSR", "Tailwind CSS"]
+    },
+    {
+      title: "Platea",
+      description: "Your restaurant platform",
+      imageUrl: "/projects/platea.png",
+      projectUrl: "https://platea.info",
+      tags: ["next.js", "JavaScript", "Expess", "NodeJS", "SEO", "Tailwind CSS"]
+    },
+    {
       title: "LeCrep",
       description: "A modern web site atractive for the client",
       imageUrl: "/projects/lacrep.png",
       projectUrl: "https://la-crep-webapp.web.app",
       tags: ["Next.js", "Tailwind CSS"]
-    },
-    {
-      title: "OffPeaks",
-      description: "SaaS for make offers in off peaks hours",
-      imageUrl: "/projects/offpeaks.png",
-      projectUrl: "https://offpeaks.es",
-      tags: ["Ionic", "React", "Java", "Spring", "Auth0", "Stripe", "Postgres"]
     }
   ];
 
