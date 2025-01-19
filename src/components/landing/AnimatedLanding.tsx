@@ -107,12 +107,12 @@ const AnimatedLanding = () => {
           }}
         >
           <button 
-            className="group relative px-8 py-4 text-xl font-bold text-white bg-purple-800 rounded-full overflow-hidden hover:bg-blue-700 transition-colors duration-300 animate-bounce-gentle"
+            className="group relative px-8 py-4 text-xl font-bold text-white bg-purple-800 rounded-full overflow-hidden bg-blue-700 transition-colors duration-300 animate-bounce-gentle"
             aria-label="Contact us via email"
           >
             {/* Glowing background effect */}
             <div 
-              className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+              className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 opacity-50 transition-opacity duration-300"
               aria-hidden="true"
             />
             
