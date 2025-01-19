@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://legasint.com'), // Cambia esto a tu dominio
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/favicon.ico?v=1'
+    icon: '/favicon.ico?v=2'
   },
   manifest: '/manifest.json',
   
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/og-image.png', // Imagen de 1200x630px
-        width: 1200,
-        height: 630,
+        width: 512,
+        height: 512,
         alt: 'LegaSint - Innovation Made Seamless',
       },
     ],

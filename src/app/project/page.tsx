@@ -85,28 +85,28 @@ const PortfolioSection: React.FC = () => {
     {
       title: "OffPeaks",
       description: "Discover your city",
-      imageUrl: "/projects/offpeaks.png",
+      imageUrl: "/projects/offpeaks.webp",
       projectUrl: "https://offpeaks.es",
       tags: ["Ionic", "React", "Java", "Spring", "Auth0", "Stripe", "Postgres"]
     },
     {
       title: "SF Education",
       description: "Change the way of learning",
-      imageUrl: "/projects/sfeducation.png",
+      imageUrl: "/projects/sfeducation.webp",
       projectUrl: "https://sfeducation.es",
       tags: ["next.js", "Serverless", "SSR", "Tailwind CSS"]
     },
     {
       title: "Platea",
       description: "Your restaurant platform",
-      imageUrl: "/projects/platea.png",
+      imageUrl: "/projects/platea.webp",
       projectUrl: "https://platea.info",
       tags: ["next.js", "JavaScript", "Expess", "NodeJS", "SEO", "Tailwind CSS"]
     },
     {
       title: "LeCrep",
       description: "A modern web site atractive for the client",
-      imageUrl: "/projects/lacrep.png",
+      imageUrl: "/projects/lacrep.webp",
       projectUrl: "https://la-crep-webapp.web.app",
       tags: ["Next.js", "Tailwind CSS"]
     }

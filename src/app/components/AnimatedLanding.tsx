@@ -13,25 +13,41 @@ const AnimatedLanding = () => {
 
   if (!mounted) {
     return (
-      <div className="h-screen w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center overflow-hidden">
+      <main className="h-screen w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center overflow-hidden">
         <div className="text-center">
-          <div className="flex items-center justify-center mb-12">
+          <h1 className="sr-only">LegaSint - Your Vision, Our Technology</h1>
+          <div className="flex items-center justify-center mb-12" aria-label="LegaSint logo animation">
             {letters.map((letter, index) => (
-              <span key={index} className="text-7xl font-bold text-white opacity-0">
+              <span key={index} className="text-7xl font-bold text-white opacity-0" aria-hidden="true">
                 {letter}
               </span>
             ))}
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className="h-screen w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center overflow-hidden">
+    <main 
+      className="h-screen w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{
+        background: 'conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)',
+        backgroundImage: `url("/bg.svg"), conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)`,
+        backgroundBlendMode: 'overlay',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="text-center">
+        <h1 className="sr-only">LegaSint - Your Vision, Our Technology</h1>
+        
         {/* Logo Animation */}
-        <div className="flex items-center justify-center">
+        <div 
+          className="flex items-center justify-center"
+          aria-label="LegaSint animated logo"
+        >
           {letters.map((letter, index) => (
             <span
               key={index}
@@ -41,6 +57,7 @@ const AnimatedLanding = () => {
                 animationDelay: `${index * 150}ms`,
                 animationFillMode: 'forwards'
               }}
+              aria-hidden="true"
             >
               {letter}
             </span>
@@ -48,7 +65,10 @@ const AnimatedLanding = () => {
         </div>
 
         {/* Tagline Animation */}
-        <div className="flex items-center justify-center gap-3 mt-4 mb-12">
+        <div 
+          className="flex items-center justify-center gap-3 mt-4 mb-12"
+          aria-label="Company tagline"
+        >
           {tagline.map((word, index) => (
             <span
               key={index}
@@ -72,6 +92,7 @@ const AnimatedLanding = () => {
             animationDelay: `${(letters.length * 150) + (tagline.length * 200) + 200}ms`,
             animationFillMode: 'forwards'
           }}
+          aria-hidden="true"
         >
           <div className="h-1 w-48 mx-auto bg-blue-400 rounded-full animate-pulse" />
         </div>
@@ -86,19 +107,28 @@ const AnimatedLanding = () => {
           }}
         >
           <button 
-            className="group relative px-8 py-4 text-xl font-bold text-white bg-blue-600 rounded-full overflow-hidden hover:bg-blue-700 transition-colors duration-300 animate-bounce-gentle"
+            className="group relative px-8 py-4 text-xl font-bold text-white bg-purple-800 rounded-full overflow-hidden hover:bg-blue-700 transition-colors duration-300 animate-bounce-gentle"
+            aria-label="Contact us via email"
           >
             {/* Glowing background effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+            <div 
+              className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+              aria-hidden="true"
+            />
             
             {/* Button content */}
-            <a href="mailto:contact@legasint.com" className="relative flex items-center justify-center gap-2">
-              Contact Us
+            <a 
+              href="mailto:contact@legasint.com" 
+              className="relative flex items-center justify-center gap-2"
+              aria-label="Send email to contact@legasint.com"
+            >
+              Get in Touch
               <svg 
                 className="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path 
                   strokeLinecap="round" 
@@ -111,7 +141,13 @@ const AnimatedLanding = () => {
           </button>
         </div>
       </div>
-    </div>
+
+      {/* Technology Stack - Hidden visually but good for SEO */}
+      <div className="sr-only">
+        <p>Technology Stack: Angular, React, Node.js, Python, Java, AWS, Azure, Google Cloud, Docker, Kubernetes</p>
+        <p>Industries Served: Finance, Healthcare, E-commerce, Manufacturing, Education, Technology</p>
+      </div>
+    </main>
   );
 };
 

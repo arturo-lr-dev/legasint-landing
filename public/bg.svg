@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <!-- Definición de la animación del pulso eléctrico -->
+    <linearGradient id="electricFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.3)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+      <animate attributeName="x1" from="-100%" to="100%" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="x2" from="0%" to="200%" dur="3s" repeatCount="indefinite"/>
+    </linearGradient>
+    
+    <!-- Animación para las líneas punteadas -->
+    <style type="text/css">
+      .flowing-line {
+        stroke-dasharray: 20;
+        animation: flow 2s linear infinite;
+      }
+      @keyframes flow {
+        from {
+          stroke-dashoffset: 40;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Capa base de pistas principales -->
+  <g stroke="rgba(255,255,255,0.08)" fill="none" stroke-width="1.5">
+    <!-- Bus de datos principal -->
+    <path d="M100 300 L200 300 L250 250 L550 250 L600 300 L700 300"/>
+    <path d="M150 100 L150 200 L200 250 L200 450 L150 500 L150 550"/>
+    <path d="M650 50 L650 150 L600 200 L600 400 L650 450 L650 550"/>
+    
+    <!-- Rutas de conexión secundarias -->
+    <path d="M200 150 L300 150 L350 200 M400 150 L500 150 L550 200"/>
+    <path d="M200 450 L300 450 L350 400 M400 450 L500 450 L550 400"/>
+    <path d="M300 100 L300 200 M500 100 L500 200"/>
+    <path d="M300 400 L300 500 M500 400 L500 500"/>
+  </g>
+
+  <!-- Líneas animadas superpuestas -->
+  <g stroke="url(#electricFlow)" fill="none" stroke-width="2">
+    <path class="flowing-line" d="M100 300 L200 300 L250 250 L550 250 L600 300 L700 300"/>
+    <path class="flowing-line" d="M150 100 L150 200 L200 250"/>
+    <path class="flowing-line" d="M650 50 L650 150 L600 200"/>
+  </g>
+
+  <!-- Chips y componentes grandes -->
+  <g fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1">
+    <!-- CPU con pulso -->
+    <rect x="350" y="250" width="100" height="100">
+      <animate attributeName="fill-opacity" 
+               values="0.08;0.12;0.08" 
+               dur="2s" 
+               repeatCount="indefinite"/>
+    </rect>
+    <path d="M360 270 L440 270 M360 290 L440 290 M360 310 L440 310 M360 330 L440 330"/>
+    
+    <!-- RAM slots -->
+    <rect x="200" y="100" width="80" height="20"/>
+    <rect x="300" y="100" width="80" height="20"/>
+    <rect x="420" y="100" width="80" height="20"/>
+    <rect x="520" y="100" width="80" height="20"/>
+    
+    <!-- Chipset con pulso -->
+    <rect x="250" y="400" width="60" height="60">
+      <animate attributeName="fill-opacity" 
+               values="0.08;0.12;0.08" 
+               dur="3s" 
+               repeatCount="indefinite"/>
+    </rect>
+    <rect x="490" y="400" width="60" height="60">
+      <animate attributeName="fill-opacity" 
+               values="0.08;0.12;0.08" 
+               dur="2.5s" 
+               repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Puntos de conexión con pulso -->
+  <g>
+    <circle cx="200" cy="300" r="2" fill="rgba(255,255,255,0.15)">
+      <animate attributeName="fill-opacity" 
+               values="0.15;0.3;0.15" 
+               dur="1s" 
+               repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="250" r="2" fill="rgba(255,255,255,0.15)">
+      <animate attributeName="fill-opacity" 
+               values="0.15;0.3;0.15" 
+               dur="1.5s" 
+               repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Conectores y puertos -->
+  <g fill="rgba(255,255,255,0.1)">
+    <rect x="50" y="100" width="30" height="400"/>
+    <rect x="720" y="100" width="30" height="400"/>
+    
+    <!-- PCIe slots -->
+    <rect x="150" y="250" width="15" height="60"/>
+    <rect x="150" y="350" width="15" height="60"/>
+    <rect x="635" y="250" width="15" height="60"/>
+    <rect x="635" y="350" width="15" height="60"/>
+  </g>
+
+  <!-- Componentes pequeños con pulso -->
+  <g fill="rgba(255,255,255,0.1)">
+    <rect x="280" y="220" width="4" height="8">
+      <animate attributeName="fill-opacity" 
+               values="0.1;0.2;0.1" 
+               dur="0.5s" 
+               repeatCount="indefinite"/>
+    </rect>
+    <rect x="290" y="220" width="4" height="8">
+      <animate attributeName="fill-opacity" 
+               values="0.1;0.2;0.1" 
+               dur="0.7s" 
+               repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>
