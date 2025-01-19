@@ -1,8 +1,8 @@
 // app/page.tsx
 import { useMemo } from 'react';
-import AnimatedLanding from './components/AnimatedLanding';
-import SocialImpactSection from './social/page';
-import PortfolioSection from './project/page';
+import AnimatedLanding from '@/components/landing/AnimatedLanding';
+import PortfolioSection from '@/components/landing/PortfolioSection';
+import SocialImpactSection from '@/components/landing/SocialSection';
 
 export default function Home() {
 
