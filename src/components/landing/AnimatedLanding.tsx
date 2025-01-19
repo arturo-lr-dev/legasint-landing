@@ -1,32 +1,6 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-
 const AnimatedLanding = () => {
-  const [mounted, setMounted] = useState(false);
   const letters = "LegaSint".split("");
   const tagline = "Your Vision, Our Technology".split(" ");
-  
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <main className="h-screen w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center overflow-hidden">
-        <div className="text-center">
-          <h1 className="sr-only">LegaSint - Your Vision, Our Technology</h1>
-          <div className="flex items-center justify-center mb-12" aria-label="LegaSint logo animation">
-            {letters.map((letter, index) => (
-              <span key={index} className="text-7xl font-bold text-white opacity-0" aria-hidden="true">
-                {letter}
-              </span>
-            ))}
-          </div>
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main 
