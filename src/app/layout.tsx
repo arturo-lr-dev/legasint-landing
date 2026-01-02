@@ -7,12 +7,12 @@ const inter = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://legasint.com'), // Cambia esto a tu dominio
-  title: 'LegaSint - Innovation Made Seamless',
-  description: 'Transform your business with cutting-edge technology solutions. LegaSint delivers seamless innovation for the modern enterprise.',
+  title: 'Legasint - Innovation Made Seamless',
+  description: 'Transform your business with cutting-edge technology solutions. Legasint delivers seamless innovation for the modern enterprise.',
   keywords: ['technology', 'innovation', 'digital solutions', 'IT services', 'software development'],
-  authors: [{ name: 'LegaSint' }],
-  creator: 'LegaSint',
-  publisher: 'LegaSint',
+  authors: [{ name: 'Legasint' }],
+  creator: 'Legasint',
+  publisher: 'Legasint',
   formatDetection: {
     email: false,
     address: false,
