@@ -1,5 +1,5 @@
 const AnimatedLanding = () => {
-  const letters = "LegaSint".split("");
+  const letters = "Legasint".split("");
   const tagline = "Your Vision, Our Technology".split(" ");
 
   return (
@@ -15,12 +15,12 @@ const AnimatedLanding = () => {
       }}
     >
       <div className="text-center">
-        <h1 className="sr-only">LegaSint - Your Vision, Our Technology</h1>
+        <h1 className="sr-only">Legasint - Your Vision, Our Technology</h1>
         
         {/* Logo Animation */}
         <div 
           className="flex items-center justify-center"
-          aria-label="LegaSint animated logo"
+          aria-label="Legasint animated logo"
         >
           {letters.map((letter, index) => (
             <span

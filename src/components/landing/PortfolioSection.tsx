@@ -83,11 +83,11 @@ const PortfolioSection: React.FC = () => {
   
   const projects: Project[] = [
     {
-      title: "OffPeaks",
+      title: "Valle Hub",
       description: "Discover your city",
       imageUrl: "/projects/offpeaks.webp",
-      projectUrl: "https://offpeaks.es",
-      tags: ["Ionic", "React", "Java", "Spring", "Auth0", "Stripe", "Postgres"]
+      projectUrl: "https://www.vallehub.com/",
+      tags: ["NextJS", "Claude", "Supabase"]
     },
     {
       title: "SF Education",
@@ -95,13 +95,6 @@ const PortfolioSection: React.FC = () => {
       imageUrl: "/projects/sfeducation.webp",
       projectUrl: "https://sfeducation.es",
       tags: ["next.js", "Serverless", "SSR", "Tailwind CSS"]
-    },
-    {
-      title: "Platea",
-      description: "Your restaurant platform",
-      imageUrl: "/projects/platea.webp",
-      projectUrl: "https://platea.info",
-      tags: ["next.js", "JavaScript", "Expess", "NodeJS", "SEO", "Tailwind CSS"]
     },
     {
       title: "LeCrep",
@@ -119,7 +112,7 @@ const PortfolioSection: React.FC = () => {
   if (!mounted) return null;
 
   return (
-    <div className="w-full bg-gradient-to-br from-purple-900 to-blue-900 py-20 -mt-1">
+    <div className="w-full bg-gradient-to-bl from-blue-900 to-purple-900 py-20 -mt-1">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Title */}
         <AnimatedElement>

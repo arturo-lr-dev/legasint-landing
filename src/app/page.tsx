@@ -17,7 +17,7 @@ export default function Home() {
     `;
 
     // Mensaje principal
-    console.log('%cLegaSint', styles);
+    console.log('%cLegasint', styles);
 
     // Submensaje con estilo diferente
     const subStyles = `
