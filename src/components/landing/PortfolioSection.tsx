@@ -57,8 +57,8 @@ const AnimatedElement: React.FC<AnimatedElementProps> = ({ children, delay = 0, 
     // Alternate between left and right animations for mobile
     const isEven = index % 2 === 0;
     return isEven
-      ? 'translate-x-[-100%] opacity-0'
-      : 'translate-x-[100%] opacity-0';
+      ? 'translate-x-[-30px] opacity-0'
+      : 'translate-x-[30px] opacity-0';
   };
 
   return (
@@ -126,7 +126,7 @@ const PortfolioSection: React.FC = () => {
   if (!mounted) return null;
 
   return (
-    <div className="w-full bg-gradient-to-bl from-blue-900 to-purple-900 py-20 -mt-1">
+    <div className="w-full bg-gradient-to-bl from-blue-900 to-purple-900 py-20 -mt-1 overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Title */}
         <AnimatedElement>
