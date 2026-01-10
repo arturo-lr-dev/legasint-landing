@@ -109,7 +109,7 @@ const SocialImpactSection: React.FC = () => {
       style={{
         backgroundImage: `url("${isMobile ? '/network-mobile.svg' : '/network.svg'}"), linear-gradient(to bottom left, #581c87, #1e3a8a)`,
         backgroundBlendMode: 'overlay',
-        backgroundSize: 'cover',
+        backgroundSize: isMobile ? 'cover' : 'auto',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}

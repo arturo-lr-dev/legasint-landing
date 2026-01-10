@@ -24,7 +24,7 @@ const AnimatedLanding = () => {
         background: 'conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)',
         backgroundImage: `url("${isMobile ? '/bg-mobile.svg' : '/bg.svg'}"), conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)`,
         backgroundBlendMode: 'overlay',
-        backgroundSize: 'cover',
+        backgroundSize: isMobile ? 'cover' : 'auto',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
