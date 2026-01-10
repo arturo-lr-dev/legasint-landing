@@ -1,9 +1,25 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const FloatingSocialIcons: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsVisible(scrollPosition > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
+    <div
+      className={`fixed bottom-8 flex flex-col gap-4 z-50 transition-all duration-500 ease-in-out ${
+        isVisible ? 'right-8 opacity-100' : '-right-24 opacity-0'
+      }`}
+    >
       {/* Instagram Icon */}
       <a
         href="https://instagram.com/legasint"
