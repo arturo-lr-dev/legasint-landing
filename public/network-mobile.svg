@@ -1,0 +1,496 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800">
+  <defs>
+    <!-- Gradientes blancos -->
+    <linearGradient id="connectionFlowMobile" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.3)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+      <animate attributeName="x1" from="-50%" to="150%" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="y1" from="-50%" to="150%" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="x2" from="50%" to="200%" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="y2" from="50%" to="200%" dur="4s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <radialGradient id="nodeGlowMobile">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+
+    <style>
+      .connection-line {
+        stroke-dasharray: 8 4;
+        animation: connection-flow 3s linear infinite;
+      }
+      @keyframes connection-flow {
+        from { stroke-dashoffset: 24; }
+        to { stroke-dashoffset: 0; }
+      }
+      .node-pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+      }
+    </style>
+  </defs>
+
+  <!-- Grid de fondo sutil -->
+  <g stroke="rgba(255,255,255,0.02)" fill="none" stroke-width="0.5">
+    <path d="M0 0 L400 0 M0 100 L400 100 M0 200 L400 200 M0 300 L400 300 M0 400 L400 400 M0 500 L400 500 M0 600 L400 600 M0 700 L400 700 M0 800 L400 800"/>
+    <path d="M0 0 L0 800 M100 0 L100 800 M200 0 L200 800 M300 0 L300 800 M400 0 L400 800"/>
+  </g>
+
+  <!-- Red de conexiones distribuidas orgánicamente -->
+  <g stroke="rgba(255,255,255,0.06)" fill="none" stroke-width="1">
+    <!-- Conexiones superiores -->
+    <path d="M80 80 L150 120 M80 80 L120 180"/>
+    <path d="M200 100 L150 120 M200 100 L240 180"/>
+    <path d="M320 90 L240 180 M320 90 L280 160"/>
+
+    <!-- Conexiones zona superior-media -->
+    <path d="M120 180 L200 240 M120 180 L80 280"/>
+    <path d="M240 180 L200 240 M240 180 L300 260"/>
+    <path d="M280 160 L200 240 M280 160 L340 240"/>
+
+    <!-- Conexiones centrales -->
+    <path d="M80 280 L140 340 M80 280 L100 400"/>
+    <path d="M200 240 L200 360 M200 240 L140 340"/>
+    <path d="M300 260 L200 360 M300 260 L280 380"/>
+    <path d="M340 240 L280 380 M340 240 L360 340"/>
+
+    <!-- Conexiones zona media-inferior -->
+    <path d="M140 340 L200 360 M140 340 L100 400"/>
+    <path d="M200 360 L240 480 M200 360 L160 480"/>
+    <path d="M280 380 L240 480 M280 380 L320 460"/>
+    <path d="M360 340 L320 460"/>
+
+    <!-- Conexiones inferiores -->
+    <path d="M100 400 L160 480 M100 400 L90 540"/>
+    <path d="M160 480 L200 560 M160 480 L140 600"/>
+    <path d="M240 480 L200 560 M240 480 L280 580"/>
+    <path d="M320 460 L280 580 M320 460 L340 580"/>
+
+    <!-- Conexiones zona inferior -->
+    <path d="M90 540 L140 600 M90 540 L120 680"/>
+    <path d="M140 600 L200 640 M140 600 L180 720"/>
+    <path d="M200 560 L200 640 M200 560 L260 640"/>
+    <path d="M280 580 L260 640 M280 580 L310 700"/>
+    <path d="M340 580 L310 700"/>
+
+    <!-- Conexiones finales -->
+    <path d="M120 680 L180 720 M120 680 L200 750"/>
+    <path d="M180 720 L200 750 M180 720 L240 740"/>
+    <path d="M260 640 L240 740 M260 640 L310 700"/>
+    <path d="M310 700 L240 740"/>
+  </g>
+
+  <!-- Líneas animadas -->
+  <g fill="none" stroke-width="1.5">
+    <path class="connection-line" stroke="url(#connectionFlowMobile)"
+          d="M80 80 L150 120 L200 240"/>
+    <path class="connection-line" stroke="url(#connectionFlowMobile)"
+          d="M200 100 L240 180 L200 360"/>
+    <path class="connection-line" stroke="url(#connectionFlowMobile)"
+          d="M200 360 L200 560 L200 640"/>
+    <path class="connection-line" stroke="url(#connectionFlowMobile)"
+          d="M100 400 L160 480 L200 560"/>
+    <path class="connection-line" stroke="url(#connectionFlowMobile)"
+          d="M280 380 L320 460 L340 580"/>
+  </g>
+
+  <!-- Nodos principales (representando personas/conexiones) -->
+  <g>
+    <!-- Nodos superiores -->
+    <circle cx="80" cy="80" r="32" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="80" cy="80" r="16"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.5s"
+               repeatCount="indefinite"/>
+    </circle>
+    <g stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none">
+      <circle cx="80" cy="76" r="5"/>
+      <path d="M72 88 Q80 92 88 88"/>
+    </g>
+
+    <circle cx="200" cy="100" r="36" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="200" cy="100" r="18"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.8s"
+               repeatCount="indefinite"/>
+    </circle>
+    <g stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none">
+      <circle cx="200" cy="95" r="6"/>
+      <path d="M190 110 Q200 115 210 110"/>
+    </g>
+
+    <circle cx="320" cy="90" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="320" cy="90" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.2s"
+               repeatCount="indefinite"/>
+    </circle>
+    <g stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none">
+      <circle cx="320" cy="86" r="5"/>
+      <path d="M312 98 Q320 102 328 98"/>
+    </g>
+
+    <!-- Nodos zona superior-media -->
+    <circle cx="150" cy="120" r="28" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="150" cy="120" r="14"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.6s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="120" cy="180" r="32" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="120" cy="180" r="16"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.4s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="240" cy="180" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="240" cy="180" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.9s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="280" cy="160" r="26" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="280" cy="160" r="13"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.7s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Nodo central (más grande) -->
+    <circle cx="200" cy="240" r="42" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="200" cy="240" r="21"
+            fill="rgba(255,255,255,0.08)"
+            stroke="rgba(255,255,255,0.22)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.08;0.14;0.08"
+               dur="3s"
+               repeatCount="indefinite"/>
+    </circle>
+    <g stroke="rgba(255,255,255,0.18)" stroke-width="1.2" fill="none">
+      <circle cx="200" cy="235" r="7"/>
+      <path d="M188 252 Q200 258 212 252"/>
+    </g>
+
+    <!-- Nodos zona media -->
+    <circle cx="80" cy="280" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="80" cy="280" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.3s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="300" cy="260" r="32" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="300" cy="260" r="16"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.5s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="340" cy="240" r="28" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="340" cy="240" r="14"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.8s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="140" cy="340" r="34" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="140" cy="340" r="17"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.7s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="360" cy="340" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="360" cy="340" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.6s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Nodos zona media-inferior -->
+    <circle cx="200" cy="360" r="38" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="200" cy="360" r="19"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.9s"
+               repeatCount="indefinite"/>
+    </circle>
+    <g stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none">
+      <circle cx="200" cy="355" r="6.5"/>
+      <path d="M188 372 Q200 378 212 372"/>
+    </g>
+
+    <circle cx="280" cy="380" r="32" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="280" cy="380" r="16"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.4s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="100" cy="400" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="100" cy="400" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.5s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="320" cy="460" r="34" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="320" cy="460" r="17"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.6s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Nodos zona inferior -->
+    <circle cx="160" cy="480" r="32" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="160" cy="480" r="16"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.8s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="240" cy="480" r="28" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="240" cy="480" r="14"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.3s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="90" cy="540" r="26" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="90" cy="540" r="13"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.7s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="200" cy="560" r="36" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="200" cy="560" r="18"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.5s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="280" cy="580" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="280" cy="580" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.9s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="340" cy="580" r="28" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="340" cy="580" r="14"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.4s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Nodos finales -->
+    <circle cx="140" cy="600" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="140" cy="600" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.6s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="200" cy="640" r="34" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="200" cy="640" r="17"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.8s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="260" cy="640" r="28" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="260" cy="640" r="14"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.5s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="120" cy="680" r="26" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="120" cy="680" r="13"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.7s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="310" cy="700" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="310" cy="700" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.3s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="180" cy="720" r="28" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="180" cy="720" r="14"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.9s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="240" cy="740" r="32" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="240" cy="740" r="16"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.4s"
+               repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="200" cy="750" r="30" fill="url(#nodeGlowMobile)" class="node-pulse"/>
+    <circle cx="200" cy="750" r="15"
+            fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="2">
+      <animate attributeName="fill-opacity"
+               values="0.06;0.12;0.06"
+               dur="2.6s"
+               repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Partículas de datos flotantes -->
+  <g fill="rgba(255,255,255,0.15)">
+    <circle cx="150" cy="200" r="2">
+      <animate attributeName="cy" values="200;180;200" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.15;0.3;0.15" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="320" r="2">
+      <animate attributeName="cy" values="320;300;320" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.15;0.3;0.15" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="180" cy="440" r="2">
+      <animate attributeName="cy" values="440;420;440" dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.15;0.3;0.15" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="270" cy="520" r="2">
+      <animate attributeName="cy" values="520;500;520" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.15;0.3;0.15" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="150" cy="660" r="2">
+      <animate attributeName="cy" values="660;640;660" dur="3.3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.15;0.3;0.15" dur="3.3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

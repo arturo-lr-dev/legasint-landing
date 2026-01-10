@@ -139,9 +139,9 @@ const PortfolioSection: React.FC = () => {
     <div
       className="w-full py-20 -mt-1 overflow-hidden"
       style={{
-        backgroundImage: `url("/circuit.svg"), linear-gradient(to bottom left, #1e3a8a, #581c87)`,
+        backgroundImage: `url("${isMobile ? '/circuit-mobile.svg' : '/circuit.svg'}"), linear-gradient(to bottom left, #1e3a8a, #581c87)`,
         backgroundBlendMode: 'overlay',
-        backgroundSize: isMobile ? 'cover' : 'auto',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}

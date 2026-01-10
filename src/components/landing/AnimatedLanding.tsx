@@ -22,9 +22,9 @@ const AnimatedLanding = () => {
       className="h-screen w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center bg-center bg-no-repeat"
       style={{
         background: 'conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)',
-        backgroundImage: `url("/bg.svg"), conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)`,
+        backgroundImage: `url("${isMobile ? '/bg-mobile.svg' : '/bg.svg'}"), conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)`,
         backgroundBlendMode: 'overlay',
-        backgroundSize: isMobile ? 'cover' : 'auto',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}

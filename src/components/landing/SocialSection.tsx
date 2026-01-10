@@ -107,9 +107,9 @@ const SocialImpactSection: React.FC = () => {
     <div
       className="w-full py-20 -mt-1"
       style={{
-        backgroundImage: `url("/network.svg"), linear-gradient(to bottom left, #581c87, #1e3a8a)`,
+        backgroundImage: `url("${isMobile ? '/network-mobile.svg' : '/network.svg'}"), linear-gradient(to bottom left, #581c87, #1e3a8a)`,
         backgroundBlendMode: 'overlay',
-        backgroundSize: isMobile ? 'cover' : 'auto',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
