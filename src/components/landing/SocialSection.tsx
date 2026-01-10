@@ -56,7 +56,8 @@ const AnimatedElement: React.FC<AnimatedElementProps> = ({ children, delay = 0 }
 
 const SocialImpactSection: React.FC = () => {
   const [mounted, setMounted] = useState<boolean>(false);
-  
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
   const socialCauses: SocialCause[] = [
     {
       title: "Digital Education",
@@ -89,12 +90,30 @@ const SocialImpactSection: React.FC = () => {
 
   useEffect(() => {
     setMounted(true);
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   if (!mounted) return null;
 
   return (
-    <div className="w-full bg-gradient-to-bl from-purple-900 to-blue-900 py-20 -mt-1">
+    <div
+      className="w-full py-20 -mt-1"
+      style={{
+        backgroundImage: `url("/network.svg"), linear-gradient(to bottom left, #581c87, #1e3a8a)`,
+        backgroundBlendMode: 'overlay',
+        backgroundSize: isMobile ? 'cover' : 'auto',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Title */}
         <AnimatedElement>

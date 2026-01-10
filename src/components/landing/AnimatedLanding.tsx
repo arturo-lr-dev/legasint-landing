@@ -1,15 +1,30 @@
+'use client';
+import { useState, useEffect } from 'react';
+
 const AnimatedLanding = () => {
   const letters = "Legasint".split("");
   const tagline = "Your Vision, Our Technology".split(" ");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <main
-      className="h-screen w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      className="h-screen w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center bg-center bg-no-repeat"
       style={{
         background: 'conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)',
         backgroundImage: `url("/bg.svg"), conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)`,
         backgroundBlendMode: 'overlay',
-        backgroundSize: 'cover',
+        backgroundSize: isMobile ? 'cover' : 'auto',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
