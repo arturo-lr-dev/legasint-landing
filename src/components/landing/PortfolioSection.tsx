@@ -87,21 +87,35 @@ const PortfolioSection: React.FC = () => {
       description: "Discover your city",
       imageUrl: "/projects/offpeaks.webp",
       projectUrl: "https://www.vallehub.com/",
-      tags: ["NextJS", "Claude", "Supabase"]
+      tags: ["Ubication", "Commerces", "Offers", "Claude", "Supabase"]
     },
     {
       title: "SF Education",
       description: "Change the way of learning",
       imageUrl: "/projects/sfeducation.webp",
       projectUrl: "https://sfeducation.es",
-      tags: ["next.js", "Serverless", "SSR", "Tailwind CSS"]
+      tags: ["Education", "Courses", "Responsive"]
     },
     {
       title: "LeCrep",
       description: "A modern web site atractive for the client",
       imageUrl: "/projects/lacrep.webp",
       projectUrl: "https://la-crep-webapp.web.app",
-      tags: ["Next.js", "Tailwind CSS"]
+      tags: ["Small Client", "Landing Page", "Responsive"]
+    },
+    {
+      title: "Sumeria",
+      description: "Your best AI assistant for your business",
+      imageUrl: "/projects/sumeria.webp",
+      projectUrl: "https://github.com/arturo-lr-dev/sumeria",
+      tags: ["AI", "Business", "Assistant", "OpenSource"]
+    },
+    {
+      title: "Smart Stadium Pricing",
+      description: "Dynamic pricing for stadium events",
+      imageUrl: "/projects/smart-stadium-pricing.webp",
+      projectUrl: "https://github.com/arturo-lr-dev/stadium-smart-pricing",
+      tags: ["ML", "Pricing", "Events", "OpenSource"]
     }
   ];
 
