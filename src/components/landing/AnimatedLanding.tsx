@@ -64,7 +64,7 @@ const AnimatedLanding = () => {
 
         {/* Tagline Animation */}
         <div 
-          className="flex items-center justify-center gap-3 mt-4 mb-28"
+          className="flex items-center justify-center gap-3 mt-4 mb-22"
           aria-label="Company tagline"
         >
           {tagline.map((word, index) => (
@@ -84,8 +84,9 @@ const AnimatedLanding = () => {
         
         {/* Decorative Line */}
         <div 
-          className="mb-12 mt-10 animate-fadeIn"
+          className="mb-4 animate-fadeIn"
           style={{
+            marginTop: '130px',
             opacity: 0,
             animationDelay: `${(letters.length * 150) + (tagline.length * 200) + 200}ms`,
             animationFillMode: 'forwards'
@@ -97,14 +98,14 @@ const AnimatedLanding = () => {
 
         <motion.p
           variants={fadeInUp}
-          className="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto mb-10 mt-4 animate-fadeInUp"
+          className="text-lg md:text-xl text-blue-200 max-w-2xl p-4 mx-auto mb-10 mt-4 animate-fadeInUp"
           style={{
             opacity: 0,
             animationDelay: `400ms`,
             animationFillMode: 'forwards'
           }}
         >
-          We transform your ideas into custom software solutions. We develop technology that drives your business into the future.
+          We transform your ideas into custom software solutions. <br className="hidden md:block" /> We develop technology that drives your business into the future.
         </motion.p>
 
         {/* Contact Button */}
