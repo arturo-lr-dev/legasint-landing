@@ -150,10 +150,10 @@ const PortfolioSection: React.FC = () => {
         {/* Section Title */}
         <AnimatedElement>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Our Projects
+            <h2 className="font-mono text-2xl font-bold text-white mb-4">
+              // Our Projects
             </h2>
-            <div className="h-1 w-32 bg-blue-400 mx-auto rounded-full animate-pulse" />
+            {false && <div className="h-1 w-32 bg-blue-400 mx-auto rounded-full animate-pulse" />}
           </div>
         </AnimatedElement>
 
@@ -210,7 +210,7 @@ const PortfolioSection: React.FC = () => {
         {/* Call to Action */}
         <AnimatedElement delay={projects.length * 200}>
           <div className="text-center mt-16">
-            <p className="text-xl text-blue-200 mb-8">
+            <p className="font-mono text-xl text-blue-200 mb-8">
               Explore our portfolio of innovative solutions
             </p>
           </div>

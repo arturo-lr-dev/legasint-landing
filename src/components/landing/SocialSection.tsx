@@ -118,10 +118,10 @@ const SocialImpactSection: React.FC = () => {
         {/* Section Title */}
         <AnimatedElement>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Our Social Impact
+            <h2 className="font-mono text-2xl font-bold text-white mb-4">
+              // Our Social Impact
             </h2>
-            <div className="h-1 w-32 bg-blue-400 mx-auto rounded-full animate-pulse" />
+            {false && <div className="h-1 w-32 bg-blue-400 mx-auto rounded-full animate-pulse" />}
           </div>
         </AnimatedElement>
 
@@ -153,7 +153,7 @@ const SocialImpactSection: React.FC = () => {
         {/* Call to Action */}
         <AnimatedElement delay={socialCauses.length * 200}>
           <div className="text-center mt-16">
-            <p className="text-xl text-blue-200 mb-8">
+            <p className="font-mono text-xl text-blue-200 mb-8">
               Join us in our mission to create positive impact through technology
             </p>
             {false && <button className="group relative px-8 py-4 text-xl font-bold text-white bg-blue-600 rounded-full overflow-hidden hover:bg-blue-700 transition-colors duration-300">

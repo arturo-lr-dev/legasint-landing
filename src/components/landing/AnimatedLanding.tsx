@@ -1,4 +1,6 @@
 'use client';
+import { fadeInUp } from '@/lib/animations';
+import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 const AnimatedLanding = () => {
@@ -32,6 +34,13 @@ const AnimatedLanding = () => {
       <div className="text-center">
         <h1 className="sr-only">Legasint - Your Vision, Our Technology</h1>
         
+        {/* Logo / Company Name */}
+        <motion.div variants={fadeInUp} className="mb-6">
+          <span className="font-mono text-sm text-white tracking-widest uppercase">
+            {"<"} Software Solutions {"/>"}
+          </span>
+        </motion.div>
+
         {/* Logo Animation */}
         <div 
           className="flex items-center justify-center"
@@ -55,7 +64,7 @@ const AnimatedLanding = () => {
 
         {/* Tagline Animation */}
         <div 
-          className="flex items-center justify-center gap-3 mt-4 mb-12"
+          className="flex items-center justify-center gap-3 mt-4 mb-28"
           aria-label="Company tagline"
         >
           {tagline.map((word, index) => (
@@ -75,7 +84,7 @@ const AnimatedLanding = () => {
         
         {/* Decorative Line */}
         <div 
-          className="mb-12 animate-fadeIn"
+          className="mb-12 mt-10 animate-fadeIn"
           style={{
             opacity: 0,
             animationDelay: `${(letters.length * 150) + (tagline.length * 200) + 200}ms`,
@@ -85,6 +94,18 @@ const AnimatedLanding = () => {
         >
           <div className="h-1 w-48 mx-auto bg-blue-400 rounded-full animate-pulse" />
         </div>
+
+        <motion.p
+          variants={fadeInUp}
+          className="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto mb-10 mt-4 animate-fadeInUp"
+          style={{
+            opacity: 0,
+            animationDelay: `400ms`,
+            animationFillMode: 'forwards'
+          }}
+        >
+          We transform your ideas into custom software solutions. We develop technology that drives your business into the future.
+        </motion.p>
 
         {/* Contact Button */}
         <div
