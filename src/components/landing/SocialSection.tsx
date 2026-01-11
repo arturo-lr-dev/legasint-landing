@@ -119,7 +119,7 @@ const SocialImpactSection: React.FC = () => {
         <AnimatedElement>
           <div className="text-center mb-16">
             <h2 className="font-mono text-2xl font-bold text-white mb-4">
-              /* Our Social Impact */
+              {"/* "} Our Social Impact {" */"}
             </h2>
             {false && <div className="h-1 w-32 bg-blue-400 mx-auto rounded-full animate-pulse" />}
           </div>
