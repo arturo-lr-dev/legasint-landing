@@ -40,7 +40,7 @@ const AnimatedLanding = () => {
           {letters.map((letter, index) => (
             <span
               key={index}
-              className="text-7xl font-bold text-white animate-fadeInUp"
+              className="notranslate text-7xl font-bold text-white animate-fadeInUp"
               style={{
                 opacity: 0,
                 animationDelay: `${index * 150}ms`,

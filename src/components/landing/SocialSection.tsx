@@ -105,7 +105,7 @@ const SocialImpactSection: React.FC = () => {
 
   return (
     <div
-      className="w-full py-20 -mt-1"
+      className="w-full py-20 -mt-1 overflow-hidden"
       style={{
         backgroundImage: `url("${isMobile ? '/network-mobile.svg' : '/network.svg'}"), linear-gradient(to bottom left, #581c87, #1e3a8a)`,
         backgroundBlendMode: 'overlay',
