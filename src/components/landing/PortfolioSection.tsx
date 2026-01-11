@@ -194,7 +194,7 @@ const PortfolioSection: React.FC = () => {
                       {project.tags.map((tag, tagIndex) => (
                         <span 
                           key={tagIndex}
-                          className="px-3 py-1 text-sm bg-blue-500/20 text-blue-200 rounded-full"
+                          className="px-3 py-1 text-sm bg-blue-500/20 text-blue-200 rounded"
                         >
                           {tag}
                         </span>

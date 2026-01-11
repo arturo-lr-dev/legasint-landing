@@ -98,7 +98,7 @@ const AnimatedLanding = () => {
 
         <motion.p
           variants={fadeInUp}
-          className="text-lg md:text-xl text-blue-200 max-w-2xl p-4 mx-auto mb-10 mt-4 animate-fadeInUp"
+          className="text-lg md:text-xl text-blue-100 max-w-2xl p-4 mx-auto mb-10 mt-4 animate-fadeInUp"
           style={{
             opacity: 0,
             animationDelay: `400ms`,
