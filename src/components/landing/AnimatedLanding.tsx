@@ -61,7 +61,7 @@ const AnimatedLanding = () => {
           {tagline.map((word, index) => (
             <span
               key={index}
-              className="text-2xl text-blue-300 font-light tracking-wide animate-fadeInUp"
+              className="text-xl text-blue-300 font-light tracking-wide animate-fadeInUp"
               style={{
                 opacity: 0,
                 animationDelay: `${(letters.length * 150) + (index * 200)}ms`,
