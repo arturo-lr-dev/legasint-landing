@@ -109,14 +109,14 @@ const PortfolioSection: React.FC = () => {
       description: "Your best AI assistant for your business",
       imageUrl: "/projects/sumeria.webp",
       projectUrl: "https://github.com/arturo-lr-dev/sumeria",
-      tags: ["AI", "Business", "Assistant", "OpenSource"]
+      tags: ["AI", "Business", "Assistant", "Open Source"]
     },
     {
       title: "Smart Stadium Pricing",
       description: "Dynamic pricing for stadium events",
       imageUrl: "/projects/smart-stadium-pricing.webp",
       projectUrl: "https://github.com/arturo-lr-dev/stadium-smart-pricing",
-      tags: ["ML", "Pricing", "Events", "OpenSource"]
+      tags: ["ML", "Pricing", "Events", "Open Source"]
     }
   ];
 
