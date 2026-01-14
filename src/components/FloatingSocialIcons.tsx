@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { trackEvent, GA_EVENTS } from '@/lib/analytics';
 
 const FloatingSocialIcons: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,6 +28,10 @@ const FloatingSocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         className="group relative bg-gradient-to-br from-purple-600 to-blue-600 p-4 rounded-full shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300"
         aria-label="Instagram"
+        onClick={() => trackEvent(GA_EVENTS.SOCIAL_CLICK, {
+          event_category: 'social',
+          event_label: 'instagram'
+        })}
       >
         <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300" />
         <svg
@@ -46,6 +51,10 @@ const FloatingSocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         className="group relative bg-gradient-to-br from-purple-600 to-blue-600 p-4 rounded-full shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300"
         aria-label="LinkedIn"
+        onClick={() => trackEvent(GA_EVENTS.SOCIAL_CLICK, {
+          event_category: 'social',
+          event_label: 'linkedin'
+        })}
       >
         <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300" />
         <svg

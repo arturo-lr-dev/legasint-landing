@@ -1,5 +1,6 @@
 'use client';
 import { fadeInUp } from '@/lib/animations';
+import { trackEvent, GA_EVENTS } from '@/lib/analytics';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
@@ -128,10 +129,14 @@ const AnimatedLanding = () => {
             />
             
             {/* Button content */}
-            <a 
-              href="mailto:contact@legasint.com" 
+            <a
+              href="mailto:contact@legasint.com"
               className="relative flex items-center justify-center gap-2"
               aria-label="Send email to contact@legasint.com"
+              onClick={() => trackEvent(GA_EVENTS.CONTACT_CLICK, {
+                event_category: 'engagement',
+                event_label: 'get_in_touch_button'
+              })}
             >
               Get in Touch
               <svg 
