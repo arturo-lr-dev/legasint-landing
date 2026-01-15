@@ -85,7 +85,7 @@ const AnimatedLanding = () => {
         
         {/* Decorative Line */}
         <div 
-          className="mb-4 animate-fadeIn mt-[77px] sm:mt-[130px]"
+          className="mb-4 animate-fadeIn mt-[67px] sm:mt-[130px]"
           style={{
             opacity: 0,
             animationDelay: `${(letters.length * 150) + (tagline.length * 200) + 200}ms`,
@@ -105,7 +105,7 @@ const AnimatedLanding = () => {
             animationFillMode: 'forwards'
           }}
         >
-          We transform your ideas into custom software solutions. <br className="hidden md:block" /> We develop technology that drives your business into the future.
+          We transform your ideas into custom software solutions. <br className="" /> We develop technology that drives your business into the future.
         </motion.p>
 
         {/* Contact Buttons */}
@@ -122,21 +122,30 @@ const AnimatedLanding = () => {
             href="https://wa.me/34649355701?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios."
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative px-8 py-4 text-xl font-bold text-white bg-green-600 rounded-full overflow-hidden transition-all duration-300 animate-bounce-gentle hover:bg-green-500 hover:shadow-lg hover:shadow-green-500/30"
+            className="group relative px-8 py-4 text-xl font-bold text-white rounded-full overflow-hidden transition-all duration-300 animate-bounce-gentle shadow-[0_0_20px_rgba(34,197,94,0.5)] hover:shadow-[0_0_35px_rgba(34,197,94,0.7)] hover:scale-105"
+            style={{
+              background: 'linear-gradient(135deg, #22c55e 0%, #15803d 50%, #166534 100%)',
+            }}
             aria-label="Contact us via WhatsApp"
             onClick={() => trackEvent(GA_EVENTS.WHATSAPP_CLICK, {
               event_category: 'engagement',
               event_label: 'whatsapp_button'
             })}
           >
-            {/* Glowing background effect */}
+            {/* Animated glow ring */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+              className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 rounded-full opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500 animate-pulse"
+              aria-hidden="true"
+            />
+
+            {/* Shine effect */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
               aria-hidden="true"
             />
 
             {/* Button content */}
-            <span className="relative flex items-center justify-center gap-2">
+            <span className="relative flex items-center justify-center gap-2 drop-shadow-lg">
               <svg
                 className="w-6 h-6"
                 fill="currentColor"
@@ -152,22 +161,31 @@ const AnimatedLanding = () => {
           {/* Email Button */}
           <a
             href="mailto:contact@legasint.com"
-            className="group relative px-8 py-4 text-xl font-bold text-white bg-blue-700 rounded-full overflow-hidden transition-all duration-300 animate-bounce-gentle hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/30"
-            style={{ animationDelay: '0.15s' }}
+            className="group relative px-8 py-4 text-xl font-bold text-white rounded-full overflow-hidden transition-all duration-300 animate-bounce-gentle shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_35px_rgba(139,92,246,0.7)] hover:scale-105"
+            style={{
+              animationDelay: '0.15s',
+              background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #4f46e5 100%)',
+            }}
             aria-label="Contact us via email"
             onClick={() => trackEvent(GA_EVENTS.CONTACT_CLICK, {
               event_category: 'engagement',
               event_label: 'email_button'
             })}
           >
-            {/* Glowing background effect */}
+            {/* Animated glow ring */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+              className="absolute -inset-1 bg-gradient-to-r from-violet-400 via-purple-300 to-indigo-500 rounded-full opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500 animate-pulse"
+              aria-hidden="true"
+            />
+
+            {/* Shine effect */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
               aria-hidden="true"
             />
 
             {/* Button content */}
-            <span className="relative flex items-center justify-center gap-2">
+            <span className="relative flex items-center justify-center gap-2 drop-shadow-lg">
               <svg
                 className="w-6 h-6"
                 fill="none"
