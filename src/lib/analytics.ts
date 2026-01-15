@@ -32,5 +32,6 @@ export const trackEvent = (
 // Predefined events for consistency
 export const GA_EVENTS = {
   CONTACT_CLICK: 'contact_click',
+  WHATSAPP_CLICK: 'whatsapp_click',
   SOCIAL_CLICK: 'social_click',
 } as const;
