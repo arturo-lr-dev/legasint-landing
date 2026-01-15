@@ -85,9 +85,8 @@ const AnimatedLanding = () => {
         
         {/* Decorative Line */}
         <div 
-          className="mb-4 animate-fadeIn"
+          className="mb-4 animate-fadeIn mt-[77px] sm:mt-[130px]"
           style={{
-            marginTop: '130px',
             opacity: 0,
             animationDelay: `${(letters.length * 150) + (tagline.length * 200) + 200}ms`,
             animationFillMode: 'forwards'
