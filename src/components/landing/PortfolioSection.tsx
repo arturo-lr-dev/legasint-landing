@@ -117,6 +117,13 @@ const PortfolioSection: React.FC = () => {
       imageUrl: "/projects/smart-stadium-pricing.webp",
       projectUrl: "https://github.com/arturo-lr-dev/stadium-smart-pricing",
       tags: ["ML", "Pricing", "Events", "Open Source"]
+    },
+    {
+      title: "Ambar PRO",
+      description: "Advanced Modelling Solutions for Complex Industrial Systems",
+      imageUrl: "/projects/ambar-pro.webp",
+      projectUrl: "https://ambarpro.net",
+      tags: ["Modelling", "Industrial", "Solutions"]
     }
   ];
 
