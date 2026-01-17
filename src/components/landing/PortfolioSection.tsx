@@ -121,7 +121,7 @@ const PortfolioSection: React.FC = () => {
     {
       title: "Ambar PRO",
       description: "Advanced Modelling Solutions for Complex Industrial Systems",
-      imageUrl: "/projects/ambar-pro.webp",
+      imageUrl: "/projects/ambarpro.webp",
       projectUrl: "https://ambarpro.net",
       tags: ["Modelling", "Industrial", "Solutions"]
     }
