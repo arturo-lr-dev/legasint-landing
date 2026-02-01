@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { getPostSlugs } from '@/lib/blog';
 
+export const dynamic = 'force-static';
+
 const BASE_URL = 'https://legasint.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
