@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google'
 import "./globals.css";
 import GoogleAnalytics from "@/analitics/google";
 import FloatingSocialIcons from "@/components/FloatingSocialIcons";
+import Header from "@/components/Header";
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -76,6 +77,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased overflow-x-hidden`}
       >
+        <Header />
         {children}
         <FloatingSocialIcons />
         <GoogleAnalytics />

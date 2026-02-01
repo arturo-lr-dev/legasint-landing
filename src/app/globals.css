@@ -13,7 +13,7 @@
       transform: translateY(0);
     }
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -24,7 +24,7 @@
       transform: translateY(0);
     }
   }
-  
+
   @keyframes bounceGentle {
     0%, 100% {
       transform: translateY(0);
@@ -33,16 +33,95 @@
       transform: translateY(-6px);
     }
   }
-  
+
   .animate-fadeInUp {
     animation: fadeInUp 0.8s ease-out;
   }
-  
+
   .animate-fadeIn {
     animation: fadeIn 0.8s ease-out;
   }
-  
+
   .animate-bounce-gentle {
     animation: bounceGentle 3s infinite ease-in-out;
   }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Syntax highlighting - Dark theme */
+.hljs {
+  color: #e2e8f0;
+  background: transparent;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #64748b;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+  color: #c084fc;
+}
+
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: #86efac;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #93c5fd;
+}
+
+.hljs-attribute,
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title,
+.hljs-type {
+  color: #fcd34d;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: #f9a8d4;
+}
+
+.hljs-built_in,
+.hljs-deletion {
+  color: #fca5a5;
+}
+
+.hljs-formula {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
 }
