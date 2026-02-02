@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getPostBySlug, getPostSlugs } from '@/lib/blog';
+import { getPostBySlug, getPostSlugs, getAdjacentPosts } from '@/lib/blog';
 import { BlogPostView } from '@/components/blog';
 import MDXContent from '@/components/blog/MDXContent';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -55,8 +55,10 @@ export default async function BlogPostPageEN({ params }: PageProps) {
     },
   });
 
+  const { previous, next } = getAdjacentPosts(slug, 'en');
+
   return (
-    <BlogPostView post={post}>
+    <BlogPostView post={post} previousPost={previous} nextPost={next}>
       <MDXContent source={mdxSource} />
     </BlogPostView>
   );

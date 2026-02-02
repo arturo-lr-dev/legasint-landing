@@ -97,3 +97,25 @@ export function getAvailableLocales(): string[] {
   return fs.readdirSync(contentDirectory)
     .filter((item) => fs.statSync(path.join(contentDirectory, item)).isDirectory());
 }
+
+export interface AdjacentPosts {
+  previous: BlogPostMeta | null;
+  next: BlogPostMeta | null;
+}
+
+export function getAdjacentPosts(slug: string, locale: string = 'es'): AdjacentPosts {
+  const allPosts = getAllPosts(locale);
+  const currentIndex = allPosts.findIndex((post) => post.slug === slug);
+
+  if (currentIndex === -1) {
+    return { previous: null, next: null };
+  }
+
+  // Posts are sorted by date DESC (newest first)
+  // "Next" = newer post (index - 1)
+  // "Previous" = older post (index + 1)
+  const next = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const previous = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+
+  return { previous, next };
+}
