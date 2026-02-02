@@ -125,3 +125,24 @@
 .hljs-strong {
   font-weight: bold;
 }
+
+/* Responsive tables in prose */
+.prose table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+
+.prose table th,
+.prose table td {
+  white-space: normal;
+  min-width: 120px;
+}
+
+@media (min-width: 768px) {
+  .prose table {
+    display: table;
+    white-space: normal;
+  }
+}
