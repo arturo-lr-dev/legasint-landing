@@ -3,14 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BlogPost } from '@/lib/blog';
+import { BlogPost, BlogPostMeta } from '@/lib/blog';
 
 interface BlogPostViewProps {
   post: BlogPost;
   children: React.ReactNode;
+  previousPost?: BlogPostMeta | null;
+  nextPost?: BlogPostMeta | null;
 }
 
-export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children }) => {
+export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children, previousPost, nextPost }) => {
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -37,6 +39,9 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children }) =>
 
   const backText = post.locale === 'es' ? '← Volver al blog' : '← Back to blog';
   const blogUrl = post.locale === 'es' ? '/blog' : '/blog/en';
+  const previousText = post.locale === 'es' ? '← Artículo anterior' : '← Previous article';
+  const nextText = post.locale === 'es' ? 'Siguiente artículo →' : 'Next article →';
+  const getPostUrl = (slug: string) => post.locale === 'es' ? `/blog/${slug}` : `/blog/en/${slug}`;
 
   if (!mounted) return null;
 
@@ -108,8 +113,49 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children }) =>
           </div>
         </div>
 
+        {/* Article Navigation */}
+        {(previousPost || nextPost) && (
+          <nav className="mt-12 pt-8 border-t border-white/10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Previous Article */}
+              <div className="flex flex-col">
+                {previousPost && (
+                  <Link
+                    href={getPostUrl(previousPost.slug)}
+                    className="group p-4 bg-white/5 hover:bg-white/10 rounded-lg border border-white/10 transition-all"
+                  >
+                    <span className="text-sm text-blue-400 group-hover:text-blue-300 transition-colors">
+                      {previousText}
+                    </span>
+                    <p className="mt-1 text-white font-medium group-hover:text-blue-200 transition-colors line-clamp-2">
+                      {previousPost.title}
+                    </p>
+                  </Link>
+                )}
+              </div>
+
+              {/* Next Article */}
+              <div className="flex flex-col md:items-end">
+                {nextPost && (
+                  <Link
+                    href={getPostUrl(nextPost.slug)}
+                    className="group p-4 bg-white/5 hover:bg-white/10 rounded-lg border border-white/10 transition-all md:text-right"
+                  >
+                    <span className="text-sm text-blue-400 group-hover:text-blue-300 transition-colors">
+                      {nextText}
+                    </span>
+                    <p className="mt-1 text-white font-medium group-hover:text-blue-200 transition-colors line-clamp-2">
+                      {nextPost.title}
+                    </p>
+                  </Link>
+                )}
+              </div>
+            </div>
+          </nav>
+        )}
+
         {/* Footer */}
-        <footer className="mt-12 pt-8 border-t border-white/10">
+        <footer className="mt-8 pt-8 border-t border-white/10">
           <Link
             href={blogUrl}
             className="inline-flex items-center text-blue-300 hover:text-blue-200 transition-colors"
