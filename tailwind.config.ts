@@ -62,6 +62,30 @@ export default {
             'ol > li::marker': {
               color: '#93c5fd',
             },
+            table: {
+              width: '100%',
+              borderCollapse: 'collapse',
+            },
+            thead: {
+              borderBottomColor: 'rgba(255, 255, 255, 0.2)',
+            },
+            'thead th': {
+              color: '#f1f5f9',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              fontWeight: '600',
+              padding: '0.75rem 1rem',
+              textAlign: 'left',
+            },
+            'tbody tr': {
+              borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+            },
+            'tbody td': {
+              color: '#e2e8f0',
+              padding: '0.75rem 1rem',
+            },
+            'tbody tr:nth-child(even)': {
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            },
           },
         },
       },
