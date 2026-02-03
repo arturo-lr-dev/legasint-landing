@@ -61,6 +61,8 @@ export const BlogList: React.FC<BlogListProps> = ({ posts, locale = 'es' }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const loadMoreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -86,6 +88,35 @@ export const BlogList: React.FC<BlogListProps> = ({ posts, locale = 'es' }) => {
   const visiblePosts = filteredPosts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPosts.length;
 
+  // Infinite scroll
+  useEffect(() => {
+    const element = loadMoreRef.current;
+    if (!element || !hasMore) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isLoading) {
+          setIsLoading(true);
+          // Small delay for smooth loading experience
+          setTimeout(() => {
+            setVisibleCount((prev) => prev + POSTS_PER_PAGE);
+            setIsLoading(false);
+          }, 300);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '100px',
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [hasMore, isLoading]);
+
   if (!mounted) return null;
 
   const title = locale === 'es' ? 'Blog' : 'Blog';
@@ -95,7 +126,6 @@ export const BlogList: React.FC<BlogListProps> = ({ posts, locale = 'es' }) => {
   const emptyMessage = locale === 'es'
     ? 'No hay artículos disponibles aún.'
     : 'No articles available yet.';
-  const loadMoreText = locale === 'es' ? 'Cargar más' : 'Load more';
   const searchPlaceholder = locale === 'es' ? 'Buscar artículos...' : 'Search articles...';
   const noResultsText = locale === 'es' ? 'No se encontraron artículos.' : 'No articles found.';
 
@@ -171,14 +201,36 @@ export const BlogList: React.FC<BlogListProps> = ({ posts, locale = 'es' }) => {
                 <BlogCard key={`${post.locale}-${post.slug}`} post={post} index={index} />
               ))}
             </div>
+            {/* Infinite scroll trigger */}
             {hasMore && (
-              <div className="flex justify-center mt-12">
-                <button
-                  onClick={() => setVisibleCount((prev) => prev + POSTS_PER_PAGE)}
-                  className="px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white font-medium transition-all duration-300 hover:scale-105"
-                >
-                  {loadMoreText}
-                </button>
+              <div ref={loadMoreRef} className="flex justify-center mt-12 py-8">
+                {isLoading && (
+                  <div className="flex items-center gap-3 text-blue-200">
+                    <svg
+                      className="animate-spin h-5 w-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                    <span className="font-mono text-sm">
+                      {locale === 'es' ? 'Cargando...' : 'Loading...'}
+                    </span>
+                  </div>
+                )}
               </div>
             )}
           </>
