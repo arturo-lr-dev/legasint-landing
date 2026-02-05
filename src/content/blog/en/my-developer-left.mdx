@@ -1,0 +1,255 @@
+---
+title: "My Developer Left: What to Do When You Lose Your Tech Team"
+date: "2026-02-05"
+description: "Practical guide for companies that lose their technical team: how to evaluate code, find replacement, and ensure business continuity."
+tags: ["Team Management", "Software Development", "IT Consulting"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Developer+Left"
+---
+
+## The Friday Afternoon Panic
+
+You get an unexpected email or call: your developer (or entire tech team) is leaving. It could be a better offer, a career change, or simply because that "temporary" freelance project you set up two years ago no longer interests them.
+
+And now you're there, with an application in production, active users, unresolved bugs, and **zero idea** how everything works under the hood.
+
+**Breathe. You're not alone.** This scenario is more common than you think, and it has a solution. But you need to act fast and strategically.
+
+## Step 1: Assess the Real State of the Project (First 48 Hours)
+
+Before panicking or hiring the first developer you find, you need to understand **what you're dealing with**.
+
+### What to Ask (or Discover) Immediately?
+
+#### 1. Where is the Code?
+- GitHub? GitLab? Bitbucket?
+- Do you have admin access to the repository?
+- Are there code backups outside the developer's computer?
+
+**Critical red flag:** If code only exists on their local machine, **top priority** is getting a complete copy NOW.
+
+#### 2. Where is the Application Deployed?
+- AWS? Heroku? Firebase? DigitalOcean? A physical server in some office?
+- Do you have admin credentials?
+- Who pays the hosting bills?
+
+#### 3. What External Services Does It Use?
+- Databases (where are they? who has access?)
+- Third-party APIs (Stripe, SendGrid, Twilio, etc.)
+- Domains and DNS (who manages them?)
+
+#### 4. Is There Documentation?
+- README with installation instructions
+- Architecture diagrams
+- Notes on important technical decisions
+
+**Reality:** In 80% of cases, documentation is non-existent or outdated. Don't be surprised, but **note it** because it will affect transition cost and time.
+
+### Create an Access Inventory
+
+Make a simple spreadsheet with:
+
+| Service | URL | User | Do We Have Access? | Notes |
+|---------|-----|------|-------------------|-------|
+| GitHub | github.com/company/project | admin@company.com | ✅ | Code is here |
+| AWS | aws.amazon.com | dev@company.com | ❌ | Dev has the keys |
+| Database | rds.aws... | root | ❌ | Urgent to get access |
+| Stripe | stripe.com | payments@company.com | ✅ | Payments working |
+
+**Goal:** Have full visibility within 48 hours maximum.
+
+## Step 2: Ensure Immediate Continuity
+
+Before thinking about replacement or improvements, you need **nothing to break** in the coming weeks.
+
+### Urgent Actions:
+
+#### 1. Knowledge Transfer (if possible)
+If your developer is willing to help with the transition:
+- Request **handover sessions** (even if paid hourly)
+- Record sessions (with permission) for future reference
+- Ask about system "secrets": that cron job running at 3am, that manual script to run every Monday, etc.
+
+**Tip:** Offer a transition bonus. $500-$1000 can save you weeks of chaos.
+
+#### 2. Change Critical Credentials
+- Change passwords for production services
+- Revoke departing developer's personal access
+- Activate two-factor authentication (2FA) where possible
+
+**Don't do this until** you have complete backups and alternative access working. Don't lock yourself out.
+
+#### 3. Basic Monitoring
+If you don't have it, implement **NOW**:
+- Uptime monitoring (UptimeRobot, Pingdom)
+- Error tracking (Sentry, Rollbar)
+- Email/SMS alerts if app goes down
+
+**Reason:** You need to learn about problems **before** your users write you angry messages.
+
+## Step 3: Find Strategic Replacement (Not Reactive)
+
+This is where many companies make the fatal mistake: **hiring the first available person**.
+
+### Realistic Options:
+
+#### A. Emergency Freelancer
+**Pros:**
+- Available quickly (days)
+- More economical than a company
+- Flexible for changes
+
+**Cons:**
+- Risk of repeating the same problem in 6 months
+- May not be available when you need them
+- Dependent on a single person again
+
+**When to use:** To "put out fires" while searching for a permanent solution.
+
+#### B. Development Company/Consultancy
+**Pros:**
+- Team, not individual person (less flight risk)
+- Experience in multiple similar projects
+- Established processes (documentation, quality, etc.)
+
+**Cons:**
+- More expensive (but predictable)
+- May take longer to start (weeks)
+- Less flexible for minor changes
+
+**When to use:** If your application is critical to the business and you need long-term **stability**.
+
+#### C. Part-Time CTO/Tech Lead
+**Pros:**
+- Strategic vision plus execution
+- Can coordinate freelancers/external teams
+- Helps plan technical roadmap
+
+**Cons:**
+- Hard to find good part-time
+- Doesn't code full-time
+- More expensive per hour than junior developer
+
+**When to use:** If your startup is growing and you need **technical direction** besides development.
+
+### What to Ask in Interviews:
+
+Don't look for the "world's best developer." Look for someone who:
+
+1. **Understands Your Tech Stack** (or something similar)
+   - "Have you worked with Node.js/React/Django/etc?"
+   
+2. **Has Experience Maintaining Legacy Code**
+   - "What would you do when receiving a project without documentation?"
+   
+3. **Can Evaluate if Current Code is Worth Keeping**
+   - "How do you decide whether to refactor or rewrite?"
+
+4. **Communicates in Non-Technical Language**
+   - If you can't understand their explanation, they're not a good fit for a non-technical company.
+
+## Step 4: Prevent It From Happening Again
+
+This is the most valuable learning from the entire process.
+
+### Necessary Structural Changes:
+
+#### 1. Code in Shared Repository (Non-Negotiable)
+- Git from day 1 (GitHub, GitLab, Bitbucket)
+- **You** (the company) must own the account
+- Daily automatic backups
+
+#### 2. Mandatory Minimum Documentation
+In the project README:
+```markdown
+# [Project Name]
+
+## How to Run Locally
+1. Install dependencies: `npm install`
+2. Environment variables: copy `.env.example` to `.env`
+3. Run: `npm start`
+
+## Deploy
+- Production: Firebase Hosting
+- Command: `npm run deploy`
+
+## Emergency Contacts
+- Hosting: AWS (admin@company.com)
+- Database: MongoDB Atlas (dev@company.com)
+```
+
+**Simple. Functional. Enough.**
+
+#### 3. Bus Factor > 1
+The "bus factor" is how many people can be hit by a bus before the project dies.
+
+**If your bus factor is 1, you're in danger.**
+
+Solutions:
+- Two developers (even if one is part-time)
+- Development company with a team
+- CTO coordinating multiple freelancers
+
+#### 4. Clear Contracts from the Start
+Must include:
+- Intellectual property rights (100% company ownership)
+- Notice period (minimum 30 days)
+- Obligation to document and transfer knowledge
+- Post-departure support clauses (optional, but useful)
+
+**Legal note:** Consult with a specialized lawyer. Don't copy contracts from the internet.
+
+## Real Case: From Chaos to Stability in 45 Days
+
+E-commerce client, their only developer (freelancer) disappeared without notice. Literally ghosted.
+
+**Initial Situation:**
+- Django app in production with 2,000 active users
+- Code on freelancer's computer (no access)
+- Critical bugs accumulating
+- Zero documentation
+
+**Actions (First 15 Days):**
+1. Recovered code from old Dropbox backup (6 months outdated)
+2. Hired senior freelancer for express audit
+3. Identified 3 critical bugs and patched them
+4. Migrated code to GitHub with daily backups
+
+**Actions (Days 16-45):**
+1. Hired development company for continuous maintenance
+2. Re-documented architecture and critical processes
+3. Implemented monitoring (Sentry + UptimeRobot)
+4. Created contingency plan for future emergencies
+
+**Result:**
+- Stabilized app, bugs under control
+- Team of 3 people (more resilient)
+- Up-to-date documentation
+- Client sleeps peacefully
+
+**Total Cost:** ~$8,500 (audit + emergency development + new team setup)
+
+**Cost of NOT Doing It:** Would have lost customers, reputation, and probably the business.
+
+## Conclusion: The Problem Isn't Technical, It's Strategic
+
+Losing your developer is painful, but it's an **opportunity** to professionalize your technical management.
+
+### Post-Crisis Checklist:
+
+- [ ] Code in shared repository with backups
+- [ ] Functional minimum documentation
+- [ ] Access to critical services in corporate account
+- [ ] Active monitoring and alerts
+- [ ] Bus factor > 1 (minimum 2 technical people)
+- [ ] Clear contracts with defined intellectual property
+- [ ] Documented contingency plan ("if X happens, do Y")
+
+**It's not about distrust.** It's about building a **sustainable** business that doesn't depend on a single person.
+
+---
+
+**Lost your tech team and don't know where to start?**
+
+At LegaSint, we help companies in this exact situation: legacy code audits, critical system stabilization, and building resilient technical teams.
+
+[Let's Talk →](/en/contact)

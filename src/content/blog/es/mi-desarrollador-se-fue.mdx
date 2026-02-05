@@ -1,0 +1,255 @@
+---
+title: "Mi desarrollador se fue: qué hacer cuando te quedas sin equipo técnico"
+date: "2026-02-05"
+description: "Guía práctica para empresas que pierden a su equipo técnico: cómo evaluar el código, encontrar reemplazo y asegurar continuidad del negocio."
+tags: ["Gestión de equipos", "Desarrollo de software", "Consultoría IT"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Desarrollador+Se+Fue"
+---
+
+## El pánico del viernes por la tarde
+
+Recibes un email o una llamada inesperada: tu desarrollador (o tu equipo técnico completo) se va. Puede ser por una mejor oferta, un cambio de carrera, o simplemente porque el proyecto freelance "temporal" que montaste hace dos años ya no le interesa.
+
+Y ahora estás ahí, con una aplicación en producción, usuarios activos, bugs sin resolver, y **cero idea** de cómo funciona todo por dentro.
+
+**Respira. No estás solo.** Este escenario es más común de lo que crees, y tiene solución. Pero necesitas actuar rápido y con estrategia.
+
+## Paso 1: Evalúa el estado real del proyecto (los primeros 48 horas)
+
+Antes de entrar en pánico o contratar al primer desarrollador que encuentres, necesitas entender **qué tienes entre manos**.
+
+### ¿Qué preguntar (o descubrir) inmediatamente?
+
+#### 1. ¿Dónde está el código?
+- ¿GitHub? ¿GitLab? ¿Bitbucket?
+- ¿Tienes acceso de administrador al repositorio?
+- ¿Hay backups del código fuera del ordenador del desarrollador?
+
+**Red flag crítico:** Si el código solo existe en su máquina local, **prioridad máxima** es obtener una copia completa AHORA.
+
+#### 2. ¿Dónde está desplegada la aplicación?
+- ¿AWS? ¿Heroku? ¿Firebase? ¿DigitalOcean? ¿Un servidor físico en alguna oficina?
+- ¿Tienes acceso a las credenciales de admin?
+- ¿Quién paga las facturas de hosting?
+
+#### 3. ¿Qué servicios externos usa?
+- Bases de datos (¿dónde están? ¿quién tiene acceso?)
+- APIs de terceros (Stripe, SendGrid, Twilio, etc.)
+- Dominios y DNS (¿quién los gestiona?)
+
+#### 4. ¿Hay documentación?
+- README con instrucciones de instalación
+- Diagramas de arquitectura
+- Notas sobre decisiones técnicas importantes
+
+**Realidad:** En el 80% de los casos, la documentación es inexistente o está desactualizada. No te sorprendas, pero **anótalo** porque afectará el costo y tiempo de transición.
+
+### Haz un inventario de accesos
+
+Crea una hoja de cálculo simple con:
+
+| Servicio | URL | Usuario | ¿Tenemos acceso? | Notas |
+|----------|-----|---------|------------------|-------|
+| GitHub | github.com/empresa/proyecto | admin@empresa.com | ✅ | Código está aquí |
+| AWS | aws.amazon.com | dev@empresa.com | ❌ | El dev tiene las claves |
+| Base de datos | rds.aws... | root | ❌ | Urgente obtener acceso |
+| Stripe | stripe.com | pagos@empresa.com | ✅ | Pagos funcionando |
+
+**Objetivo:** Tener visibilidad total en 48 horas máximo.
+
+## Paso 2: Asegura la continuidad inmediata
+
+Antes de pensar en reemplazo o mejoras, necesitas **que nada se rompa** en las próximas semanas.
+
+### Acciones urgentes:
+
+#### 1. Transferencia de conocimiento (si es posible)
+Si tu desarrollador está dispuesto a ayudar en la transición:
+- Pide **sesiones de handover** (aunque sean pagadas por hora)
+- Graba las sesiones (con permiso) para referencia futura
+- Pregunta por los "secretos" del sistema: esa tarea cron que se ejecuta a las 3am, ese script manual que hay que correr cada lunes, etc.
+
+**Tip:** Ofrece un bono de transición. €500-€1000 pueden ahorrarte semanas de caos.
+
+#### 2. Cambio de credenciales críticas
+- Cambia contraseñas de servicios productivos
+- Revoca accesos personales del desarrollador saliente
+- Activa autenticación de dos factores (2FA) donde sea posible
+
+**No lo hagas hasta** tener backups completos y accesos alternativos funcionando. No te bloquees a ti mismo.
+
+#### 3. Monitorización básica
+Si no la tienes, implementa **YA**:
+- Uptime monitoring (UptimeRobot, Pingdom)
+- Error tracking (Sentry, Rollbar)
+- Alertas por email/SMS si la app cae
+
+**Razón:** Necesitas enterarte de problemas **antes** que tus usuarios te escriban furiosos.
+
+## Paso 3: Encuentra reemplazo estratégico (no reactivo)
+
+Aquí es donde muchas empresas cometen el error fatal: **contratar al primero disponible**.
+
+### Opciones realistas:
+
+#### A. Freelancer de emergencia
+**Pros:**
+- Disponible rápido (días)
+- Más económico que una empresa
+- Flexible para cambios
+
+**Contras:**
+- Riesgo de repetir el mismo problema en 6 meses
+- Puede no estar disponible cuando lo necesites
+- Dependes de una sola persona otra vez
+
+**Cuándo usarlo:** Para "apagar fuegos" mientras buscas una solución permanente.
+
+#### B. Empresa de desarrollo/consultoría
+**Pros:**
+- Equipo, no persona individual (menos riesgo de fuga)
+- Experiencia en múltiples proyectos similares
+- Procesos establecidos (documentación, calidad, etc.)
+
+**Contras:**
+- Más caro (pero predecible)
+- Puede tardar más en arrancar (semanas)
+- Menos flexible para cambios menores
+
+**Cuándo usarlo:** Si tu aplicación es crítica para el negocio y necesitas **estabilidad** a largo plazo.
+
+#### C. CTO/Tech Lead a tiempo parcial
+**Pros:**
+- Visión estratégica además de ejecución
+- Puede coordinar freelancers/equipos externos
+- Ayuda a planificar roadmap técnico
+
+**Contras:**
+- Difícil de encontrar bueno a tiempo parcial
+- No hace código a tiempo completo
+- Más caro por hora que un developer junior
+
+**Cuándo usarlo:** Si tu startup está creciendo y necesitas **dirección técnica** además de desarrollo.
+
+### Qué preguntar en entrevistas:
+
+No busques al "mejor desarrollador del mundo". Busca alguien que:
+
+1. **Entienda tu stack tecnológico** (o algo similar)
+   - "¿Has trabajado con Node.js/React/Django/etc?"
+   
+2. **Tenga experiencia manteniendo código legacy**
+   - "¿Qué harías al recibir un proyecto sin documentación?"
+   
+3. **Pueda evaluar si vale la pena seguir con el código actual**
+   - "¿Cómo decides si refactorizar o reescribir?"
+
+4. **Comunique en lenguaje no técnico**
+   - Si no puedes entender lo que te explica, no es buen fit para una empresa no técnica.
+
+## Paso 4: Prevenir que vuelva a pasar
+
+Este es el aprendizaje más valioso de todo el proceso.
+
+### Cambios estructurales necesarios:
+
+#### 1. Código en repositorio compartido (no negociable)
+- Git desde día 1 (GitHub, GitLab, Bitbucket)
+- **Tú** (la empresa) debes ser propietario de la cuenta
+- Backups automáticos diarios
+
+#### 2. Documentación mínima obligatoria
+En el README del proyecto:
+```markdown
+# [Nombre del Proyecto]
+
+## Cómo ejecutar localmente
+1. Instalar dependencias: `npm install`
+2. Variables de entorno: copiar `.env.example` a `.env`
+3. Ejecutar: `npm start`
+
+## Deploy
+- Producción: Firebase Hosting
+- Comando: `npm run deploy`
+
+## Contactos de emergencia
+- Hosting: AWS (admin@empresa.com)
+- Base de datos: MongoDB Atlas (dev@empresa.com)
+```
+
+**Simple. Funcional. Suficiente.**
+
+#### 3. Bus factor > 1
+El "bus factor" es cuántas personas pueden ser atropelladas por un bus antes de que el proyecto muera.
+
+**Si tu bus factor es 1, estás en peligro.**
+
+Soluciones:
+- Dos desarrolladores (aunque uno sea part-time)
+- Empresa de desarrollo con equipo
+- CTO que coordina múltiples freelancers
+
+#### 4. Contratos claros desde el inicio
+Debe incluir:
+- Propiedad intelectual del código (100% de la empresa)
+- Período de aviso (mínimo 30 días)
+- Obligación de documentar y transferir conocimiento
+- Cláusulas de soporte post-salida (opcional, pero útil)
+
+**Nota legal:** Consulta con un abogado especializado. No copies contratos de internet.
+
+## Caso real: De caos a estabilidad en 45 días
+
+Cliente en sector e-commerce, su único desarrollador (freelancer) desapareció sin avisar. Literalmente ghosting.
+
+**Situación inicial:**
+- App Django en producción con 2,000 usuarios activos
+- Código en el ordenador del freelancer (sin acceso)
+- Bugs críticos acumulándose
+- Cero documentación
+
+**Acciones (primeros 15 días):**
+1. Recuperamos código de un backup antiguo en Dropbox (6 meses desactualizado)
+2. Contratamos freelancer senior para auditoría express
+3. Identificamos 3 bugs críticos y los parcheamos
+4. Migramos código a GitHub con backups diarios
+
+**Acciones (días 16-45):**
+1. Contratamos empresa de desarrollo para mantenimiento continuo
+2. Redocumentamos arquitectura y procesos críticos
+3. Implementamos monitorización (Sentry + UptimeRobot)
+4. Creamos plan de contingencia para próximas emergencias
+
+**Resultado:**
+- App estabilizada, bugs bajo control
+- Team de 3 personas (más resiliente)
+- Documentación al día
+- Cliente duerme tranquilo
+
+**Costo total:** ~€8,000 (auditoría + desarrollo emergencia + setup nuevo equipo)
+
+**Costo de NO hacerlo:** Hubieran perdido clientes, reputación, y probablemente el negocio.
+
+## Conclusión: El problema no es técnico, es estratégico
+
+Perder a tu desarrollador es doloroso, pero es una **oportunidad** para profesionalizar tu gestión técnica.
+
+### Checklist post-crisis:
+
+- [ ] Código en repositorio compartido con backups
+- [ ] Documentación mínima funcional
+- [ ] Accesos a servicios críticos en cuenta corporativa
+- [ ] Monitorización y alertas activas
+- [ ] Bus factor > 1 (mínimo 2 personas técnicas)
+- [ ] Contratos claros con propiedad intelectual definida
+- [ ] Plan de contingencia documentado ("si pasa X, hacer Y")
+
+**No se trata de desconfiar.** Se trata de construir un negocio **sostenible** que no dependa de una sola persona.
+
+---
+
+**¿Te quedaste sin equipo técnico y no sabes por dónde empezar?**
+
+En LegaSint ayudamos a empresas en esta situación exacta: auditoría de código heredado, estabilización de sistemas críticos, y construcción de equipos técnicos resilientes.
+
+[Hablemos →](/contacto)
