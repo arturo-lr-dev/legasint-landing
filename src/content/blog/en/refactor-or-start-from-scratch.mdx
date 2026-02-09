@@ -1,0 +1,235 @@
+---
+title: "Is it Worth Refactoring or Starting from Scratch?"
+date: "2026-02-09"
+description: "When it's worth refactoring your legacy code and when it's better to rebuild from scratch. A practical guide to making the right decision."
+tags: ["Refactoring", "Legacy Code", "Software Development"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Refactor+vs+Start+from+Scratch"
+---
+
+## The Dilemma Every CTO Faces
+
+Your system works, but barely. Every new feature takes weeks. Bugs appear where they shouldn't. Your technical team complains about "old code." And then the inevitable question arises: **do we refactor or start from scratch?**
+
+It's one of the most critical (and expensive) decisions in software development. Choosing wrong can cost you months of development and hundreds of thousands of euros. Choosing right can revitalize your product without breaking what works.
+
+## The Temptation of the Reset
+
+Starting from scratch sounds attractive:
+- Clean, modern code
+- Latest technologies
+- No inherited technical debt
+- Everything "done right from the start"
+
+**The problem:** This enthusiasm often ignores an uncomfortable truth. Your current system, with all its flaws, contains **years of business rules, edge cases, and lessons learned**. That knowledge is valuable, and replicating it from scratch is harder than it seems.
+
+### Second System Syndrome
+
+Joel Spolsky (Stack Overflow co-founder) called it "the worst strategic mistake a software company can make." Why?
+
+**Real case:** Netscape decided to rewrite their browser from scratch in 1998. It took them **3 years**. Meanwhile, Internet Explorer won the market. When they relaunched, it was too late.
+
+## When Refactoring is the Answer
+
+**Refactoring = Improving existing code without changing its behavior.**
+
+### Signs you should refactor:
+
+#### 1. The Business Core Works
+If your main business logic is solid and only the code is chaotic, refactoring is your best option.
+
+```typescript
+// Before: Confusing but functional code
+function calcPrice(u, d, c) {
+  return u * d - (u * d * c / 100);
+}
+
+// After: Same behavior, clearer
+function calculateFinalPrice(unitPrice: number, quantity: number, discountPercent: number): number {
+  const subtotal = unitPrice * quantity;
+  const discount = subtotal * (discountPercent / 100);
+  return subtotal - discount;
+}
+```
+
+#### 2. The Problem is Localized
+If only certain modules are problematic (e.g., the reporting system), you can refactor those parts without touching the rest.
+
+#### 3. Your Team Knows the System
+If you have developers who understand the current code, refactoring will be much safer and faster.
+
+#### 4. You Have Test Coverage (or can create it)
+Automated tests allow you to refactor with confidence. If you don't have them, you can start adding them gradually.
+
+#### 5. Budget is Limited
+Incremental refactoring allows you to keep adding features while improving the code. Starting from scratch freezes the product for months.
+
+### Effective Refactoring Strategies
+
+**1. Incremental Refactoring (Strangler Pattern)**
+
+Don't refactor everything at once. Go module by module:
+- Identify the most problematic module
+- Refactor it with tests
+- Deploy and validate
+- Repeat with the next one
+
+**2. Boy Scout Rule**
+
+"Leave the code better than you found it." Every time you touch a file, improve it a bit:
+- Rename confusing variables
+- Extract long functions
+- Add types or validations
+
+In 3-6 months, your code will have improved significantly without formal "refactoring projects."
+
+**3. Add Tests, Then Refactor**
+
+If your code doesn't have tests:
+1. Add integration tests that cover current behavior
+2. With tests passing, refactor with confidence
+3. Tests tell you if you broke something
+
+## When Starting from Scratch is Justifiable
+
+Yes, there are cases where rebuilding makes sense. But they're less common than you think.
+
+### Signs you should rebuild:
+
+#### 1. The Technology is Genuinely Obsolete
+If your system runs on technology that's no longer supported (e.g., PHP 5.3, Flash, IE6-only JavaScript), migrating may be faster than updating.
+
+**But beware:** "I want to use React" isn't a sufficient reason if your jQuery works.
+
+#### 2. The Fundamental Architecture is Wrong
+If your monolithic system needs to be distributed, or your architecture doesn't scale even with optimizations, rebuilding may be necessary.
+
+Example: A system designed for 100 users that now needs to support 100,000.
+
+#### 3. Maintenance Cost Exceeds Rebuilding Cost
+If every small change requires weeks of work and causes cascading bugs, and you've calculated that rebuilding would cost less in the long run.
+
+**Realistic calculation:**
+- Current maintenance: €20k/month for 2 years = €480k
+- Rebuilding: €200k + €8k/month maintenance = €392k over 2 years
+
+In this scenario, rebuilding makes financial sense.
+
+#### 4. The System Has No Documentation or Team
+If you inherited code without documentation, without tests, and nobody understands how it works, sometimes it's faster to start from scratch with clear specifications.
+
+**Important:** Before deciding, try bringing in a senior developer to audit the code. They might find value that's not obvious.
+
+### How to Rebuild Without Dying in the Attempt
+
+If you decide to start from scratch, follow these rules:
+
+**1. Keep the Old System Running**
+Don't shut down the old one until the new one is 100% operational in production. Spotify maintained two systems in parallel for 18 months.
+
+**2. Gradual Migration, Not Big Bang**
+- Phase 1: New system runs in parallel (read-only)
+- Phase 2: Non-critical features migrate first
+- Phase 3: Beta users test the new system
+- Phase 4: Complete migration with rollback plan
+
+**3. Document All Old System Knowledge**
+Before throwing away old code, document:
+- All business rules
+- Edge cases and exceptions
+- Third-party integrations
+- Critical user flows
+
+**4. Don't Try to Improve Everything at Once**
+The new system should **replicate the behavior of the old one, not improve it**. Improvements come after it's stable.
+
+## The Decision Framework: 5 Questions
+
+Answer these questions to decide:
+
+### 1. What's the real problem?
+- If it's "the code is ugly but works" → Refactor
+- If it's "the system can't do X due to architectural limitations" → Rebuild
+
+### 2. How much time do you have?
+- If you need results in weeks → Refactor
+- If you can invest 6-12 months → Consider rebuilding
+
+### 3. What's your budget?
+- Limited budget → Refactor incrementally
+- Comfortable budget → Evaluate rebuilding
+
+### 4. Does your team know the current system?
+- Yes → Refactoring is safer
+- No → Rebuilding might be clearer
+
+### 5. Do you have automated tests?
+- Yes → Refactor with confidence
+- No → More risk in both cases, consider adding tests first
+
+## The Hybrid Approach (Recommended)
+
+In most cases, the best answer is: **neither 100% refactoring nor 100% rebuilding**. But a hybrid approach:
+
+### The 80/20 Strategy
+
+1. **Identify the 20% of code causing 80% of problems**
+2. **Rebuild only that part** (e.g., the reporting module)
+3. **Refactor the rest** incrementally
+4. **Keep the parts that work well** intact
+
+**Practical example:**
+
+- ✅ **Keep:** Authentication system (works well)
+- 🔧 **Refactor:** Admin panel (confusing code but functional)
+- 🔨 **Rebuild:** Search engine (slow, limited architecture)
+
+## Real Case: Business Management System
+
+**Client:** Spanish company with 50 employees  
+**System:** 8-year-old PHP legacy, 100k lines of code  
+**Problem:** Slowness and difficulty adding features
+
+### Decision Made:
+Hybrid approach in 3 phases (12 months):
+
+**Phase 1 (3 months):** Refactor billing module
+- Add tests
+- Modernize code
+- Improve performance 70%
+- Cost: €25k
+
+**Phase 2 (5 months):** Rebuild API and frontend
+- New REST API with documentation
+- Modern frontend (React)
+- Old system as temporary backend
+- Cost: €80k
+
+**Phase 3 (4 months):** Migrate remaining modules
+- Gradual module migration
+- Dual system in parallel
+- Rollback plan at each step
+- Cost: €40k
+
+**Result:**
+- Modernized system without stopping operations
+- Total cost: €145k (vs €250k for complete rebuild)
+- Time: 12 months (vs 18 months estimated for full rebuild)
+
+## Conclusion: No Universal Recipes
+
+**The right answer depends on your context:**
+
+- **Your budget** (refactoring is cheaper initially)
+- **Your timeline** (refactoring allows faster results)
+- **Code state** (is it chaotic or fundamentally wrong?)
+- **Your team** (do they know the system or are they lost?)
+- **Your goals** (improve what you have or pivot the business?)
+
+**General rule:**
+> Refactor if the problem is the code. Rebuild if the problem is the architecture.
+
+And when in doubt, start refactoring. You can always decide to rebuild later if it doesn't work. But if you start rebuilding and it fails, you'll lose months and budget with no way back.
+
+---
+
+**Need help deciding?** At LegaSint we audit your code and give you an honest recommendation: refactor, rebuild, or hybrid approach. No commitment, no pressure. [Contact us](/contact)
