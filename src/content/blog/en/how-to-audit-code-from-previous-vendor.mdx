@@ -1,0 +1,306 @@
+---
+title: "How to Audit Code from Your Previous Vendor"
+date: "2026-02-10"
+description: "Practical guide to evaluate inherited code quality and make informed decisions about refactoring or migration."
+tags: ["Code Audit", "Software Quality", "Technical Debt"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Code+Audit"
+---
+
+## The situation
+
+You hire a new developer or consultancy, hand them the code your previous vendor delivered, and they tell you: **"This is a disaster, we need to rebuild everything"**.
+
+Are they being honest or just trying to sell you a bigger project?
+
+This guide will help you **audit the code yourself** (without being a programmer) and understand what's real and what's theater.
+
+## Why audit inherited code?
+
+Before making costly decisions, you need answers to:
+
+- **Does the code work?** Does it meet current requirements?
+- **Is it maintainable?** Can it evolve without rebuilding?
+- **Is there critical technical debt?** How urgent is it to address?
+- **Is it worth investing in improving it?** Or better to start from scratch?
+
+A technical audit gives you **objective evidence** to make informed decisions.
+
+## Warning signs (red flags)
+
+Even without deep technical knowledge, you can detect obvious problems:
+
+### 🚩 1. Lack of documentation
+
+If there's no:
+- README explaining how to run the project
+- Code comments
+- Installation/configuration guides
+- API or architecture documentation
+
+**This means:** Total dependency on the previous vendor. No one else can work on this without investing weeks understanding it.
+
+### 🚩 2. Code without clear structure
+
+```
+project/
+├── file1.js
+├── file2.js
+├── thing.js
+├── utils.js
+├── final_final_v2.js
+└── test123.js
+```
+
+**Files with generic names, no organization, no folders.** Sign of improvised code without planning.
+
+### 🚩 3. Outdated versions
+
+Run:
+```bash
+npm outdated  # For JavaScript projects
+pip list --outdated  # For Python
+```
+
+If dependencies are **years old**, you're using technology with:
+- Security vulnerabilities
+- Lack of official support
+- Incompatibilities with modern systems
+
+### 🚩 4. No version control (Git)
+
+Ask: **Is the project on Git/GitHub/GitLab?**
+
+If there's no change history:
+- You can't revert errors
+- You don't know who changed what or when
+- Impossible to work as a team
+
+**This is basic.** Not having it is professional negligence.
+
+### 🚩 5. Code duplicated everywhere
+
+If you find the **same code repeated** in multiple files:
+- Makes maintenance difficult (changing something requires editing 10 places)
+- Increases errors (you forget to update one copy)
+- Sign of lack of experience or rush
+
+## The audit step by step
+
+### Step 1: Initial inventory
+
+Before opening the code, gather:
+
+- **What technology does it use?** (React, Laravel, Python, etc.)
+- **Where is it deployed?** (AWS, own server, shared hosting)
+- **Is there access to everything?** (source code, database, server, domain)
+- **Does it currently work?** (real users using it, known bugs)
+
+**Document everything.** This is your baseline.
+
+### Step 2: Automated analysis
+
+Use tools that detect problems without being an expert:
+
+**For JavaScript/TypeScript:**
+```bash
+# Install ESLint (linter that detects errors)
+npm install -g eslint
+eslint . --max-warnings 0
+
+# SonarQube (quality analysis)
+# Free version detects bugs, vulnerabilities, code smells
+```
+
+**For Python:**
+```bash
+# Pylint (analyzes code quality)
+pip install pylint
+pylint your_project/
+
+# Bandit (detects security issues)
+pip install bandit
+bandit -r your_project/
+```
+
+**Interpret the results:**
+- **Critical errors:** Real bugs, security vulnerabilities
+- **Warnings:** Bad practices, technical debt
+- **Code smells:** Hard-to-maintain code
+
+**Acceptable number of errors:** Depends on size, but if a small project has +500 warnings, there are serious problems.
+
+### Step 3: Manual audit (with help)
+
+Hire a **senior freelance developer** for 2-4 hours to review:
+
+1. **General architecture:**
+   - Is it well organized?
+   - Does it separate business logic, data, and presentation?
+
+2. **Code quality:**
+   - Is it readable?
+   - Does it use good practices for the language/framework?
+   - Are there automated tests?
+
+3. **Security:**
+   - Does it protect against SQL injections?
+   - Does it validate input data?
+   - Does it handle credentials properly?
+
+4. **Performance:**
+   - Are there inefficient database queries?
+   - Does it load fast or is it slow?
+
+**Ask for a written report** with:
+- Problems found (critical vs improvements)
+- Effort estimation to fix it
+- Recommendation: refactor or rebuild?
+
+### Step 4: Functional validation
+
+Beyond the code, verify **what the application actually does**:
+
+- **Does it meet original requirements?**
+- **Are there known bugs?** Were they reported and never fixed?
+- **Can it scale?** Will it handle 10x users?
+- **Are there half-finished features?** Code that was never completed
+
+**Create a list of functionalities vs actual status:**
+
+| Functionality      | Specified | Implemented | Works | Bugs |
+|-------------------|-----------|-------------|-------|------|
+| User login        | ✅        | ✅          | ✅    | -    |
+| Export PDF        | ✅        | ✅          | ❌    | Slow, breaks |
+| Notifications     | ✅        | ❌          | -     | Doesn't exist |
+
+This gives you a **realistic view** of what you actually have.
+
+## Key questions for your auditor
+
+When you hire the senior freelancer, ask:
+
+1. **"Can this be maintained or does it need to be rebuilt?"**
+   - Expect a nuanced answer, not a binary "yes/no"
+
+2. **"How much would it cost to fix it vs rebuild it?"**
+   - Compare options with real numbers
+
+3. **"What's the most urgent thing that needs fixing?"**
+   - Prioritize critical risks (security, serious bugs)
+
+4. **"Is this code salvageable long-term?"**
+   - Look beyond the short term
+
+5. **"Would you work on this code yourself?"**
+   - Honest answer on whether it's viable or hell
+
+## Decision: Refactor or rebuild?
+
+After the audit, you'll have to choose:
+
+### ✅ Refactor (improve existing code) if:
+
+- The code **works well** for users
+- The base architecture **is solid**
+- Problems are **localized** (can be fixed in parts)
+- **Limited budget** and you need quick results
+- You have **documentation or knowledge** of the current system
+
+**Advantages:** Lower cost, lower risk, maintains existing functionality.
+
+### 🔄 Rebuild from scratch if:
+
+- The code is **completely unmaintainable**
+- **Obsolete** technology with no future
+- **Critical bugs** everywhere
+- Lack of basic **security**
+- The cost of fixing it **exceeds** rebuilding
+- You need to **radically change** functionality
+
+**Advantages:** Start clean, modern technology, better architecture.
+
+### Middle option: **Incremental rewrite**
+
+- Keep the current system running
+- Rewrite modules one by one
+- Gradually replace old parts with new ones
+- Reduces risk and allows continuous value
+
+**Ideal when:** The system is critical and you can't stop operations.
+
+## Audit checklist
+
+Use this as a checklist when reviewing inherited code:
+
+**Documentation:**
+- [ ] README exists with installation instructions
+- [ ] There's architecture documentation
+- [ ] APIs are documented
+- [ ] Diagrams or specifications exist
+
+**Version control:**
+- [ ] Project uses Git
+- [ ] Commit history makes sense
+- [ ] Organized branches exist (main, develop, etc.)
+- [ ] Commits have descriptive messages
+
+**Dependencies and technology:**
+- [ ] Dependencies are updated (or maximum 1 year old)
+- [ ] Doesn't use abandoned technologies
+- [ ] Language versions are officially supported
+
+**Code quality:**
+- [ ] Code is organized in logical folders
+- [ ] File/variable names are clear
+- [ ] No massive code duplication
+- [ ] Separation of concerns exists
+
+**Tests:**
+- [ ] Automated tests exist
+- [ ] Tests pass successfully
+- [ ] Test coverage >50%
+
+**Security:**
+- [ ] No hardcoded credentials
+- [ ] Uses HTTPS
+- [ ] Validates user inputs
+- [ ] Has protection against common attacks (SQL injection, XSS)
+
+**Performance:**
+- [ ] App loads in <3 seconds
+- [ ] No extremely slow queries
+- [ ] Images/assets are optimized
+
+## Common mistakes when auditing
+
+❌ **"My new vendor says it's a disaster, so it must be"**
+   → Get a second opinion. Some are looking to sell big projects.
+
+❌ **"The code is ugly, we need to rebuild"**
+   → "Ugly" doesn't mean "bad". Functional ugly code > pretty broken code.
+
+❌ **"They used PHP/jQuery/X old technology, it's trash"**
+   → "Old" technology ≠ bad. Does it work? Is it maintainable? That matters more.
+
+❌ **"It has some bugs, we need to throw it all away"**
+   → All projects have bugs. Evaluate severity, not quantity.
+
+❌ **"I don't understand the code, it must be wrong"**
+   → Lack of documentation ≠ bad code. It may just be difficult to approach initially.
+
+## Conclusion
+
+Auditing inherited code **is not optional** if you want to make informed decisions about your technology.
+
+**Key steps:**
+1. Gather information and access
+2. Use automated tools to detect problems
+3. Hire an external expert for manual review
+4. Compare cost of refactoring vs rebuilding
+5. Decide based on **evidence**, not opinions
+
+Remember: **perfect code doesn't exist**. The question isn't "is it good?", but "is it good enough for what we need?".
+
+A good auditor will tell you the real problems, the costs to fix them, and help you prioritize. A bad auditor will just say "we need to rebuild everything" without analysis.
+
+**Look for evidence, concrete numbers, and realistic options.** That's how you'll make the best decision for your business.
