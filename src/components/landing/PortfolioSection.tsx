@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 interface AnimatedElementProps {
   children: React.ReactNode;
@@ -42,13 +43,14 @@ const AnimatedElement: React.FC<AnimatedElementProps> = ({ children, delay = 0, 
       }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    const element = elementRef.current;
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);
@@ -180,10 +182,11 @@ const PortfolioSection: React.FC = () => {
                   
                   {/* Project Image */}
                   <div className="relative h-48 overflow-hidden">
-                    <img 
+                    <Image
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover transform group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   
