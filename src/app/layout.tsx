@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google'
 import "./globals.css";
-import GoogleAnalytics from "@/analitics/google";
+import GoogleAnalytics from "@/analytics/google";
 import FloatingSocialIcons from "@/components/FloatingSocialIcons";
 import Header from "@/components/Header";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
@@ -64,6 +64,11 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
 
+  // Google Search Console verification (replace with your actual code)
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
+  },
+
   // Robots
   robots: {
     index: true,
@@ -86,6 +91,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        <link rel="alternate" type="application/rss+xml" title="Legasint Blog" href="/feed.xml" />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
       </head>

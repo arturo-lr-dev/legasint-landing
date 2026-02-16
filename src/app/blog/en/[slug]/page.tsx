@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getPostBySlug, getPostSlugs, getAdjacentPosts } from '@/lib/blog';
+import { getPostBySlug, getPostSlugs, getAdjacentPosts, getRelatedPosts, extractHeadings } from '@/lib/blog';
 import { getAlternateSlug } from '@/lib/slug-mapping';
 import { BlogPostView } from '@/components/blog';
 import MDXContent from '@/components/blog/MDXContent';
@@ -79,6 +79,8 @@ export default async function BlogPostPageEN({ params }: PageProps) {
   });
 
   const { previous, next } = getAdjacentPosts(slug, 'en');
+  const related = getRelatedPosts(slug, 'en');
+  const tocItems = extractHeadings(post.content);
 
   return (
     <>
@@ -90,7 +92,7 @@ export default async function BlogPostPageEN({ params }: PageProps) {
           { name: post.title, url: `${BASE_URL}/blog/en/${slug}` },
         ]}
       />
-      <BlogPostView post={post} previousPost={previous} nextPost={next}>
+      <BlogPostView post={post} previousPost={previous} nextPost={next} relatedPosts={related} tocItems={tocItems}>
         <MDXContent source={mdxSource} />
       </BlogPostView>
     </>

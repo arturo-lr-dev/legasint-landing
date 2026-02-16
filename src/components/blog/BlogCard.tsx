@@ -98,10 +98,16 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, index = 0 }) => {
 
           {/* Post Content */}
           <div className="p-6">
-            {/* Date */}
-            <time className="text-sm text-blue-300 font-mono">
-              {formatDate(post.date)}
-            </time>
+            {/* Date + Reading Time */}
+            <div className="flex items-center gap-3 text-sm text-blue-300 font-mono">
+              <time>{formatDate(post.date)}</time>
+              <span aria-hidden="true">·</span>
+              <span>
+                {post.locale === 'es'
+                  ? `${post.readingTime} min`
+                  : `${post.readingTime} min`}
+              </span>
+            </div>
 
             <h3 className="text-xl font-bold text-white mt-2 mb-2 group-hover:text-blue-200 transition-colors">
               {post.title}

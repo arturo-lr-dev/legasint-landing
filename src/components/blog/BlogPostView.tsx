@@ -3,16 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { BlogPost, BlogPostMeta } from '@/lib/blog';
+import { BlogPost, BlogPostMeta, TocItem } from '@/lib/blog';
+import { TableOfContents } from './TableOfContents';
 
 interface BlogPostViewProps {
   post: BlogPost;
   children: React.ReactNode;
   previousPost?: BlogPostMeta | null;
   nextPost?: BlogPostMeta | null;
+  relatedPosts?: BlogPostMeta[];
+  tocItems?: TocItem[];
 }
 
-export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children, previousPost, nextPost }) => {
+export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children, previousPost, nextPost, relatedPosts, tocItems }) => {
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [currentUrl, setCurrentUrl] = useState('');
@@ -40,14 +43,22 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children, prev
     });
   };
 
-  const backText = post.locale === 'es' ? '← Volver al blog' : '← Back to blog';
-  const blogUrl = post.locale === 'es' ? '/blog' : '/blog/en';
-  const previousText = post.locale === 'es' ? '← Artículo anterior' : '← Previous article';
-  const nextText = post.locale === 'es' ? 'Siguiente artículo →' : 'Next article →';
-  const shareText = post.locale === 'es' ? 'Compartir' : 'Share';
-  const copiedText = post.locale === 'es' ? '¡Copiado!' : 'Copied!';
-  const copyLinkText = post.locale === 'es' ? 'Copiar enlace' : 'Copy link';
-  const getPostUrl = (slug: string) => post.locale === 'es' ? `/blog/${slug}` : `/blog/en/${slug}`;
+  const isEs = post.locale === 'es';
+  const backText = isEs ? '← Volver al blog' : '← Back to blog';
+  const blogUrl = isEs ? '/blog' : '/blog/en';
+  const previousText = isEs ? '← Artículo anterior' : '← Previous article';
+  const nextText = isEs ? 'Siguiente artículo →' : 'Next article →';
+  const shareText = isEs ? 'Compartir' : 'Share';
+  const copiedText = isEs ? '¡Copiado!' : 'Copied!';
+  const copyLinkText = isEs ? 'Copiar enlace' : 'Copy link';
+  const readingTimeText = isEs
+    ? `${post.readingTime} min de lectura`
+    : `${post.readingTime} min read`;
+  const getPostUrl = (slug: string) => isEs ? `/blog/${slug}` : `/blog/en/${slug}`;
+  const getTagUrl = (tag: string) => {
+    const encoded = encodeURIComponent(tag.toLowerCase());
+    return isEs ? `/blog/tag/${encoded}` : `/blog/en/tag/${encoded}`;
+  };
 
   const shareOnTwitter = () => {
     const text = encodeURIComponent(post.title);
@@ -90,25 +101,39 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children, prev
       }}
     >
       <article className="max-w-4xl mx-auto px-4 pt-16">
-        {/* Back Link */}
-        <Link
-          href={blogUrl}
-          className="inline-flex items-center text-blue-300 hover:text-blue-200 transition-colors mb-8"
-        >
-          {backText}
-        </Link>
+        {/* Breadcrumbs */}
+        <nav aria-label="Breadcrumb" className="mb-6">
+          <ol className="flex items-center gap-2 text-sm text-blue-300">
+            <li>
+              <Link href="/" className="hover:text-blue-200 transition-colors">
+                {isEs ? 'Inicio' : 'Home'}
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li>
+              <Link href={blogUrl} className="hover:text-blue-200 transition-colors">
+                Blog
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li className="text-blue-200 truncate max-w-[200px] sm:max-w-none" aria-current="page">
+              {post.title}
+            </li>
+          </ol>
+        </nav>
 
         {/* Post Header */}
         <header className="mb-8">
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-4">
             {post.tags.map((tag, index) => (
-              <span
+              <Link
                 key={index}
-                className="px-3 py-1 text-sm bg-blue-500/20 text-blue-200 rounded"
+                href={getTagUrl(tag)}
+                className="px-3 py-1 text-sm bg-blue-500/20 text-blue-200 rounded hover:bg-blue-500/30 transition-colors"
               >
                 {tag}
-              </span>
+              </Link>
             ))}
           </div>
 
@@ -120,9 +145,13 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children, prev
             {post.description}
           </p>
 
-          <time className="text-blue-300 font-mono">
-            {formatDate(post.date)}
-          </time>
+          <div className="flex items-center gap-4 text-blue-300 font-mono text-sm">
+            <time>{formatDate(post.date)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{readingTimeText}</span>
+            <span aria-hidden="true">·</span>
+            <span>{post.author}</span>
+          </div>
         </header>
 
         {/* Featured Image */}
@@ -136,6 +165,11 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children, prev
               priority
             />
           </div>
+        )}
+
+        {/* Table of Contents */}
+        {tocItems && tocItems.length >= 3 && (
+          <TableOfContents items={tocItems} locale={post.locale} />
         )}
 
         {/* Post Content */}
@@ -246,6 +280,38 @@ export const BlogPostView: React.FC<BlogPostViewProps> = ({ post, children, prev
               </div>
             </div>
           </nav>
+        )}
+
+        {/* Related Posts */}
+        {relatedPosts && relatedPosts.length > 0 && (
+          <section className="mt-12 pt-8 border-t border-white/10">
+            <h2 className="text-xl font-bold text-white mb-6">
+              {isEs ? 'Artículos relacionados' : 'Related articles'}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {relatedPosts.map((related) => (
+                <Link
+                  key={related.slug}
+                  href={getPostUrl(related.slug)}
+                  className="group p-4 bg-white/5 hover:bg-white/10 rounded-lg border border-white/10 transition-all"
+                >
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    {related.tags.slice(0, 2).map((tag) => (
+                      <span key={tag} className="text-xs px-2 py-0.5 bg-blue-500/20 text-blue-300 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-white font-medium group-hover:text-blue-200 transition-colors line-clamp-2">
+                    {related.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-blue-300/70 line-clamp-2">
+                    {related.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
         )}
 
         {/* Footer */}
