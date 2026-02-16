@@ -4,11 +4,12 @@ import "./globals.css";
 import GoogleAnalytics from "@/analitics/google";
 import FloatingSocialIcons from "@/components/FloatingSocialIcons";
 import Header from "@/components/Header";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 
 const inter = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://legasint.com'), // Cambia esto a tu dominio
+  metadataBase: new URL('https://legasint.com'),
   title: 'Legasint - Innovation Made Seamless',
   description: 'Transform your business with cutting-edge technology solutions. Legasint delivers seamless innovation for the modern enterprise.',
   keywords: ['technology', 'innovation', 'digital solutions', 'IT services', 'software development'],
@@ -24,35 +25,45 @@ export const metadata: Metadata = {
     icon: '/favicon.ico?v=2'
   },
   manifest: '/manifest.json',
-  
+
+  alternates: {
+    canonical: 'https://legasint.com',
+    languages: {
+      'es': 'https://legasint.com',
+      'en': 'https://legasint.com',
+      'x-default': 'https://legasint.com',
+    },
+  },
+
   // Open Graph / Facebook
   openGraph: {
     type: 'website',
     locale: 'en_US',
+    alternateLocale: ['es_ES'],
     url: 'https://legasint.com',
     siteName: 'LegaSint',
     title: 'LegaSint - Innovation Made Seamless',
     description: 'Transform your business with cutting-edge technology solutions. LegaSint delivers seamless innovation for the modern enterprise.',
     images: [
       {
-        url: '/og-image.png', // Imagen de 1200x630px
-        width: 512,
-        height: 512,
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'LegaSint - Innovation Made Seamless',
       },
     ],
   },
-  
+
   // Twitter
   twitter: {
     card: 'summary_large_image',
-    site: '@legasint', // Tu handle de Twitter
+    site: '@legasint',
     creator: '@legasint',
     title: 'LegaSint - Innovation Made Seamless',
     description: 'Transform your business with cutting-edge technology solutions. LegaSint delivers seamless innovation for the modern enterprise.',
-    images: ['/og-image.png'], // Imagen de 1200x600px
+    images: ['/og-image.png'],
   },
-  
+
   // Robots
   robots: {
     index: true,
@@ -73,7 +84,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
+      <head>
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
+      </head>
       <body
         className={`${inter.className} antialiased overflow-x-hidden`}
       >
