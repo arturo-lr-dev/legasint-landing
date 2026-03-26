@@ -1,0 +1,176 @@
+{
+  "ideas": [
+    {
+      "id": 1,
+      "title": {
+        "es": "GDPR y herramientas de IA para despachos",
+        "en": "GDPR and AI Tools for Law Firms"
+      },
+      "description": "Cómo cumplir GDPR al usar herramientas de IA que procesan datos de clientes",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, DPOs",
+      "keywords": ["GDPR", "IA", "protección de datos", "privacidad", "despachos"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 2,
+      "title": {
+        "es": "Firma electrónica: guía práctica para despachos",
+        "en": "Electronic Signature: Practical Guide for Law Firms"
+      },
+      "description": "Tipos de firma electrónica, validez legal, herramientas recomendadas",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, notarios",
+      "keywords": ["firma electrónica", "eIDAS", "digitalización", "contratos"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 3,
+      "title": {
+        "es": "Ciberseguridad para abogados: protege los datos de tus clientes",
+        "en": "Cybersecurity for Lawyers: Protect Your Clients' Data"
+      },
+      "description": "Guía práctica de ciberseguridad para despachos: backup, cifrado, 2FA, VPN",
+      "category": "Ciberseguridad",
+      "audience": "Despachos de abogados",
+      "keywords": ["ciberseguridad", "protección datos", "backup", "cifrado", "abogados"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 4,
+      "title": {
+        "es": "Legal Tech tools: comparativa de software para despachos 2026",
+        "en": "Legal Tech Tools: Software Comparison for Law Firms 2026"
+      },
+      "description": "Review y comparativa de herramientas: gestión, facturación, contratos, IA",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, legal ops",
+      "keywords": ["legal tech", "software jurídico", "herramientas", "comparativa", "review"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 5,
+      "title": {
+        "es": "Automatización documental: plantillas y generación automática de contratos",
+        "en": "Document Automation: Templates and Automatic Contract Generation"
+      },
+      "description": "Cómo automatizar la generación de contratos con plantillas y herramientas no-code",
+      "category": "Automatización",
+      "audience": "Despachos de abogados, legal ops",
+      "keywords": ["automatización", "contratos", "plantillas", "generación automática"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 6,
+      "title": {
+        "es": "E-discovery: gestión de pruebas digitales en litigios",
+        "en": "E-discovery: Digital Evidence Management in Litigation"
+      },
+      "description": "Herramientas y procesos para gestionar pruebas digitales en casos complejos",
+      "category": "Legal Tech",
+      "audience": "Abogados litigantes, peritos",
+      "keywords": ["e-discovery", "pruebas digitales", "litigio", "evidencia electrónica"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 7,
+      "title": {
+        "es": "Blockchain para abogados: casos de uso más allá de smart contracts",
+        "en": "Blockchain for Lawyers: Use Cases Beyond Smart Contracts"
+      },
+      "description": "Registro inmutable, notarización blockchain, cadena de custodia digital",
+      "category": "Blockchain",
+      "audience": "Abogados, notarios, tecnólogos legales",
+      "keywords": ["blockchain", "notarización", "registro", "casos de uso", "legal"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 8,
+      "title": {
+        "es": "IA en due diligence: herramientas prácticas para M&A",
+        "en": "AI in Due Diligence: Practical Tools for M&A"
+      },
+      "description": "Cómo usar IA para acelerar el análisis de documentos en operaciones M&A",
+      "category": "Legal Tech",
+      "audience": "Abogados M&A, corporate",
+      "keywords": ["due diligence", "IA", "M&A", "análisis documental", "herramientas"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 9,
+      "title": {
+        "es": "Despacho remoto: infraestructura legal cloud-first",
+        "en": "Remote Law Firm: Cloud-First Legal Infrastructure"
+      },
+      "description": "Cómo montar un despacho 100% remoto con herramientas cloud seguras",
+      "category": "Transformación Digital",
+      "audience": "Despachos de abogados, socios fundadores",
+      "keywords": ["despacho remoto", "cloud", "teletrabajo", "infraestructura", "seguridad"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 10,
+      "title": {
+        "es": "Legal ops: optimización operativa con tecnología",
+        "en": "Legal Ops: Operational Optimization with Technology"
+      },
+      "description": "Metodología legal ops para mejorar eficiencia y reducir costes en despachos",
+      "category": "Legal Ops",
+      "audience": "Despachos de abogados, legal ops managers",
+      "keywords": ["legal ops", "optimización", "eficiencia", "metodología", "tecnología"],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 11,
+      "title": {
+        "es": "EU AI Act 2026: reglamento europeo de IA",
+        "en": "EU AI Act 2026: European AI Regulation"
+      },
+      "description": "Overview del reglamento europeo de IA y su impacto",
+      "category": "Regulación",
+      "audience": "Empresas, abogados, tech",
+      "keywords": ["AI Act", "reglamento IA", "Europa", "2026"],
+      "status": "published",
+      "publishedDate": "2026-03-20",
+      "files": ["eu-ai-act-2026.mdx", "reglamento-ia-europeo-2026.mdx"]
+    },
+    {
+      "id": 12,
+      "title": {
+        "es": "Implementación del AI Act para despachos españoles",
+        "en": "AI Act Implementation for Spanish Law Firms"
+      },
+      "description": "Guía práctica de implementación del AI Act para despachos de abogados",
+      "category": "Regulación",
+      "audience": "Despachos de abogados",
+      "keywords": ["AI Act", "implementación", "despachos", "España", "cumplimiento"],
+      "status": "published",
+      "publishedDate": "2026-03-26",
+      "files": ["implementacion-ai-act-despachos-espanoles.mdx", "ai-act-implementation-spanish-law-firms.mdx"]
+    },
+    {
+      "id": 13,
+      "title": {
+        "es": "Asistentes de IA para despachos: compliance con el AI Act",
+        "en": "AI Assistants for Law Firms: AI Act Compliance"
+      },
+      "description": "Cómo usar asistentes de IA en despachos cumpliendo el AI Act",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados",
+      "keywords": ["asistentes IA", "AI Act", "despachos", "cumplimiento"],
+      "status": "published",
+      "publishedDate": "2026-03-16",
+      "files": ["asistentes-ia-despachos-abogados-ai-act.mdx", "ai-assistants-law-firms-ai-act.mdx"]
+    }
+  ]
+}

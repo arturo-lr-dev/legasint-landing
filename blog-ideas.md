@@ -1,33 +1,24 @@
-# Ideas para el Blog de Legasint
+# Blog Ideas - LegaSint
 
-Lista de ideas para futuros posts del blog bilingüe (ES/EN).
+⚠️ **DEPRECATED:** Este archivo ya no se usa.
 
-## Ideas Pendientes
+**Sistema actual:** `blog-ideas.json` (fuente de verdad)
 
-### 1. Digitalización accesible para emprendedores
-- **Tema:** Cómo emprendedores sin recursos masivos pueden digitalizar su negocio
-- **Enfoque:** Herramientas low-cost, estrategias accesibles, ROI realista
-- **Audiencia:** Emprendedores, pequeños negocios
-- **Tags sugeridos:** Transformación Digital, Emprendimiento, PYMES
+Ver documentación en `scripts/README.md` para el workflow completo.
 
-### 2. Cómo elegir la tecnología adecuada para tu proyecto sin ser técnico
-- **Tema:** Guía para tomar decisiones tecnológicas sin conocimiento técnico profundo
-- **Enfoque:** Framework de decisión, preguntas clave, red flags a evitar
-- **Audiencia:** Founders no técnicos, gestores de proyecto
-- **Tags sugeridos:** Tecnología, Gestión de Proyectos, Toma de Decisiones
+## Quick reference
 
-### 3. Cómo validar una idea tecnológica antes de invertir
-- **Tema:** Metodología para validar viabilidad técnica y de mercado
-- **Enfoque:** MVPs, pruebas de concepto, investigación de mercado, estimación de costes
-- **Audiencia:** Emprendedores, inversores, product managers
-- **Tags sugeridos:** Validación, Startup, Producto Mínimo Viable
+```bash
+# Ver ideas pendientes
+node scripts/generate-blog-post.js
 
-### 4. Cómo una pequeña empresa puede automatizar tareas repetitivas
-- **Tema:** Automatización low-code/no-code para PYMEs
-- **Enfoque:** Herramientas prácticas (Zapier, n8n, scripts), casos de uso reales, ROI
-- **Audiencia:** Pequeñas empresas, autónomos
-- **Tags sugeridos:** Automatización, Productividad, PYMES, Eficiencia
+# Generar post de una idea específica
+node scripts/generate-blog-post.js --id 5
+
+# Marcar como publicada
+node scripts/mark-idea-published.js --id 5 --files "file1.mdx,file2.mdx"
+```
 
 ---
 
-**Última actualización:** 2026-02-03
+**Última actualización:** 2026-03-26 (migrado a blog-ideas.json)
