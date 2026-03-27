@@ -36,8 +36,9 @@
       "category": "Ciberseguridad",
       "audience": "Despachos de abogados",
       "keywords": ["ciberseguridad", "protección datos", "backup", "cifrado", "abogados"],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-03-27",
+      "files": ["ciberseguridad-para-abogados.mdx", "cybersecurity-for-lawyers.mdx"]
     },
     {
       "id": 4,
