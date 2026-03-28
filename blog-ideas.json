@@ -10,8 +10,9 @@
       "category": "Legal Tech",
       "audience": "Despachos de abogados, DPOs",
       "keywords": ["GDPR", "IA", "protección de datos", "privacidad", "despachos"],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-03-28",
+      "files": ["gdpr-herramientas-ia-despachos.mdx", "gdpr-ai-tools-law-firms.mdx"]
     },
     {
       "id": 2,
