@@ -24,8 +24,9 @@
       "category": "Legal Tech",
       "audience": "Despachos de abogados, notarios",
       "keywords": ["firma electrónica", "eIDAS", "digitalización", "contratos"],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-03-29",
+      "files": ["firma-electronica-guia-practica-despachos.mdx", "electronic-signature-practical-guide-law-firms.mdx"]
     },
     {
       "id": 3,
