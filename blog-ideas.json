@@ -143,8 +143,12 @@
         "casos de uso",
         "legal"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-03-30",
+      "files": [
+        "blockchain-para-abogados-casos-de-uso.mdx",
+        "blockchain-for-lawyers-use-cases.mdx"
+      ]
     },
     {
       "id": 8,
