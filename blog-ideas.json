@@ -166,8 +166,12 @@
         "análisis documental",
         "herramientas"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-03-31",
+      "files": [
+        "ia-due-diligence-herramientas-ma.mdx",
+        "ai-due-diligence-tools-ma.mdx"
+      ]
     },
     {
       "id": 9,
