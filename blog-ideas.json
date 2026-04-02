@@ -124,8 +124,12 @@
         "litigio",
         "evidencia electrónica"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-04-02",
+      "files": [
+        "ediscovery-gestion-pruebas-digitales-litigios.mdx",
+        "ediscovery-digital-evidence-management-litigation.mdx"
+      ]
     },
     {
       "id": 7,
