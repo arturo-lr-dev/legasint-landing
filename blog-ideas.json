@@ -193,8 +193,12 @@
         "infraestructura",
         "seguridad"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-04-03",
+      "files": [
+        "despacho-remoto-infraestructura-legal-cloud-first.mdx",
+        "remote-law-firm-cloud-first-legal-infrastructure.mdx"
+      ]
     },
     {
       "id": 10,
