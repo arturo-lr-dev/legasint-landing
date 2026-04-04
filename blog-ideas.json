@@ -285,6 +285,29 @@
         "asistentes-ia-despachos-abogados-ai-act.mdx",
         "ai-assistants-law-firms-ai-act.mdx"
       ]
+    },
+    {
+      "id": 14,
+      "title": {
+        "es": "Reglamento DORA: Guía completa de resiliencia digital para el sector financiero",
+        "en": "DORA Regulation: Complete Guide to Digital Resilience for the Financial Sector"
+      },
+      "description": "Todo sobre el Reglamento DORA: obligaciones, sanciones, plan de acción y oportunidades para despachos que asesoran al sector financiero",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, entidades financieras, compliance officers",
+      "keywords": [
+        "DORA",
+        "resiliencia digital",
+        "sector financiero",
+        "ciberseguridad",
+        "cumplimiento"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-04",
+      "files": [
+        "dora-resiliencia-digital-sector-financiero.mdx",
+        "dora-digital-resilience-financial-sector.mdx"
+      ]
     }
   ]
 }
