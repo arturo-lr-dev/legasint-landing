@@ -84,8 +84,12 @@
         "comparativa",
         "review"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-04-05",
+      "files": [
+        "legal-tech-herramientas-despachos-2026.mdx",
+        "legal-tech-tools-law-firms-2026.mdx"
+      ]
     },
     {
       "id": 5,
