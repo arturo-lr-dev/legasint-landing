@@ -220,8 +220,12 @@
         "metodología",
         "tecnología"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-04-06",
+      "files": [
+        "legal-ops-optimizacion-operativa-tecnologia.mdx",
+        "legal-ops-operational-optimization-technology.mdx"
+      ]
     },
     {
       "id": 11,
