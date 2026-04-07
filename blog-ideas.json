@@ -316,6 +316,29 @@
         "dora-resiliencia-digital-sector-financiero.mdx",
         "dora-digital-resilience-financial-sector.mdx"
       ]
+    },
+    {
+      "id": 15,
+      "title": {
+        "es": "NIS2 en España: estado actual de implementación y oportunidades para despachos",
+        "en": "NIS2 in Spain: Current Implementation Status and Opportunities for Law Firms"
+      },
+      "description": "Análisis del retraso en la transposición de la Directiva NIS2 en España y cómo los despachos pueden ayudar al sector financiero con el cumplimiento",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, sector financiero, compliance officers",
+      "keywords": [
+        "NIS2",
+        "ciberseguridad",
+        "transposición",
+        "sector financiero",
+        "cumplimiento"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-07",
+      "files": [
+        "nis2-espana-implementacion-oportunidades-despachos.mdx",
+        "nis2-spain-implementation-opportunities-law-firms.mdx"
+      ]
     }
   ]
 }
