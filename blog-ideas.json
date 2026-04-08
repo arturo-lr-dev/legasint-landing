@@ -339,6 +339,29 @@
         "nis2-espana-implementacion-oportunidades-despachos.mdx",
         "nis2-spain-implementation-opportunities-law-firms.mdx"
       ]
+    },
+    {
+      "id": 16,
+      "title": {
+        "es": "Guía de Ética IA para despachos españoles",
+        "en": "AI Ethics Guidelines for Spanish Law Firms"
+      },
+      "description": "Marco ético para el uso responsable de IA en despachos españoles alineado con el EU AI Act",
+      "category": "Ética Legal",
+      "audience": "Despachos de abogados, compliance officers, equipos legales",
+      "keywords": [
+        "ética IA",
+        "AI Act",
+        "despachos españoles",
+        "responsabilidad algorítmica",
+        "gobierno de IA"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-08",
+      "files": [
+        "guia-etica-ia-despachos-espanoles.mdx",
+        "ai-ethics-guidelines-spanish-law-firms.mdx"
+      ]
     }
   ]
 }
