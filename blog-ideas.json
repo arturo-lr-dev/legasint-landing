@@ -362,6 +362,30 @@
         "guia-etica-ia-despachos-espanoles.mdx",
         "ai-ethics-guidelines-spanish-law-firms.mdx"
       ]
+    },
+    {
+      "id": 17,
+      "title": {
+        "es": "Digital Omnibus EU 2026: Análisis de la simplificación normativa en IA y protección de datos",
+        "en": "EU Digital Omnibus 2026: Analysis of Regulatory Simplification in AI and Data Protection"
+      },
+      "description": "Impacto del paquete Digital Omnibus en GDPR, AI Act y ciberseguridad para empresas europeas",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "Digital Omnibus",
+        "simplificación normativa",
+        "GDPR",
+        "AI Act",
+        "ciberseguridad",
+        "UE 2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-09",
+      "files": [
+        "digital-omnibus-eu-2026-simplificacion-normativa-ia-proteccion-datos.mdx",
+        "digital-omnibus-eu-2026-regulatory-simplification-ai-data-protection.mdx"
+      ]
     }
   ]
 }
