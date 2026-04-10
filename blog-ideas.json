@@ -386,6 +386,29 @@
         "digital-omnibus-eu-2026-simplificacion-normativa-ia-proteccion-datos.mdx",
         "digital-omnibus-eu-2026-regulatory-simplification-ai-data-protection.mdx"
       ]
+    },
+    {
+      "id": 18,
+      "title": {
+        "es": "Marcos de gobierno de IA en empresas: guía práctica para despachos",
+        "en": "AI Governance Frameworks in Companies: Practical Guide for Law Firms"
+      },
+      "description": "Cómo diseñar e implementar marcos de gobierno de IA para clientes corporativos que despliegan sistemas de inteligencia artificial",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "gobierno de IA",
+        "AI governance",
+        "marcos de gobernanza",
+        "cumplimiento",
+        "corporativo"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-10",
+      "files": [
+        "marcos-gobierno-ia-empresas.mdx",
+        "ai-governance-frameworks-companies.mdx"
+      ]
     }
   ]
 }
