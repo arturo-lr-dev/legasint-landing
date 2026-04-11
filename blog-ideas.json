@@ -409,6 +409,29 @@
         "marcos-gobierno-ia-empresas.mdx",
         "ai-governance-frameworks-companies.mdx"
       ]
+    },
+    {
+      "id": 19,
+      "title": {
+        "es": "Implementación del DSA para plataformas de Legal Tech en la UE",
+        "en": "DSA Implementation for Legal Tech Platforms in the EU"
+      },
+      "description": "Guía de cumplimiento del Digital Services Act para plataformas de legal tech, marketplaces jurídicos y servicios online de asesoramiento legal",
+      "category": "Regulación",
+      "audience": "Empresas legal tech, startups jurídicas, plataformas online, despachos con servicios digitales",
+      "keywords": [
+        "DSA",
+        "Digital Services Act",
+        "legal tech",
+        "plataformas online",
+        "cumplimiento"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-11",
+      "files": [
+        "dsa-legal-plataformas-eu.mdx",
+        "dsa-legal-platforms-eu.mdx"
+      ]
     }
   ]
 }
