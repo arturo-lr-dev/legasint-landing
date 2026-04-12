@@ -1,0 +1,282 @@
+---
+title: "NFTs and Intellectual Property: New Challenges for Law Firms in 2026"
+date: "2026-04-12"
+description: "Analysis of legal challenges in intellectual property, copyright, and NFT regulation for law firms advising artists, creators, and digital companies"
+tags: ["NFTs", "intellectual property", "copyright", "blockchain", "digital art"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=NFTs+and+Intellectual+Property"
+---
+
+## Introduction
+
+The rise of **NFTs (Non-Fungible Tokens)** has transformed the digital art market, but also created a complex legal labyrinth regarding **intellectual property** and **copyright**. In 2026, law firms advising artists, creators, and digital companies face new challenges that require deep understanding of both traditional law and blockchain technology.
+
+This article analyzes the main legal challenges, the current regulatory framework in Spain and the EU, and how law firms can effectively advise their clients in this constantly evolving ecosystem.
+
+## 1. What is an NFT and What is NOT
+
+### Technical Definition
+
+An **NFT** is a unique, non-replicable digital asset registered on a **blockchain** (typically Ethereum). Its uniqueness is guaranteed by a cryptographic identifier that makes it non-fungible: it cannot be exchanged for another identical one.
+
+### The Big Misconception: NFT ≠ Intellectual Property
+
+**Common error:** Many NFT buyers believe that purchasing the token gives them ownership of the associated digital content (the artwork, audio, video).
+
+**Legal reality:** Buying an NFT **does NOT automatically transfer** copyright or exploitation rights of the digital content. What is acquired is a certificate of authenticity and possession of the token, but the underlying content remains subject to applicable intellectual property laws.
+
+> **Case study:** In 2021, a digital artist sued a marketplace for selling NFTs of her work without authorization. The court determined that the NFT sale did not imply transfer of copyright.
+
+## 2. Legal Framework in Spain and the EU
+
+### Intellectual Property: Moral Rights vs. Economic Rights
+
+Spain's **Royal Legislative Decree 1/1996** on Intellectual Property establishes two types of rights:
+
+#### Moral Rights (Inalienable)
+- **Right of attribution:** Recognition as author
+- **Right of integrity:** Oppose modifications that damage the work
+- **Right of disclosure:** Decide if and how the work is made public
+- **Right of withdrawal:** Withdraw the work from the market (prior compensation)
+
+#### Economic Rights (Transferable)
+- **Reproduction right:** Fix the work in any medium
+- **Distribution right:** Make the work available to the public
+- **Communication right:** Make the work accessible to the public by any means
+- **Transformation right:** Translate, adapt, modify the work
+
+### Exploitation Rights and Smart Contracts
+
+A **smart contract** associated with an NFT can define license terms, but **CANNOT derogate** from inalienable legal rights:
+
+```markdown
+✅ CAN define:
+- Percentage of resale royalties
+- Scope of usage license
+- Specific commercial restrictions
+
+❌ CANNOT eliminate:
+- Author's moral rights
+- Distribution rights (exhaustion of right on first sale)
+- Minimum legal protections established by law
+```
+
+### Directive on Copyright and the Digital Single Market
+
+The **Directive (EU) 2019/790** introduces changes relevant to NFTs:
+
+- **Text and data mining exception:** Allows using protected works for AI training (with exceptions)
+- **New exceptions for educational and research purposes**
+- **Obligations for content-sharing platforms:** Expanded liability
+
+### MiCA (Markets in Crypto-Assets Regulation)
+
+The **MiCA Regulation (EU) 2023/1114**, fully applicable since late 2024, classifies NFTs:
+
+- **Exempt from MiCA:** NFTs that are "genuinely unique and non-fungible"
+- **Subject to MiCA:** NFT collections with similar characteristics (treated as crypto-assets)
+
+**Implications for law firms:**
+- NFT marketplaces operating as "crypto-assets" require registration as crypto-asset service providers (CASP)
+- KYC/AML, governance, and information disclosure obligations
+
+## 3. Intellectual Property Challenges with NFTs
+
+### 1. Copyright Infringement in Minting
+
+The most common problem: **"right-click minting"** - anyone can create an NFT of a protected work without the author's authorization.
+
+**Defense strategies for authors:**
+- **Work registration in SGAE, VEGAP or similar entities** for proof of authorship
+- **Use of time-stamping on blockchain** as evidence of priority
+- **Terms of service on marketplaces:** Infringement notices (DMCA-style)
+- **Smart contracts with authorization lists:** Only whitelisted wallets can create official NFTs
+
+### 2. The Problem of Digital Exhaustion
+
+The **exhaustion principle** (Art. 18 LPI): when the copyright holder distributes a physical copy of their work in the market, their right to control its resale is exhausted.
+
+**The digital challenge:** Does this apply to NFTs?
+
+- **Court of Justice of the EU (UsedSoft vs Oracle case, 2012):** Exhaustion can apply to digital copies sold with perpetual license.
+- **Current tension:** NFT resales do not necessarily transfer rights over the underlying work, creating a legal vacuum.
+
+### 3. Licenses vs. Rights Assignments
+
+Creators must be clear about what is being transferred:
+
+| Type | What it grants | Duration | Recommended for |
+|------|----------------|----------|-------------------|
+| **NFT sale without license** | Only the token (no rights over work) | Permanent | Collectors, investors |
+| **Personal use license** | Non-exclusive right to use/display | Permanent or limited | Digital art buyers |
+| **Commercial license** | Right to commercially exploit the work | Perpetual or limited | Companies, brands |
+| **Total rights assignment** | All rights (moral rights remain with author) | 70 years post-mortem + 5 years | Purchases by brands, studios |
+
+### 4. Automated Royalties and Resale Rights
+
+NFTs allow implementing **resale royalties** automatically via smart contract. In Europe:
+
+- **Right of follow-up (Droit de Suite):** Art. 26 LPI grants authors of original artworks an inalienable right to 5% of resale price.
+- **European harmonization:** Directive 2001/84/CE (applicable throughout the EU).
+
+**The challenge:** How do automated NFT royalties interact with the traditional droit de suite?
+
+**Court of Justice of the EU position (2025):** Royalties via smart contract can complement, but not replace, the legal droit de suite when dealing with original artworks.
+
+## 4. Protection for Creators and Law Firms
+
+### 1. Smart Contract Framework
+
+Law firms can advise on drafting **terms of service** that integrate into the smart contract:
+
+```markdown
+{
+  "license": {
+    "type": "non-commercial personal use",
+    "scope": "visualization and display",
+    "prohibitions": [
+      "modification of work",
+      "distribution without separate license",
+      "creation of derivatives without authorization"
+    ],
+    "royalties_resale": "5% automatic",
+    "droit_de_suite_eu": "applicable per Art. 26 LPI"
+  }
+}
+```
+
+### 2. Work Protection Strategies
+
+#### For Authors/Creators
+1. **Preventive registration** in SGAE/VEGAP before minting
+2. **Digital watermarking** visible on the work (as evidence)
+3. **Inclusion of authorship metadata** in original files
+4. **Clear usage terms** on the marketplace and smart contract
+5. **Monitoring** infringements with blockchain scraping tools
+
+#### For Buyers/Investors
+1. **Verification of authorship** before purchase (direct contact with artist)
+2. **Review of license terms** in the smart contract
+3. **Verification of NFT history** on blockchain explorers
+4. **Due diligence** on the provenance of the work
+
+### 3. Litigation and Dispute Resolution
+
+#### Remedies
+- **IP infringement actions** before Commercial Courts
+- **Infringement notices** to marketplaces (takedowns)
+- **Civil lawsuits** for damages
+- **Criminal complaints** when intellectual property crimes are involved
+
+#### Competent Jurisdiction
+- **Commercial Courts** for civil IP litigation
+- **National Court** for international scope or criminal cases
+- **Court of Justice of the EU** for interpretation of directives and regulations
+
+## 5. Recommended Practices for Law Firms
+
+### 1. Preventive Advice
+
+Before a client creates or invests in NFTs:
+- **Copyright review** of the work
+- **Ownership analysis** of the content (freelancers, collaborators)
+- **Identification of infringement risks** (use of Creative Commons licensed material, stock images, etc.)
+- **Drafting contracts** with collaborators explicitly defining rights over NFTs
+
+### 2. Contracts and Smart Contracts
+
+Law firms can:
+- **Draft terms of service** for marketplaces
+- **Structure licenses** that integrate into smart contracts
+- **Define scope of royalties** and resale rights
+- **Establish dispute resolution clauses** (international arbitration vs. national courts)
+
+### 3. Due Diligence in Transactions
+
+For clients buying NFTs:
+- **Provenance verification** (provenance research)
+- **Analysis of ownership chains** on blockchain
+- **Review of transaction history** to detect fraud
+- **Evaluation of regulatory risks** (especially in crypto-asset projects that are actually NFT collections)
+
+### 4. Training and Awareness
+
+Educate clients about:
+- **Difference between token and copyright** rights
+- **Importance of work registration** before minting
+- **Infringement risks** in unauthorized minting
+- **Tax obligations** (VAT, income tax in Spain; crypto-asset reporting in the EU)
+
+## 6. Trends and Future (2026-2028)
+
+### 1. Interoperability and Cross-Chain
+
+**Multi-chain NFTs** (existing on multiple blockchains simultaneously) raise questions:
+- Which law applies? That of each jurisdiction where the blockchain operates?
+- How are copyright rights enforced when a work exists on multiple chains?
+
+### 2. Dynamic and Generative NFTs
+
+NFTs that **evolve over time** or are generated with AI:
+- Who is the author when an AI modifies the original work?
+- How are intermediate versions protected?
+
+### 3. DAOs and Co-creation
+
+**Decentralized Autonomous Organizations** that create art collectively:
+- How are copyright rights distributed among multiple anonymous creators?
+- What role do smart contracts play in rights management?
+
+### 4. Evolving Regulation
+
+- **EU crypto-asset directive:** Next post-MiCA review (expected for 2027)
+- **Digital droit de suite harmonization:** Ongoing discussions on NFT adaptation
+- **Legal recognition of IP tokens:** Proposals for blockchain registration as complementary proof
+
+## 7. Practical Checklist for Clients
+
+### For Creators Wanting to Create NFTs
+
+- [ ] **Register work** in SGAE/VEGAP before minting
+- [ ] **Verify ownership** of all content (including design elements, audio, software)
+- [ ] **Define license terms** that integrate into the smart contract
+- [ ] **Include watermark** or watermark on visible work
+- [ ] **Establish royalty percentage** for resales
+- [ ] **Document authorship** with additional evidence (timestamped email, contracts with collaborators)
+- [ ] **Consult with law firm** on IP and tax implications
+
+### For Investors and Buyers
+
+- [ ] **Verify authorship** with the original creator (not just the seller on marketplace)
+- [ ] **Review license terms** in the smart contract
+- [ ] **Check history** of NFT on blockchain explorers (Etherscan, PolygonScan)
+- [ ] **Evaluate provenance** of the work (ownership chain)
+- [ ] **Understand rights granted** (usage license vs. rights assignment)
+- [ ] **Consider regulatory risks** (especially for NFT collections that might be considered crypto-assets by MiCA)
+- [ ] **Consult with law firm** for high-value due diligence
+
+### For Marketplaces and Platforms
+
+- [ ] **Implement infringement notification system** (takedowns)
+- [ ] **Require clear terms of service** that recognize authors' moral rights
+- [ ] **Verify whitelists** for official creators
+- [ ] **Comply with MiCA** if operating as crypto-asset provider
+- [ ] **Establish KYC/AML policies** per European regulations
+- [ ] **Maintain transaction records** for audits
+
+## Conclusion
+
+NFTs represent an unprecedented opportunity for digital creators and the art market, but also pose complex legal challenges that law firms must address with specialized knowledge.
+
+**The key to success in 2026 lies in:**
+1. **Contractual clarity:** Explicitly defining what rights are transferred (or not) with each NFT
+2. **Prevention:** Work registration and due diligence before minting or investment
+3. **Specialization:** Understanding both traditional intellectual property and blockchain technology
+4. **Constant updates:** Following regulatory evolution in the EU and Spain
+
+Law firms that develop expertise in this niche will be well-positioned to advise artists, creators, digital companies, and marketplaces in an ecosystem that will continue to grow and evolve.
+
+---
+
+**Need advice on NFTs, intellectual property, or crypto-asset regulation?**
+
+[Contact us](https://legasint.com/en/contact) for a specialized consultation. Our team combines experience in intellectual property, digital law, and blockchain technology.
