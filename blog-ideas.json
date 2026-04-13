@@ -455,6 +455,29 @@
         "nfts-propiedad-intelectual-nuevos-desafios-2026.mdx",
         "nfts-intellectual-property-new-challenges-2026.mdx"
       ]
+    },
+    {
+      "id": 21,
+      "title": {
+        "es": "Soberanía de datos y transferencias transfronterizas en el sector legal 2026",
+        "en": "Data Sovereignty and Cross-Border Legal Data Transfers 2026"
+      },
+      "description": "Análisis del nuevo marco de transferencias de datos legales entre UE y terceros países, impactos en despachos internacionales y estrategias de cumplimiento",
+      "category": "Protección de Datos",
+      "audience": "Despachos internacionales, compliance officers, empresas multinacionales",
+      "keywords": [
+        "soberanía de datos",
+        "transferencias internacionales",
+        "GDPR",
+        "despachos internacionales",
+        "data sovereignty"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-13",
+      "files": [
+        "soberania-datos-transferencias-transfronterizas-sector-legal-2026.mdx",
+        "data-sovereignty-cross-border-legal-transfers-2026.mdx"
+      ]
     }
   ]
 }
