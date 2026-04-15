@@ -478,6 +478,29 @@
         "soberania-datos-transferencias-transfronterizas-sector-legal-2026.mdx",
         "data-sovereignty-cross-border-legal-transfers-2026.mdx"
       ]
-    }
-  ]
+    },
+    {
+      "id": 22,
+      "title": {
+        "es": "Digital Networks Act (DNA) 2026: marco legal para comunicaciones electrónicas",
+        "en": "Digital Networks Act (DNA) 2026: Legal Framework for Electronic Communications"
+      },
+      "description": "Análisis del nuevo reglamento europeo que moderniza el marco legal de comunicaciones electrónicas y su impacto en el sector legal",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, sector de telecomunicaciones, empresas tecnológicas",
+      "keywords": [
+      "Digital Networks Act",
+      "DNA",
+      "comunicaciones electrónicas",
+      "regulación UE",
+      "telecomunicaciones"
+    ],
+    "status": "published",
+    "publishedDate": "2026-04-15",
+    "files": [
+      "digital-networks-act-dna-2026.mdx",
+      "digital-networks-act-dna-2026.mdx"
+    ]
+  }
+]
 }
