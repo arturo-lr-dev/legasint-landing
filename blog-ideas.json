@@ -501,6 +501,29 @@
       "digital-networks-act-dna-2026.mdx",
       "digital-networks-act-dna-2026.mdx"
     ]
+  },
+  {
+    "id": 23,
+    "title": {
+      "es": "Ley de Coordinación y Gobernanza de Ciberseguridad: impactos para despachos españoles",
+      "en": "Coordination and Governance of Cybersecurity Law: Impacts for Spanish Law Firms"
+    },
+    "description": "Análisis de la nueva ley española de ciberseguridad que transpone la Directiva NIS2 y sus obligaciones para despachos de abogados",
+    "category": "Ciberseguridad",
+    "audience": "Despachos de abogados, compliance officers, equipos de seguridad",
+    "keywords": [
+      "ciberseguridad",
+      "NIS2",
+      "Ley Coordinación",
+      "despachos",
+      "cumplimiento"
+    ],
+    "status": "published",
+    "publishedDate": "2026-04-16",
+    "files": [
+      "ley-coordinacion-gobernanza-ciberseguridad-despachos.mdx",
+      "coordination-governance-cybersecurity-law-spanish-law-firms.mdx"
+    ]
   }
 ]
 }
