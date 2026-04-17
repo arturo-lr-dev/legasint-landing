@@ -524,6 +524,29 @@
       "ley-coordinacion-gobernanza-ciberseguridad-despachos.mdx",
       "coordination-governance-cybersecurity-law-spanish-law-firms.mdx"
     ]
+  },
+  {
+    "id": 24,
+    "title": {
+      "es": "IA agéntica y GDPR: guía de la AEPD para sistemas autónomos",
+      "en": "Agentic AI and GDPR: AEPD Guide for Autonomous Systems"
+    },
+    "description": "Análisis de la nueva guía de la AEPD sobre IA agéntica y su cumplimiento con GDPR en sistemas autónomos",
+    "category": "Regulación",
+    "audience": "Despachos de abogados, DPOs, empresas tecnológicas",
+    "keywords": [
+      "IA agéntica",
+      "AEPD",
+      "GDPR",
+      "sistemas autónomos",
+      "protección de datos"
+    ],
+    "status": "published",
+    "publishedDate": "2026-04-17",
+    "files": [
+      "ia-agentica-gdpr-aepd-guia-sistemas-autonomos.mdx",
+      "agentic-ai-gdpr-aepd-guide-autonomous-systems.mdx"
+    ]
   }
 ]
 }

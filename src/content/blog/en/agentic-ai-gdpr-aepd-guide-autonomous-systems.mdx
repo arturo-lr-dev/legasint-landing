@@ -1,0 +1,199 @@
+---
+title: "Agentic AI and GDPR: AEPD Guide for Autonomous Systems"
+date: "2026-04-17"
+description: "Analysis of the new AEPD guidance on agentic AI and GDPR compliance in autonomous artificial intelligence systems"
+tags: ["agentic AI", "AEPD", "GDPR", "autonomous systems", "data protection"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Agentic+AI+and+GDPR"
+---
+
+## Introduction
+
+On **February 18, 2026**, the Spanish Data Protection Agency (AEPD) published a pioneering guide on **"Agentic Artificial Intelligence from the Perspective of Data Protection"**. This document, the first of its kind in Spain, addresses the GDPR compliance challenges faced by organizations implementing autonomous AI systems.
+
+The guidance is particularly relevant for law firms and legal departments advising companies on AI technology implementation, as it establishes a clear framework for applying existing GDPR obligations to this new technological paradigm.
+
+## What is Agentic AI?
+
+The AEPD defines an **AI agent** as a system that "acts appropriately according to its circumstances and objectives, is flexible in the face of changing environments and goals, learns from experience, and makes appropriate decisions given its perceptual and computational limitations."
+
+### Key Characteristics
+
+AI agents are characterized by:
+
+- **Operational autonomy**: Ability to plan and adapt actions independently
+- **Environmental perception**: Interact with internal data and external services
+- **Proactivity**: Act without continuous human direction
+- **Memory and adaptability**: Store context and learn from experience
+
+### Practical Example
+
+The AEPD illustrates this with an everyday example: an AI agent that automatically organizes a business trip when it appears in an employee's calendar, booking transportation and accommodation, gathering relevant information (weather, exchange rates), and sending a complete travel plan to the employee.
+
+## Main Applicable GDPR Obligations
+
+The guidance establishes that GDPR article 5 principles are the primary controlling authority, with emphasis on:
+
+### 1. Purpose Limitation (Art. 5.1.b)
+
+Agentic AI systems must:
+- Clearly define specific processing purposes
+- Avoid "purpose drift" where the system evolves toward unintended uses
+- Document initial purposes and any changes
+
+**Practical application**: If an AI agent was designed for document management, it should not evolve to make contract decisions without explicit consent.
+
+### 2. Data Minimization (Art. 5.1.c)
+
+The guidance underscores that AI agents tend to process more data than necessary. To comply:
+
+- **Selective access**: The agent should only access strictly necessary data
+- **Anonymization**: Where possible, use anonymized data
+- **Limited retention**: Delete data from agent memory when no longer needed
+
+**Recommendation**: Implement "data minimization" mechanisms in agent design, including access filters and automatic purging.
+
+### 3. Accountability (Art. 5.2)
+
+This principle is fundamental for agentic AI:
+
+- **Documentation**: Maintain comprehensive records of agent decisions and actions
+- **Auditability**: Logging and tracking capabilities for operations
+- **Human governance**: Continuous or periodic human oversight
+- **Impact assessment**: Consider DPIA (Art. 35) for high-risk systems
+
+## Data Protection by Design and by Default
+
+Article 25 of GDPR takes on new relevance for agentic AI:
+
+### By Design
+
+Incorporate data protection from initial development:
+
+```markdown
+- [ ] Privacy principles in system architecture
+- [ ] Data minimization validations in each component
+- [ ] Role-based access controls
+- [ ] Data encryption in transit and at rest
+```
+
+### By Default
+
+Configure the system with the highest levels of protection:
+
+- **Default privacy**: Restrictive default settings
+- **Explicit consent**: Require approval for high-impact actions
+- **Automatic transparency**: Agent must inform about its actions
+
+## Transparency and Data Subject Rights
+
+Articles 13-14 of GDPR on informing data subjects present unique challenges:
+
+### The Transparency Problem
+
+AI agents operate with partial "black box": they may make decisions that even developers don't fully understand.
+
+### Practical Solutions
+
+- **Explainability**: Implement mechanisms that explain agent decisions
+- **Active notification**: Agent must inform users about its actions
+- **Rights portal**: Provide means to exercise GDPR rights
+- **Opposition rights**: Allow users to disable specific agents
+
+## Who is Controller vs. Processor
+
+The guidance addresses the fundamental question of GDPR roles:
+
+### Data Controller
+
+Generally, the organization that:
+- Defines the AI agent's objectives
+- Controls the processing purpose
+- Decides what data the agent processes
+
+### Data Processor
+
+May be the case when:
+- Using a third-party platform for AI agents
+- The provider has limited autonomy
+- Instructions are specific and documented
+
+**Important**: This affects necessary contracts and data processing agreements.
+
+## Specific Mitigation Measures
+
+The AEPD recommends specific measures to mitigate risks:
+
+### Data Control
+
+```javascript
+// Example of access control implementation
+async function agentDataAccess(agent, dataRequest) {
+  // Validate purpose
+  if (!isPurposeValid(agent, dataRequest)) {
+    throw new Error("Unauthorized purpose");
+  }
+  
+  // Data minimization
+  const minimizedData = minimizeData(dataRequest);
+  
+  // Access logging
+  logDataAccess(agent.id, minimizedData);
+  
+  return minimizedData;
+}
+```
+
+### Agent Memory Management
+
+- **Temporal limits**: Agent memory expires after X days
+- **Categorization**: Separate personal from non-personal data
+- **Encryption**: Encrypted memory with key rotation
+
+### Human Oversight
+
+- **Periodic review**: Audits of agent decisions
+- **Manual override**: Ability to override agent actions
+- **Alerts**: Notifications for sensitive actions
+
+## Implementation Checklist for Law Firms
+
+### For Clients Implementing Agentic AI
+
+**Pre-assessment**
+- [ ] Necessity and proportionality analysis
+- [ ] DPIA if applicable (high risk)
+- [ ] Agent risk level classification
+- [ ] Data subject rights impact assessment
+
+**Contracts and Agreements**
+- [ ] Data processing agreement with providers
+- [ ] GDPR liability clauses
+- [ ] Breach notification procedures
+- [ ] Agentic AI specific terms of service
+
+**Technology**
+- [ ] Data protection by design architecture
+- [ ] Logging and audit systems
+- [ ] Access controls and minimization
+- [ ] Transparency and explainability mechanisms
+
+**Governance**
+- [ ] Agentic AI use policies
+- [ ] Human oversight procedures
+- [ ] Incident response plan
+- [ ] Staff training
+
+## Conclusion
+
+The AEPD guidance represents an important milestone in the regulation of agentic AI in Spain. Although it doesn't change existing legislation, it provides clarity on how to apply GDPR to these increasingly common systems.
+
+For law firms and compliance professionals, this guidance offers:
+
+1. **A practical framework** for advising clients on agentic AI implementation
+2. **Regulatory clarity** on GDPR applications to autonomous systems
+3. **Differentiation opportunity** as experts in an emerging area
+4. **Risk mitigation** for clients implementing these technologies
+
+The key lies in balancing technological innovation with data protection, using GDPR principles as fundamental guidance for the responsible development and deployment of agentic AI systems.
+
+**Contact Legasint** for specialized advice on GDPR-compliant agentic AI implementation.
