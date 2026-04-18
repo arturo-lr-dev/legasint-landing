@@ -547,6 +547,29 @@
       "ia-agentica-gdpr-aepd-guia-sistemas-autonomos.mdx",
       "agentic-ai-gdpr-aepd-guide-autonomous-systems.mdx"
     ]
+  },
+  {
+    "id": 25,
+    "title": {
+      "es": "Agentes de IA en la práctica legal: desafíos regulatorios y oportunidades",
+      "en": "AI Agents in Legal Practice: Regulatory Challenges and Opportunities"
+    },
+    "description": "Análisis del surgimiento de agentes de IA autónomos en la práctica legal, implicaciones del AI Act, GDPR y consideraciones éticas para despachos",
+    "category": "Legal Tech",
+    "audience": "Despachos de abogados, legal tech companies, compliance officers",
+    "keywords": [
+      "agentes de IA",
+      "autonomía algorítmica",
+      "AI Act",
+      "ética legal",
+      "práctica jurídica"
+    ],
+    "status": "published",
+    "publishedDate": "2026-04-18",
+    "files": [
+      "agentes-ia-practica-legal-desafios-regulatorios.mdx",
+      "ai-agents-legal-practice-regulatory-challenges-opportunities.mdx"
+    ]
   }
 ]
 }
