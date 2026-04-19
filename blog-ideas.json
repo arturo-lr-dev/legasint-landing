@@ -570,6 +570,29 @@
       "agentes-ia-practica-legal-desafios-regulatorios.mdx",
       "ai-agents-legal-practice-regulatory-challenges-opportunities.mdx"
     ]
+  },
+  {
+    "id": 26,
+    "title": {
+      "es": "Marcos de trabajo para agentes de IA en el sector legal",
+      "en": "AI Agent Frameworks in the Legal Sector"
+    },
+    "description": "Análisis comparativo de frameworks de agentes de IA aplicados al sector legal: desde la investigación hasta la automatización de procesos",
+    "category": "Legal Tech",
+    "audience": "Despachos de abogados, legal tech companies, equipos de innovación",
+    "keywords": [
+      "agentes de IA",
+      "frameworks",
+      "automatización legal",
+      "legal AI",
+      "innovación"
+    ],
+    "status": "published",
+    "publishedDate": "2026-04-19",
+    "files": [
+      "marcos-agentes-ia-sector-legal.mdx",
+      "ai-agent-frameworks-legal-sector.mdx"
+    ]
   }
 ]
 }
