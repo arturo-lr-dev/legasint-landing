@@ -489,110 +489,135 @@
       "category": "Regulación",
       "audience": "Despachos de abogados, sector de telecomunicaciones, empresas tecnológicas",
       "keywords": [
-      "Digital Networks Act",
-      "DNA",
-      "comunicaciones electrónicas",
-      "regulación UE",
-      "telecomunicaciones"
-    ],
-    "status": "published",
-    "publishedDate": "2026-04-15",
-    "files": [
-      "digital-networks-act-dna-2026.mdx",
-      "digital-networks-act-dna-2026.mdx"
-    ]
-  },
-  {
-    "id": 23,
-    "title": {
-      "es": "Ley de Coordinación y Gobernanza de Ciberseguridad: impactos para despachos españoles",
-      "en": "Coordination and Governance of Cybersecurity Law: Impacts for Spanish Law Firms"
+        "Digital Networks Act",
+        "DNA",
+        "comunicaciones electrónicas",
+        "regulación UE",
+        "telecomunicaciones"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-15",
+      "files": [
+        "digital-networks-act-dna-2026.mdx",
+        "digital-networks-act-dna-2026.mdx"
+      ]
     },
-    "description": "Análisis de la nueva ley española de ciberseguridad que transpone la Directiva NIS2 y sus obligaciones para despachos de abogados",
-    "category": "Ciberseguridad",
-    "audience": "Despachos de abogados, compliance officers, equipos de seguridad",
-    "keywords": [
-      "ciberseguridad",
-      "NIS2",
-      "Ley Coordinación",
-      "despachos",
-      "cumplimiento"
-    ],
-    "status": "published",
-    "publishedDate": "2026-04-16",
-    "files": [
-      "ley-coordinacion-gobernanza-ciberseguridad-despachos.mdx",
-      "coordination-governance-cybersecurity-law-spanish-law-firms.mdx"
-    ]
-  },
-  {
-    "id": 24,
-    "title": {
-      "es": "IA agéntica y GDPR: guía de la AEPD para sistemas autónomos",
-      "en": "Agentic AI and GDPR: AEPD Guide for Autonomous Systems"
+    {
+      "id": 23,
+      "title": {
+        "es": "Ley de Coordinación y Gobernanza de Ciberseguridad: impactos para despachos españoles",
+        "en": "Coordination and Governance of Cybersecurity Law: Impacts for Spanish Law Firms"
+      },
+      "description": "Análisis de la nueva ley española de ciberseguridad que transpone la Directiva NIS2 y sus obligaciones para despachos de abogados",
+      "category": "Ciberseguridad",
+      "audience": "Despachos de abogados, compliance officers, equipos de seguridad",
+      "keywords": [
+        "ciberseguridad",
+        "NIS2",
+        "Ley Coordinación",
+        "despachos",
+        "cumplimiento"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-16",
+      "files": [
+        "ley-coordinacion-gobernanza-ciberseguridad-despachos.mdx",
+        "coordination-governance-cybersecurity-law-spanish-law-firms.mdx"
+      ]
     },
-    "description": "Análisis de la nueva guía de la AEPD sobre IA agéntica y su cumplimiento con GDPR en sistemas autónomos",
-    "category": "Regulación",
-    "audience": "Despachos de abogados, DPOs, empresas tecnológicas",
-    "keywords": [
-      "IA agéntica",
-      "AEPD",
-      "GDPR",
-      "sistemas autónomos",
-      "protección de datos"
-    ],
-    "status": "published",
-    "publishedDate": "2026-04-17",
-    "files": [
-      "ia-agentica-gdpr-aepd-guia-sistemas-autonomos.mdx",
-      "agentic-ai-gdpr-aepd-guide-autonomous-systems.mdx"
-    ]
-  },
-  {
-    "id": 25,
-    "title": {
-      "es": "Agentes de IA en la práctica legal: desafíos regulatorios y oportunidades",
-      "en": "AI Agents in Legal Practice: Regulatory Challenges and Opportunities"
+    {
+      "id": 24,
+      "title": {
+        "es": "IA agéntica y GDPR: guía de la AEPD para sistemas autónomos",
+        "en": "Agentic AI and GDPR: AEPD Guide for Autonomous Systems"
+      },
+      "description": "Análisis de la nueva guía de la AEPD sobre IA agéntica y su cumplimiento con GDPR en sistemas autónomos",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, DPOs, empresas tecnológicas",
+      "keywords": [
+        "IA agéntica",
+        "AEPD",
+        "GDPR",
+        "sistemas autónomos",
+        "protección de datos"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-17",
+      "files": [
+        "ia-agentica-gdpr-aepd-guia-sistemas-autonomos.mdx",
+        "agentic-ai-gdpr-aepd-guide-autonomous-systems.mdx"
+      ]
     },
-    "description": "Análisis del surgimiento de agentes de IA autónomos en la práctica legal, implicaciones del AI Act, GDPR y consideraciones éticas para despachos",
-    "category": "Legal Tech",
-    "audience": "Despachos de abogados, legal tech companies, compliance officers",
-    "keywords": [
-      "agentes de IA",
-      "autonomía algorítmica",
-      "AI Act",
-      "ética legal",
-      "práctica jurídica"
-    ],
-    "status": "published",
-    "publishedDate": "2026-04-18",
-    "files": [
-      "agentes-ia-practica-legal-desafios-regulatorios.mdx",
-      "ai-agents-legal-practice-regulatory-challenges-opportunities.mdx"
-    ]
-  },
-  {
-    "id": 26,
-    "title": {
-      "es": "Marcos de trabajo para agentes de IA en el sector legal",
-      "en": "AI Agent Frameworks in the Legal Sector"
+    {
+      "id": 25,
+      "title": {
+        "es": "Agentes de IA en la práctica legal: desafíos regulatorios y oportunidades",
+        "en": "AI Agents in Legal Practice: Regulatory Challenges and Opportunities"
+      },
+      "description": "Análisis del surgimiento de agentes de IA autónomos en la práctica legal, implicaciones del AI Act, GDPR y consideraciones éticas para despachos",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, legal tech companies, compliance officers",
+      "keywords": [
+        "agentes de IA",
+        "autonomía algorítmica",
+        "AI Act",
+        "ética legal",
+        "práctica jurídica"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-18",
+      "files": [
+        "agentes-ia-practica-legal-desafios-regulatorios.mdx",
+        "ai-agents-legal-practice-regulatory-challenges-opportunities.mdx"
+      ]
     },
-    "description": "Análisis comparativo de frameworks de agentes de IA aplicados al sector legal: desde la investigación hasta la automatización de procesos",
-    "category": "Legal Tech",
-    "audience": "Despachos de abogados, legal tech companies, equipos de innovación",
-    "keywords": [
-      "agentes de IA",
-      "frameworks",
-      "automatización legal",
-      "legal AI",
-      "innovación"
-    ],
-    "status": "published",
-    "publishedDate": "2026-04-19",
-    "files": [
-      "marcos-agentes-ia-sector-legal.mdx",
-      "ai-agent-frameworks-legal-sector.mdx"
-    ]
-  }
-]
+    {
+      "id": 26,
+      "title": {
+        "es": "Marcos de trabajo para agentes de IA en el sector legal",
+        "en": "AI Agent Frameworks in the Legal Sector"
+      },
+      "description": "Análisis comparativo de frameworks de agentes de IA aplicados al sector legal: desde la investigación hasta la automatización de procesos",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, legal tech companies, equipos de innovación",
+      "keywords": [
+        "agentes de IA",
+        "frameworks",
+        "automatización legal",
+        "legal AI",
+        "innovación"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-19",
+      "files": [
+        "marcos-agentes-ia-sector-legal.mdx",
+        "ai-agent-frameworks-legal-sector.mdx"
+      ]
+    },
+    {
+      "id": 27,
+      "title": {
+        "es": "Actualización ciberseguridad UE primavera 2026: NIS2, DORA, CRA y Cybersecurity Act 2.0",
+        "en": "Spring 2026 EU Cybersecurity Update: NIS2, DORA, CRA and Cybersecurity Act 2.0"
+      },
+      "description": "Análisis de los cambios regulatorios de ciberseguridad en primavera 2026: nuevos requerimientos, sanciones y oportunidades para despachos que asesoran a empresas",
+      "category": "Ciberseguridad",
+      "audience": "Despachos de abogados, compliance officers, empresas reguladas",
+      "keywords": [
+        "ciberseguridad UE",
+        "NIS2",
+        "DORA",
+        "CRA",
+        "Cybersecurity Act 2.0",
+        "sanciones",
+        "primavera 2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-20",
+      "files": [
+        "actualizacion-ciberseguridad-ue-primavera-2026-nis2-dora-cra.mdx",
+        "spring-2026-eu-cybersecurity-update-nis2-dora-cra.mdx"
+      ]
+    }
+  ]
 }
