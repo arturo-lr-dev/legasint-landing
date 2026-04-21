@@ -618,6 +618,29 @@
         "actualizacion-ciberseguridad-ue-primavera-2026-nis2-dora-cra.mdx",
         "spring-2026-eu-cybersecurity-update-nis2-dora-cra.mdx"
       ]
+    },
+    {
+      "id": 28,
+      "title": {
+        "es": "Responsabilidad por IA en la UE: marcos legales para 2026",
+        "en": "AI Liability in the EU: Legal Frameworks for 2026"
+      },
+      "description": "Análisis de la nueva Directiva de Responsabilidad por IA y su impacto en despachos españoles: obligaciones, riesgos y estrategias de cumplimiento",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "responsabilidad IA",
+        "AI Liability Directive",
+        "derecho de daños",
+        "cumplimiento",
+        "UE 2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-04-21",
+      "files": [
+        "responsabilidad-ia-ue-marcos-legales-2026.mdx",
+        "ai-liability-eu-legal-frameworks-2026.mdx"
+      ]
     }
   ]
 }
