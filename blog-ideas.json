@@ -641,6 +641,29 @@
         "responsabilidad-ia-ue-marcos-legales-2026.mdx",
         "ai-liability-eu-legal-frameworks-2026.mdx"
       ]
+    },
+    {
+      "id": 29,
+      "title": {
+        "es": "Sistemas de justicia digital: transformación de los juzgados españoles 2026",
+        "en": "Digital Justice Systems: Transformation of Spanish Courts 2026"
+      },
+      "description": "Análisis de la digitalización de la justicia española: plataformas LexNET, procesos electrónicos, acceso remoto y desafíos para despachos",
+      "category": "Transformación Digital",
+      "audience": "Despachos de abogados, jueces, procuradores, administradores de justicia",
+      "keywords": [
+        "justicia digital",
+        "LexNET",
+        "procesos electrónicos",
+        "digitalización judicial",
+        "acceso remoto"
+      ],
+      "status": "published",
+      "publishedDate": "2026-05-02",
+      "files": [
+        "sistemas-justicia-digital-juzgados-espanoles-2026.mdx",
+        "digital-justice-systems-spanish-courts-2026.mdx"
+      ]
     }
   ]
 }
