@@ -664,6 +664,30 @@
         "sistemas-justicia-digital-juzgados-espanoles-2026.mdx",
         "digital-justice-systems-spanish-courts-2026.mdx"
       ]
+    },
+    {
+      "id": 30,
+      "title": {
+        "es": "Deepfakes y pruebas digitales: autenticidad en litigios 2026",
+        "en": "Deepfakes and Digital Evidence: Authenticity in Litigation 2026"
+      },
+      "description": "Cómo los tribunales y despachos se adaptan a las pruebas digitales generadas por IA: estándares de autenticidad, herramientas de verificación y salvaguardas procesales",
+      "category": "Legal Tech",
+      "audience": "Abogados litigantes, despachos de abogados, peritos informáticos",
+      "keywords": [
+        "deepfakes",
+        "pruebas digitales",
+        "litigio",
+        "IA",
+        "autenticidad",
+        "evidencia electrónica"
+      ],
+      "status": "published",
+      "publishedDate": "2026-05-03",
+      "files": [
+        "deepfakes-pruebas-digitales-autenticidad-litigios-2026.mdx",
+        "deepfakes-digital-evidence-authenticity-litigation-2026.mdx"
+      ]
     }
   ]
 }
