@@ -688,6 +688,30 @@
         "deepfakes-pruebas-digitales-autenticidad-litigios-2026.mdx",
         "deepfakes-digital-evidence-authenticity-litigation-2026.mdx"
       ]
+    },
+    {
+      "id": 31,
+      "title": {
+        "es": "eIDAS 2.0 y el European Digital Identity Wallet: transformación de la identidad digital en la práctica legal",
+        "en": "eIDAS 2.0 and the European Digital Identity Wallet: Transforming Digital Identity in Legal Practice"
+      },
+      "description": "Guía práctica sobre el nuevo marco eIDAS 2.0 y el EUDI Wallet: impacto en KYC, firma electrónica cualificada y procesos notariales para despachos españoles en 2026",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, notarios, compliance officers, fintech",
+      "keywords": [
+        "eIDAS 2.0",
+        "EUDI Wallet",
+        "identidad digital",
+        "firma electrónica",
+        "KYC",
+        "notariado digital"
+      ],
+      "status": "published",
+      "publishedDate": "2026-05-06",
+      "files": [
+        "eidas-2-eudi-wallet-identidad-digital-practica-legal.mdx",
+        "eidas-2-eudi-wallet-digital-identity-legal-practice.mdx"
+      ]
     }
   ]
 }
