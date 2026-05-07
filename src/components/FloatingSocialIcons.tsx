@@ -1,9 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { trackEvent, GA_EVENTS } from '@/lib/analytics';
 
 const FloatingSocialIcons: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,8 @@ const FloatingSocialIcons: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (pathname === '/qr') return null;
 
   return (
     <div
