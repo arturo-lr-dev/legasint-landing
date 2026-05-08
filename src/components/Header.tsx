@@ -18,6 +18,8 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  if (pathname === '/qr') return null;
+
   const isEnglish = pathname?.includes('/blog/en');
   const isBlogPage = pathname?.startsWith('/blog');
 
