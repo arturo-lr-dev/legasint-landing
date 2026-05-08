@@ -712,6 +712,284 @@
         "eidas-2-eudi-wallet-identidad-digital-practica-legal.mdx",
         "eidas-2-eudi-wallet-digital-identity-legal-practice.mdx"
       ]
+    },
+    {
+      "id": 32,
+      "title": {
+        "es": "Automatización de procesos legales: de 40 horas a 4",
+        "en": "Legal Process Automation: From 40 Hours to 4"
+      },
+      "description": "Cómo automatizar flujos repetitivos (contratos, compliance, reporting) para reducir costes operativos",
+      "category": "Automatización",
+      "audience": "Despachos de abogados, legal ops, directores de operaciones",
+      "keywords": [
+        "automatización",
+        "procesos legales",
+        "eficiencia",
+        "costes operativos",
+        "workflow"
+      ],
+      "status": "published",
+      "publishedDate": "2026-05-08",
+      "files": [
+        "automatizacin-de-procesos-legales-de-40-horas-a-4.mdx",
+        "legal-process-automation-from-40-hours-to-4.mdx"
+      ]
+    },
+    {
+      "id": 33,
+      "title": {
+        "es": "RPA en despachos: bots que trabajan mientras duermes",
+        "en": "RPA in Law Firms: Bots That Work While You Sleep"
+      },
+      "description": "Casos prácticos de automatización robótica en tareas administrativas legales: facturación, seguimiento de plazos, archivado",
+      "category": "Automatización",
+      "audience": "Despachos de abogados, legal ops managers",
+      "keywords": [
+        "RPA",
+        "bots",
+        "automatización robótica",
+        "administración legal",
+        "productividad"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 34,
+      "title": {
+        "es": "Workflows sin código: n8n y Make para equipos legales",
+        "en": "No-Code Workflows: n8n & Make for Legal Teams"
+      },
+      "description": "Guía práctica para crear automatizaciones sin programar: integraciones entre Gmail, Drive, Calendar y herramientas legales",
+      "category": "Automatización",
+      "audience": "Abogados, legal ops, emprendedores legales",
+      "keywords": [
+        "no-code",
+        "n8n",
+        "Make",
+        "workflows",
+        "automatización legal",
+        "integraciones"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 35,
+      "title": {
+        "es": "Extractores de datos automáticos: de PDFs a bases de datos",
+        "en": "Automated Data Extractors: From PDFs to Databases"
+      },
+      "description": "Herramientas de scraping y OCR para digitalizar documentos legales y alimentar bases de datos estructuradas",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, equipos de datos, legal tech",
+      "keywords": [
+        "OCR",
+        "scraping",
+        "extracción de datos",
+        "PDF",
+        "bases de datos",
+        "digitalización"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 36,
+      "title": {
+        "es": "Desarrollo de productos con IA: de la idea al MVP en 6 semanas",
+        "en": "AI Product Development: From Idea to MVP in 6 Weeks"
+      },
+      "description": "Cómo usar IA para acelerar el desarrollo de productos digitales legales: prototipado, código, testing y deploy",
+      "category": "IA / Desarrollo",
+      "audience": "Empresas legal tech, startups, CTOs de despachos",
+      "keywords": [
+        "desarrollo productos",
+        "IA",
+        "MVP",
+        "prototipado",
+        "legal tech",
+        "agile"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 37,
+      "title": {
+        "es": "API-first con IA: construyendo servicios inteligentes",
+        "en": "API-First with AI: Building Smart Services"
+      },
+      "description": "Arquitectura de APIs con modelos de IA integrados para empresas: cómo exponer capacidades legales como servicios escalables",
+      "category": "Desarrollo",
+      "audience": "CTOs, arquitectos de software, equipos de producto legal",
+      "keywords": [
+        "API-first",
+        "IA",
+        "microservicios",
+        "escalabilidad",
+        "arquitectura software",
+        "legal as a service"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 38,
+      "title": {
+        "es": "Fine-tuning de modelos de IA para el sector legal",
+        "en": "Fine-Tuning AI Models for the Legal Sector"
+      },
+      "description": "Cómo adaptar LLMs al vocabulario, jurisprudencia y casos específicos de una empresa o jurisdicción",
+      "category": "IA / Legal",
+      "audience": "Equipos de IA legal, data scientists, desarrolladores legal tech",
+      "keywords": [
+        "fine-tuning",
+        "LLMs",
+        "modelos IA",
+        "sector legal",
+        "jurisprudencia",
+        "RAG"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 39,
+      "title": {
+        "es": "Agentes de IA autónomos: más allá del chatbot",
+        "en": "Autonomous AI Agents: Beyond the Chatbot"
+      },
+      "description": "Sistemas multi-agente que ejecutan tareas complejas sin intervención humana: investigación, redacción y revisión de documentos",
+      "category": "IA",
+      "audience": "Despachos de abogados, legal tech companies, inversores",
+      "keywords": [
+        "agentes IA",
+        "autónomos",
+        "multi-agente",
+        "automatización inteligente",
+        "legal AI"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 40,
+      "title": {
+        "es": "Qué busca una empresa en un socio tecnológico en 2026",
+        "en": "What Companies Look for in a Tech Partner in 2026"
+      },
+      "description": "8 criterios clave que las empresas valoran al elegir un socio tecnológico: velocidad, compliance, escalabilidad, comunicación y más",
+      "category": "Consultoría",
+      "audience": "Directores generales, CTOs, empresas que contratan desarrollo tecnológico",
+      "keywords": [
+        "socio tecnológico",
+        "tech partner",
+        "outsourcing",
+        "criterios selección",
+        "2026"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 41,
+      "title": {
+        "es": "CTO as a Service: tener dirección técnica sin contratar",
+        "en": "CTO as a Service: Technical Leadership Without Hiring"
+      },
+      "description": "Cómo empresas medianas acceden a expertise tecnológico de nivel sin coste fijo de plantilla: modelos, beneficios y riesgos",
+      "category": "Estrategia",
+      "audience": "CEOs, directores de empresas medianas, fundadores",
+      "keywords": [
+        "CTO as a Service",
+        "dirección técnica",
+        "outsourcing estratégico",
+        "escalabilidad",
+        "costes"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 42,
+      "title": {
+        "es": "La brecha tecnológica del sector legal: por qué necesitas un tech partner",
+        "en": "The Legal Sector Tech Gap: Why You Need a Tech Partner"
+      },
+      "description": "Por qué los despachos tradicionales pierden clientes y rentabilidad sin un socio digital: datos, tendencias y casos de éxito",
+      "category": "Estrategia",
+      "audience": "Socios fundadores, directores de despachos, consultores legal",
+      "keywords": [
+        "brecha tecnológica",
+        "sector legal",
+        "tech partner",
+        "transformación digital",
+        "competitividad"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 43,
+      "title": {
+        "es": "Compliance by design: integrar regulación en el desarrollo",
+        "en": "Compliance by Design: Building Regulation into Development"
+      },
+      "description": "Cómo un buen socio tecnológico aplica GDPR, DORA, NIS2 desde el código: principios, herramientas y casos prácticos",
+      "category": "Ciberseguridad",
+      "audience": "CTOs, compliance officers, equipos de desarrollo legal tech",
+      "keywords": [
+        "compliance by design",
+        "GDPR",
+        "DORA",
+        "NIS2",
+        "desarrollo seguro",
+        "legal tech"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 44,
+      "title": {
+        "es": "Coste de la inacción tecnológica: calculando pérdidas por retraso",
+        "en": "The Cost of Tech Inaction: Calculating Delay Losses"
+      },
+      "description": "Framework para cuantificar el impacto financiero de no digitalizar: horas perdidas, clientes fugados, oportunidades perdidas",
+      "category": "Estrategia",
+      "audience": "Directores generales, socios de despachos, CFOs",
+      "keywords": [
+        "inacción tecnológica",
+        "ROI",
+        "coste oportunidad",
+        "digitalización",
+        "pérdidas",
+        "framework"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 45,
+      "title": {
+        "es": "Nearshore tech partner: España como hub para Europa",
+        "en": "Nearshore Tech Partner: Spain as Europe's Hub"
+      },
+      "description": "Ventajas de un socio tecnológico en zona horaria y regulatoria europea: idioma, cultura, compliance y costes competitivos",
+      "category": "Estrategia",
+      "audience": "Empresas europeas, directores de expansión, CTOs internacionales",
+      "keywords": [
+        "nearshore",
+        "España",
+        "hub tecnológico",
+        "Europa",
+        "outsourcing",
+        "zona horaria"
+      ],
+      "status": "pending",
+      "publishedDate": null
     }
   ]
 }
