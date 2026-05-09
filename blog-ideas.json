@@ -932,8 +932,12 @@
         "transformación digital",
         "competitividad"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-09",
+      "files": [
+        "brecha-tecnologica-sector-legal-tech-partner.mdx",
+        "legal-sector-tech-gap-tech-partner.mdx"
+      ]
     },
     {
       "id": 43,
