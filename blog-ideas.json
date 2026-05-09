@@ -752,8 +752,12 @@
         "administración legal",
         "productividad"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-09",
+      "files": [
+        "rpa-en-despachos-bots-que-trabajan-mientras-duermes.mdx",
+        "rpa-in-law-firms-bots-that-work-while-you-sleep.mdx"
+      ]
     },
     {
       "id": 34,
