@@ -776,8 +776,12 @@
         "automatización legal",
         "integraciones"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-10",
+      "files": [
+        "workflows-sin-cdigo-n8n-y-make-para-equipos-legales.mdx",
+        "nocode-workflows-n8n-make-for-legal-teams.mdx"
+      ]
     },
     {
       "id": 35,
