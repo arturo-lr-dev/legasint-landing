@@ -800,8 +800,12 @@
         "bases de datos",
         "digitalización"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-10",
+      "files": [
+        "extractores-datos-automaticos-pdfs-bases-datos.mdx",
+        "automated-data-extractors-pdfs-databases.mdx"
+      ]
     },
     {
       "id": 36,
