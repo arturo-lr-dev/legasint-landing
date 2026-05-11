@@ -824,8 +824,12 @@
         "legal tech",
         "agile"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-11",
+      "files": [
+        "desarrollo-de-productos-con-ia-de-la-idea-al-mvp-en-6-semana.mdx",
+        "ai-product-development-from-idea-to-mvp-in-6-weeks.mdx"
+      ]
     },
     {
       "id": 37,
