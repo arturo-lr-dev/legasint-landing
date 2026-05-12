@@ -848,8 +848,12 @@
         "arquitectura software",
         "legal as a service"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-12",
+      "files": [
+        "apifirst-con-ia-construyendo-servicios-inteligentes.mdx",
+        "apifirst-with-ai-building-smart-services.mdx"
+      ]
     },
     {
       "id": 38,
