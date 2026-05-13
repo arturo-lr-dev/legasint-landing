@@ -872,8 +872,12 @@
         "jurisprudencia",
         "RAG"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-13",
+      "files": [
+        "finetuning-de-modelos-de-ia-para-el-sector-legal.mdx",
+        "finetuning-ai-models-for-the-legal-sector.mdx"
+      ]
     },
     {
       "id": 39,
