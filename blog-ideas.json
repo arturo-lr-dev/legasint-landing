@@ -895,8 +895,12 @@
         "automatización inteligente",
         "legal AI"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-14",
+      "files": [
+        "agentes-de-ia-autnomos-ms-all-del-chatbot.mdx",
+        "autonomous-ai-agents-beyond-the-chatbot.mdx"
+      ]
     },
     {
       "id": 40,
