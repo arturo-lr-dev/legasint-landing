@@ -1,65 +1,12 @@
 # Auditoria SEO Completa - legasint.com
 
-**Fecha original:** 2026-02-16 | **Actualización:** 2026-05-15
+**Fecha:** 2026-02-16
 **Sitio:** https://legasint.com
 **Framework:** Next.js 15.5.9 (App Router, Static Export)
 
 ---
 
-## Actualización Mayo 2026 - Resumen Ejecutivo
-
-Desde la auditoría anterior el sitio ha crecido significativamente. Se han implementado correcciones importantes y se han identificado nuevos problemas.
-
-### Cambios desde la última auditoría
-
-| Métrica | Feb 2026 | Mayo 2026 |
-|---------|----------|-----------|
-| Posts de blog | 40 (20 ES + 20 EN) | **124** (62 ES + 62 EN) |
-| Páginas estáticas generadas | 137 | **472** |
-| Imágenes de blog reales | 40 | **124** (todas generadas) |
-| Referencias a placehold.co | 84 | **0** |
-| Tag pages | 85 | **~330** (ES + EN) |
-
-### Estado actual por área
-
-| Categoría | Estado | Puntuación |
-|-----------|--------|------------|
-| Estructura del proyecto | Excelente | 9/10 |
-| Meta tags globales | Excelente | 9/10 |
-| Sitemap.xml | Excelente | 10/10 |
-| Robots.txt | Excelente | 9/10 |
-| Datos estructurados (JSON-LD) | Excelente | 9/10 |
-| Optimización de imágenes | Bueno | 8/10 |
-| Internacionalización (hreflang) | Bueno | 8/10 |
-| Atributo `lang` por página | **Corregido** | 8/10 |
-| URLs y canonical | Excelente | 9/10 |
-| Jerarquía de headings | Excelente | 9/10 |
-| Linking interno | Excelente | 9/10 |
-| Core Web Vitals | Bueno | 7/10 |
-| Accesibilidad | Bueno | 7/10 |
-| Blog / Contenido | Excelente | 10/10 |
-| Página 404 | Excelente | 9/10 |
-| Redirecciones | Bueno | 8/10 |
-| Analytics | Bueno | 8/10 |
-| RSS Feed | Excelente | 9/10 |
-
-**Puntuación global estimada: 8.8/10**
-
-### Problemas críticos resueltos en esta actualización
-
-1. ✅ **Imágenes placeholder eliminadas** — Se generaron 84 imágenes nuevas para todos los posts que usaban `placehold.co`. Todas las imágenes de blog ahora son locales en `/blog-images/`.
-2. ✅ **Atributo `lang` por idioma** — Se reestructuró el proyecto con route groups `(es)` y `(en)`, cada uno con su propio root layout y `<html lang="...">` correcto. Las páginas en inglés (`/contact`, `/blog/en/*`) generan HTML estático con `lang="en"`; las páginas en español generan `lang="es"`.
-3. ✅ **robots.txt limpio** — Se eliminó `Disallow: /private/` que no correspondía a ninguna ruta real.
-
-### Problemas pendientes / deuda técnica
-
-1. ⚠️ **`images.unoptimized: true`** — En static export no es posible usar la optimización de imágenes de Next.js sin un loader externo. Las imágenes generadas son PNG ~40KB cada una, lo cual es aceptable. Para mejorar Core Web Vitals, considerar: (a) compresión adicional de imágenes, (b) migrar a formato WebP, o (c) evaluar un servicio de imágenes externo.
-2. ⚠️ **Lighthouse performance score** — No se ha medido recientemente. Recomendación: ejecutar Lighthouse en producción para identificar cuellos de botella.
-3. ⚠️ **Google Search Console** — Verificar que `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` está configurado en el entorno de producción (Vercel).
-
----
-
-## Resumen Ejecutivo (Feb 2026)
+## Resumen Ejecutivo
 
 El sitio tiene una base tecnica solida con Next.js, sitemap dinamico, robots.txt correcto, semantic HTML y buen sistema de blog con MDX. Sin embargo, carece de elementos SEO criticos como datos estructurados (JSON-LD), etiquetas hreflang para internacionalizacion, canonical tags y tiene la imagen OG con dimensiones incorrectas.
 
@@ -649,38 +596,3 @@ No se encontro ninguna implementacion de schema markup en todo el sitio.
 | Ahrefs / Semrush | Backlinks, keywords, competencia |
 | W3C Feed Validator | Validar RSS feed |
 | Screaming Frog | Crawl completo del sitio |
-
-
----
-
-## Checklist de Verificación - Actualización Mayo 2026
-
-### Diagnóstico ejecutado
-
-- [x] Build exitoso: **472 páginas estáticas** generadas (antes 137)
-- [x] Crecimiento del blog: **124 posts** (62 ES + 62 EN)
-- [x] Tag pages: ~330 páginas generadas (ES + EN)
-- [x] Sitemap incluye todos los posts, tag pages y páginas estáticas
-- [x] RSS feed funcional con 124 items
-
-### Correcciones implementadas
-
-- [x] **Imágenes placeholder eliminadas** — 84 imágenes nuevas generadas con `scripts/generate-blog-images.mjs`
-- [x] **Todos los MDX actualizados** — 0 referencias restantes a `placehold.co`
-- [x] **124 imágenes en `public/blog-images/`** — todas las entradas de blog tienen imagen local
-- [x] **Atributo `lang` por idioma** — reestructuración con route groups `(es)` y `(en)` con root layouts propios. HTML estático genera `lang="en"` en páginas EN y `lang="es"` en páginas ES
-- [x] **robots.txt limpio** — eliminado `Disallow: /private/` innecesario
-- [x] **Build verificado** — sin errores, exportación estática correcta
-
-### Pendiente / Recomendaciones de monitoreo
-
-- [ ] Ejecutar Lighthouse en producción para verificar performance score
-- [ ] Verificar que `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` está configurado en Vercel
-- [ ] Validar JSON-LD en [Google Rich Results Test](https://search.google.com/test/rich-results)
-- [ ] Validar RSS en [W3C Feed Validator](https://validator.w3.org/feed/)
-- [ ] Revisar Search Console periódicamente por errores de indexación
-- [ ] Evaluar compresión de imágenes a WebP para mejorar LCP (actualmente PNG ~40KB cada una)
-
----
-
-*Documento actualizado el 2026-05-15 por auditoría SEO automatizada.*

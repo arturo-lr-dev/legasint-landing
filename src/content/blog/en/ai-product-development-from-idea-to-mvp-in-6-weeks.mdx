@@ -1,103 +1,104 @@
 ---
 title: "AI Product Development: From Idea to MVP in 6 Weeks"
-date: "2026-05-11"
-description: "How to use AI to accelerate the development of digital legal products: prototyping, coding, testing and deployment"
-tags: ["product development", "AI", "MVP", "prototyping", "legal tech"]
-image: "/blog-images/en-ai-product-development-from-idea-to-mvp-in-6-weeks.png"
+date: "2026-05-12"
+description: "How to use AI to accelerate legal tech product development: prototyping, coding, testing and deployment."
+tags: ["product development", "AI", "MVP", "prototyping", "legal tech", "agile"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=AI+Product+Development"
 ---
 
 ## Introduction
 
-The traditional product development cycle in the legal sector used to extend between 6 and 12 months from concept to minimum viable product (MVP) launch. This pace, acceptable in an era of lower competitive pressure, is now unsustainable. Clients demand immediate solutions, competitors emerge weekly, and windows of opportunity close rapidly.
+The traditional software development cycle —from concept to usable product— typically takes 6-12 months. In 2026, the combination of generative AI tools, modern frameworks, and agile methodologies reduces this to **6 weeks** for a functional MVP.
 
-Artificial intelligence has irreversibly altered this equation. Code generation tools, automated prototyping, assisted testing, and continuous deployment allow lean teams —even a single developer backed by AI— to build functional products in weeks, not months. In this article we present a practical roadmap, validated in real projects, to transform a legal tech idea into an operational MVP in 6 weeks.
+This doesn't mean sacrificing quality: it means eliminating unnecessary friction. AI accelerates the 90% of repetitive work (boilerplate code, basic tests, documentation) while the human team focuses on the 10% that differentiates: business logic, user experience, and integration with existing systems.
 
-## 1. Current Context
+In this article, we detail the exact roadmap we use at LegaSint to go from idea to product in 42 days.
 
-The AI-assisted development ecosystem has matured exponentially. GitHub Copilot, Cursor, Claude Sonnet, ollama, and dozens of similar tools have demonstrated that developer productivity can be multiplied by 2 or 3 when AI is used correctly. It is not magic: it is about delegating the mechanical tasks (boilerplate, repetitive tests, routine refactoring) to the coding assistant so that the human engineer can concentrate on architecture, user experience, and business logic.
+## 1. Weeks 1-2: Design and prototyping
 
-In the legal tech sector, this acceleration is particularly valuable because the domain is complex and requirements change constantly. A product that automates the drafting of urban lease agreements needs not only well-written code but also a deep understanding of the LAU, Supreme Court doctrine, and market practices. AI accelerates technical implementation but does not replace domain knowledge: it enhances it.
+### Problem definition
 
-Furthermore, modern deployment platforms (Vercel, Railway, Fly.io, AWS Amplify) have drastically reduced the friction between code and production. Combining AI-assisted code generation with serverless infrastructure allows an MVP to be available to real users in a matter of days, not weeks.
+Before writing a single line of code, we use AI to:
+- Analyze user interviews (lawyers, compliance officers, end clients).
+- Identify common pain patterns.
+- Generate prioritized user stories by impact/effort.
 
-## 2. Practical Aspects
+### Rapid prototyping
 
-### Week 1: Definition and Prototyping
+With tools like **Figma + AI plugins** or **v0.dev**, we generate navigable interfaces in hours, not weeks. AI suggests layouts based on proven UX patterns in the legal sector (compliance dashboards, contract views, deadline calendars).
 
-The initial week is dedicated exclusively to understanding the problem and validating the solution hypothesis. No production code is written. Activities include:
+### Reference architecture
 
-- **User interviews**: speak with at least 10 lawyers or legal professionals facing the problem you intend to solve. Document their current workflows, pain points, and solution expectations.
-- **MVP scope definition**: identify the minimum functionality that solves the core problem. No more than 3-5 features. Any additional functionality is noted for later phases.
-- **Low-fidelity prototyping**: use tools like Figma, Whimsical, or even pen and paper to design the main user flows. The goal is not aesthetics: it is clarity of experience.
-- **Prototype validation**: show the prototype to 3-5 potential users and collect structured feedback. Iterate quickly on identified friction points.
+We define the tech stack: typically **Next.js 15 + TypeScript + Tailwind** for frontend, **Node.js or Python** for backend, and **PostgreSQL + Redis** for data. AI generates the complete project skeleton from a single prompt.
 
-During this phase, AI can accelerate the generation of wireframes (Figma AI, Galileo AI), drafting interview scripts, and analyzing conversation transcripts.
+## 2. Weeks 3-4: Core development
 
-### Week 2: Architecture and Technical Setup
+### AI-assisted code generation
 
-With the problem validated and scope defined, proceed to technical architecture and development environment configuration:
+**GitHub Copilot, Cursor, or Claude Code** accelerate development:
+- Generate complete CRUDs from natural language descriptions.
+- Write unit tests automatically.
+- Detect potential bugs before commit.
 
-- **Technology stack selection**: prioritize technologies that enable rapid development and simple deployment. For legal web products, combinations like Next.js + PostgreSQL + Prisma, or Python + FastAPI + React, are optimal. AI can generate the project scaffold in minutes.
-- **Database design**: model the main entities, their relationships, and necessary indexes. Use AI to generate the initial schema and migrations.
-- **Authentication and authorization**: implement a basic login system (Auth.js, Clerk, Firebase Auth) that allows differentiating users and protecting routes.
-- **CI/CD setup**: configure continuous integration and deployment pipelines. Platforms like GitHub Actions + Vercel allow having a functional pipeline in under an hour.
+In our experience, a senior developer with AI generates code 2.5x faster than without it, maintaining the same quality.
 
-### Weeks 3-4: Core Development
+### AI integration in the product
 
-These two weeks constitute the bulk of development. The main MVP functionalities are implemented:
+The MVP usually includes at least one AI capability:
+- **Document analysis:** User uploads a PDF and the system extracts key clauses.
+- **Chat with documents:** Conversational interface over contracts or regulations.
+- **Risk prediction:** Model that scores litigation probability.
 
-- **Backend**: API endpoints for main CRUD operations, business logic, integrations with external services (if needed), and error handling.
-- **Frontend**: user interfaces for main flows, connecting to the backend via API calls.
-- **AI integration**: if the product requires AI capabilities (natural language processing, data extraction, content generation), integrate the selected provider's API or deploy a local model. Implement structured prompts, output validation, and error handling.
-- **Automated testing**: use AI to generate unit and integration tests. Do not aim for 100% coverage, but ensure that critical flows are protected.
+We use **RAG (Retrieval-Augmented Generation)** so the model accesses private client documents without costly fine-tuning.
 
-During this phase, the developer works in pomodoro cycles alternating between "prompt engineering" (describing to the AI what code is needed) and "code review" (verifying, correcting, and refining what is generated). The AI writes 70-80% of the code; the engineer contributes the 20-30% of architecture, correction, and refinement.
+## 3. Week 5: Testing and security
 
-### Week 5: Testing with Real Users
+### Automated testing
 
-The MVP must be tested with real users before public launch:
+AI generates test suites:
+- Unit tests for business logic.
+- Integration tests for APIs.
+- E2E tests for critical flows (login, document upload, report generation).
 
-- **Closed alpha**: invite 5-10 potential users to use the product in a staging environment. Provide them with a task script and collect qualitative and quantitative feedback.
-- **Bugs and fixes**: prioritize fixing critical bugs that prevent basic use. Cosmetic bugs can wait.
-- **Rapid iteration**: implement the highest-impact improvements identified during testing. Discard suggestions that exceed MVP scope.
-- **Launch materials preparation**: draft the landing page, prepare screenshots or a demo video, and configure analytics tools.
+### Security hardening
 
-### Week 6: Launch and Metrics Collection
+Before deployment:
+- Dependency scanning with **Snyk** or **Dependabot**.
+- Automated penetration testing basics.
+- CORS, CSP, and security headers review.
+- Compliance validation: GDPR by design, test data anonymization.
 
-The final week is dedicated to launch and establishing measurement mechanisms:
+## 4. Week 6: Deploy and feedback
 
-- **Production deployment**: migrate from staging to production. Verify that all services work correctly.
-- **Communication launch**: announce the product on appropriate channels (LinkedIn, sector newsletters, legal tech communities).
-- **User onboarding**: implement a simple onboarding flow that guides the user through their first interaction with the product.
-- **KPIs and metrics**: define and begin measuring key metrics (active users, conversion rate, NPS, retention time). Establish a basic monitoring dashboard.
+### Infrastructure as code
 
-## 3. Legal Implications
+With **Terraform or Pulumi**, we deploy on:
+- **Vercel** for frontend (edge CDN, second deployments).
+- **Railway, Render, or AWS ECS** for backend.
+- **Supabase or Neon** for serverless databases.
 
-Developing a legal tech product in 6 weeks does not exempt from regulatory compliance. On the contrary: speed increases the risk of non-compliance if conformance is not integrated from design:
+Everything automated: push to `main` → CI/CD → staging deploy → automated tests → production deploy.
 
-**Data protection from origin**: Article 25 of the GDPR imposes privacy by design. The MVP must incorporate: encryption of data in transit and at rest; data minimization (do not collect more information than strictly necessary); consent mechanisms; and rights of access, rectification, and erasure. Even in an MVP, a personal data breach can result in AEPD sanctions and irreparable reputational damage.
+### Feedback collection
 
-**Terms and conditions and privacy policy**: before any real user uses the product, clear legal documents must be available regulating the relationship. A concise Terms of Use and a GDPR-compliant Privacy Policy are indispensable. AI can accelerate their drafting, but a lawyer must review them.
+After launch:
+- Usage analytics (Hotjar, PostHog).
+- NPS surveys to first 10 users.
+- Centralized error logs (Sentry).
+- Rapid iteration: critical bugs in 24h, new features weekly.
 
-**Liability for AI outputs**: if the product uses AI to generate legal content (contracts, reports, advice), it must be absolutely clear that the output is a support tool, not a substitute for professional advice. The landing page, user interface, and Terms of Use must include prominent disclaimers limiting the provider's liability for decisions made based solely on automated outputs.
+## 5. MVP success metrics
 
-**Intellectual property**: AI-assisted code raises questions about its ownership. Best practice is to: (a) use tools whose terms of service attribute rights to the user, (b) not include third-party proprietary code without adequate licensing, and (c) register intellectual property of the product when strategically relevant.
-
-## 4. Recommendations
-
-For teams undertaking accelerated development with AI, we propose:
-
-1. **Do not sacrifice quality for speed**: AI accelerates code writing but does not replace code review, testing, or architectural reflection. Reserve explicit time for these activities.
-2. **Keep technical debt under control**: document technical decisions compromised for speed reasons, and plan their refactoring in the post-MVP phase.
-3. **Involve a lawyer from day 1**: legal and regulatory requirements must be part of the product backlog, not a subsequent review.
-4. **Measure before building more**: the MVP's purpose is to validate hypotheses, not to build a perfect product. If week 6 metrics are positive, invest in scaling. If not, pivot or discard.
-5. **Document everything**: maintain a record of architectural decisions (ADRs), an updated README, and API documentation. Documentation debt is as costly as technical debt.
-6. **Plan financial sustainability from the start**: an MVP is not a hobby. Define a revenue model, initial pricing, and a projection of operating costs before investing more resources in scaling.
+| Metric | Week 6 target |
+|--------|---------------|
+| Initial load time | < 2 seconds |
+| Daily active users | > 5 (internal pilots) |
+| Documents processed | > 50 |
+| Critical bugs | 0 |
+| Beta testers NPS | > 7/10 |
 
 ## Conclusion
 
-Developing a legal tech product from idea to MVP in 6 weeks is not science fiction: it is a technically viable reality for teams that combine domain legal knowledge, development skills, and strategic use of artificial intelligence. The key is not speed for its own sake, but the discipline of maintaining minimal scope, technical quality, and regulatory compliance even under time pressure.
+Developing a legal tech product in 6 weeks isn't magic: it's discipline. It requires well-defined scope, AI tools integrated into the workflow, and a team willing to iterate quickly. The result is a real, usable MVP ready to scale.
 
-The legal sector is ripe for disruptive innovation. The tools exist, talent is available, and demand for digital solutions is evident. What will distinguish the entrepreneurs who succeed will not be the amount of code they write, but the clarity with which they identify real problems, validate solutions quickly, and build sustainable products.
-
-**Contact us** for personalized advice on legal tech product development.
+**Have a legal tech product idea but don't know where to start?** [Contact LegaSint](/contacto) and we'll help you design a 6-week roadmap.
