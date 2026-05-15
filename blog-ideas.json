@@ -918,8 +918,12 @@
         "criterios selección",
         "2026"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-15",
+      "files": [
+        "qu-busca-una-empresa-en-un-socio-tecnolgico-en-2026.mdx",
+        "what-companies-look-for-in-a-tech-partner-in-2026.mdx"
+      ]
     },
     {
       "id": 41,
