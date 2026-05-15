@@ -1,33 +1,87 @@
 ---
 title: "Fine-Tuning AI Models for the Legal Sector"
 date: "2026-05-13"
-description: "Cómo adaptar LLMs al vocabulario, jurisprudencia y casos específicos de una empresa o jurisdicción"
-tags: ["fine-tuning", "LLMs", "modelos IA", "sector legal", "jurisprudencia"]
-image: "https://placehold.co/800x400/1e3a8a/white?text=Fine-Tuning+AI+Models+for+the+"
+description: "How to adapt LLMs to the vocabulary, case law, and specific cases of a company or jurisdiction"
+tags: ["fine-tuning", "LLMs", "AI models", "legal sector", "jurisprudence"]
+image: "/blog-images/en-finetuning-ai-models-for-the-legal-sector.png"
 ---
 
 ## Introduction
 
-Cómo adaptar LLMs al vocabulario, jurisprudencia y casos específicos de una empresa o jurisdicción. In this article we explore the key aspects that every equipos de ia legal, data scientists, desarrolladores legal tech should know.
+Large language models (LLMs) like GPT-4o, Claude 3.5 Sonnet, or Llama 3 have demonstrated extraordinary capabilities for understanding and generating text across multiple domains. However, when applied to the legal sector, their generic performance collides with an inescapable reality: law is highly contextual, jurisdiction-dependent, and permeated by precise technical vocabulary that general models do not dominate with sufficient depth.
+
+A model can draft a generic commercial contract with fluency but may ignore recent Supreme Court doctrine on abusive clauses, confuse Civil Code concepts with Common Law analogies, or apply overturned case law. Fine-tuning —the process of adapting a pre-trained model with domain-specific data— emerges as the key technique to close this gap. In this article we explore how to perform LLM fine-tuning for the legal sector, what data is needed, what results to expect, and what practical and regulatory implications it entails.
 
 ## 1. Current Context
 
-[Detailed content about fine-tuning ai models for the legal sector]
+Fine-tuning has evolved significantly since early attempts to adapt BERT or GPT-2 to legal corpora. Today we have techniques that drastically reduce computational and data requirements: LoRA (Low-Rank Adaptation), QLoRA (quantization + LoRA), and prompt-tuning techniques allow adapting models with billions of parameters with accessible hardware (a single mid-range GPU) and datasets of merely thousands of examples, not millions.
+
+In the legal sector, fine-tuning is applied at three main levels:
+
+1. **Jurisdictional adaptation**: training the model with judgments, laws, and doctrine from a specific jurisdiction (Spain, Catalonia, EU) so it understands the structure of the local legal system, the hierarchy of norms, and the argumentative style of courts.
+2. **Sectoral specialization**: adapting the model to a specific subject matter (commercial, labor, criminal, administrative law) by ingesting specialized resolutions, standard contracts, and academic literature from the area.
+3. **Organization personalization**: adjusting the model with a firm's internal documentation (contract templates, historical briefs, internal criteria, accumulated know-how) so it generates outputs aligned with the firm's specific style and practices.
+
+Companies like Harvey AI, vLex (with its Vincent model), or Paxton AI already commercialize fine-tuned models for the legal sector. However, many organizations prefer to develop their own models to maintain control over their data and avoid third-party dependencies.
 
 ## 2. Practical Aspects
 
-[Practical guide, tools and use cases]
+### Dataset Preparation
+
+The quality of fine-tuning depends fundamentally on dataset quality. For the legal sector, we recommend a structure combining:
+
+- **Judgments and court resolutions** (30-40% of the dataset): grounds of law, legal reasoning, and rulings. Prioritize recent judgments (last 5 years) from the Supreme Court, National Courts, and High Courts of Justice.
+- **Legislation and regulations** (20-30%): legal texts, regulations, EU directives, and sectoral norms. Include not only the normative text but also relationships between norms (amendments, repeals, authorized interpretations).
+- **Doctrine and commentary** (15-20%): academic articles, law commentaries, and specialized monographs. Select works by recognized and up-to-date authors.
+- **Practical documents** (15-20%): contracts, briefs, opinions, and professional communications. Anonymize any personal or confidential data beforehand.
+- **Instruction-response pairs** (10-15%): structured examples of legal tasks ("Draft a confidentiality clause", "Analyze whether this clause is abusive according to STS 123/2024").
+
+The total dataset does not need to be massive: between 5,000 and 50,000 high-quality examples are usually sufficient for effective fine-tuning with modern techniques. What is critical is not volume but relevance, currency, and absence of errors or inconsistencies.
+
+### Fine-Tuning Pipeline
+
+1. **Preprocessing**: clean texts (remove headers, footers, page numbering), segment into appropriately sized chunks for the model's context, and structure data in the required format (JSONL for OpenAI, Alpaca for open-source models).
+2. **Base model selection**: for Spanish use cases, models like Llama 3.1 (70B or 405B), Mistral Large, or Qwen 2.5 offer excellent performance in Spanish. If preferring a closed model, GPT-4o or Claude 3.5 Sonnet allow fine-tuning via OpenAI or Anthropic APIs.
+3. **Hyperparameter configuration**: learning rate (typically between 1e-5 and 5e-5), batch size, number of epochs (generally 1-3 to avoid overfitting), and warmup steps. LoRA/QLoRA techniques require configuring rank (r) and alpha, typical values of 16-64 for r and double for alpha.
+4. **Training and evaluation**: monitor loss during training, and evaluate the model with a reserved test set that includes representative tasks. Metrics: perplexity, BLEU/ROUGE for generation, and human evaluation for complex legal tasks.
+5. **Deployment and serving**: the fine-tuned model can be deployed via vLLM, TGI (Text Generation Inference), or cloud platforms (AWS SageMaker, Azure ML, Google Vertex AI).
+
+### Legal Quality Evaluation
+
+Evaluation of a legal model cannot be limited to automatic metrics. An indispensable panel of human evaluators (specialized lawyers) must assess:
+
+- Legal accuracy: does it correctly cite norms? Does it apply current case law?
+- Argumentative coherence: is the reasoning logical and structured?
+- Style adequacy: does it match the professional writing style of the sector?
+- Safety: does it avoid inventing non-existent norms, judgments, or doctrine?
 
 ## 3. Legal Implications
 
-[Regulatory analysis and compliance]
+Fine-tuning models with legal data raises regulatory questions that must be addressed proactively:
+
+**Intellectual property of training data**: judicial judgments, as acts of authority, are generally not subject to copyright in Spain. However, doctrinal commentaries, private contracts, and compiled databases (vLex, Aranzadi, Thomson Reuters) may be protected. Using these materials without license may constitute intellectual property infringement. Recommendation: use open sources (BOE, ECHR, EUR-Lex) or have valid licenses for commercial databases.
+
+**Data protection**: a firm's internal documents used for fine-tuning contain personal data of clients, counterparties, and third parties. Their processing to train models requires a valid legal basis, an impact assessment (DPIA), and technical anonymization guarantees. The fine-tuned model may memorize fragments of training data, generating leakage risk. Techniques like differential privacy, federated learning, or use of synthetic data mitigate this risk.
+
+**Liability for outputs**: when a fine-tuned model generates erroneous content, responsibility falls on the organization deploying it. The AI Act establishes specific obligations for "deployers" of high-risk systems. Firms using fine-tuned models to advise clients must implement mandatory human supervision, clear disclaimers, and civil liability insurance covering AI-derived risks.
+
+**Transparency and explainability**: the AI Act requires that high-risk systems be sufficiently transparent for users to interpret their outputs. Fine-tuned models, especially large ones, are inherently opaque. Implementing explainability techniques (attention visualization, source retrieval, chain-of-thought prompting) not only improves usability but facilitates regulatory compliance.
 
 ## 4. Recommendations
 
-[Checklist and recommended next steps]
+For organizations considering fine-tuning legal models, we propose:
+
+1. **Start with RAG before fine-tuning**: Retrieval-Augmented Generation is technically simpler, cheaper, and easier to update. Fine-tuning should be reserved for cases where RAG does not provide sufficient precision or style.
+2. **Invest in data quality, not quantity**: a dataset of 5,000 manually curated examples far outperforms one of 500,000 noisy examples.
+3. **Maintain a multidisciplinary team**: effective fine-tuning requires collaboration between ML engineers, specialized lawyers, and data protection experts.
+4. **Plan continuous updates**: law changes constantly. The model must be retrained periodically (quarterly or semi-annually) with new jurisprudence and regulations.
+5. **Document the training process**: the AI Act requires technical documentation. Maintain records of the dataset used, hyperparameters, hardware, and evaluation results.
+6. **Evaluate infrastructure alternatives**: for highly sensitive data, consider on-premise or private infrastructure. For less sensitive cases, OpenAI or Azure fine-tuning APIs may be more cost-effective.
 
 ## Conclusion
 
-Fine-Tuning AI Models for the Legal Sector represents a significant shift in the industry. Companies and firms that adopt these practices early will gain substantial competitive advantages.
+Fine-tuning AI models for the legal sector is a technically accessible and legally complex discipline. When performed with rigor, it enables creating AI assistants that understand the vocabulary, logic, and context of Spanish and European law with precision unattainable by generic models. However, it is not a silver bullet: it demands quality data, technical knowledge, constant human supervision, and a governance framework that guarantees regulatory compliance.
 
-**Contact us** for personalized advice on ia / legal.
+Organizations that invest in developing their own fine-tuning capabilities will not only improve their service quality: they will build an intangible asset difficult to replicate, based on accumulated know-how and proprietary data. In an increasingly competitive legal market, this advantage can mean the difference between relevance and obsolescence.
+
+**Contact us** for personalized advice on fine-tuning legal models.
