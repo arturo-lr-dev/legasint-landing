@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google'
-import "./globals.css";
+import "@/app/globals.css";
 import GoogleAnalytics from "@/analytics/google";
 import FloatingSocialIcons from "@/components/FloatingSocialIcons";
 import Header from "@/components/Header";
@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     },
   },
 
-  // Open Graph / Facebook
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -54,7 +53,6 @@ export const metadata: Metadata = {
     ],
   },
 
-  // Twitter
   twitter: {
     card: 'summary_large_image',
     site: '@legasint',
@@ -64,12 +62,10 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
 
-  // Google Search Console verification (replace with your actual code)
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
   },
 
-  // Robots
   robots: {
     index: true,
     follow: true,
@@ -83,21 +79,19 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default function EnLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="en">
       <head>
         <link rel="alternate" type="application/rss+xml" title="Legasint Blog" href="/feed.xml" />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
       </head>
-      <body
-        className={`${inter.className} antialiased overflow-x-hidden`}
-      >
+      <body className={`${inter.className} antialiased overflow-x-hidden`}>
         <Header />
         {children}
         <FloatingSocialIcons />
