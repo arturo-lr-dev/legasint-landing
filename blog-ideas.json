@@ -1004,8 +1004,12 @@
         "pérdidas",
         "framework"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-20",
+      "files": [
+        "coste-inaccion-tecnologica-despachos.mdx",
+        "cost-tech-inaction-law-firms.mdx"
+      ]
     },
     {
       "id": 45,
