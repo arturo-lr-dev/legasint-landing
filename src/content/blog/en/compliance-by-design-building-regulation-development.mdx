@@ -1,0 +1,184 @@
+---
+title: "Compliance by Design: Building Regulation into Development"
+date: "2026-05-21"
+description: "How a good tech partner applies GDPR, DORA, and NIS2 from the code up: principles, tools, and practical cases for legal tech development teams."
+tags: ["compliance by design", "GDPR", "DORA", "NIS2", "secure development", "legal tech"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Compliance+by+Design"
+---
+
+## Introduction
+
+The era of adding regulatory compliance as a final layer of development is over. In 2026, with the **AI Act** in force, **DORA** consolidated, and the **NIS2 Directive** transposed into Spanish law, legal tech companies can no longer afford to discover regulatory issues at production stage.
+
+**Compliance by design** means integrating legal requirements from the system architecture onward, not as a later patch. In this article, we explain how to apply it in the development of legal products with practical examples that any technical team can implement.
+
+## 1. The five pillars of compliance by design
+
+### Privacy from the architecture
+
+The **GDPR** is not just a privacy policy: it is an architectural constraint. Applying the *data protection by design* principle (Art. 25) means:
+
+- **Data minimization**: the system only collects strictly necessary fields
+- **Pseudonymization by default**: identifiers are separated from operational data
+- **Encryption in transit and at rest**: TLS 1.3 as a minimum, AES-256 for storage
+- **Automatic retention**: TTL (time to live) configured per logical entity
+
+### Digital resilience as a functional requirement
+
+**DORA** demands that resilience is not a wish-list item but a testable requirement. This translates into:
+
+- **RPO < 4 hours** and **RTO < 8 hours** for critical systems
+- **Scheduled chaos engineering**: simulated dependency failures
+- **Circuit breakers** on all external integrations
+- **Full observability**: centralized metrics, logs, and traces
+
+### Supply chain security
+
+The **Cyber Resilience Act (CRA)** and **NIS2** require controlling everything that enters the product:
+
+- **SBOM** (Software Bill of Materials) automatically generated on every build
+- **Audited dependencies**: tools like Snyk or OWASP Dependency-Check
+- **Hardened containers**: minimal base images, no shell, rootless only
+- **Artifact signing**: every Docker image and binary signed with Sigstore
+
+### Algorithmic decision traceability
+
+With the **AI Act**, if your product uses AI for decisions affecting individuals (legal risk classification, case scoring), you need:
+
+- **Version registry** of the trained model
+- **Inference metadata**: input, output, confidence, timestamp
+- **Built-in explainability**: not a separate dashboard, but an `explanation` field in the API response
+- **Right to human intervention**: `human_review_required` flag when the score exceeds a threshold
+
+### Access and permission governance
+
+- **RBAC/ABAC** with minimum granularity per resource
+- **Principle of least privilege** applied to services, not just people
+- **Zero trust** between microservices: mandatory mTLS, no exceptions
+- **Immutable audit**: access logs in append-only mode, with chained hashing
+
+## 2. Practical case: litigation management platform
+
+Imagine a **litigation management SaaS** that processes personal data of litigants and uses AI to prioritize cases.
+
+### Compliant architecture
+
+```typescript
+// Data schema with retention and pseudonymization
+interface Litigant {
+  id: string;                    // UUID v4
+  pseudonymId: string;             // Reference in separate table
+  operationalData: {
+    caseType: string;
+    amount: number;
+    startDate: Date;
+  };
+  ttl: Date;                       // Automatic deletion post-resolution
+}
+```
+
+### Inference flow with traceability
+
+```typescript
+async function prioritizeCase(caseData: Litigant): Promise<PriorityResult> {
+  const modelVersion = await getModelVersion('litigation-priority-v3.2');
+  const prediction = await model.predict(caseData.operationalData);
+  
+  // Immutable log for AI Act
+  await auditLog.write({
+    entityId: caseData.id,
+    modelVersion,
+    inputHash: hash(caseData.operationalData),
+    output: prediction.score,
+    confidence: prediction.confidence,
+    explanation: prediction.shapValues,
+    timestamp: new Date(),
+    humanReviewRequired: prediction.confidence < 0.85
+  });
+  
+  return prediction;
+}
+```
+
+### Resilient infrastructure
+
+```yaml
+# Fragment of declarative infrastructure
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: litigation-api
+spec:
+  replicas: 3
+  template:
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: api
+        image: registry/litigation-api:v2.1.4
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        env:
+        - name: ENCRYPTION_KEY
+          valueFrom:
+            secretKeyRef:
+              name: litigation-secrets
+              key: aes-master-key
+```
+
+## 3. The compliant stack toolbox
+
+| Layer | Recommended tool | Compliance covered |
+|-------|-----------------|--------------------|
+| Code | SonarQube + Semgrep | Quality, secret scanning |
+| Dependencies | Snyk + SBOM tools | CRA, NIS2 supply chain |
+| Infrastructure | Terraform + OPA | Immutable infrastructure, policy as code |
+| Deployment | GitHub Actions + Sigstore | Signing, traceability |
+| Runtime | Falco + Prometheus | Intrusion detection, DORA observability |
+| Data | HashiCorp Vault | Secret management, dynamic encryption |
+| AI | MLflow + BentoML | Model traceability, AI Act explainability |
+
+## 4. The cost of not doing it
+
+A law firm developing its own product without compliance by design faces:
+
+- **Regulatory technical debt**: refactoring GDPR in production costs 10x more than at design stage
+- **DORA penalties**: up to **2% of total worldwide annual turnover**
+- **NIS2 incidents**: notification within 24h, with prior internal investigation
+- **Loss of trust**: enterprise clients demand SOC 2, ISO 27001, and DPA from the first call
+
+## 5. Checklist for your next sprint
+
+### Design
+- [ ] DPIA completed if we process personal data with AI
+- [ ] DORA/NIS2 risk matrix identified
+- [ ] Data architecture with minimization validated
+
+### Development
+- [ ] Secrets in Vault, never in the repository
+- [ ] Security tests in CI (SAST + DAST)
+- [ ] SBOM generated and audited on every release
+
+### Deployment
+- [ ] Signed images, rootless, with seccomp
+- [ ] mTLS between all services
+- [ ] Encrypted backup with RPO < 4h verified
+
+### Operations
+- [ ] Incident runbooks updated
+- [ ] Quarterly chaos engineering drills
+- [ ] Monthly audit log review
+
+## Conclusion
+
+**Compliance by design is not a burden: it is a competitive advantage.** Legal tech products born with regulation in their DNA deploy faster in enterprise clients, pass audits without surprises, and scale without regulatory technical debt.
+
+At Legasint, we integrate GDPR, DORA, NIS2, and the AI Act from the very first line of code. If your law firm or legal startup is building technology products, **let's talk before compliance becomes a problem.**

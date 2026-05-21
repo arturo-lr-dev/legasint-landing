@@ -984,8 +984,12 @@
         "desarrollo seguro",
         "legal tech"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-21",
+      "files": [
+        "compliance-by-design-integrar-regulacion-desarrollo.mdx",
+        "compliance-by-design-building-regulation-development.mdx"
+      ]
     },
     {
       "id": 44,
