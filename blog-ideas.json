@@ -941,8 +941,12 @@
         "escalabilidad",
         "costes"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-05-23",
+      "files": [
+        "cto-as-a-service-direccion-tecnica-sin-contratar.mdx",
+        "cto-as-a-service-technical-leadership-without-hiring.mdx"
+      ]
     },
     {
       "id": 42,
