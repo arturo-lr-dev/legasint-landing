@@ -1038,6 +1038,30 @@
       ],
       "status": "pending",
       "publishedDate": null
+    },
+    {
+      "id": 46,
+      "title": {
+        "es": "Data Act: guía de cumplimiento para despachos y empresas 2026",
+        "en": "Data Act: Compliance Guide for Law Firms and Businesses 2026"
+      },
+      "description": "Guía práctica sobre el Reglamento Data Act de la UE: acceso a datos IoT, portabilidad cloud, contratos B2B y estrategias de cumplimiento para despachos de abogados",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "Data Act",
+        "protección de datos",
+        "IoT",
+        "portabilidad cloud",
+        "compartir datos",
+        "cumplimiento"
+      ],
+      "status": "published",
+      "publishedDate": "2026-05-25",
+      "files": [
+        "data-act-guia-cumplimiento-despachos-empresas-2026.mdx",
+        "data-act-compliance-guide-law-firms-businesses-2026.mdx"
+      ]
     }
   ]
 }
