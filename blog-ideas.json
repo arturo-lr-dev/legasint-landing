@@ -1062,6 +1062,30 @@
         "data-act-guia-cumplimiento-despachos-empresas-2026.mdx",
         "data-act-compliance-guide-law-firms-businesses-2026.mdx"
       ]
+    },
+    {
+      "id": 47,
+      "title": {
+        "es": "Shadow AI en despachos: cómo gestionar el uso no autorizado de inteligencia artificial",
+        "en": "Shadow AI in Law Firms: How to Manage Unsanctioned AI Use"
+      },
+      "description": "Guía práctica para identificar, controlar y mitigar los riesgos del uso no autorizado de IA por empleados en despachos de abogados",
+      "category": "Ciberseguridad",
+      "audience": "Despachos de abogados, compliance officers, DPOs",
+      "keywords": [
+        "shadow AI",
+        "ciberseguridad",
+        "GDPR",
+        "despachos",
+        "cumplimiento",
+        "gobernanza IA"
+      ],
+      "status": "published",
+      "publishedDate": "2026-05-30",
+      "files": [
+        "shadow-ai-despachos-gestion-uso-no-autorizado.mdx",
+        "shadow-ai-law-firms-managing-unsanctioned-use.mdx"
+      ]
     }
   ]
 }
