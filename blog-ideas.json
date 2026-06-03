@@ -1036,8 +1036,12 @@
         "outsourcing",
         "zona horaria"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-03",
+      "files": [
+        "nearshore-tech-partner-espana-hub-europa.mdx",
+        "nearshore-tech-partner-spain-europe-hub.mdx"
+      ]
     },
     {
       "id": 46,
@@ -1086,6 +1090,1146 @@
         "shadow-ai-despachos-gestion-uso-no-autorizado.mdx",
         "shadow-ai-law-firms-managing-unsanctioned-use.mdx"
       ]
+    },
+    {
+      "id": 46,
+      "title": {
+        "es": "Digitalización del despacho: el roadmap de 90 días",
+        "en": "Law Firm Digitalization: The 90-Day Roadmap"
+      },
+      "description": "Plan paso a paso para transformar un despacho tradicional en una operación digitalizada en 90 días",
+      "category": "Transformación Digital",
+      "audience": "Socios fundadores, directores de despachos",
+      "keywords": [
+        "digitalización",
+        "roadmap",
+        "transformación",
+        "despacho",
+        "90 días"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 47,
+      "title": {
+        "es": "El coste de no digitalizar: pérdidas ocultas en despachos tradicionales",
+        "en": "The Cost of Not Digitalizing: Hidden Losses in Traditional Firms"
+      },
+      "description": "Cálculo del dinero que pierde un despacho por no digitalizar procesos clave",
+      "category": "Transformación Digital",
+      "audience": "Directores, CFOs, socios",
+      "keywords": [
+        "coste",
+        "pérdidas",
+        "digitalización",
+        "ROI",
+        "eficiencia"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 48,
+      "title": {
+        "es": "Change management en despachos de abogados: guía práctica",
+        "en": "Change Management in Law Firms: Practical Guide"
+      },
+      "description": "Cómo gestionar la resistencia al cambio cuando introduces tecnología en un equipo legal",
+      "category": "Transformación Digital",
+      "audience": "Directores de operaciones, RRHH",
+      "keywords": [
+        "change management",
+        "resistencia",
+        "adopción",
+        "tecnología",
+        "equipo"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 49,
+      "title": {
+        "es": "Cultura digital en el sector legal: más allá de las herramientas",
+        "en": "Digital Culture in the Legal Sector: Beyond Tools"
+      },
+      "description": "Por qué la cultura importa más que el software para la transformación digital exitosa",
+      "category": "Transformación Digital",
+      "audience": "Directores, líderes de equipo",
+      "keywords": [
+        "cultura digital",
+        "mindset",
+        "adopción",
+        "liderazgo"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 50,
+      "title": {
+        "es": "Métricas de madurez digital para despachos de abogados",
+        "en": "Digital Maturity Metrics for Law Firms"
+      },
+      "description": "Framework para evaluar qué tan digitalizado está tu despacho y dónde invertir",
+      "category": "Transformación Digital",
+      "audience": "CTOs, directores de estrategia",
+      "keywords": [
+        "métricas",
+        "madurez digital",
+        "evaluación",
+        "framework",
+        "KPIs"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 51,
+      "title": {
+        "es": "Despacho sin papel: mitos y realidades en 2026",
+        "en": "Paperless Law Firm: Myths and Realities in 2026"
+      },
+      "description": "Qué se puede y qué no en la eliminación total del papel en un despacho legal",
+      "category": "Transformación Digital",
+      "audience": "Abogados, legal ops",
+      "keywords": [
+        "sin papel",
+        "paperless",
+        "digitalización",
+        "documentos",
+        "eficiencia"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 52,
+      "title": {
+        "es": "Teletrabajo legal: regulación, herramientas y mejores prácticas",
+        "en": "Remote Work in Law: Regulation, Tools, and Best Practices"
+      },
+      "description": "Cómo estructurar el trabajo remoto en un despacho cumpliendo con la normativa y manteniendo la productividad",
+      "category": "Transformación Digital",
+      "audience": "RRHH, directores, abogados",
+      "keywords": [
+        "teletrabajo",
+        "remoto",
+        "regulación",
+        "productividad",
+        "herramientas"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 53,
+      "title": {
+        "es": "Firma electrónica cualificada: cuándo es obligatoria y cuándo no",
+        "en": "Qualified Electronic Signature: When It's Mandatory and When It's Not"
+      },
+      "description": "Guía práctica sobre los tipos de firma electrónica y su validez legal según eIDAS y normativa española",
+      "category": "Transformación Digital",
+      "audience": "Abogados, legal ops, compliance",
+      "keywords": [
+        "firma electrónica",
+        "eIDAS",
+        "cualificada",
+        "validez legal",
+        "digital"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 54,
+      "title": {
+        "es": "Archivo digital legal: conservación y acceso a largo plazo",
+        "en": "Digital Legal Archive: Long-Term Preservation and Access"
+      },
+      "description": "Cómo garantizar la conservación de documentos legales digitales durante décadas cumpliendo con la normativa",
+      "category": "Transformación Digital",
+      "audience": "Legal ops, compliance, archivistas",
+      "keywords": [
+        "archivo digital",
+        "conservación",
+        "acceso",
+        "normativa",
+        "largo plazo"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 55,
+      "title": {
+        "es": "Automatización de flujos de aprobación en despachos",
+        "en": "Automating Approval Workflows in Law Firms"
+      },
+      "description": "Sistemas de aprobación digital para contratos, facturas y decisiones internas",
+      "category": "Transformación Digital",
+      "audience": "Legal ops, directores",
+      "keywords": [
+        "aprobación",
+        "workflow",
+        "automatización",
+        "decisiones",
+        "interno"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 56,
+      "title": {
+        "es": "Extranet para clientes: mejorar la experiencia de comunicación",
+        "en": "Client Extranet: Improving Communication Experience"
+      },
+      "description": "Cómo una extranet dedicada mejora la relación cliente-despacho y reduce emails",
+      "category": "Transformación Digital",
+      "audience": "Directores de cuenta, marketing legal",
+      "keywords": [
+        "extranet",
+        "cliente",
+        "comunicación",
+        "experiencia",
+        "portal"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 57,
+      "title": {
+        "es": "Integración de sistemas legales: el problema de los silos de datos",
+        "en": "Legal System Integration: The Data Silo Problem"
+      },
+      "description": "Por qué CRM, ERP, documental y facturación deben hablar entre sí y cómo lograrlo",
+      "category": "Transformación Digital",
+      "audience": "CTOs, IT legal, directores",
+      "keywords": [
+        "integración",
+        "sistemas",
+        "silos",
+        "datos",
+        "CRM",
+        "ERP"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 58,
+      "title": {
+        "es": "KPIs digitales para despachos de abogados: qué medir y por qué",
+        "en": "Digital KPIs for Law Firms: What to Measure and Why"
+      },
+      "description": "Indicadores clave para evaluar la salud digital de un despacho y guiar la inversión",
+      "category": "Transformación Digital",
+      "audience": "Directores, CFOs, CTOs",
+      "keywords": [
+        "KPIs",
+        "métricas",
+        "digital",
+        "indicadores",
+        "medición"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 59,
+      "title": {
+        "es": "Formación tecnológica para abogados: cómo diseñar un programa efectivo",
+        "en": "Tech Training for Lawyers: How to Design an Effective Program"
+      },
+      "description": "Estrategias para formar a abogados en herramientas digitales sin perder productividad",
+      "category": "Transformación Digital",
+      "audience": "RRHH, directores de formación",
+      "keywords": [
+        "formación",
+        "capacitación",
+        "tecnología",
+        "abogados",
+        "programa"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 60,
+      "title": {
+        "es": "Seguridad digital en despachos: el eslabón más débil",
+        "en": "Digital Security in Law Firms: The Weakest Link"
+      },
+      "description": "Análisis de vulnerabilidades comunes y cómo proteger la información confidencial del cliente",
+      "category": "Transformación Digital",
+      "audience": "Compliance, seguridad, IT",
+      "keywords": [
+        "seguridad",
+        "ciberseguridad",
+        "vulnerabilidades",
+        "protección",
+        "confidencialidad"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 61,
+      "title": {
+        "es": "Migración de datos legales: de archivadores a la nube",
+        "en": "Legal Data Migration: From Filing Cabinets to the Cloud"
+      },
+      "description": "Proceso seguro para digitalizar y migrar años de documentación física a sistemas digitales",
+      "category": "Transformación Digital",
+      "audience": "Legal ops, IT, archivistas",
+      "keywords": [
+        "migración",
+        "digitalización",
+        "nube",
+        "documentos",
+        "archivo"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 62,
+      "title": {
+        "es": "Gestión documental inteligente: más allá del almacenamiento",
+        "en": "Intelligent Document Management: Beyond Storage"
+      },
+      "description": "Sistemas que no solo guardan documentos sino que extraen información, relacionan y alertan",
+      "category": "Transformación Digital",
+      "audience": "Legal ops, abogados",
+      "keywords": [
+        "gestión documental",
+        "DMS",
+        "inteligente",
+        "almacenamiento",
+        "metadatos"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 63,
+      "title": {
+        "es": "Experiencia digital del cliente legal: del primer contacto a la facturación",
+        "en": "Legal Client Digital Experience: From First Contact to Billing"
+      },
+      "description": "Cómo diseñar una experiencia 100% digital para el cliente desde la primera consulta hasta el pago",
+      "category": "Transformación Digital",
+      "audience": "Marketing, directores, CX",
+      "keywords": [
+        "experiencia cliente",
+        "CX",
+        "digital",
+        "onboarding",
+        "facturación"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 64,
+      "title": {
+        "es": "Despacho híbrido: equilibrio entre presencial y digital",
+        "en": "Hybrid Law Firm: Balancing In-Person and Digital"
+      },
+      "description": "Modelo de trabajo que combina lo mejor de la relación presencial con la eficiencia digital",
+      "category": "Transformación Digital",
+      "audience": "Socios, directores, RRHH",
+      "keywords": [
+        "híbrido",
+        "presencial",
+        "digital",
+        "modelo",
+        "equilibrio"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 65,
+      "title": {
+        "es": "Búsqueda semántica en documentos legales: encontrar lo que necesitas sin saber dónde está",
+        "en": "Semantic Search in Legal Documents: Finding What You Need"
+      },
+      "description": "Tecnología de búsqueda que entiende el significado, no solo las palabras clave",
+      "category": "Transformación Digital",
+      "audience": "Abogados, legal tech",
+      "keywords": [
+        "búsqueda semántica",
+        "NLP",
+        "documentos",
+        "inteligencia",
+        "búsqueda"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 66,
+      "title": {
+        "es": "Dashboards ejecutivos para despachos: visualizar la salud del negocio",
+        "en": "Executive Dashboards for Law Firms: Visualizing Business Health"
+      },
+      "description": "Paneles de control en tiempo real para facturación, carga de trabajo, plazos y rentabilidad",
+      "category": "Transformación Digital",
+      "audience": "Directores, socios, CFOs",
+      "keywords": [
+        "dashboard",
+        "executive",
+        "visualización",
+        "negocio",
+        "KPIs"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 67,
+      "title": {
+        "es": "Gestión de conflictos de intereses digitalizada",
+        "en": "Digitalized Conflict of Interest Management"
+      },
+      "description": "Sistemas automatizados para detectar y gestionar conflictos de intereses antes de aceptar un caso",
+      "category": "Transformación Digital",
+      "audience": "Compliance, abogados, RRHH",
+      "keywords": [
+        "conflictos",
+        "intereses",
+        "compliance",
+        "detección",
+        "automática"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 68,
+      "title": {
+        "es": "Onboarding digital de nuevos abogados: reducir de semanas a días",
+        "en": "Digital Lawyer Onboarding: Reducing Weeks to Days"
+      },
+      "description": "Proceso digital completo para integrar a nuevos abogados con accesos, formación y asignación automática",
+      "category": "Transformación Digital",
+      "audience": "RRHH, legal ops",
+      "keywords": [
+        "onboarding",
+        "nuevos",
+        "integración",
+        "digital",
+        "RRHH"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 69,
+      "title": {
+        "es": "Gestión de tiempo digital: de la estimación a la realidad",
+        "en": "Digital Time Management: From Estimation to Reality"
+      },
+      "description": "Cómo las herramientas digitales mejoran la precisión del registro de tiempo y la facturación",
+      "category": "Transformación Digital",
+      "audience": "Abogados, legal ops, contabilidad",
+      "keywords": [
+        "tiempo",
+        "registro",
+        "facturación",
+        "precisión",
+        "herramientas"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 70,
+      "title": {
+        "es": "Reuniones digitales efectivas: protocolos para despachos de abogados",
+        "en": "Effective Digital Meetings: Protocols for Law Firms"
+      },
+      "description": "Cómo estructurar reuniones virtuales con clientes y equipos internos para maximizar resultados",
+      "category": "Transformación Digital",
+      "audience": "Abogados, directores",
+      "keywords": [
+        "reuniones",
+        "virtuales",
+        "protocolos",
+        "efectividad",
+        "comunicación"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 71,
+      "title": {
+        "es": "Preservación digital de pruebas: cadena de custodia electrónica",
+        "en": "Digital Evidence Preservation: Electronic Chain of Custody"
+      },
+      "description": "Cómo garantizar la validez de pruebas digitales desde la recolección hasta el juicio",
+      "category": "Transformación Digital",
+      "audience": "Abogados litigantes, forenses",
+      "keywords": [
+        "pruebas digitales",
+        "custodia",
+        "validez",
+        "forense",
+        "litigio"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 72,
+      "title": {
+        "es": "Análisis predictivo de cartera de clientes: anticipar riesgos y oportunidades",
+        "en": "Predictive Client Portfolio Analysis: Anticipating Risks and Opportunities"
+      },
+      "description": "Uso de datos históricos para predecir churn, upsell y riesgos de cartera",
+      "category": "Transformación Digital",
+      "audience": "Directores, business development",
+      "keywords": [
+        "predictivo",
+        "cartera",
+        "clientes",
+        "riesgos",
+        "oportunidades"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 73,
+      "title": {
+        "es": "Despacho inteligente: IoT y automatización del espacio físico",
+        "en": "Smart Law Firm: IoT and Physical Space Automation"
+      },
+      "description": "Cómo sensores y automatización mejoran la eficiencia del espacio de trabajo legal",
+      "category": "Transformación Digital",
+      "audience": "Facilities, directores",
+      "keywords": [
+        "IoT",
+        "inteligente",
+        "espacio",
+        "automatización",
+        "eficiencia"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 74,
+      "title": {
+        "es": "Sostenibilidad digital: reducir la huella de carbono del despacho",
+        "en": "Digital Sustainability: Reducing Your Firm's Carbon Footprint"
+      },
+      "description": "Cómo la digitalización ayuda a cumplir objetivos ESG y reducir impacto ambiental",
+      "category": "Transformación Digital",
+      "audience": "Directores, compliance, RSC",
+      "keywords": [
+        "sostenibilidad",
+        "ESG",
+        "carbono",
+        "medio ambiente",
+        "digital"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 75,
+      "title": {
+        "es": "Gestión de conocimiento legal: de la cabeza del abogado al sistema",
+        "en": "Legal Knowledge Management: From Lawyer's Head to System"
+      },
+      "description": "Capturar y estructurar el conocimiento tácito para que no se pierda cuando el abogado se va",
+      "category": "Transformación Digital",
+      "audience": "Directores, knowledge management",
+      "keywords": [
+        "conocimiento",
+        "tácito",
+        "gestión",
+        "captura",
+        "sistema"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 76,
+      "title": {
+        "es": "Software a medida vs. SaaS legal: cuándo merece la pena desarrollar",
+        "en": "Custom Software vs. Legal SaaS: When Development Pays Off"
+      },
+      "description": "Análisis de coste-beneficio para decidir entre comprar software existente o construir uno propio",
+      "category": "Software a Medida",
+      "audience": "CTOs, directores, fundadores",
+      "keywords": [
+        "software a medida",
+        "SaaS",
+        "coste-beneficio",
+        "desarrollo",
+        "decisión"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 77,
+      "title": {
+        "es": "El proceso de desarrollo de software legal: de la idea al MVP en 12 semanas",
+        "en": "Legal Software Development: From Idea to MVP in 12 Weeks"
+      },
+      "description": "Roadmap completo para desarrollar un producto legal tech desde cero",
+      "category": "Software a Medida",
+      "audience": "Emprendedores legal tech, CTOs",
+      "keywords": [
+        "MVP",
+        "desarrollo",
+        "roadmap",
+        "producto",
+        "12 semanas"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 78,
+      "title": {
+        "es": "Arquitectura de software para cumplimiento legal: GDPR by design",
+        "en": "Legal Compliance Software Architecture: GDPR by Design"
+      },
+      "description": "Cómo diseñar sistemas que cumplen regulación desde la arquitectura, no como parche",
+      "category": "Software a Medida",
+      "audience": "Arquitectos, CTOs, compliance",
+      "keywords": [
+        "arquitectura",
+        "GDPR",
+        "compliance",
+        "diseño",
+        "by design"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 79,
+      "title": {
+        "es": "Testing de software legal: garantizar que no se cae en el juicio",
+        "en": "Legal Software Testing: Ensuring It Doesn't Fail in Court"
+      },
+      "description": "Metodologías de testing riguroso para software que maneja datos críticos y procesos legales",
+      "category": "Software a Medida",
+      "audience": "QA, desarrolladores, CTOs",
+      "keywords": [
+        "testing",
+        "QA",
+        "software legal",
+        "garantía",
+        "calidad"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 80,
+      "title": {
+        "es": "Mantenimiento evolutivo de software legal: más allá de los bugs",
+        "en": "Evolutive Maintenance of Legal Software: Beyond Bugs"
+      },
+      "description": "Cómo mantener software legal actualizado con normativa cambiante y nuevas necesidades",
+      "category": "Software a Medida",
+      "audience": "CTOs, product owners",
+      "keywords": [
+        "mantenimiento",
+        "evolutivo",
+        "actualización",
+        "normativa",
+        "software"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 81,
+      "title": {
+        "es": "Seguridad en desarrollo de software legal: DevSecOps aplicado",
+        "en": "Security in Legal Software Development: Applied DevSecOps"
+      },
+      "description": "Integración de seguridad en cada fase del desarrollo de software para el sector legal",
+      "category": "Software a Medida",
+      "audience": "CTOs, seguridad, desarrolladores",
+      "keywords": [
+        "DevSecOps",
+        "seguridad",
+        "desarrollo",
+        "software legal",
+        "integración"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 82,
+      "title": {
+        "es": "Integración de IA en software legal: casos de éxito reales",
+        "en": "AI Integration in Legal Software: Real Success Cases"
+      },
+      "description": "Ejemplos concretos de cómo integrar IA en productos legal tech con resultados medibles",
+      "category": "Software a Medida",
+      "audience": "CTOs, product managers, desarrolladores",
+      "keywords": [
+        "IA",
+        "integración",
+        "software legal",
+        "casos",
+        "éxito"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 83,
+      "title": {
+        "es": "Escalabilidad de software legal: de 10 a 10.000 usuarios",
+        "en": "Legal Software Scalability: From 10 to 10,000 Users"
+      },
+      "description": "Arquitectura y decisiones técnicas para escalar productos legal tech sin fricción",
+      "category": "Software a Medida",
+      "audience": "Arquitectos, CTOs, DevOps",
+      "keywords": [
+        "escalabilidad",
+        "arquitectura",
+        "usuarios",
+        "rendimiento",
+        "cloud"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 84,
+      "title": {
+        "es": "UX/UI para software legal: diseñar para abogados, no para ingenieros",
+        "en": "UX/UI for Legal Software: Designing for Lawyers, Not Engineers"
+      },
+      "description": "Principios de diseño que hacen que los abogados realmente usen el software que construyes",
+      "category": "Software a Medida",
+      "audience": "UX designers, product managers",
+      "keywords": [
+        "UX",
+        "UI",
+        "diseño",
+        "abogados",
+        "usabilidad"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 85,
+      "title": {
+        "es": "Microservicios vs. monolitos en software legal: qué elegir y cuándo",
+        "en": "Microservices vs. Monoliths in Legal Software: What to Choose and When"
+      },
+      "description": "Comparativa de arquitecturas para productos legal tech según etapa y complejidad",
+      "category": "Software a Medida",
+      "audience": "Arquitectos, CTOs",
+      "keywords": [
+        "microservicios",
+        "monolito",
+        "arquitectura",
+        "software legal",
+        "decisión"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 86,
+      "title": {
+        "es": "Base de datos jurídica: diseñar para búsqueda, no solo almacenamiento",
+        "en": "Legal Database: Designing for Search, Not Just Storage"
+      },
+      "description": "Cómo estructurar bases de datos que permiten búsqueda semántica y relacional en documentos legales",
+      "category": "Software a Medida",
+      "audience": "Arquitectos, desarrolladores, data engineers",
+      "keywords": [
+        "base de datos",
+        "jurídica",
+        "búsqueda",
+        "semántica",
+        "almacenamiento"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 87,
+      "title": {
+        "es": "APIs de normativa: acceso programático a leyes y jurisprudencia",
+        "en": "Regulation APIs: Programmatic Access to Laws and Jurisprudence"
+      },
+      "description": "Cómo construir APIs que exponen normativa actualizada para consumo de otros sistemas",
+      "category": "Software a Medida",
+      "audience": "Desarrolladores, arquitectos, legal tech",
+      "keywords": [
+        "APIs",
+        "normativa",
+        "jurisprudencia",
+        "acceso",
+        "programático"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 88,
+      "title": {
+        "es": "Software legal multi-jurisdicción: gestionar la complejidad internacional",
+        "en": "Multi-Jurisdiction Legal Software: Managing International Complexity"
+      },
+      "description": "Cómo diseñar software que funciona en múltiples jurisdicciones con normativas diferentes",
+      "category": "Software a Medida",
+      "audience": "CTOs, arquitectos, internacional",
+      "keywords": [
+        "multi-jurisdicción",
+        "internacional",
+        "software legal",
+        "complejidad",
+        "normativa"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 89,
+      "title": {
+        "es": "Gestión de versiones de documentos: control de cambios legal",
+        "en": "Document Version Management: Legal Change Control"
+      },
+      "description": "Sistemas que rastrean cada cambio en documentos legales con autor, fecha y motivo",
+      "category": "Software a Medida",
+      "audience": "Desarrolladores, legal ops",
+      "keywords": [
+        "versiones",
+        "documentos",
+        "control",
+        "cambios",
+        "auditoría"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 90,
+      "title": {
+        "es": "Autenticación y autorización en software legal: quién puede qué",
+        "en": "Authentication and Authorization in Legal Software: Who Can Do What"
+      },
+      "description": "Diseño de permisos granulares para software que maneja información confidencial por naturaleza",
+      "category": "Software a Medida",
+      "audience": "CTOs, seguridad, desarrolladores",
+      "keywords": [
+        "autenticación",
+        "autorización",
+        "permisos",
+        "seguridad",
+        "software legal"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 91,
+      "title": {
+        "es": "Logs de auditoría: trazabilidad completa en software legal",
+        "en": "Audit Logs: Complete Traceability in Legal Software"
+      },
+      "description": "Cómo implementar registros que satisfacen requisitos legales y de compliance",
+      "category": "Software a Medida",
+      "audience": "Desarrolladores, compliance, seguridad",
+      "keywords": [
+        "logs",
+        "auditoría",
+        "trazabilidad",
+        "compliance",
+        "registros"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 92,
+      "title": {
+        "es": "Backup y recuperación de desastres en sistemas legales",
+        "en": "Backup and Disaster Recovery in Legal Systems"
+      },
+      "description": "Estrategias para garantizar que los datos legales nunca se pierdan y se recuperen rápido",
+      "category": "Software a Medida",
+      "audience": "CTOs, DevOps, seguridad",
+      "keywords": [
+        "backup",
+        "recuperación",
+        "desastres",
+        "DR",
+        "datos legales"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 93,
+      "title": {
+        "es": "Módulos de software legal: arquitectura plugin para especializaciones",
+        "en": "Legal Software Modules: Plugin Architecture for Specializations"
+      },
+      "description": "Cómo diseñar software base que se adapta a laboral, mercantil, penal o fiscal mediante módulos",
+      "category": "Software a Medida",
+      "audience": "Arquitectos, CTOs, product managers",
+      "keywords": [
+        "módulos",
+        "plugins",
+        "arquitectura",
+        "especialización",
+        "software legal"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 94,
+      "title": {
+        "es": "Integración con firmas electrónicas: DocuSign, Signaturit y alternativas",
+        "en": "E-Signature Integration: DocuSign, Signaturit, and Alternatives"
+      },
+      "description": "Cómo integrar servicios de firma electrónica en tu software legal de forma robusta",
+      "category": "Software a Medida",
+      "audience": "Desarrolladores, integradores, CTOs",
+      "keywords": [
+        "firma electrónica",
+        "integración",
+        "DocuSign",
+        "API",
+        "software"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 95,
+      "title": {
+        "es": "Notificaciones legales automatizadas: plazos, alertas y escalados",
+        "en": "Automated Legal Notifications: Deadlines, Alerts, and Escalations"
+      },
+      "description": "Sistema de notificaciones inteligente que gestiona plazos legales con múltiples niveles de alerta",
+      "category": "Software a Medida",
+      "audience": "Desarrolladores, product managers",
+      "keywords": [
+        "notificaciones",
+        "plazos",
+        "alertas",
+        "escalado",
+        "automatizado"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 96,
+      "title": {
+        "es": "Reporting avanzado para despachos: de datos a decisiones",
+        "en": "Advanced Reporting for Law Firms: From Data to Decisions"
+      },
+      "description": "Módulos de reporting que transforman datos operativos en insights accionables para la dirección",
+      "category": "Software a Medida",
+      "audience": "Directores, product managers, desarrolladores",
+      "keywords": [
+        "reporting",
+        "datos",
+        "decisiones",
+        "insights",
+        "software"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 97,
+      "title": {
+        "es": "Migración de legacy: modernizar software legal antiguo",
+        "en": "Legacy Migration: Modernizing Old Legal Software"
+      },
+      "description": "Estrategias para reemplazar sistemas legales obsoletos sin interrumpir la operación del despacho",
+      "category": "Software a Medida",
+      "audience": "CTOs, arquitectos, migradores",
+      "keywords": [
+        "legacy",
+        "migración",
+        "modernización",
+        "software antiguo",
+        "reemplazo"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 98,
+      "title": {
+        "es": "Software legal white-label: vender tu producto bajo otra marca",
+        "en": "White-Label Legal Software: Selling Your Product Under Another Brand"
+      },
+      "description": "Cómo preparar tu software legal tech para que otros despachos lo comercialicen como propio",
+      "category": "Software a Medida",
+      "audience": "Fundadores, business development",
+      "keywords": [
+        "white-label",
+        "marca blanca",
+        "comercialización",
+        "producto",
+        "software legal"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 99,
+      "title": {
+        "es": "CI/CD para software legal: deploys rápidos sin romper nada",
+        "en": "CI/CD for Legal Software: Fast Deploys Without Breaking Anything"
+      },
+      "description": "Pipeline de integración y entrega continua que permite iterar rápido en productos legales",
+      "category": "Software a Medida",
+      "audience": "DevOps, desarrolladores, CTOs",
+      "keywords": [
+        "CI/CD",
+        "pipeline",
+        "deploy",
+        "integración",
+        "entrega continua"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 100,
+      "title": {
+        "es": "Monitorización de software legal: detectar problemas antes del cliente",
+        "en": "Legal Software Monitoring: Detecting Issues Before the Client Does"
+      },
+      "description": "Herramientas y prácticas para monitorizar la salud de aplicaciones legales en producción",
+      "category": "Software a Medida",
+      "audience": "DevOps, desarrolladores, CTOs",
+      "keywords": [
+        "monitorización",
+        "producción",
+        "salud",
+        "detección",
+        "software legal"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 101,
+      "title": {
+        "es": "Documentación técnica de software legal: escribir para el futuro",
+        "en": "Legal Software Technical Documentation: Writing for the Future"
+      },
+      "description": "Por qué la documentación es crítica en software legal y cómo mantenerla actualizada",
+      "category": "Software a Medida",
+      "audience": "Desarrolladores, tech writers, CTOs",
+      "keywords": [
+        "documentación",
+        "técnica",
+        "software legal",
+        "mantenimiento",
+        "futuro"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 102,
+      "title": {
+        "es": "Costes ocultos del desarrollo de software legal: lo que nadie te cuenta",
+        "en": "Hidden Costs of Legal Software Development: What Nobody Tells You"
+      },
+      "description": "Factores que encarecen el desarrollo de software legal más allá de las horas de programación",
+      "category": "Software a Medida",
+      "audience": "CTOs, fundadores, directores",
+      "keywords": [
+        "costes",
+        "ocultos",
+        "desarrollo",
+        "software legal",
+        "presupuesto"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 103,
+      "title": {
+        "es": "Open source en software legal: cuándo usarlo y cuándo no",
+        "en": "Open Source in Legal Software: When to Use It and When Not"
+      },
+      "description": "Análisis de componentes open source útiles para legal tech y sus riesgos de compliance",
+      "category": "Software a Medida",
+      "audience": "CTOs, desarrolladores, compliance",
+      "keywords": [
+        "open source",
+        "software legal",
+        "compliance",
+        "riesgos",
+        "licencias"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 104,
+      "title": {
+        "es": "Blockchain en software legal: más allá de los smart contracts",
+        "en": "Blockchain in Legal Software: Beyond Smart Contracts"
+      },
+      "description": "Aplicaciones reales de blockchain para pruebas, timestamps y registro inmutable en software legal",
+      "category": "Software a Medida",
+      "audience": "CTOs, desarrolladores, innovación",
+      "keywords": [
+        "blockchain",
+        "smart contracts",
+        "pruebas",
+        "timestamp",
+        "inmutable"
+      ],
+      "status": "pending",
+      "publishedDate": null
+    },
+    {
+      "id": 105,
+      "title": {
+        "es": "Accesibilidad en software legal: cumplir WCAG para todos los usuarios",
+        "en": "Accessibility in Legal Software: Meeting WCAG for All Users"
+      },
+      "description": "Cómo diseñar software legal usable por personas con discapacidad cumpliendo normativa",
+      "category": "Software a Medida",
+      "audience": "UX, desarrolladores, compliance",
+      "keywords": [
+        "accesibilidad",
+        "WCAG",
+        "discapacidad",
+        "software legal",
+        "normativa"
+      ],
+      "status": "pending",
+      "publishedDate": null
     }
   ]
 }
