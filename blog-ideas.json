@@ -2230,6 +2230,29 @@
       ],
       "status": "pending",
       "publishedDate": null
+    },
+    {
+      "id": 106,
+      "title": {
+        "es": "AI Act: Guía de última hora para el cumplimiento de sistemas de IA de alto riesgo (agosto 2026)",
+        "en": "AI Act: Last-Minute Guide to High-Risk AI Systems Compliance (August 2026)"
+      },
+      "description": "A dos meses del plazo de agosto 2026, guía práctica para despachos y empresas que deben cumplir con las obligaciones del AI Act para sistemas de IA de alto riesgo",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "AI Act",
+        "sistemas de alto riesgo",
+        "cumplimiento",
+        "agosto 2026",
+        "plazo"
+      ],
+      "status": "published",
+      "publishedDate": "2026-06-08",
+      "files": [
+        "ai-act-alto-riesgo-plazo-agosto-2026.mdx",
+        "ai-act-high-risk-compliance-august-2026.mdx"
+      ]
     }
   ]
 }
