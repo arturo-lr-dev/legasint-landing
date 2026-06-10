@@ -1145,8 +1145,12 @@
         "tecnología",
         "equipo"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-10",
+      "files": [
+        "change-management-despachos-abogados-guia-practica.mdx",
+        "change-management-law-firms-practical-guide.mdx"
+      ]
     },
     {
       "id": 49,
