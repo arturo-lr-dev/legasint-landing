@@ -81,6 +81,37 @@
   }
 }
 
+/* Accessibility: animated elements start at inline opacity 0 and rely on
+   keyframes to become visible — without animation they must be forced visible */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeInUp,
+  .animate-fadeIn,
+  .animate-bounce-gentle,
+  .animate-slideInLeft {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 /* Blog grain texture overlay */
 .blog-grain::before {
   content: '';

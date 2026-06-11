@@ -1,42 +1,47 @@
 'use client';
 import { fadeInUp } from '@/lib/animations';
 import { trackEvent, GA_EVENTS } from '@/lib/analytics';
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
 
 const AnimatedLanding = () => {
   const letters = "Legasint".split("");
   const tagline = "Your Vision, Our Technology".split(" ");
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const mainRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  // Hero exit choreography: content drifts up and fades as it scrolls away
+  const { scrollYProgress } = useScroll({
+    target: mainRef,
+    offset: ['start start', 'end start'],
+  });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
     <main
-      className="h-[100dvh] w-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center bg-center bg-no-repeat"
-      style={{
-        background: isMobile
-          ? 'radial-gradient(circle at 50% 40%, #581c87 0%, #1e3a8a 100%)'
-          : 'conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)',
-        backgroundImage: isMobile
-          ? `url("/bg-mobile.svg"), radial-gradient(circle at 50% 40%, #581c87 0%, #1e3a8a 100%)`
-          : `url("/bg.svg"), conic-gradient(from 90deg at calc(50% - 95px) calc(50% + 30px), #1e3a8a, #581c87)`,
-        backgroundBlendMode: 'overlay',
-        backgroundSize: isMobile ? 'cover' : 'auto',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      ref={mainRef}
+      className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden"
     >
-      <div className="text-center">
+      {/* Texture layer blending against the page-wide gradient underneath */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url("${isMobile ? '/bg-mobile.svg' : '/bg.svg'}")`,
+          backgroundSize: isMobile ? 'cover' : 'auto',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          mixBlendMode: 'overlay',
+        }}
+        aria-hidden="true"
+      />
+      <motion.div
+        className="relative z-10 text-center"
+        style={prefersReducedMotion ? undefined : { y: contentY, opacity: contentOpacity }}
+      >
         <h1 className="sr-only">Legasint - Your Vision, Our Technology</h1>
 
         {/* Logo / Company Name */}
@@ -208,7 +213,20 @@ const AnimatedLanding = () => {
             </span>
           </a>
         </div>
-      </div>
+      </motion.div>
+
+      {/* Scroll cue */}
+      <motion.div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+        style={prefersReducedMotion ? undefined : { opacity: cueOpacity }}
+        aria-hidden="true"
+      >
+        <div className="animate-bounce-gentle text-blue-300">
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </motion.div>
 
       {/* Technology Stack - Hidden visually but good for SEO */}
       <div className="sr-only">
