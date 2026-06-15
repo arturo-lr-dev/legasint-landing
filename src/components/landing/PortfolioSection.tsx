@@ -1,12 +1,10 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-
-interface AnimatedElementProps {
-  children: React.ReactNode;
-  delay?: number;
-  index?: number;
-}
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Reveal from './Reveal';
+import TiltCard from './TiltCard';
+import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
 
 interface Project {
   title: string;
@@ -16,73 +14,17 @@ interface Project {
   tags: string[];
 }
 
-const AnimatedElement: React.FC<AnimatedElementProps> = ({ children, delay = 0, index = 0 }) => {
-  const elementRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '50px',
-      }
-    );
-
-    const element = elementRef.current;
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
-  }, []);
-
-  const getMobileAnimation = () => {
-    // Alternate between left and right animations for mobile
-    const isEven = index % 2 === 0;
-    return isEven
-      ? 'translate-x-[-20px] opacity-0'
-      : 'translate-x-[20px] opacity-0';
-  };
-
-  return (
-    <div
-      ref={elementRef}
-      className={`transform transition-all duration-700 ${
-        isVisible
-          ? 'translate-x-0 translate-y-0 opacity-100'
-          : isMobile
-          ? getMobileAnimation()
-          : 'translate-y-20 opacity-0'
-      }`}
-      style={{ transitionDelay: isVisible ? `${delay}ms` : '0ms' }}
-    >
-      {children}
-    </div>
-  );
-};
-
 const PortfolioSection: React.FC = () => {
   const [mounted, setMounted] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const isMobile = useIsMobile();
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%']);
 
   const projects: Project[] = [
     {
@@ -131,100 +73,101 @@ const PortfolioSection: React.FC = () => {
 
   useEffect(() => {
     setMounted(true);
-
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  if (!mounted) return null;
 
   return (
     <div
-      className="w-full py-20 -mt-1 overflow-hidden"
-      style={{
-        backgroundImage: `url("${isMobile ? '/circuit-mobile.svg' : '/circuit.svg'}"), linear-gradient(to bottom left, #1e3a8a, #581c87)`,
-        backgroundBlendMode: 'overlay',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      ref={sectionRef}
+      className="relative w-full py-20 -mt-1 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-4 w-full">
+      {/* Parallax background texture (gated on mounted to avoid a
+          desktop/mobile SVG flash before the breakpoint is known) */}
+      {mounted && (
+        <motion.div
+          className="absolute inset-x-0 -inset-y-[10%]"
+          style={{
+            y: prefersReducedMotion ? 0 : parallaxY,
+            backgroundImage: `url("${isMobile ? '/circuit-mobile.svg' : '/circuit.svg'}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            mixBlendMode: 'overlay',
+          }}
+          aria-hidden="true"
+        />
+      )}
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
         {/* Section Title */}
-        <AnimatedElement>
+        <Reveal>
           <div className="text-center mb-16">
             <h2 className="font-mono text-2xl font-bold text-white mb-4">
              {"// "} Our Projects
             </h2>
-            {false && <div className="h-1 w-32 bg-blue-400 mx-auto rounded-full animate-pulse" />}
           </div>
-        </AnimatedElement>
+        </Reveal>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <AnimatedElement key={index} delay={index * 200} index={index}>
-              <a 
-                href={project.projectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block h-full"
-              >
-                <div className="relative group bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden hover:bg-white/20 transition-all duration-300 h-full">
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Project Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      fill
-                      className="object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  
-                  {/* Project Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-blue-200 mb-4">
-                      {project.description}
-                    </p>
-                    
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag, tagIndex) => (
-                        <span 
-                          key={tagIndex}
-                          className="px-3 py-1 text-sm bg-blue-500/20 text-blue-200 rounded"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+            <Reveal key={index} delay={index * 200} index={index} className="h-full">
+              <TiltCard>
+                <a
+                  href={project.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-full"
+                >
+                  <div className="relative group bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden hover:bg-white/20 transition-all duration-300 h-full">
+                    {/* Hover glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Project Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={project.imageUrl}
+                        alt={project.title}
+                        fill
+                        className="object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+
+                    {/* Project Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-white mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-blue-200 mb-4">
+                        {project.description}
+                      </p>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="px-3 py-1 text-sm bg-blue-500/20 text-blue-200 rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </a>
-            </AnimatedElement>
+                </a>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
 
         {/* Call to Action */}
-        <AnimatedElement delay={projects.length * 200}>
+        <Reveal delay={projects.length * 200}>
           <div className="text-center mt-16">
             <p className="font-mono text-xl text-blue-200 mb-8">
               Explore our portfolio of innovative solutions
             </p>
           </div>
-        </AnimatedElement>
+        </Reveal>
       </div>
     </div>
   );

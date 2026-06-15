@@ -18,7 +18,7 @@ const headingStyles: Record<number, string> = {
 };
 
 export const MDXHeading: React.FC<MDXHeadingProps> = ({ level, children, id, ...props }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   const baseStyles = 'text-white scroll-mt-20';
   const levelStyles = headingStyles[level];
 
