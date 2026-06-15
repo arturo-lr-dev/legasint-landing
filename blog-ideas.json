@@ -1167,8 +1167,12 @@
         "adopción",
         "liderazgo"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-15",
+      "files": [
+        "cultura-digital-sector-legal-mas-alla-herramientas.mdx",
+        "digital-culture-legal-sector-beyond-tools.mdx"
+      ]
     },
     {
       "id": 50,
