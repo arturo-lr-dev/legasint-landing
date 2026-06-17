@@ -1107,28 +1107,19 @@
         "despacho",
         "90 días"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-16",
+      "files": [
+        "digitalizacion-despacho-roadmap-90-dias.mdx",
+        "law-firm-digitalization-90-day-roadmap.mdx"
+      ]
     },
-    {
-      "id": 47,
-      "title": {
-        "es": "El coste de no digitalizar: pérdidas ocultas en despachos tradicionales",
-        "en": "The Cost of Not Digitalizing: Hidden Losses in Traditional Firms"
-      },
-      "description": "Cálculo del dinero que pierde un despacho por no digitalizar procesos clave",
-      "category": "Transformación Digital",
-      "audience": "Directores, CFOs, socios",
-      "keywords": [
-        "coste",
-        "pérdidas",
-        "digitalización",
-        "ROI",
-        "eficiencia"
+      "status": "published",
+      "publishedDate": "2026-06-17",
+      "files": [
+        "coste-no-digitalizar-perdidas-ocultas-despachos-tradicionales.mdx",
+        "cost-not-digitalizing-hidden-losses-traditional-law-firms.mdx"
       ],
-      "status": "pending",
-      "publishedDate": null
-    },
     {
       "id": 48,
       "title": {
