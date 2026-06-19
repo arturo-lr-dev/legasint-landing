@@ -1221,8 +1221,12 @@
         "documentos",
         "eficiencia"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-19",
+      "files": [
+        "despacho-sin-papel-mitos-realidades-2026.mdx",
+        "paperless-law-firm-myths-realities-2026.mdx"
+      ]
     },
     {
       "id": 52,
