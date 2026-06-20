@@ -1244,8 +1244,12 @@
         "productividad",
         "herramientas"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-20",
+      "files": [
+        "teletrabajo-legal-regulacion-herramientas-mejores-practicas.mdx",
+        "remote-work-law-regulation-tools-best-practices.mdx"
+      ]
     },
     {
       "id": 53,
