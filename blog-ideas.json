@@ -1267,8 +1267,12 @@
         "validez legal",
         "digital"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-21",
+      "files": [
+        "firma-electronica-cualificada-obligatoria.mdx",
+        "qualified-electronic-signature-mandatory.mdx"
+      ]
     },
     {
       "id": 54,
