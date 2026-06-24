@@ -1290,8 +1290,12 @@
         "normativa",
         "largo plazo"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-24",
+      "files": [
+        "archivo-digital-legal-conservacion-acceso-largo-plazo.mdx",
+        "digital-legal-archive-long-term-preservation-access.mdx"
+      ]
     },
     {
       "id": 55,
