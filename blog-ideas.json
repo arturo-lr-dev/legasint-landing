@@ -1313,8 +1313,12 @@
         "decisiones",
         "interno"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-25",
+      "files": [
+        "automatizacion-flujos-aprobacion-despachos.mdx",
+        "automating-approval-workflows-law-firms.mdx"
+      ]
     },
     {
       "id": 56,
@@ -1332,8 +1336,12 @@
         "experiencia",
         "portal"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-26",
+      "files": [
+        "extranet-clientes-mejora-experiencia-comunicacion.mdx",
+        "client-extranet-improving-communication-experience.mdx"
+      ]
     },
     {
       "id": 57,
