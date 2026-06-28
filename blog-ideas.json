@@ -1360,8 +1360,12 @@
         "CRM",
         "ERP"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-28",
+      "files": [
+        "integracion-sistemas-legales-silos-datos.mdx",
+        "legal-system-integration-data-silos.mdx"
+      ]
     },
     {
       "id": 58,
