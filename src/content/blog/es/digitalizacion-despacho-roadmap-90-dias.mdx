@@ -1,0 +1,252 @@
+---
+title: "Digitalización del despacho: el roadmap de 90 días"
+date: "2026-06-16"
+description: "Plan paso a paso para transformar un despacho tradicional en una operación digitalizada en 90 días. Fases, herramientas y métricas de éxito."
+tags: ["digitalización", "roadmap", "transformación", "despacho", "90 días", "legal tech"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Digitalizacion+90+Dias"
+---
+
+## Introducción
+
+La transformación digital no es un proyecto de IT: es un cambio de modelo de negocio. Y como todo cambio estructural, necesita un plan claro, fases definidas y métricas que permitan saber si vas por buen camino.
+
+En este artículo presentamos un **roadmap práctico de 90 días** para digitalizar un despacho de abogados. No es teoría: son las fases que hemos implementado con decenas de despachos, desde boutiques de 5 abogados hasta firmas internacionales.
+
+El objetivo no es que uses más herramientas. Es que trabajes mejor, factures más y duermas tranquilo.
+
+---
+
+## Fase 1: Diagnóstico y priorización (Días 1-14)
+
+### Auditoría digital rápida
+
+Antes de comprar software, entiende dónde estás. Evalúa estos 5 pilares:
+
+| Pilar | Pregunta clave | Riesgo si falla |
+|-------|---------------|-----------------|
+| **Documental** | ¿Dónde guardáis los expedientes? | Pérdida de información, incumplimiento LOPD |
+| **Comunicación** | ¿Cómo comunicáis con clientes? | Mala experiencia, pérdida de clientes |
+| **Procesos** | ¿Qué tareas se repiten semanalmente? | Horas perdidas, errores humanos |
+| **Facturación** | ¿Cuánto tardáis en emitir una factura? | Cash flow deteriorado |
+| **Seguridad** | ¿Tenéis 2FA, backup, cifrado? | Sanciones GDPR, pérdida de reputación |
+
+### Entrevistas con el equipo
+
+No digitalices por encima de tu equipo. Habla con:
+- **Socios**: ¿Qué les quita sueño?
+- **Abogados**: ¿Qué tareas odian?
+- **Administración**: ¿Dónde se atascan los procesos?
+
+### Quick wins identificados
+
+En esta fase debes salir con:
+1. **Mapa de dolor**: las 3 mayores fuentes de ineficiencia
+2. **Presupuesto aproximado**: inversión necesaria por fase
+3. **Quick wins**: 2-3 cambios que puedes hacer esta semana
+
+> 💡 **Tip**: No intentes digitalizar todo a la vez. El 80% del beneficio viene del 20% de los procesos.
+
+---
+
+## Fase 2: Infraestructura base (Días 15-35)
+
+### El stack mínimo viable
+
+No necesitas 20 herramientas. Necesitas 5 bien elegidas:
+
+```
+📁 Gestión documental: SharePoint / Google Workspace / Nextcloud
+💬 Comunicación: Teams / Slack (con canales por cliente)
+📋 Gestión de tareas: Notion / ClickUp / Trello
+💰 Facturación: Holded / Quipu / Software específico legal
+🔐 Seguridad: 2FA obligatorio + backup automático + VPN
+```
+
+### Migración de datos
+
+**Regla de oro**: no migres todo. Migra:
+- Expedientes activos (últimos 2 años)
+- Plantillas de contratos
+- Base de datos de clientes
+
+El resto, archívalo digitalmente con OCR y búsqueda por metadatos.
+
+### Configuración de seguridad
+
+Esta es la fase más aburrida y la más importante:
+
+- [ ] **2FA** en todas las cuentas (sin excepciones)
+- [ ] **Backup automático** diario + mensual en ubicación separada
+- [ ] **Cifrado** de discos y comunicaciones
+- [ ] **Política de contraseñas** con gestor (1Password, Bitwarden)
+- [ ] **VPN** para acceso remoto
+- [ ] **Inventario de datos**: qué tenéis, dónde está, quién accede
+
+---
+
+## Fase 3: Automatización de procesos core (Días 36-60)
+
+### Los 3 procesos que más tiempo roban
+
+Según nuestros datos, estos son los procesos que más horas consumen en despachos tradicionales:
+
+#### 1. Onboarding de clientes
+
+**Antes**: Email → Formulario PDF → Firma → Escaneo → Archivo
+**Después**: Formulario online → Firma electrónica → CRM auto → Carpeta auto
+
+**Herramientas**: Typeform/JotForm + Signaturit/DocuSign + Zapier/n8n
+
+#### 2. Seguimiento de plazos
+
+**Antes**: Excel + calendario + memoria
+**Después**: Sistema de gestión con alertas automáticas
+
+**Herramientas**: Clio/MyCase/Lexnet (según jurisdicción) o calendario compartido con automatizaciones
+
+#### 3. Generación de documentos
+
+**Antes**: Copiar y pegar de Word, buscar y reemplazar
+**Después**: Plantillas con campos dinámicos
+
+**Herramientas**: Documate / Woodpecker / Automatización con Google Docs + Apps Script
+
+### Métricas de esta fase
+
+| Métrica | Antes | Objetivo 60 días |
+|---------|-------|-----------------|
+| Tiempo onboarding cliente | 2-3 días | < 2 horas |
+| Tiempo generación contrato estándar | 4 horas | < 30 minutos |
+| Plazos perdidos por año | > 5 | 0 |
+| Facturas emitidas > 30 días | > 30% | < 10% |
+
+---
+
+## Fase 4: Experiencia del cliente (Días 61-80)
+
+### Portal del cliente
+
+Los clientes de 2026 esperan lo mismo que de su banco: acceso online, transparencia y autoservicio.
+
+**Mínimo viable**:
+- Estado del expediente en tiempo real
+- Documentos compartidos (seguros)
+- Comunicación centralizada (no 50 emails)
+- Facturas y pagos online
+
+**Herramientas**: Portal del propio software de gestión, o extranet con Notion/SharePoint
+
+### Comunicación proactiva
+
+No esperes a que el cliente pregunte. Automatiza:
+- Confirmación de recepción de documentos
+- Actualizaciones semanales del estado
+- Alertas de plazos próximos
+- Recordatorios de pago amables
+
+### Feedback loop
+
+Implementa una encuesta NPS automática al cerrar cada expediente. El dato más valioso no está en las horas facturadas: está en la satisfacción del cliente.
+
+---
+
+## Fase 5: Optimización y escalado (Días 81-90)
+
+### Revisión de métricas
+
+Al día 90, debes tener claro:
+
+```markdown
+📊 Tiempo ahorrado por semana (objetivo: > 10h/abogado)
+📊 Clientes atendidos con mismo equipo (objetivo: +30%)
+📊 Satisfacción del cliente (NPS objetivo: > 50)
+📊 Tiempo de cobro medio (objetivo: < 30 días)
+📊 Errores operativos (objetivo: -50%)
+```
+
+### Documentación de procesos
+
+Lo que no está documentado, no se escala. Crea playbooks de:
+- Onboarding de nuevos abogados
+- Procedimiento de captura de cliente
+- Protocolo de respuesta a incidentes
+- Política de uso de herramientas
+
+### Plan de formación continua
+
+La tecnología cambia. Tu equipo debe cambiar con ella:
+- Sesiones mensuales de 30 min (no maratones de 4 horas)
+- "Campeón digital" por área de práctica
+- Budget para experimentación (prueba herramientas nuevas)
+
+---
+
+## Checklist de los 90 días
+
+### Semana 1-2: Diagnóstico
+- [ ] Auditoría de los 5 pilares completada
+- [ ] Entrevistas con equipo realizadas
+- [ ] Quick wins identificados y ejecutados
+- [ ] Presupuesto aprobado
+
+### Semana 3-5: Infraestructura
+- [ ] Stack mínimo viable contratado y configurado
+- [ ] Migración de datos activos completada
+- [ ] Seguridad base implementada (2FA, backup, cifrado)
+- [ ] Políticas de uso escritas
+
+### Semana 6-8: Automatización
+- [ ] Onboarding digital funcionando
+- [ ] Seguimiento de plazos automatizado
+- [ ] Generación de documentos con plantillas
+- [ ] Métricas base establecidas
+
+### Semana 9-11: Cliente
+- [ ] Portal de cliente activo
+- [ ] Comunicaciones proactivas configuradas
+- [ ] NPS implementado
+- [ ] Primer feedback recogido
+
+### Semana 12-13: Optimización
+- [ ] Métricas de 90 días revisadas
+- [ ] Playbooks documentados
+- [ ] Plan de formación continua definido
+- [ ] Roadmap de fase 2 (meses 4-6) planificado
+
+---
+
+## Errores comunes que aceleran el fracaso
+
+### 1. Comprar herramientas antes de entender el problema
+
+El software no soluciona procesos rotos. Primero optimiza, luego automatiza.
+
+### 2. Ignorar la resistencia al cambio
+
+El 70% de las transformaciones digitales fallan por personas, no por tecnología. Involúcralo desde el día 1.
+
+### 3. Querer perfección en la fase 1
+
+Mejor un sistema que funcione al 80% en 30 días que uno perfecto que nunca llega. Itera.
+
+### 4. Olvidar la seguridad
+
+Un despacho digitalizado sin seguridad es un despacho con la puerta abierta. No negociables: 2FA, backup, cifrado.
+
+### 5. No medir
+
+Si no mides, no sabes si funciona. Define KPIs el día 1 y revísalos semanalmente.
+
+---
+
+## Conclusión
+
+Digitalizar un despacho en 90 días no es magia: es disciplina, priorización y ejecución. El roadmap que presentamos aquí ha funcionado en despachos de todos los tamaños porque se centra en lo que importa: **menos fricción, más valor para el cliente, mejor calidad de vida para el equipo**.
+
+No necesitas ser un experto en tecnología. Necesitas ser un experto en tu negocio y tener un socio que entienda tanto de derecho como de código.
+
+**¿Listo para empezar?** En Legasint ayudamos a despachos a digitalizarse sin perder la esencia del servicio legal. [Contáctanos](/contacto) y empezamos con tu diagnóstico gratuito.
+
+---
+
+*¿Te ha resultado útil este roadmap? Compártelo con otro despacho que necesite digitalizarse.*
