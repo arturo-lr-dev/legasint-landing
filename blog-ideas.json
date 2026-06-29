@@ -1383,8 +1383,12 @@
         "indicadores",
         "medición"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-06-29",
+      "files": [
+        "kpis-digitales-despachos-abogados-que-medir-por-que.mdx",
+        "digital-kpis-law-firms-what-measure-why.mdx"
+      ]
     },
     {
       "id": 59,
