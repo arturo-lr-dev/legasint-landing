@@ -1406,8 +1406,12 @@
         "abogados",
         "programa"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-03",
+      "files": [
+        "formacion-tecnologica-abogados-programa-efectivo.mdx",
+        "tech-training-lawyers-effective-program.mdx"
+      ]
     },
     {
       "id": 60,
