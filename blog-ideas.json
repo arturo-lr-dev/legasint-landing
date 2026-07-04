@@ -1429,8 +1429,12 @@
         "protección",
         "confidencialidad"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-04",
+      "files": [
+        "seguridad-digital-despachos-eslabon-debil.mdx",
+        "digital-security-law-firms-weakest-link.mdx"
+      ]
     },
     {
       "id": 61,
