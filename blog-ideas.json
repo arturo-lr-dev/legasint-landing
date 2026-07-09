@@ -1472,8 +1472,12 @@
         "almacenamiento",
         "metadatos"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-09",
+      "files": [
+        "gestion-documental-inteligente-mas-alla-almacenamiento.mdx",
+        "intelligent-document-management-beyond-storage.mdx"
+      ]
     },
     {
       "id": 65,
