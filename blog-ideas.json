@@ -1453,8 +1453,12 @@
         "documentos",
         "archivo"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-10",
+      "files": [
+        "migracion-datos-legales-archivadores-nube.mdx",
+        "legal-data-migration-filing-cabinets-cloud.mdx"
+      ]
     },
     {
       "id": 64,
