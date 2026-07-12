@@ -1499,8 +1499,12 @@
         "onboarding",
         "facturación"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-12",
+      "files": [
+        "experiencia-digital-cliente-legal-primer-contacto-facturacion.mdx",
+        "legal-client-digital-experience-first-contact-billing.mdx"
+      ]
     },
     {
       "id": 66,
