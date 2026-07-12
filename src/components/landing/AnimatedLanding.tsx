@@ -42,7 +42,9 @@ const AnimatedLanding = () => {
         className="relative z-10 text-center"
         style={prefersReducedMotion ? undefined : { y: contentY, opacity: contentOpacity }}
       >
-        <h1 className="sr-only">Legasint - Your Vision, Our Technology</h1>
+        <h1 className="sr-only">
+          Legasint - Desarrollo de software a medida y socio tecnológico | Your Vision, Our Technology
+        </h1>
 
         {/* Logo / Company Name */}
         <motion.div variants={fadeInUp} className="mb-6">
@@ -230,8 +232,14 @@ const AnimatedLanding = () => {
 
       {/* Technology Stack - Hidden visually but good for SEO */}
       <div className="sr-only">
+        <p>
+          Legasint es un socio tecnológico especializado en desarrollo de software a medida,
+          automatización de procesos, inteligencia artificial y legal tech para despachos de
+          abogados y empresas en España y Europa. Ofrecemos CTO as a Service, desarrollo web,
+          APIs, integraciones y soluciones de cumplimiento normativo (AI Act, RGPD, NIS2, DORA).
+        </p>
         <p>Technology Stack: Angular, React, Node.js, Python, Java, AWS, Azure, Google Cloud, Docker, Kubernetes</p>
-        <p>Industries Served: Finance, Healthcare, E-commerce, Manufacturing, Education, Technology</p>
+        <p>Industries Served: Finance, Healthcare, E-commerce, Manufacturing, Education, Technology, Legal</p>
       </div>
     </main>
   );

@@ -1,13 +1,22 @@
 import { MetadataRoute } from 'next';
-import { getPostSlugs, getAllTags } from '@/lib/blog';
+import { getAllPosts, getAllTags, getPostsByTag } from '@/lib/blog';
 import { getAlternateSlug } from '@/lib/slug-mapping';
 
 export const dynamic = 'force-static';
 
 const BASE_URL = 'https://legasint.com';
 
+function latestDate(dates: string[], fallback: string): string {
+  if (dates.length === 0) return fallback;
+  return dates.reduce((a, b) => (new Date(a) > new Date(b) ? a : b));
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
+  const esPosts = getAllPosts('es');
+  const enPosts = getAllPosts('en');
+  const latestEsDate = latestDate(esPosts.map((p) => p.date), currentDate);
+  const latestEnDate = latestDate(enPosts.map((p) => p.date), currentDate);
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -49,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/blog`,
-      lastModified: currentDate,
+      lastModified: latestEsDate,
       changeFrequency: 'weekly',
       priority: 0.8,
       alternates: {
@@ -61,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/blog/en`,
-      lastModified: currentDate,
+      lastModified: latestEnDate,
       changeFrequency: 'weekly',
       priority: 0.8,
       alternates: {
@@ -74,17 +83,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Spanish blog posts with alternates
-  const spanishPosts = getPostSlugs('es').map((slug) => {
-    const enSlug = getAlternateSlug(slug, 'es');
+  const spanishPosts = esPosts.map((post) => {
+    const enSlug = getAlternateSlug(post.slug, 'es');
     return {
-      url: `${BASE_URL}/blog/${slug}`,
-      lastModified: currentDate,
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: post.date,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
       ...(enSlug && {
         alternates: {
           languages: {
-            es: `${BASE_URL}/blog/${slug}`,
+            es: `${BASE_URL}/blog/${post.slug}`,
             en: `${BASE_URL}/blog/en/${enSlug}`,
           },
         },
@@ -93,17 +102,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // English blog posts with alternates
-  const englishPosts = getPostSlugs('en').map((slug) => {
-    const esSlug = getAlternateSlug(slug, 'en');
+  const englishPosts = enPosts.map((post) => {
+    const esSlug = getAlternateSlug(post.slug, 'en');
     return {
-      url: `${BASE_URL}/blog/en/${slug}`,
-      lastModified: currentDate,
+      url: `${BASE_URL}/blog/en/${post.slug}`,
+      lastModified: post.date,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
       ...(esSlug && {
         alternates: {
           languages: {
-            en: `${BASE_URL}/blog/en/${slug}`,
+            en: `${BASE_URL}/blog/en/${post.slug}`,
             es: `${BASE_URL}/blog/${esSlug}`,
           },
         },
@@ -114,14 +123,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Tag pages
   const esTags = getAllTags('es').map((tag) => ({
     url: `${BASE_URL}/blog/tag/${encodeURIComponent(tag.toLowerCase())}`,
-    lastModified: currentDate,
+    lastModified: latestDate(getPostsByTag(tag, 'es').map((p) => p.date), currentDate),
     changeFrequency: 'weekly' as const,
     priority: 0.4,
   }));
 
   const enTags = getAllTags('en').map((tag) => ({
     url: `${BASE_URL}/blog/en/tag/${encodeURIComponent(tag.toLowerCase())}`,
-    lastModified: currentDate,
+    lastModified: latestDate(getPostsByTag(tag, 'en').map((p) => p.date), currentDate),
     changeFrequency: 'weekly' as const,
     priority: 0.4,
   }));

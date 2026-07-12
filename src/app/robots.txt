@@ -1,5 +1,45 @@
+# Legasint - https://legasint.com
+# Search engine and AI crawlers are welcome.
+
 User-Agent: *
 Allow: /
 Disallow: /private/
+
+# --- AI / LLM crawlers (explicitly allowed for AI search visibility) ---
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: OAI-SearchBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: Claude-Web
+Allow: /
+
+User-Agent: anthropic-ai
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Perplexity-User
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: Applebot-Extended
+Allow: /
+
+User-Agent: cohere-ai
+Allow: /
+
+User-Agent: CCBot
+Allow: /
 
 Sitemap: https://legasint.com/sitemap.xml

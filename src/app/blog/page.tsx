@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/blog';
 import { BlogList } from '@/components/blog';
 
 export const metadata: Metadata = {
-  title: 'Blog - Legasint',
+  title: 'Blog',
   description: 'Artículos sobre tecnología, desarrollo de software y soluciones innovadoras.',
   alternates: {
     canonical: 'https://legasint.com/blog',

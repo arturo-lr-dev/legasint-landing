@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const decodedTag = decodeURIComponent(tag);
 
   return {
-    title: `${decodedTag} - Blog Legasint`,
+    title: `${decodedTag} - Blog`,
     description: `Artículos sobre ${decodedTag} en el blog de Legasint.`,
     alternates: {
       canonical: `https://legasint.com/blog/tag/${tag}`,

@@ -10,10 +10,22 @@ const inter = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://legasint.com'),
-  title: 'Legasint - Innovation Made Seamless',
-  description: 'Transform your business with cutting-edge technology solutions. Legasint delivers seamless innovation for the modern enterprise.',
-  keywords: ['technology', 'innovation', 'digital solutions', 'IT services', 'software development'],
-  authors: [{ name: 'Legasint' }],
+  title: {
+    default: 'Legasint - Desarrollo de software a medida y socio tecnológico',
+    template: '%s | Legasint',
+  },
+  description: 'Legasint es tu socio tecnológico: desarrollo de software a medida, automatización, IA y legal tech para despachos y empresas en España. Custom software development and tech partnership.',
+  keywords: [
+    'desarrollo de software a medida',
+    'socio tecnológico',
+    'legal tech',
+    'automatización de procesos',
+    'inteligencia artificial',
+    'consultoría tecnológica',
+    'custom software development',
+    'tech partner Spain',
+  ],
+  authors: [{ name: 'Legasint', url: 'https://legasint.com' }],
   creator: 'Legasint',
   publisher: 'Legasint',
   formatDetection: {
@@ -22,34 +34,34 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/favicon.ico?v=2'
+    icon: [
+      { url: '/favicon.ico?v=2', sizes: 'any' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/favicon/apple-touch-icon.png',
   },
   manifest: '/manifest.json',
 
   alternates: {
     canonical: 'https://legasint.com',
-    languages: {
-      'es': 'https://legasint.com',
-      'en': 'https://legasint.com',
-      'x-default': 'https://legasint.com',
-    },
   },
 
   // Open Graph / Facebook
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    alternateLocale: ['es_ES'],
+    locale: 'es_ES',
+    alternateLocale: ['en_US'],
     url: 'https://legasint.com',
-    siteName: 'LegaSint',
-    title: 'LegaSint - Innovation Made Seamless',
-    description: 'Transform your business with cutting-edge technology solutions. LegaSint delivers seamless innovation for the modern enterprise.',
+    siteName: 'Legasint',
+    title: 'Legasint - Desarrollo de software a medida y socio tecnológico',
+    description: 'Desarrollo de software a medida, automatización, IA y legal tech para despachos y empresas en España.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'LegaSint - Innovation Made Seamless',
+        alt: 'Legasint - Your Vision, Our Technology',
       },
     ],
   },
@@ -59,8 +71,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@legasint',
     creator: '@legasint',
-    title: 'LegaSint - Innovation Made Seamless',
-    description: 'Transform your business with cutting-edge technology solutions. LegaSint delivers seamless innovation for the modern enterprise.',
+    title: 'Legasint - Desarrollo de software a medida y socio tecnológico',
+    description: 'Desarrollo de software a medida, automatización, IA y legal tech para despachos y empresas en España.',
     images: ['/og-image.png'],
   },
 

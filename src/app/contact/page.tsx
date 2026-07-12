@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ContactContent from './ContactContent';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Legasint',
+  title: 'Contact Us',
   description: 'Get in touch with Legasint. Contact us via WhatsApp or email for technology solutions, software development, and digital transformation services.',
   alternates: {
     canonical: 'https://legasint.com/contact',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Contact Us - Legasint',
+    title: 'Contact Us',
     description: 'Get in touch with Legasint for technology solutions and digital transformation.',
     url: 'https://legasint.com/contact',
   },

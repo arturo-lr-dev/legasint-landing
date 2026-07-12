@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) {
     return {
-      title: 'Post no encontrado - Legasint',
+      title: 'Post no encontrado',
     };
   }
 
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const alternateEnSlug = getAlternateSlug(slug, 'es');
 
   return {
-    title: `${post.title} - Legasint Blog`,
+    title: post.title,
     description: post.description,
     alternates: {
       canonical: canonicalUrl,
@@ -52,13 +52,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: 'es_ES',
       url: canonicalUrl,
       siteName: 'Legasint',
-      images: post.image ? [{ url: post.image, alt: post.title }] : [],
+      images: [{ url: post.image || '/og-image.png', alt: post.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: post.image ? [post.image] : [],
+      images: [post.image || '/og-image.png'],
     },
   };
 }

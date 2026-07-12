@@ -1,13 +1,22 @@
 {
-    "name": "LegaSint",
-    "short_name": "LegaSint",
-    "description": "Innovation Made Seamless - Transform your business with cutting-edge technology solutions",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#1E40AF",
-    "theme_color": "#1E40AF",
-    "orientation": "portrait-primary",
-    "icons": [
-      
-    ]
-  }
+  "name": "Legasint",
+  "short_name": "Legasint",
+  "description": "Desarrollo de software a medida, automatización, IA y legal tech para despachos y empresas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1E40AF",
+  "theme_color": "#1E40AF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

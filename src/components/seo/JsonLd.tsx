@@ -1,6 +1,8 @@
 import { BlogPost } from '@/lib/blog';
 
 const BASE_URL = 'https://legasint.com';
+const ORG_ID = `${BASE_URL}/#organization`;
+const LOGO_URL = `${BASE_URL}/favicon/android-chrome-512x512.png`;
 
 interface BreadcrumbItem {
   name: string;
@@ -11,11 +13,33 @@ export function OrganizationJsonLd() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORG_ID,
     name: 'Legasint',
     url: BASE_URL,
-    logo: `${BASE_URL}/og-image.png`,
+    logo: {
+      '@type': 'ImageObject',
+      url: LOGO_URL,
+      width: 512,
+      height: 512,
+    },
+    image: `${BASE_URL}/og-image.png`,
+    slogan: 'Your Vision, Our Technology',
     description:
-      'Transform your business with cutting-edge technology solutions. Legasint delivers seamless innovation for the modern enterprise.',
+      'Socio tecnológico especializado en desarrollo de software a medida, automatización de procesos, inteligencia artificial y legal tech para despachos y empresas. Custom software development and technology partnership for law firms and businesses.',
+    email: 'arturo@legasint.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'ES',
+    },
+    areaServed: ['ES', 'EU'],
+    knowsAbout: [
+      'Custom software development',
+      'Legal tech',
+      'Process automation',
+      'Artificial intelligence',
+      'Digital transformation',
+      'Compliance technology',
+    ],
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+34-649-355-701',
@@ -42,13 +66,11 @@ export function WebSiteJsonLd() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${BASE_URL}/#website`,
     name: 'Legasint',
     url: BASE_URL,
     inLanguage: ['es', 'en'],
-    publisher: {
-      '@type': 'Organization',
-      name: 'Legasint',
-    },
+    publisher: { '@id': ORG_ID },
   };
 
   return (
@@ -67,6 +89,7 @@ export function ArticleJsonLd({
   locale: string;
 }) {
   const urlPrefix = locale === 'en' ? '/blog/en' : '/blog';
+  const postUrl = `${BASE_URL}${urlPrefix}/${post.slug}`;
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -77,23 +100,28 @@ export function ArticleJsonLd({
     dateModified: post.date,
     author: {
       '@type': 'Organization',
+      '@id': ORG_ID,
       name: 'Legasint',
       url: BASE_URL,
     },
     publisher: {
       '@type': 'Organization',
+      '@id': ORG_ID,
       name: 'Legasint',
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/og-image.png`,
+        url: LOGO_URL,
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${BASE_URL}${urlPrefix}/${post.slug}`,
+      '@id': postUrl,
     },
+    url: postUrl,
+    isPartOf: { '@id': `${BASE_URL}/#website` },
     inLanguage: locale === 'en' ? 'en' : 'es',
     keywords: post.tags.join(', '),
+    timeRequired: `PT${post.readingTime}M`,
   };
 
   return (
