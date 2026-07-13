@@ -2077,5 +2077,11 @@
         "ai-act-countdown-final-checklist-high-risk-july-2026.mdx"
       ]
     }
-  ]
-}
+    {
+      "status": "published",
+      "publishedDate": "2026-07-13",
+      "files": [
+        "european-legal-data-space-ecosistema-datos-juridicos-ue.mdx",
+        "european-legal-data-space-ecosystem-legal-data-eu.mdx"
+      ]
+    },
