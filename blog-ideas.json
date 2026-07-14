@@ -1522,8 +1522,12 @@
         "modelo",
         "equilibrio"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-14",
+      "files": [
+        "despacho-hibrido-equilibrio-presencial-digital.mdx",
+        "hybrid-law-firm-balancing-in-person-digital.mdx"
+      ]
     },
     {
       "id": 67,
@@ -2076,7 +2080,7 @@
         "cuenta-atras-ai-act-checklist-final-alto-riesgo-julio-2026.mdx",
         "ai-act-countdown-final-checklist-high-risk-july-2026.mdx"
       ]
-    }
+    },
     {
       "status": "published",
       "publishedDate": "2026-07-13",
@@ -2084,4 +2088,6 @@
         "european-legal-data-space-ecosistema-datos-juridicos-ue.mdx",
         "european-legal-data-space-ecosystem-legal-data-eu.mdx"
       ]
-    },
+    }
+  ]
+}
