@@ -1,0 +1,169 @@
+---
+title: "Semantic Search in Legal Documents: Finding What You Need"
+date: "2026-07-15"
+description: "Search technology that understands meaning, not just keywords. How law firms can find precedents, clauses, and case law without relying on exact terms."
+tags: ["semantic search", "NLP", "documents", "intelligence", "search"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Semantic+Search"
+---
+
+## Introduction
+
+A lawyer needs to find all contracts containing a "force majeure" clause adapted to pandemics. They search "force majeure" in the document system: 247 results. Add "pandemic": 32 results. But they miss the contract using the phrase "exceptional public health circumstances" and another mentioning "state of alarm" without naming the pandemic directly.
+
+**Keyword search** is convenient when you know exactly what to look for. The problem with law is that you rarely do. Semantic search solves this: it understands the **meaning** of content, not just the words it contains.
+
+## 1. What is Semantic Search (and Why It Changes Everything)
+
+### From Keywords to Vectors
+
+Traditional search works through literal matching: the document either contains or doesn't contain the word. Semantic search converts text into **numerical vectors** (embeddings) that represent conceptual meaning. Two sentences expressing the same idea will have similar vectors, even if they use completely different words.
+
+**Practical example:**
+- "The tenant cannot sublet without consent" → vector A
+- "The lessee needs permission to rent to third parties" → vector B
+- Distance between A and B: **0.12** (very similar)
+
+Keyword search would never find the second sentence when searching for "sublet". Semantic search does.
+
+### NLP Applied to Law
+
+Legal language has peculiarities that make semantic search especially valuable:
+
+- **Technical synonymy:** "Termination," "rescission," and "extinction" of a contract can mean the same thing depending on context.
+- **Reformulation:** The same concept appears in different phrasings (doctrine, judgments, contracts).
+- **Jargon vs. natural language:** A client writes "I got kicked out of my apartment"; the judgment says "eviction for non-payment of rent."
+
+## 2. How It Works in Practice
+
+### Basic Architecture
+
+```
+Legal document → NLP processing → Numerical vector → Vector database → Similarity search
+```
+
+**Key components:**
+
+1. **Embedding model:** Converts text into vectors. The most used in 2026 are models fine-tuned for legal text (Legal-BERT, CaseLaw) or general LLMs (OpenAI text-embedding-3, Cohere embed).
+2. **Vector database:** Stores vectors and enables efficient similarity search. Popular options: Pinecone, Weaviate, Chroma, or pgvector for PostgreSQL.
+3. **Query interface:** The user writes in natural language; the system returns documents similar in meaning.
+
+### Typical Workflow
+
+**Scenario:** An employment lawyer needs precedents on "dismissal after prolonged medical leave."
+
+1. **Query:** The lawyer writes: "What judgments exist about dismissal after long-term sick leave?"
+2. **Vectorization:** The query is converted into a numerical vector.
+3. **Search:** The system compares this vector with those of all indexed documents.
+4. **Results:**
+   - Judgment mentioning "contract termination due to permanent disability" → similarity 0.94
+   - Judgment with "objective dismissal for absenteeism" → similarity 0.89
+   - Judgment with "prolonged leave and justified cause for dismissal" → similarity 0.87
+   - Contract mentioning "medical leave" in a different clause → similarity 0.62 (filtered by context)
+
+## 3. Use Cases in Real Law Firms
+
+### 1. Case Law Research
+
+**Problem:** Finding relevant judgments when the Supreme Court uses different formulations than the lawyer.
+
+**Semantic solution:** The lawyer describes the case in natural language ("client dismissed after being on sick leave for two years"). The system finds judgments that never mention "two years" but discuss "prolonged leave" or "permanent disability derived from common illness."
+
+**Result:** +40% more relevant precedents found vs. traditional search.
+
+### 2. Contract Review
+
+**Problem:** A client delivers 200 lease contracts for review. They need to identify all that include limitations on property use.
+
+**Semantic solution:** Search for "restrictions on property use" and find contracts using "prohibition of commercial activities," "exclusively residential use," "purpose of the property," etc.
+
+**Result:** Complete review in 2 hours vs. 2 days of manual reading.
+
+### 3. Due Diligence
+
+**Problem:** In an M&A transaction, identify all documents that may indicate regulatory risks without knowing exactly how they're worded.
+
+**Semantic solution:** Queries like "notification obligations to the competition authority" or "non-compete commitments" find documents using varied terminology ("communication to the competition authority," "non-compete," "territorial exclusivity," etc.).
+
+### 4. Internal Knowledge Management
+
+**Problem:** A retiring partner takes decades of tacit knowledge. The documents exist, but nobody knows where to look.
+
+**Semantic solution:** The new lawyer asks "How were cases of administrative liability for damages in public works resolved?" and the system finds relevant briefs, judgments, and internal notes, even if filed under different categories.
+
+## 4. Available Tools in 2026
+
+### Options for Law Firms
+
+| Tool | Type | Approximate Price | Ideal For |
+|------|------|-------------------|-----------|
+| **Harvey** | Legal AI SaaS | From €500/month | Mid-size firms, workflow integration |
+| **CoCounsel (Casetext)** | Legal AI SaaS | From €400/month | Advanced case law research |
+| **Pinecone + OpenAI** | API/self-hosted | Usage-based volume | Firms with in-house technical teams |
+| **Weaviate** | Open-source/Cloud | Free (self-hosted) or €25/month | Full data control, GDPR-friendly |
+| **Azure AI Search** | Cloud | Per-query usage | Companies already in Microsoft ecosystem |
+| **Elasticsearch + dense_vector** | Open-source | Own infrastructure | Large volumes, total customization |
+
+### Recommendation by Profile
+
+- **Small firm without IT:** Harvey or CoCounsel. Works out-of-the-box with integrated case law.
+- **Mid-size firm with in-house IT:** Weaviate or Pinecone with a custom frontend. Controlled costs, data sovereignty.
+- **Large firm or legal tech company:** Elasticsearch with dense_vectors + fine-tuned model. Maximum customization.
+
+## 5. Practical Implementation: First Steps
+
+### Step 1: Identify Your Current Search Problem
+
+Before investing, audit your situation:
+- How much time do lawyers lose searching for documents?
+- How many relevant documents are missed due to imprecise searches?
+- What recurring queries don't work well with keywords?
+
+### Step 2: Prepare the Corpus
+
+Semantic search only works well if documents are clean:
+- **Quality OCR:** Scanned documents must have selectable text.
+- **Metadata:** Date, document type, matter, client, author.
+- **Chunking:** Divide long documents into 500-1000 word chunks for better precision.
+
+### Step 3: Choose Model and Vectorize
+
+For legal Spanish in 2026, the best options are:
+- **OpenAI text-embedding-3-large:** Excellent general performance, good with Spanish.
+- **BGE-m3 (BAAI):** Open-source, multilingual, competitive with proprietary models.
+- **Legal-BERT (fine-tuned):** If you have fine-tuning capacity, the best for specific legal jargon.
+
+### Step 4: Build the Query Interface
+
+Success depends on lawyers actually using it. The interface should allow:
+- Natural language queries (no Boolean search syntax).
+- Metadata filters (date, matter, type).
+- Explanation of why a result is relevant (semantic highlighting).
+- User feedback ("this result is not relevant") to improve the system.
+
+## 6. Limitations and Realities
+
+### It's Not Magic
+
+Semantic search dramatically improves retrieval, but:
+- **It doesn't replace reading:** Results are candidates; the lawyer must verify relevance.
+- **It depends on the corpus:** If you haven't indexed the documents, it won't find them.
+- **Computational cost:** Vectorizing and searching millions of documents requires infrastructure.
+
+### Bias and Accuracy
+
+- **Model bias:** Embeddings may reflect biases from their training text.
+- **False positives:** Two texts may be semantically similar but legally distinct.
+- **Cultural context:** Legal Spanish varies between Spain, Mexico, and Argentina. The model must understand jurisdiction.
+
+## Conclusion
+
+Semantic search transforms access to legal knowledge. We move from depending on memory of where something is filed and what exact words it contains, to simply **asking** and getting relevant answers.
+
+For law firms, this means:
+- Junior lawyers finding precedents like seniors.
+- Less time lost in search, more in strategy.
+- Institutional knowledge that doesn't walk out the door with departures.
+
+The technology is mature in 2026. The question isn't whether to implement it, but when.
+
+**Want to evaluate whether semantic search makes sense for your firm?** [Contact LegaSint](/contacto) and we'll do a feasibility analysis with no commitment.

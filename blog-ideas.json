@@ -1545,8 +1545,12 @@
         "inteligencia",
         "búsqueda"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-15",
+      "files": [
+        "busqueda-semantica-documentos-legales.mdx",
+        "semantic-search-legal-documents.mdx"
+      ]
     },
     {
       "id": 68,
