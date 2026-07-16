@@ -1,0 +1,366 @@
+{
+  "ideas": [
+    {
+      "id": 1,
+      "title": "Cuánto cuesta realmente desarrollar una app/web en 2026",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-03"
+    },
+    {
+      "id": 2,
+      "title": "Outsourcing vs equipo interno: qué conviene a tu empresa",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-04"
+    },
+    {
+      "id": 3,
+      "title": "Mi desarrollador se fue: qué hacer cuando te quedas sin equipo técnico",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-05"
+    },
+    {
+      "id": 4,
+      "title": "El proyecto se está retrasando: cómo detectar problemas antes de que sea tarde",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-06"
+    },
+    {
+      "id": 5,
+      "title": "¿Merece la pena refactorizar o empezar de cero?",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-09"
+    },
+    {
+      "id": 6,
+      "title": "Cómo auditar el código que te entregó tu anterior proveedor",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-10"
+    },
+    {
+      "id": 7,
+      "title": "¿Vale la pena invertir en una app móvil para mi negocio?",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-11"
+    },
+    {
+      "id": 8,
+      "title": "Cómo saber si tu web está obsoleta (y qué hacer)",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-12"
+    },
+    {
+      "id": 9,
+      "title": "Tecnología legacy: cuándo modernizar tu sistema",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-13"
+    },
+    {
+      "id": 10,
+      "title": "Automatización: por dónde empezar en una empresa pequeña",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-16"
+    },
+    {
+      "id": 40,
+      "title": "ChatGPT vs Desarrollador: Cuándo usar cada uno para tu negocio",
+      "status": "published",
+      "priority": "high",
+      "created": "2026-02-16",
+      "published": "2026-02-17",
+      "notes": "Tema caliente 2026 - Clientes preguntándose si pueden hacer su app con IA. Hook: 'Mi cliente intentó hacer su web con ChatGPT. Le costó 3 meses y €15k arreglarlo'"
+    },
+    {
+      "id": 41,
+      "title": "Señales de que tu proveedor IT te está cobrando de más",
+      "status": "published",
+      "priority": "high",
+      "created": "2026-02-16",
+      "published": "2026-07-13",
+      "notes": "Pain point fuerte - PYMEs con proveedores legacy. Hook: '¿€500/mes por mantener una web estática? Te están timando'. Incluir benchmarks reales de costos 2026"
+    },
+    {
+      "id": 42,
+      "title": "El sistema 'funciona' pero te está matando: 6 señales",
+      "status": "idea",
+      "priority": "high",
+      "created": "2026-02-16",
+      "notes": "Costo de oportunidad vs costo de modernizar. Hook: 'Tu Excel con macros te cuesta €50k al año (y ni lo sabes)'. Target: empresas con sistemas viejos que limitan crecimiento"
+    },
+    {
+      "id": 43,
+      "title": "Agents vs Apps tradicionales: Qué esperar en 2026",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Hype de AI agents llegando a PYMEs. Qué pueden hacer agents HOY (no en 5 años), cuándo tiene sentido"
+    },
+    {
+      "id": 44,
+      "title": "Tu competencia ya usa IA (y no es lo que piensas)",
+      "status": "published",
+      "created": "2026-02-16",
+      "published": "2026-07-16",
+      "notes": "Casos prácticos de IA en PYMEs españolas - atención al cliente, análisis de datos. 5 formas de usar IA sin ser Google"
+    },
+    {
+      "id": 45,
+      "title": "Low-code/No-code en 2026: Cuándo SÍ usar (y cuándo huir)",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: empresas explorando Bubble, Webflow, etc. Pros/cons reales, cuándo escalar a código custom"
+    },
+    {
+      "id": 46,
+      "title": "PWA vs App Nativa en 2026: La decisión que nadie explica bien",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: empresas decidiendo entre web app o app stores. Casos reales, costos, limitaciones actuales"
+    },
+    {
+      "id": 47,
+      "title": "Migrar de PHP/WordPress a Next.js/React: ¿Vale la pena?",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: empresas con tech stack viejo. Cuándo sí, cuándo no, costos reales"
+    },
+    {
+      "id": 48,
+      "title": "SaaS vs desarrollo custom: La calculadora honesta",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Break-even point entre comprar SaaS o desarrollar custom. Casos de uso"
+    },
+    {
+      "id": 49,
+      "title": "Anatomía de un proyecto IT que salió mal (post-mortem real)",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: empresas con proyectos estancados. Caso real anónimo, lecciones, cómo recuperar"
+    },
+    {
+      "id": 50,
+      "title": "Tu MVP lleva 6 meses y no está listo: Qué hacer",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: startups con proyectos eternos. Kill/pivot/rescue decision framework"
+    },
+    {
+      "id": 51,
+      "title": "Backups que funcionan vs backups decorativos",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: empresas que 'tienen backups' pero nunca los probaron. Disaster recovery real, casos de pérdida de datos"
+    },
+    {
+      "id": 52,
+      "title": "El final de las cookies: Qué significa para tu negocio online",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: E-commerce, marketing digital. Alternativas prácticas, preparación"
+    },
+    {
+      "id": 53,
+      "title": "GDPR en 2026: Lo que importa (sin legal speak)",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: PYMEs asustadas con compliance. Checklist práctico, casos reales de multas"
+    },
+    {
+      "id": 54,
+      "title": "Remote teams para desarrollo: ¿Funciona en 2026?",
+      "status": "idea",
+      "created": "2026-02-16",
+      "notes": "Target: empresas considerando outsourcing offshore. Costos reales, gestión, riesgos"
+    },
+    {
+      "id": 11,
+      "title": "Cómo elegir stack tecnológico para tu proyecto sin arrepentirte",
+      "status": "published",
+      "created": "2026-02-02",
+      "published": "2026-02-17"
+    },
+    {
+      "id": 12,
+      "title": "Red flags al elegir una empresa de desarrollo de software",
+      "status": "idea",
+      "created": "2026-02-02"
+    },
+    {
+      "id": 13,
+      "title": "5 errores que las empresas cometen al contratar desarrollo de software",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 14,
+      "title": "App nativa vs híbrida vs web: Cuál necesita tu negocio",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 15,
+      "title": "De la idea a la app: Las 7 fases del desarrollo que debes conocer",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 16,
+      "title": "¿Por qué tu proyecto de software fracasó? Análisis de casos reales",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 17,
+      "title": "Cómo validar tu idea de app antes de invertir en desarrollo",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 18,
+      "title": "Señales de que necesitas modernizar tu sistema legacy (antes de que sea tarde)",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 19,
+      "title": "MVP vs producto completo: Cuándo lanzar y qué incluir",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 20,
+      "title": "Plataforma web escalable: Qué preguntar antes de contratar",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 21,
+      "title": "Integraciones que tu negocio necesita: APIs, CRM, ERP y más",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 22,
+      "title": "Mantenimiento de software: El costo oculto que nadie te cuenta",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 23,
+      "title": "¿Startup o empresa tradicional? Cómo adaptar el desarrollo a tu realidad",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 24,
+      "title": "ROI en transformación digital: Cómo medir el éxito de tu inversión",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 25,
+      "title": "De Excel a sistema web: Cuándo es momento de automatizar",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 26,
+      "title": "Seguridad en aplicaciones empresariales: Lo mínimo que debes exigir",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 27,
+      "title": "Cloud vs servidores propios: Decisión estratégica para tu negocio",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 28,
+      "title": "Cómo escribir un brief técnico que consiga presupuestos realistas",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 29,
+      "title": "Metodologías ágiles explicadas para no técnicos: Scrum, Kanban y más",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 30,
+      "title": "¿Tu idea ya existe? Por qué eso no importa (y qué sí importa)",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 31,
+      "title": "Migrar o reconstruir: Cuándo abandonar tu sistema actual",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 32,
+      "title": "UX/UI: Por qué el diseño no es 'solo estética' en tu proyecto",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 33,
+      "title": "Escalabilidad: Preparando tu app para crecer sin rehacerla",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 34,
+      "title": "Inteligencia Artificial en tu negocio: Casos de uso prácticos en 2026",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 35,
+      "title": "Timeline realista: Cuánto tarda desarrollar tu proyecto (de verdad)",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 36,
+      "title": "Propiedad intelectual en desarrollo: Qué debes tener en tu contrato",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 37,
+      "title": "Landing page vs web completa vs app: Qué necesitas según tu etapa",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 38,
+      "title": "Automatización de procesos internos: Quick wins antes del gran proyecto",
+      "status": "idea",
+      "created": "2026-02-03"
+    },
+    {
+      "id": 39,
+      "title": "Post-lanzamiento: Qué pasa después de que tu app esté lista",
+      "status": "idea",
+      "created": "2026-02-03"
+    }
+  ],
+  "meta": {
+    "total": 54,
+    "lastUpdated": "2026-07-16T11:06:00Z",
+    "priorityIdeas": [42],
+    "notes": "Ideas 40-42 marcadas como alta prioridad basadas en intereses actuales de clientes 2026: IA/ChatGPT, costos de proveedores IT, sistemas legacy que limitan crecimiento. Idea 41 publicada el 2026-07-13. Idea 44 publicada el 2026-07-16."
+  }
+}
