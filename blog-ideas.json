@@ -1568,8 +1568,12 @@
         "negocio",
         "KPIs"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-17",
+      "files": [
+        "dashboards-ejecutivos-despachos-visualizar-salud-negocio.mdx",
+        "executive-dashboards-law-firms-visualizing-business-health.mdx"
+      ]
     },
     {
       "id": 69,
