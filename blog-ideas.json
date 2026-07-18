@@ -1578,21 +1578,26 @@
     {
       "id": 69,
       "title": {
-        "es": "Gestión de conflictos de intereses digitalizada",
-        "en": "Digitalized Conflict of Interest Management"
+        "es": "eIDAS 2.0 y el European Digital Identity Wallet: transformación de la identidad digital en la práctica legal",
+        "en": "eIDAS 2.0 and the European Digital Identity Wallet: Transforming Digital Identity in Legal Practice"
       },
-      "description": "Sistemas automatizados para detectar y gestionar conflictos de intereses antes de aceptar un caso",
-      "category": "Transformación Digital",
-      "audience": "Compliance, abogados, RRHH",
+      "description": "Guía práctica sobre el nuevo marco eIDAS 2.0 y el EUDI Wallet: impacto en KYC, firma electrónica cualificada y procesos notariales para despachos españoles en 2026",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, notarios, compliance officers, fintech",
       "keywords": [
-        "conflictos",
-        "intereses",
-        "compliance",
-        "detección",
-        "automática"
+        "eIDAS 2.0",
+        "EUDI Wallet",
+        "identidad digital",
+        "firma electrónica",
+        "KYC",
+        "notariado digital"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-18",
+      "files": [
+        "eidas-2-eudi-wallet-identidad-digital-practica-legal-2026.mdx",
+        "eidas-2-eudi-wallet-digital-identity-legal-practice-2026.mdx"
+      ]
     },
     {
       "id": 70,
