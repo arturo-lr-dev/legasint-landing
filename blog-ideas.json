@@ -1615,8 +1615,12 @@
         "digital",
         "RRHH"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-18",
+      "files": [
+        "onboarding-digital-nuevos-abogados.mdx",
+        "digital-lawyer-onboarding-reducing-weeks-to-days.mdx"
+      ]
     },
     {
       "id": 71,
