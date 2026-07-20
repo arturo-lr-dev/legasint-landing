@@ -1638,8 +1638,12 @@
         "precisión",
         "herramientas"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-20",
+      "files": [
+        "gestion-tiempo-digital-estimacion-realidad.mdx",
+        "digital-time-management-estimation-to-reality.mdx"
+      ]
     },
     {
       "id": 72,
