@@ -1661,8 +1661,12 @@
         "efectividad",
         "comunicación"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-23",
+      "files": [
+        "reuniones-digitales-efectivas-protocolos-despachos-abogados.mdx",
+        "effective-digital-meetings-protocols-law-firms.mdx"
+      ]
     },
     {
       "id": 73,
