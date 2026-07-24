@@ -1,0 +1,333 @@
+---
+title: "Digital Evidence Preservation: Electronic Chain of Custody"
+date: "2026-07-24"
+description: "How to ensure the validity of digital evidence from collection to trial through a robust electronic chain of custody compliant with regulations."
+tags: ["digital evidence", "chain of custody", "probative value", "digital forensics", "electronic litigation", "eIDAS 2.0"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Digital+Evidence+Preservation"
+---
+
+## Introduction
+
+In 2026, **more than 90% of procedural documentation** in Spanish litigation originates digitally. From emails and WhatsApp messages to system logs and file metadata, digital evidence dominates forensic and litigation practice. However, its inherent fragility —ease of alteration, loss of context, and authentication difficulties— poses a critical challenge: **how to ensure that digital evidence is admitted and valued by a court?**
+
+The answer lies in a well-designed **electronic chain of custody**. This article analyzes the legal, technical, and procedural requirements for preserving digital evidence with full validity in Spanish and European jurisdiction.
+
+---
+
+## 1. Legal Framework: From the LEC to Digital Evidence
+
+### 1.1 Foundation in the Civil Procedure Law
+
+Article **299.3 LEC** expressly recognizes the probative value of electronic documents, but requires that their **authenticity and integrity** can be verified. The jurisprudence of the Supreme Court (STS 329/2020, among others) has consolidated that:
+
+> *"Digital evidence requires differentiated treatment that guarantees its immutability from the moment of its collection until its exhibition in the process."*
+
+### 1.2 The eIDAS 2.0 Regulation and Electronic Evidence
+
+The entry into force of **Regulation eIDAS 2.0** in 2025 introduced technical standards that directly impact the validity of digital evidence:
+
+| eIDAS 2.0 Requirement | Application in Digital Evidence |
+|-----------------------|--------------------------------|
+| Qualified electronic signature | Integrity seal at collection |
+| Qualified electronic seal | Conservation timestamp |
+| European Digital Identity Wallet (EUDI) | Custodian identification |
+| Cross-border interoperability | Validity in international litigation |
+
+### 1.3 Law 34/2002 (LSSI) and the Value of Logs
+
+System activity logs have probative value if they comply with the requirements of **Article 24 LSSI**: traffic data conservation, guaranteed integrity, and restricted access.
+
+---
+
+## 2. Principles of an Electronic Chain of Custody
+
+### 2.1 The Five Pillars
+
+A robust electronic chain of custody is built on five fundamental pillars:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│         ELECTRONIC CHAIN OF CUSTODY                     │
+├─────────────┬─────────────┬─────────────┬───────────────┤
+│  IDENTIFY   │  PRESERVE   │  DOCUMENT   │   TRANSFER    │
+│             │             │             │               │
+│ SHA-256 Hash│ AES Encrypt │ Metadata    │ Transfer      │
+│ Timestamp   │ Cold storage│ Audit trail │ log           │
+│ Geolocation │ Backup 3-2-1│ Custodians  │ Digital sign  │
+└─────────────┴─────────────┴─────────────┴───────────────┘
+                      │
+                      ▼
+              ┌───────────────┐
+              │   PRESENT     │
+              │  At trial     │
+              │  with guarantees
+              └───────────────┘
+```
+
+#### 1. Identification
+- **Cryptographic hash** (SHA-256 or higher) calculated at the time of collection
+- **Qualified timestamp** from an accredited Certification Agency
+- **Geolocation** and context of collection
+- **Identification of the collector** and the device used
+
+#### 2. Preservation
+- **Encryption at rest** (AES-256) and in transit (TLS 1.3)
+- **Immutable storage** (WORM - Write Once Read Many)
+- **3-2-1 strategy**: 3 copies, 2 media, 1 offsite
+- **Controlled environment** (temperature, humidity for physical media)
+
+#### 3. Documentation
+- **Custody record** with identification of each responsible party
+- Complete and **immutable audit trail**
+- **Preserved metadata**: creation, modification, access dates
+- **Photographs/videos** of the collection process when applicable
+
+#### 4. Transfer
+- **Secure delivery protocol** between custodians
+- **Hash verification** at source and destination
+- **Acknowledgment of receipt** electronically signed
+- **Transport record** (if physical medium applies)
+
+#### 5. Presentation
+- **Expert report** accrediting the complete process
+- **Integrity demonstration** (original vs. current hash)
+- **Technical explanation** understandable for the court
+- **Complete documentary chain** from collection
+
+---
+
+## 3. Phases of the Digital Forensic Process
+
+### 3.1 Phase 1: Identification and Collection
+
+**Critical moment**: any error here invalidates the entire subsequent chain.
+
+**Collection checklist:**
+
+- [ ] **Volatility**: capture volatile data first (RAM, active connections)
+- [ ] **Forensic image**: bit-by-bit of the medium, not logical copy
+- [ ] **Simultaneous hash**: calculate SHA-256 during imaging
+- [ ] **Write blocking**: use hardware write-blocker when applicable
+- [ ] **Chain of witnesses**: minimum two people present
+- [ ] **Photographic documentation**: of equipment, screens, connections
+
+```bash
+# Example: Create forensic image with hash
+$ dd if=/dev/sdb of=forensic_image.raw bs=4M conv=noerror,sync
+$ sha256sum forensic_image.raw > original_hash.txt
+$ cat original_hash.txt
+3b5d8c9f2e1a... (SHA-256 of forensic image)
+```
+
+### 3.2 Phase 2: Preservation and Storage
+
+**Preservation techniques by evidence type:**
+
+| Evidence Type | Preservation Method | Minimum Duration |
+|---------------|---------------------|------------------|
+| Emails | EML/PST export with complete headers | 5 years (art. 25 LSSI) |
+| Instant messaging | Forensic capture with metadata | Procedure period + 5 |
+| System logs | Signed export with timestamp | 2 years (art. 12 LOPDGDD) |
+| Office documents | PDF/A with electronic signature | Procedure period |
+| Databases | Structured dump with hash | Procedure period |
+| Web content | Capture with forensic tool | Procedure period |
+
+### 3.3 Phase 3: Analysis and Documentation
+
+Analysis must be performed on **working copies**, never on the original:
+
+```
+Forensic original (sealed, immutable)
+    │
+    ├──► Analysis copy #1 (for expert A)
+    │
+    └──► Analysis copy #2 (for expert B - if counter-expertise)
+```
+
+**Expert report requirements:**
+- Expert identification and accreditation
+- Detailed description of tools used
+- Methodology followed (ISO/IEC 27037, 27041, 27042)
+- Findings with references to locations in the image
+- Conclusions with degree of certainty
+- Impartiality declaration
+
+### 3.4 Phase 4: Presentation in the Proceeding
+
+**Admitted presentation formats:**
+
+1. **Expert report** (art. 458 LEC): requires prior appointment
+2. **Private document with digital certificate** (art. 326.2 LEC)
+3. **Electronic document with qualified signature** (art. 25.3 LEC)
+4. **Admission by opposing party** (art. 327 LEC)
+
+---
+
+## 4. Tools and Technologies
+
+### 4.1 Open Source Forensic Software
+
+| Tool | Function | License |
+|------|----------|---------|
+| **Autopsy/Sleuth Kit** | Disk forensic analysis | Open Source |
+| **Volatility** | RAM memory analysis | Open Source |
+| **Wireshark** | Network traffic analysis | Open Source |
+| **ExifTool** | File metadata | Open Source |
+| **Plaso/log2timeline** | Event timeline | Open Source |
+
+### 4.2 Enterprise Solutions
+
+- **EnCase Forensic**: standard in international litigation
+- **FTK (Forensic Toolkit)**: complete analysis with reporting
+- **Cellebrite UFED**: forensic extraction of mobile devices
+- **MSAB XRY**: alternative for mobile extraction
+
+### 4.3 Timestamp and Seal Services
+
+- **FNMT-RCM**: Spanish qualified electronic seal
+- **Docusign**: timestamps with international validity
+- **Guardtime**: blockchain for data integrity
+- **European Blockchain Services Infrastructure (EBSI)**: EU integrity seals
+
+---
+
+## 5. Specific Challenges in 2026
+
+### 5.1 Cloud Evidence
+
+Data in cloud services (Microsoft 365, Google Workspace, AWS) presents specific challenges:
+
+- **Jurisdiction**: where do the data physically reside?
+- **Control**: who has administrative access?
+- **Preservation**: how to prevent auto-deletion?
+- **Collection**: forensic API or native export?
+
+**Practical solution:**
+1. Request formal preservation from the provider (art. 256 LEC)
+2. Use native eDiscovery tools (Microsoft Purview, Google Vault)
+3. Document the export process with system logs
+4. Verify hash of exported data
+
+### 5.2 Blockchain and Smart Contract Evidence
+
+Blockchain-based evidence requires:
+
+- **Network identification** (public vs. private/consortium)
+- **Transaction hash** (tx hash)
+- **Block number** and timestamp
+- **Confirmations** (for public networks)
+- **Reference node** used for consultation
+
+### 5.3 Deepfakes and Authenticity
+
+With the proliferation of AI-generated content, courts increasingly demand:
+
+- **Metadata analysis** of multimedia files
+- **Manipulation detection** with forensic tools
+- **Expert testimony** from authenticity analysis specialists
+- **Obtaining context**: how was the original file obtained?
+
+---
+
+## 6. Electronic Chain of Custody Checklist
+
+### Pre-collection
+
+- [ ] Identify evidence type and storage medium
+- [ ] Prepare verified forensic tools
+- [ ] Ensure controlled environment (witnesses, restricted access)
+- [ ] Document initial state of equipment/medium
+- [ ] Prepare secure storage for forensic image
+
+### During collection
+
+- [ ] Calculate SHA-256 hash of original medium
+- [ ] Create bit-by-bit forensic image
+- [ ] Verify image hash against original
+- [ ] Apply qualified timestamp
+- [ ] Document identity of all present
+- [ ] Photograph/video the process
+
+### Post-collection
+
+- [ ] Store original on immutable medium (WORM)
+- [ ] Create working copies for analysis
+- [ ] Maintain access log (who, when, why)
+- [ ] Perform periodic backups with hash verification
+- [ ] Document any incident or anomaly
+
+### In the proceeding
+
+- [ ] Prepare expert report with detailed methodology
+- [ ] Include complete documentary chain
+- [ ] Prepare technical demonstration if required
+- [ ] Ensure expert availability for testimony
+
+---
+
+## 7. Practical Cases
+
+### Case A: Email Collection in Labor Litigation
+
+**Situation**: Disciplinary dismissal based on employee emails.
+
+**Chain of custody process:**
+1. **Preservation**: Account blocking via IT ticket
+2. **Export**: Extraction via Microsoft Purview with complete headers
+3. **Hash**: SHA-256 of exported PST file
+4. **Timestamp**: Qualified seal from FNMT
+5. **Analysis**: Keyword search in working copy
+6. **Report**: Documentation of findings with references to specific messages
+
+**Result**: Evidence admitted. The court positively valued the documented chain of custody.
+
+### Case B: Instant Messaging Evidence in Cybercrime
+
+**Situation**: Accusation of unauthorized access based on WhatsApp conversations.
+
+**Chain of custody process:**
+1. **Forensic extraction**: Use of Cellebrite UFED on mobile device
+2. **Verification**: Hash comparison of extraction
+3. **Context**: Documentation of device state (on/off)
+4. **Preservation**: Storage on forensic disk with restricted access
+5. **Analysis**: Reconstruction of conversations with metadata (dates, read states)
+
+**Result**: Evidence admitted with positive valuation of the expert report.
+
+---
+
+## 8. Trends and Future
+
+### 8.1 Digital Evidence with AI
+
+AI systems are transforming evidence preservation:
+
+- **Automatic detection** of anomalies in logs
+- **Intelligent classification** of relevant documents
+- **Predictive analysis** of data integrity
+- **Assisted generation** of expert reports
+
+**Caution**: AI as an analysis tool is well regarded; AI as a "witness" or primary evidence generator generates judicial resistance.
+
+### 8.2 European Interoperability
+
+The **European Legal Data Space** (under development) will promote:
+
+- Standard formats for exchanging digital evidence
+- Mutual recognition of integrity seals between Member States
+- Cross-border electronic access to evidence
+- Interoperability of chain of custody systems
+
+### 8.3 Quantum-Resistant Cryptography
+
+With the arrival of quantum computing, current hashes (SHA-256) could be compromised. NIST has already standardized post-quantum algorithms that must be incorporated into chains of custody in the coming years.
+
+---
+
+## Conclusion
+
+Digital evidence preservation through a **robust electronic chain of custody** is not just a technical issue: it is an essential requirement for digital evidence to have value in judicial proceedings. In 2026, with the accelerated digitalization of justice (LexNET, electronic proceedings) and the entry into force of frameworks such as eIDAS 2.0, firms that master these techniques will have a significant competitive advantage.
+
+**The key to success:** combine forensic technical knowledge with understanding of the legal framework, meticulously document each step, and anticipate emerging challenges such as deepfakes and quantum computing.
+
+> **Do you need advice on digital evidence preservation for litigation?** At Legasint we combine legal and technical expertise to ensure your digital evidence withstands any challenge. [Contact us](/en/contact).
