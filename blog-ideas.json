@@ -1707,8 +1707,12 @@
         "riesgos",
         "oportunidades"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-24",
+      "files": [
+        "analisis-predictivo-cartera-clientes-riesgos-oportunidades.mdx",
+        "predictive-client-portfolio-analysis-risks-opportunities.mdx"
+      ]
     },
     {
       "id": 75,
