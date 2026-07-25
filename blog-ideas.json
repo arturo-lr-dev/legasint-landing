@@ -2115,11 +2115,27 @@
       ]
     },
     {
+      "id": 94,
+      "title": {
+        "es": "AI Act: qué pasa después del plazo de agosto 2026",
+        "en": "AI Act: What Happens After the August 2026 Deadline"
+      },
+      "description": "Guía sobre las consecuencias, sanciones y obligaciones continuas tras el plazo de cumplimiento del AI Act para sistemas de alto riesgo en agosto 2026",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "AI Act",
+        "sanciones",
+        "cumplimiento",
+        "agosto 2026",
+        "sistemas de alto riesgo",
+        "post-deadline"
+      ],
       "status": "published",
-      "publishedDate": "2026-07-13",
+      "publishedDate": "2026-07-25",
       "files": [
-        "european-legal-data-space-ecosistema-datos-juridicos-ue.mdx",
-        "european-legal-data-space-ecosystem-legal-data-eu.mdx"
+        "ai-act-que-pasa-despues-plazo-agosto-2026.mdx",
+        "ai-act-what-happens-after-august-2026-deadline.mdx"
       ]
     }
   ]
