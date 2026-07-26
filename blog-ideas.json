@@ -1806,8 +1806,12 @@
         "producto",
         "12 semanas"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-26",
+      "files": [
+        "proceso-desarrollo-software-legal-mvp-12-semanas.mdx",
+        "legal-software-development-mvp-12-weeks.mdx"
+      ]
     },
     {
       "id": 80,
