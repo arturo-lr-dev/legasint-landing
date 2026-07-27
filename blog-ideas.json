@@ -1730,8 +1730,12 @@
         "automatización",
         "eficiencia"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-27",
+      "files": [
+        "despacho-inteligente-iot-automatizacion-espacio-fisico.mdx",
+        "smart-law-firm-iot-physical-space-automation.mdx"
+      ]
     },
     {
       "id": 76,
