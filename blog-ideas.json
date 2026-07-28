@@ -2146,5 +2146,29 @@
         "ai-act-what-happens-after-august-2026-deadline.mdx"
       ]
     }
+    {
+      "id": 95,
+      "title": {
+        "es": "AI Omnibus 2026: Qué cambia para empresas y despachos tras su entrada en vigor",
+        "en": "AI Omnibus 2026: What Changes for Companies and Law Firms After It Takes Effect"
+      },
+      "description": "Análisis práctico de la entrada en vigor del AI Omnibus el 27 de julio de 2026: simplificación de obligaciones para sistemas de IA de alto riesgo, nuevos plazos y cómo afecta a empresas y despachos de abogados.",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "AI Omnibus",
+        "AI Act",
+        "simplificación normativa",
+        "cumplimiento IA",
+        "despachos de abogados",
+        "julio 2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-07-28",
+      "files": [
+        "ai-omnibus-2026-entra-vigor-cambios-empresas-despachos.mdx",
+        "ai-omnibus-2026-takes-effect-changes-companies-law-firms.mdx"
+      ]
+    }
   ]
 }
