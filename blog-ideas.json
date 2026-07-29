@@ -1753,8 +1753,12 @@
         "medio ambiente",
         "digital"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-29",
+      "files": [
+        "sostenibilidad-digital-reducir-huella-carbono-despacho.mdx",
+        "digital-sustainability-reducing-law-firm-carbon-footprint.mdx"
+      ]
     },
     {
       "id": 77,
