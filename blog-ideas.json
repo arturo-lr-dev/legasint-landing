@@ -1772,8 +1772,12 @@
         "captura",
         "sistema"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-29",
+      "files": [
+        "gestion-conocimiento-legal-cabeza-abogado-sistema.mdx",
+        "legal-knowledge-management-lawyer-head-system.mdx"
+      ]
     },
     {
       "id": 78,
