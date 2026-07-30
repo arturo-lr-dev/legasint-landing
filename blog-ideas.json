@@ -1799,8 +1799,12 @@
         "desarrollo",
         "decisión"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-07-30",
+      "files": [
+        "software-a-medida-vs-saas-legal-cuando-merece-desarrollar.mdx",
+        "custom-software-vs-legal-saas-when-development-pays-off.mdx"
+      ]
     },
     {
       "id": 79,
