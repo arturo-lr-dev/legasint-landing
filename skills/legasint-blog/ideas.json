@@ -91,15 +91,17 @@
     {
       "id": 42,
       "title": "El sistema 'funciona' pero te está matando: 6 señales",
-      "status": "idea",
+      "status": "published",
       "priority": "high",
       "created": "2026-02-16",
+      "published": "2026-07-25",
       "notes": "Costo de oportunidad vs costo de modernizar. Hook: 'Tu Excel con macros te cuesta €50k al año (y ni lo sabes)'. Target: empresas con sistemas viejos que limitan crecimiento"
     },
     {
       "id": 43,
       "title": "Agents vs Apps tradicionales: Qué esperar en 2026",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-07-19",
       "created": "2026-02-16",
       "notes": "Hype de AI agents llegando a PYMEs. Qué pueden hacer agents HOY (no en 5 años), cuándo tiene sentido"
     },
@@ -114,28 +116,30 @@
     {
       "id": 45,
       "title": "Low-code/No-code en 2026: Cuándo SÍ usar (y cuándo huir)",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-07-26",
       "created": "2026-02-16",
       "notes": "Target: empresas explorando Bubble, Webflow, etc. Pros/cons reales, cuándo escalar a código custom"
     },
     {
       "id": 46,
       "title": "PWA vs App Nativa en 2026: La decisión que nadie explica bien",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-07-27",
       "created": "2026-02-16",
       "notes": "Target: empresas decidiendo entre web app o app stores. Casos reales, costos, limitaciones actuales"
     },
     {
       "id": 47,
       "title": "Migrar de PHP/WordPress a Next.js/React: ¿Vale la pena?",
-      "status": "idea",
-      "created": "2026-02-16",
-      "notes": "Target: empresas con tech stack viejo. Cuándo sí, cuándo no, costos reales"
+      "status": "published",
+      "published": "2026-07-28",
     },
     {
       "id": 48,
       "title": "SaaS vs desarrollo custom: La calculadora honesta",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-07-30",
       "created": "2026-02-16",
       "notes": "Break-even point entre comprar SaaS o desarrollar custom. Casos de uso"
     },
@@ -359,8 +363,8 @@
   ],
   "meta": {
     "total": 54,
-    "lastUpdated": "2026-07-16T11:06:00Z",
-    "priorityIdeas": [42],
-    "notes": "Ideas 40-42 marcadas como alta prioridad basadas en intereses actuales de clientes 2026: IA/ChatGPT, costos de proveedores IT, sistemas legacy que limitan crecimiento. Idea 41 publicada el 2026-07-13. Idea 44 publicada el 2026-07-16."
+    "lastUpdated": "2026-07-28T12:00:00Z",
+    "priorityIdeas": [],
+    "notes": "Idea 47 publicada el 2026-07-28."
   }
 }
