@@ -2182,5 +2182,29 @@
         "ai-omnibus-2026-takes-effect-changes-companies-law-firms.mdx"
       ]
     }
+    {
+      "id": 96,
+      "title": {
+        "es": "Post-AI Omnibus: primeros pasos para despachos tras la entrada en vigor",
+        "en": "Post-AI Omnibus: First Steps for Law Firms After It Takes Effect"
+      },
+      "description": "Guía de acción inmediata para despachos tras la entrada en vigor del AI Omnibus: qué cambios aplican ya, qué plazos se extienden y cómo adaptar la compliance en tiempo real",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "AI Omnibus",
+        "AI Act",
+        "cumplimiento",
+        "despachos",
+        "agosto 2026",
+        "pasos inmediatos"
+      ],
+      "status": "published",
+      "publishedDate": "2026-07-31",
+      "files": [
+        "post-ai-omnibus-primeros-pasos-despachos.mdx",
+        "post-ai-omnibus-first-steps-law-firms.mdx"
+      ]
+    }
   ]
 }
