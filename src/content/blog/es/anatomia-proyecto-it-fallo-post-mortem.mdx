@@ -1,0 +1,274 @@
+---
+title: "Anatomía de un proyecto IT que salió mal: Post-mortem real"
+date: "2026-07-31"
+description: "Un caso real anónimo de un proyecto IT que fracasó tras 18 meses y €120k invertidos. Las lecciones que nadie quiere contar, y cómo recuperar cuando todo parece perdido."
+tags: ["Gestión de Proyectos", "Desarrollo de Software", "Consultoría IT", "Transformación Digital", "PYMEs"]
+image: "/blog-images/es-anatomia-proyecto-it-fallo.png"
+---
+
+## El proyecto que nunca debió fallar
+
+> *"Llevamos 18 meses, hemos gastado €120.000, y lo único que tenemos es un login que funciona a medias."*
+
+Esta frase la escuché en una llamada en marzo de 2025. El CEO de una empresa de logística mediana —llamémosla TransportSol— me contactó porque su proyecto de digitalización había naufragado. No es que estuviera retrasado. Es que **no existía**.
+
+Lo que sigue es un post-mortem real (anonimizado con permiso). No para alarmarte, sino para que reconozcas las señales antes de que sea tarde. Y si ya estás en medio del caos, para que sepas que hay salida.
+
+---
+
+## El contexto: Una empresa que necesitaba digitalizarse
+
+**TransportSol:** 80 empleados, €12M de facturación, operando con Excel, teléfono y WhatsApp para coordinar flotas.
+
+**El problema:** Crecieron un 40% en 2 años. Su sistema manual ya no daba abasto. Errores de ruta, clientes insatisfechos, conductores sobrecargados.
+
+**La decisión:** En enero de 2024, el CEO aprobó un presupuesto de €80.000 para desarrollar una plataforma de gestión de flotas integrada. Plazo: 6 meses.
+
+---
+
+## Fase 1: El inicio prometedor (Meses 1-3)
+
+Contrataron una agencia de desarrollo local. Buena web, buenas referencias, equipo joven.
+
+**Lo que se acordó:**
+- Plataforma web para planificación de rutas
+- App móvil para conductores
+- Panel de administración con informes
+- Integración con GPS de vehículos
+
+**Lo que se entregó a los 3 meses:**
+- Un prototipo visual en Figma
+- Una base de datos diseñada
+- Un repositorio de código con autenticación básica
+
+**El CEO pensó:** *"Vamos bien. Esto es lo normal en desarrollo, ¿no?"*
+
+**La realidad:** Ya se habían consumido €35.000 y no había nada funcional. Pero nadie lo sabía medir.
+
+---
+
+## Fase 2: La primera grieta (Meses 4-6)
+
+A los 4 meses, la agencia pidió una **reunión de alcance**. Dijeron que el GPS requería una integración más compleja de lo previsto. Que la app móvil necesitaba funcionalidades offline que no estaban en el presupuesto.
+
+**La agencia propuso:**
+- Ampliar el presupuesto a €120.000
+- Extender el plazo a 9 meses
+- Eliminar el módulo de informes "para la primera versión"
+
+**El CEO aceptó.** La alternativa era perder lo invertido. O eso creía.
+
+**Error #1: El síndrome del costo hundido**
+
+> Cuanto más has invertido en algo que no funciona, más difícil es abandonarlo. Pero cada euro adicional que inviertes en un proyecto fallido es un euro que no inviertes en una solución real.
+
+---
+
+## Fase 3: La ilusión del progreso (Meses 7-12)
+
+La agencia empezó a hacer demos semanales. Pantallas nuevas, botones que funcionaban, mapas con puntos de colores.
+
+**Pero nada estaba conectado.**
+
+- La planificación de rutas no enviaba datos a la app del conductor
+- El GPS mostraba posiciones, pero no las guardaba
+- Los informes eran capturas de pantalla hechas a mano
+
+**La agencia decía:** *"Es que esto es desarrollo ágil. Vamos entregando valor incremental."*
+
+**El CEO pensó:** *"No entiendo todo, pero parece que avanzan."*
+
+**Error #2: Confundir actividad con progreso**
+
+> Ver pantallas nuevas no significa que el producto funcione. El progreso real se mide en funcionalidades completas, probadas y usables por el cliente final.
+
+---
+
+## Fase 4: El colapso (Meses 13-18)
+
+A los 13 meses, la agencia anunció que necesitaban **cambiar la arquitectura**. Que el framework elegido no escalaba. Que había que rehacer parte del código.
+
+**Nueva propuesta:**
+- Presupuesto adicional: €40.000
+- Plazo adicional: 4 meses
+- "Refactorización necesaria para la fase 2"
+
+El CEO empezó a sospechar. Contrató a un consultor externo para auditar el proyecto.
+
+**El informe del consultor (resumen):**
+- El código estaba en un estado técnico crítico
+- No había tests automatizados
+- La documentación era inexistente
+- El 60% del código era "boilerplate" copiado de tutoriales
+- La arquitectura no soportaría ni 10 usuarios concurrentes
+- **Estimación para terminar lo acordado: €180.000 y 12 meses más**
+
+**El CEO llamó a la agencia. La agencia cerró.** No quebraron, simplemente dejaron de responder. Cambiaron de nombre 3 meses después.
+
+---
+
+## La autopsia: ¿Qué falló exactamente?
+
+### 1. No se definió el MVP
+
+Quisieron construir todo de golpe. Plataforma web, app móvil, GPS, informes, integraciones. En 6 meses. Con €80.000.
+
+**Lo que deberían haber hecho:**
+- MVP: Planificación de rutas web + notificaciones por email. €25.000. 2 meses.
+- Fase 2: App móvil básica. €20.000. 2 meses.
+- Fase 3: GPS e informes. €25.000. 2 meses.
+
+**Resultado:** Tendrían una plataforma funcional en 2 meses, no una ruina en 18.
+
+### 2. No había métricas de progreso reales
+
+Las demos semanales mostraban interfaces, no funcionalidad. Nadie preguntó:
+- ¿Cuántos usuarios pueden usar esto simultáneamente?
+- ¿Cuánto tarda en cargar una ruta?
+- ¿Funciona la sincronización en tiempo real?
+
+**Regla de oro:** Si no hay métricas, no hay progreso. Solo hay actividad.
+
+### 3. No se auditaron entregas
+
+Aceptaron "entregables" sin validación técnica. Código sin revisar. Funcionalidades sin probar en escenarios reales.
+
+**Lo mínimo que debían haber exigido:**
+- Código en repositorio accesible desde el día 1
+- Despliegues automáticos cada 2 semanas
+- Acceso a un entorno de pruebas funcional
+- Tests que demuestren que lo entregado funciona
+
+### 4. No había un Product Owner interno
+
+El CEO delegó todo en la agencia. No designó a nadie de su equipo que entendiera el negocio y pudiera validar que lo construido resolvía problemas reales.
+
+**Resultado:** La agencia construyó lo que *ellos* entendieron, no lo que *la empresa* necesitaba.
+
+### 5. No se planificó la salida
+
+No había cláusula de propiedad intelectual clara. No había escrow del código. Cuando la agencia desapareció, se llevaron el conocimiento.
+
+**El CEO se quedó con:**
+- Un repositorio de código inusable
+- €120.000 menos en la cuenta
+- 18 meses perdidos
+- Un equipo desmoralizado
+- Clientes que seguían esperando una solución
+
+---
+
+## La recuperación: Cómo salir del agujero
+
+Cuando hablé con el CEO, su primera pregunta fue: *"¿Hay algo que salvar?"*
+
+Mi respuesta fue honesta: *"El código, no. Pero la lección, sí. Y el negocio, definitivamente."*
+
+### Paso 1: Aceptar la pérdida (Difícil pero necesario)
+
+Le hice ver que seguir invirtiendo en ese código era como reparar un coche que había estado 2 años bajo el agua. Posible, pero más caro que uno nuevo.
+
+**Decisión:** Archivar el proyecto. Tomar la pérdida. Empezar de cero con cabeza.
+
+### Paso 2: Definir el verdadero problema
+
+No necesitaban una plataforma integral. Necesitaban:
+1. Que los conductores supieran su ruta cada mañana sin llamadas telefónicas
+2. Que los clientes pudieran tracking de sus envíos
+3. Que el despacho viera el estado de todas las rutas en tiempo real
+
+**Tres problemas. Tres funcionalidades. Nada más.**
+
+### Paso 3: Validar con lo mínimo indispensable
+
+En lugar de desarrollar, propusimos:
+- Usar una herramienta existente (OptimoRoute) para planificación
+- WhatsApp Business API para notificaciones automáticas
+- Un dashboard simple con Google Data Studio conectado a su Excel
+
+**Inversión:** €800/mes en suscripciones. **Tiempo:** 2 semanas.
+
+**Resultado:** Resolvieron el 70% de su dolor en 15 días. Sin código. Sin riesgo.
+
+### Paso 4: Construir solo lo que no existe
+
+Después de 3 meses usando herramientas existentes, identificaron exactamente qué necesitaban que ningún SaaS ofrecía:
+- Un algoritmo de optimización de rutas específico para su tipo de carga
+- Integración con sus balanzas de pesaje electrónicas
+
+**Eso sí merecía desarrollo custom.** Y ahora sabían exactamente qué construir.
+
+### Paso 5: Hacerlo bien esta vez
+
+- MVP de 6 semanas, no 6 meses
+- Product Owner interno (el jefe de operaciones)
+- Despliegues semanales con métricas claras
+- Código en repositorio propio desde el día 1
+- Cláusula de propiedad intelectual y escrow
+
+**Resultado final:**
+- Plataforma funcional en 8 semanas
+- Coste total: €28.000
+- ROI positivo en 4 meses
+- El CEO dice que es "lo mejor que le ha pasado a la empresa"
+
+---
+
+## Las 7 señales de que tu proyecto IT está en peligro
+
+Si reconoces más de 2 de estas, necesitas una auditoría urgente:
+
+1. **Llevas más del doble del tiempo previsto** y la excusa siempre es "estamos puliendo detalles"
+2. **No puedes usar el producto** en un escenario real de tu negocio
+3. **Las demos muestran interfaces, no funcionalidad** completa
+4. **El presupuesto se ha duplicado** y piden más
+5. **No tienes acceso al código** o no sabes dónde está desplegado
+6. **Tu equipo técnico (si tienes) no ha revisado** lo que se entrega
+7. **No hay métricas de progreso** objetivas, solo "estamos avanzando"
+
+---
+
+## El framework Kill / Pivot / Rescue
+
+Si tu proyecto está en problemas, usa esto:
+
+### KILL (Matarlo)
+- El código es técnicamente insalvable
+- Han pasado >12 meses sin entregable usable
+- El proveedor ha desaparecido o no responde
+- **Acción:** Aceptar la pérdida. Empezar de cero o con SaaS existente.
+
+### PIVOT (Cambiar de rumbo)
+- El código es usable pero no hace lo que necesitas
+- El problema de negocio cambió durante el desarrollo
+- **Acción:** Redefinir el MVP. Usar lo que funciona. Desechar lo que no.
+
+### RESCUE (Rescatarlo)
+- El proyecto está retrasado pero el código es sano
+- Hay un entregable parcial que funciona
+- El proveedor es responsive y transparente
+- **Acción:** Auditar técnica y de negocio. Redefinir alcance. Extender plazo razonable.
+
+---
+
+## Conclusión: El fracaso no es el final
+
+El proyecto de TransportSol fue un desastre. Pero fue también la mejor lección que pudieron aprender.
+
+Hoy tienen una plataforma que funciona. Un equipo que entiende tecnología. Y un CEO que sabe preguntar las preguntas correctas.
+
+> **El fracaso en IT no es invertir mal una vez. Es no aprender de ello.**
+
+Si estás en medio de un proyecto que huele mal, no esperes a los 18 meses. Auditoría a los 3. Métricas desde el día 1. Y recuerda: **lo barato sale caro, pero lo caro sin control sale en bancarrota.**
+
+---
+
+## ¿Tu proyecto huele mal?
+
+En LegaSInt hacemos auditorías de rescate para proyectos estancados. No vendemos desarrollo. Primero diagnosticamos. Luego decidimos juntos si merece la pena rescatar, pivotar o matar.
+
+**[Hablemos de tu proyecto →](/contacto)**
+
+---
+
+*¿Te ha resultado útil este artículo? Compártelo con alguien que esté gestionando un proyecto IT.*
