@@ -2181,7 +2181,7 @@
         "ai-omnibus-2026-entra-vigor-cambios-empresas-despachos.mdx",
         "ai-omnibus-2026-takes-effect-changes-companies-law-firms.mdx"
       ]
-    }
+    },
     {
       "id": 96,
       "title": {
@@ -2204,6 +2204,31 @@
       "files": [
         "post-ai-omnibus-primeros-pasos-despachos.mdx",
         "post-ai-omnibus-first-steps-law-firms.mdx"
+      ]
+    },
+    {
+      "id": 97,
+      "title": {
+        "es": "Calidad de datos en IA: guía de la AEPD para cumplir con el GDPR",
+        "en": "Data Quality in AI: AEPD Guide for GDPR Compliance"
+      },
+      "description": "Análisis de la nota técnica de la AEPD sobre calidad, exactitud y minimización de datos en sistemas de IA y su impacto en despachos de abogados",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, DPOs, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "AEPD",
+        "calidad de datos",
+        "GDPR",
+        "IA",
+        "exactitud",
+        "minimización",
+        "cumplimiento"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-01",
+      "files": [
+        "calidad-datos-ia-aepd-gdpr-2026.mdx",
+        "data-quality-ai-aepd-gdpr-2026.mdx"
       ]
     }
   ]

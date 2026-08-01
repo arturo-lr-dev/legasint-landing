@@ -1,0 +1,140 @@
+---
+title: "Data Quality in AI: AEPD Guide for GDPR Compliance"
+date: "2026-08-01"
+description: "Analysis of the AEPD technical note on data quality, accuracy, and minimization in AI systems and its impact on law firms."
+tags: ["AEPD", "data quality", "GDPR", "AI", "accuracy", "minimization", "compliance"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Data+Quality+in+AI"
+---
+
+## Introduction
+
+On **July 21, 2026**, the Spanish Data Protection Agency (AEPD) published a groundbreaking technical note: a comprehensive analysis of how the GDPR principles of **accuracy and data minimization** apply to personal data processing involving artificial intelligence systems. This is one of the first works in the world to systematically address this issue, marking a milestone in AI regulation in Europe.
+
+For **law firms** advising technology companies or implementing AI in their own processes, understanding this guide is not optional—it is a strategic necessity.
+
+## 1. The Context: Why Now?
+
+The proliferation of AI systems in the legal sector—from contract analysis tools to due diligence platforms—has raised an urgent question: **how to reconcile the GDPR accuracy principle with the probabilistic nature of AI models?**
+
+The AEPD responds with a pragmatic approach: accuracy should not be understood in absolute terms, but in relation to the **purpose of the processing**. This nuance is crucial to avoid overly restrictive interpretations that could paralyze innovation.
+
+## 2. Key Conclusions from the Technical Note
+
+### 2.1. Relative, Not Absolute Accuracy
+
+The AEPD clarifies that the GDPR accuracy principle **does not require data to be always fully truthful or completely up-to-date**. What is required is that they be adequate to fulfill the purpose of the processing.
+
+> "The level of accuracy required may vary depending on the type of processing and its effects on individuals."
+
+**Practical implication:** A firm using AI for portfolio statistical analysis can accept higher levels of abstraction than if using AI to generate personalized legal recommendations for specific clients.
+
+### 2.2. Dataset Quality vs. Individual Record Quality
+
+One of the most relevant contributions of the guide is the distinction between:
+
+| Level | Focus | Relevance |
+|-------|-------|-----------|
+| **Individual record** | Accuracy of each data point | High when affecting specific individuals |
+| **Global dataset** | Representativeness, absence of bias, relevance | Critical in machine learning models |
+
+The AEPD emphasizes that in machine learning systems, the **representativeness of the dataset** may be more determinative than the individual accuracy of each record.
+
+### 2.3. Differentiated Phases: Development vs. Deployment
+
+The technical note establishes a key distinction between:
+
+- **Development phase:** Greater flexibility in data quality, focused on representativeness
+- **Deployment phase:** Greater guarantees needed, especially when results affect specific individuals
+
+**Practical example:** An AI model trained with historical contract data (development phase) can admit some noise. But when that model generates a recommendation for a specific client (deployment phase), the results must be verifiable and justifiable.
+
+## 3. Techniques Compatible with GDPR
+
+The AEPD explicitly validates several common practices in AI development:
+
+### 3.1. Synthetic Data
+
+Synthetic data generation is compatible with the accuracy principle when:
+- It is justified by the purpose of the processing
+- It does not generate adverse effects on individuals
+- It is adequately documented
+
+### 3.2. Anonymization
+
+Anonymization of data for model training is a valid safeguard, provided it is verified to be non-reversible.
+
+### 3.3. Bias Correction
+
+Bias mitigation techniques (such as dataset rebalancing or attribute weighting) are compatible with GDPR, provided they are documented and do not introduce new biases.
+
+## 4. Data Governance: The Role of the DPO
+
+The AEPD highlights the need to implement **data governance** with:
+
+- **Objectively defined quality requirements**, based on the purpose of processing
+- **Established quality metrics** and monitored
+- **Lifecycle documentation** of the processing
+- **Continuous monitoring** in line with the proactive accountability principle
+
+### Checklist for DPOs and Compliance Officers
+
+```markdown
+- [ ] Has the required level of accuracy been defined for each AI processing?
+- [ ] Is there a distinction between development and deployment phases?
+- [ ] Have data improvement techniques (synthetic, anonymization) been documented?
+- [ ] Is there human review for decisions affecting individuals?
+- [ ] Have dataset quality metrics been established?
+- [ ] Are individuals informed about AI use with their data?
+```
+
+## 5. Impact on Law Firms
+
+### 5.1. Advising Technology Clients
+
+Law firms must be prepared to:
+- Review **Data Processing Agreements** with AI providers
+- Evaluate whether **DPIAs** (Data Protection Impact Assessments) adequately reflect data quality risks
+- Advise on the **documentation required** to demonstrate compliance to the AEPD
+
+### 5.2. Internal AI Use
+
+If the firm uses AI tools for:
+- **Contract analysis:** Anonymize client data before processing
+- **Due diligence:** Limit data shared with the tool to the minimum necessary
+- **Litigation outcome prediction:** Ensure transparency about model limitations
+
+## 6. Relationship with AI Act and Other Frameworks
+
+The AEPD technical note complements the **AI Act** framework, especially for high-risk systems. The combination of both regulations creates a compliance ecosystem where:
+
+| Framework | Focus | Key Requirement |
+|-----------|-------|---------------|
+| **GDPR** (via AEPD) | Data quality, accuracy, minimization | Documentation and governance |
+| **AI Act** | Algorithmic risk, transparency | Conformity and registration |
+| **DORA** (financial sector) | Operational resilience | Technology risk management |
+
+## 7. Recommended Next Steps
+
+### For Companies Developing or Using AI
+
+1. **Audit** current datasets according to AEPD criteria
+2. **Document** decisions about data quality and techniques used
+3. **Review** contracts with AI providers to include data quality clauses
+4. **Train** technical and legal teams on these criteria
+
+### For Law Firms
+
+1. **Incorporate** data quality analysis into DPIAs you draft
+2. **Develop** contractual clause templates on data governance in AI
+3. **Offer** GDPR compliance audit services for AI projects
+4. **Stay updated** on upcoming AEPD and AESIA guidelines
+
+## Conclusion
+
+The AEPD technical note represents a significant advance toward a regulatory framework that **protects individuals' rights without blocking innovation**. For law firms, mastering these criteria is not just a compliance obligation—it is a **business opportunity** in a market where demand for AI and data protection advice is growing exponentially.
+
+**Need advice on how to apply these criteria in your organization?** [Contact our team](/en/contact) of data protection and artificial intelligence specialists.
+
+---
+
+*Published on August 1, 2026. This information is for guidance purposes only and does not constitute specific legal advice.*

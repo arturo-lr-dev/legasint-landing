@@ -1,0 +1,140 @@
+---
+title: "Calidad de datos en IA: guía de la AEPD para cumplir con el GDPR"
+date: "2026-08-01"
+description: "Análisis de la nota técnica de la AEPD sobre calidad, exactitud y minimización de datos en sistemas de IA y su impacto en despachos de abogados."
+tags: ["AEPD", "calidad de datos", "GDPR", "IA", "exactitud", "minimización", "cumplimiento"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Calidad+de+Datos+en+IA"
+---
+
+## Introducción
+
+El **21 de julio de 2026**, la Agencia Española de Protección de Datos (AEPD) publicó una nota técnica pionera: un análisis integral sobre cómo se proyectan los principios de **exactitud y minimización del GDPR** en tratamientos de datos personales que incorporan sistemas de inteligencia artificial. Se trata de uno de los primeros trabajos en el mundo que aborda de forma sistemática esta cuestión, y marca un hito en la regulación de la IA en Europa.
+
+Para los **despachos de abogados** que asesoran a empresas tecnológicas o que implementan IA en sus propios procesos, entender esta guía no es opcional: es una necesidad estratégica.
+
+## 1. El contexto: por qué ahora
+
+La proliferación de sistemas de IA en el sector legal —desde herramientas de análisis contractual hasta plataformas de due diligence— ha planteado una pregunta urgente: **¿cómo conciliar el principio de exactitud del GDPR con la naturaleza probabilística de los modelos de IA?**
+
+La AEPD responde con un enfoque pragmático: la exactitud no debe entenderse en términos absolutos, sino en relación con la **finalidad del tratamiento**. Este matiz es crucial para evitar interpretaciones excesivamente restrictivas que pudieran paralizar la innovación.
+
+## 2. Principales conclusiones de la nota técnica
+
+### 2.1. Exactitud relativa, no absoluta
+
+La AEPD aclara que el principio de exactitud del GDPR **no exige que los datos sean siempre plenamente veraces o estén completamente actualizados**. Lo que se requiere es que sean adecuados para cumplir el objetivo del tratamiento.
+
+> "El nivel de exactitud exigible puede variar en función del tipo de tratamiento y de sus efectos sobre las personas."
+
+**Implicación práctica:** Un despacho que use IA para análisis estadísticos de cartera puede admitir mayores niveles de abstracción que si usa IA para generar recomendaciones legales personalizadas a clientes específicos.
+
+### 2.2. Calidad del dataset vs. calidad del registro individual
+
+Una de las aportaciones más relevantes de la guía es la distinción entre:
+
+| Nivel | Enfoque | Relevancia |
+|-------|---------|------------|
+| **Registro individual** | Exactitud de cada dato | Alto cuando afecta a personas concretas |
+| **Dataset global** | Representatividad, ausencia de sesgos, relevancia | Crítico en modelos de machine learning |
+
+La AEPD subraya que en sistemas de aprendizaje automático, la **representatividad del conjunto de datos** puede ser más determinante que la exactitud individual de cada registro.
+
+### 2.3. Fases diferenciadas: desarrollo vs. explotación
+
+La nota técnica establece una distinción clave entre:
+
+- **Fase de desarrollo:** Mayor flexibilidad en la calidad de datos, centrada en la representatividad
+- **Fase de explotación:** Mayores garantías necesarias, especialmente cuando los resultados inciden en personas concretas
+
+**Ejemplo práctico:** Un modelo de IA entrenado con datos históricos de contratos (fase de desarrollo) puede admitir cierto ruido. Pero cuando ese modelo genera una recomendación para un cliente específico (fase de explotación), los resultados deben ser verificables y justificables.
+
+## 3. Técnicas compatibles con el GDPR
+
+La AEPD valida explícitamente varias prácticas habituales en el desarrollo de IA:
+
+### 3.1. Datos sintéticos
+
+La generación de datos sintéticos es compatible con el principio de exactitud cuando:
+- Está justificada por la finalidad del tratamiento
+- No genera efectos adversos sobre las personas
+- Se documenta adecuadamente
+
+### 3.2. Anonimización
+
+La anonimización de datos para entrenamiento de modelos es una salvaguarda válida, siempre que se verifique que no sea reversible.
+
+### 3.3. Corrección de sesgos
+
+Las técnicas de mitigación de sesgos (como el reequilibrio de datasets o la ponderación de atributos) son compatibles con el GDPR, siempre que se documenten y no introduzcan nuevos sesgos.
+
+## 4. Gobierno del dato: el papel del DPO
+
+La AEPD destaca la necesidad de implementar **gobernanza del dato** con:
+
+- **Requisitos de calidad definidos objetivamente**, basados en la finalidad del tratamiento
+- **Métricas de calidad establecidas** y monitorizadas
+- **Documentación del ciclo de vida** del tratamiento
+- **Seguimiento continuo** en línea con el principio de responsabilidad proactiva
+
+### Checklist para DPOs y compliance officers
+
+```markdown
+- [ ] ¿Se ha definido el nivel de exactitud requerido para cada tratamiento con IA?
+- [ ] ¿Se distingue entre fase de desarrollo y fase de explotación?
+- [ ] ¿Se han documentado las técnicas de mejora de datos (sintéticos, anonimización)?
+- [ ] ¿Existe un proceso de revisión humana para decisiones que afecten a personas?
+- [ ] ¿Se han establecido métricas de calidad del dataset?
+- [ ] ¿Se informa a los interesados sobre el uso de IA en sus datos?
+```
+
+## 5. Impacto en despachos de abogados
+
+### 5.1. Asesoramiento a clientes tecnológicos
+
+Los despachos deben estar preparados para:
+- Revisar los **Data Processing Agreements** de proveedores de IA
+- Evaluar si las **DPIA** (Data Protection Impact Assessments) reflejan adecuadamente los riesgos de calidad de datos
+- Asesorar sobre la **documentación necesaria** para demostrar cumplimiento ante la AEPD
+
+### 5.2. Uso interno de IA
+
+Si el despacho utiliza herramientas de IA para:
+- **Análisis de contratos:** Anonimizar datos de clientes antes del procesamiento
+- **Due diligence:** Limitar los datos compartidos con la herramienta al mínimo necesario
+- **Predicción de resultados judiciales:** Garantizar transparencia sobre las limitaciones del modelo
+
+## 6. Relación con el AI Act y otros marcos
+
+La nota técnica de la AEPD complementa el marco del **AI Act**, especialmente para sistemas de alto riesgo. La combinación de ambos reglamentos crea un ecosistema de cumplimiento donde:
+
+| Marco | Enfoque | Requisito clave |
+|-------|---------|-----------------|
+| **GDPR** (vía AEPD) | Calidad de datos, exactitud, minimización | Documentación y gobernanza |
+| **AI Act** | Riesgo algorítmico, transparencia | Conformidad y registro |
+| **DORA** (sector financiero) | Resiliencia operativa | Gestión de riesgos tecnológicos |
+
+## 7. Próximos pasos recomendados
+
+### Para empresas que desarrollan o usan IA
+
+1. **Auditar** los datasets actuales según los criterios de la AEPD
+2. **Documentar** las decisiones sobre calidad de datos y técnicas utilizadas
+3. **Revisar** los contratos con proveedores de IA para incluir cláusulas sobre calidad de datos
+4. **Formar** a los equipos técnicos y legales en estos criterios
+
+### Para despachos de abogados
+
+1. **Incorporar** el análisis de calidad de datos en las DPIA que redacten
+2. **Desarrollar** plantillas de cláusulas contractales sobre gobernanza de datos en IA
+3. **Ofrecer** servicios de auditoría de cumplimiento GDPR en proyectos de IA
+4. **Mantenerse** actualizados sobre las próximas guías de la AEPD y la AESIA
+
+## Conclusión
+
+La nota técnica de la AEPD representa un avance significativo hacia un marco regulatorio que **protege los derechos de las personas sin bloquear la innovación**. Para los despachos de abogados, dominar estos criterios no solo es una obligación de cumplimiento: es una **oportunidad de negocio** en un mercado donde la demanda de asesoramiento en IA y protección de datos crece exponencialmente.
+
+**¿Necesitas asesoramiento sobre cómo aplicar estos criterios en tu organización?** [Contacta con nuestro equipo](/contacto) de especialistas en protección de datos e inteligencia artificial.
+
+---
+
+*Publicado el 1 de agosto de 2026. Esta información tiene carácter orientativo y no constituye asesoramiento jurídico específico.*
