@@ -1845,8 +1845,12 @@
         "software legal",
         "escalabilidad"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-08-01",
+      "files": [
+        "arquitectura-software-legal-monolito-vs-microservicios.mdx",
+        "legal-software-architecture-monolith-vs-microservices.mdx"
+      ]
     },
     {
       "id": 81,
