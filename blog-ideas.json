@@ -1868,8 +1868,12 @@
         "riesgos",
         "software legal"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-08-02",
+      "files": [
+        "integracion-apis-terceros-software-legal-riesgos-oportunidades.mdx",
+        "third-party-api-integration-legal-software-risks-opportunities.mdx"
+      ]
     },
     {
       "id": 82,
