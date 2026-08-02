@@ -1891,8 +1891,12 @@
         "software legal",
         "datos sensibles"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-08-02",
+      "files": [
+        "testing-calidad-software-legal-por-que-no-puedes-fallar.mdx",
+        "testing-quality-legal-software-why-you-cant-fail.mdx"
+      ]
     },
     {
       "id": 83,
