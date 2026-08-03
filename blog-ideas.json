@@ -2242,6 +2242,30 @@
         "calidad-datos-ia-aepd-gdpr-2026.mdx",
         "data-quality-ai-aepd-gdpr-2026.mdx"
       ]
+    },
+    {
+      "id": 98,
+      "title": {
+        "es": "El futuro del compliance legal: cómo la IA agéntica transforma la supervisión regulatoria en 2026",
+        "en": "The Future of Legal Compliance: How Agentic AI Transforms Regulatory Oversight in 2026"
+      },
+      "description": "Descubre cómo los agentes de IA autónomos están revolucionando el compliance legal en 2026: monitoreo continuo, detección proactiva de riesgos y adaptación en tiempo real a cambios normativos.",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, compliance officers, DPOs, empresas tecnológicas",
+      "keywords": [
+        "IA agéntica",
+        "compliance legal",
+        "agentes autónomos",
+        "regulación",
+        "despachos de abogados",
+        "2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-03",
+      "files": [
+        "ia-agentica-compliance-legal-futuro-2026.mdx",
+        "agentic-ai-compliance-legal-future-2026.mdx"
+      ]
     }
   ]
 }
