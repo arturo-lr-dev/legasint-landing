@@ -1,0 +1,190 @@
+---
+title: "Working Backups vs Decorative Backups: The Difference Between Sleeping Soundly and a €50,000 Nightmare"
+date: "2026-08-04"
+description: "Discover why most companies think they have secure backups when they actually have decorative copies. A practical guide to disaster recovery that actually works."
+tags: ["backup", "disaster recovery", "cybersecurity", "data protection", "SMBs"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=Working+Backups"
+---
+
+## Introduction
+
+**"Yes, we have backups"** is probably the most dangerous phrase in business vocabulary.
+
+We hear it constantly. The IT director says it with confidence. The CEO repeats it in meetings. And everyone sleeps soundly... until one Monday morning, the server won't boot, ransomware has encrypted everything, or an employee has accidentally deleted the last three years of customer database.
+
+Then they discover the truth: **having backups is not the same as being able to recover**.
+
+In this article, we're going to dismantle the myth of the decorative backup —that security copy that technically exists but has never been tested, takes 48 hours to restore, or turns out to be corrupt right when you need it most— and give you a practical framework to turn your backups into a true safety net.
+
+---
+
+## The Real Problem: 60% of Backups Have Never Been Tested
+
+Let's look at some painful numbers:
+
+- **60% of companies** admit to never having tested their disaster recovery plan.
+- **50% of restoration attempts** from backups fail partially or completely.
+- A company that loses its data **closes its doors in 93% of cases** if it can't recover them within 10 days.
+- The average cost of a data loss incident for a European SME ranges from **€50,000 to €150,000** in downtime, ransoms, forensic recovery, and regulatory fines.
+
+But here's the most painful data point: **most of these companies DID have backups**. The problem was they were decorative.
+
+### What Is a Decorative Backup?
+
+A decorative backup is one that checks the "I have a security copy" box but fails at the moment of truth. They're like fire extinguishers that haven't been inspected in 10 years: they're there, but they don't work.
+
+**Signs your backup is decorative:**
+
+- It runs automatically but **no one has reviewed a log in months**
+- The last restoration test was over a year ago (or never)
+- You don't know how long it would take to recover your complete system
+- Your backups are on the same server/infrastructure as the original data
+- You don't have a documented plan for what to do when something fails
+- It depends on a single person who knows how it works
+
+---
+
+## The 5 Golden Rules of a Working Backup
+
+### 1. The 3-2-1 Rule (and Its Evolution, 3-2-1-1-0)
+
+The classic backup rule states:
+
+- **3** copies of your data
+- **2** different storage media
+- **1** copy offsite
+
+In 2026, this is no longer enough. The updated version is **3-2-1-1-0**:
+
+- **3** copies
+- **2** different media
+- **1** offsite copy (cloud or remote location)
+- **1** offline/immutable copy (that ransomware can't encrypt)
+- **0** errors after verification
+
+**The offline/immutable copy is critical.** Modern ransomware seeks out and encrypts your backups if they're connected to the network. A tape copy, a disconnected disk, or cloud storage with "object lock" is your last line of defense.
+
+### 2. Test Your Backups Like Your Business Depends on It (Because It Does)
+
+A backup that hasn't been restored is a promise, not a guarantee. You must perform **periodic test restorations**:
+
+- **Monthly:** Individual file restoration (the most common scenario)
+- **Quarterly:** Complete restoration of a critical system
+- **Annually:** Full disaster recovery simulation (can you bring your business up in another location?)
+
+Document every test. If it fails, investigate why and fix it. A backup that fails testing is worse than no backup: it gives you a false sense of security.
+
+### 3. Define Your RPO and RTO (and Make Sure Your Backup Meets Them)
+
+Two metrics every company should know:
+
+- **RPO (Recovery Point Objective):** How much data can you afford to lose? If your RPO is 1 hour, you need hourly backups. If it's 24 hours, daily backups suffice.
+- **RTO (Recovery Time Objective):** How long can you be without service? If your RTO is 4 hours, your recovery plan must guarantee you're operational within 4 hours.
+
+A law firm probably needs an RPO of minutes (client data is critical) and an RTO of hours. An online store might tolerate an RPO of hours but needs an RTO of minutes (every minute offline is lost sales).
+
+**The rule:** your backup strategy should be designed backwards: first define your objectives, then choose the tools.
+
+### 4. Automate Verification, Not Just Copying
+
+Many companies automate backups but not verification. It's like having a car that starts on its own but not checking if the brakes work.
+
+**Automatic verifications you should have:**
+
+- **File integrity:** Checksums confirming the backup isn't corrupt
+- **Size and content:** Alerts if a backup is abnormally small or large
+- **Failure alerts:** Immediate notification if a backup doesn't complete
+- **Retention compliance:** Confirmation that backups are retained for the legally required time (GDPR, sector regulations)
+
+### 5. Document Everything (and Don't Rely on One Person)
+
+Tribal knowledge is the enemy of resilience. Your backup plan must be documented so that any person on the technical team (or an external provider) can execute it.
+
+**Minimum documentation:**
+
+- What gets backed up, how often, and where it's stored
+- How to restore each type of data
+- Backup system access credentials (in a secure password manager)
+- Emergency contacts (providers, hosting, support)
+- Steps to follow in case of ransomware (never pay the ransom without consulting!)
+
+---
+
+## Real Cases: When the Decorative Backup Falls Apart
+
+### Case A: The Law Firm That "Had Backups in the Cloud"
+
+A mid-sized law firm in Madrid used Google Drive for "backup" of their documents. When an employee infected the system with ransomware, they discovered:
+
+- Google Drive synced the encrypted files (the "backup" got contaminated)
+- Google's trash only retains for 30 days and some files had been infected for 45 days
+- They had no separate, immutable, or offline copy
+
+**Result:** 6 months of client documentation lost. Estimated cost: €80,000 in forensic recovery, lawyer time reconstructing cases, and reputational damage.
+
+**The lesson:** Cloud sync is NOT backup. You need versioning, immutability, and a separate copy.
+
+### Case B: The Startup That Did Backups... But No One Knew How to Restore
+
+A SaaS startup with 200 clients had automated backups on AWS. When their main database failed, the only developer who knew how to restore was on vacation without coverage.
+
+It took 36 hours to contact them, diagnose the problem, and execute the restoration. During that time, 200 clients couldn't access their data.
+
+**Result:** Loss of 15% of clients, irreparable reputational damage, and near company closure.
+
+**The lesson:** Document procedures. You need more than one person who can recover the system.
+
+### Case C: The Company That Actually Had Good Backups
+
+A 50-employee consultancy suffered a ransomware attack on a Friday night. But they had:
+
+- Immutable backups in Wasabi (30-day object lock)
+- Monthly documented test restorations
+- A disaster recovery plan they had simulated quarterly
+- An incident response provider with a 2-hour SLA
+
+By 6 hours after the attack, they had identified the entry vector, eliminated the malware, and begun restoration. Monday morning, all systems were operational with less than 2 hours of data loss.
+
+**Result:** Total incident cost: €12,000 (including forensics and weekend hours). Zero client loss. Zero fines.
+
+**The lesson:** Preparation is cheaper than recovery.
+
+---
+
+## Checklist: Is Your Backup Functional or Decorative?
+
+### Quick (5 minutes)
+
+- [ ] Do you know exactly where your backups are?
+- [ ] When was the last time you successfully restored something?
+- [ ] Are your backups in a different location than your original data?
+- [ ] Do you get alerts if a backup fails?
+- [ ] Does more than one person know how to restore the system?
+
+### Deep Dive (Action Plan)
+
+- [ ] Have you defined your RPO and RTO per system?
+- [ ] Do you have an immutable/offline copy that ransomware can't touch?
+- [ ] Do you perform monthly/quarterly restoration tests?
+- [ ] Do you have a documented disaster recovery plan?
+- [ ] Do you comply with your sector's legal retention periods?
+- [ ] Have you simulated a complete disaster recovery in the last year?
+- [ ] Do you have an incident response provider with a defined SLA?
+
+If you score less than 5 on the quick check or less than 4 on the deep dive: **you have a problem**.
+
+---
+
+## Conclusion
+
+Backups aren't an expense, they're insurance. And like all insurance, you only truly value their cost when you need them.
+
+The difference between a decorative backup and a working one isn't expensive technology or enterprise solutions. It's **discipline**: testing regularly, documenting, and not trusting that "something is probably running."
+
+**The question you should ask yourself today:** If your main server dies right now, how long would it take you to be operational again? And more importantly: are you sure that answer is correct?
+
+If you don't know for certain, it's time to stop decorating and start protecting.
+
+---
+
+*Want to audit your backup and disaster recovery strategy? At LegaSint, we help companies and law firms implement digital resilience plans that actually work when they're needed most.*
