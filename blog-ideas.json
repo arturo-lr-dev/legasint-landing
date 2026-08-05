@@ -2266,6 +2266,30 @@
         "ia-agentica-compliance-legal-futuro-2026.mdx",
         "agentic-ai-compliance-legal-future-2026.mdx"
       ]
+    },
+    {
+      "id": 99,
+      "title": {
+        "es": "NIS2 en España: el plazo de agosto 2026 y cómo preparar a tu cliente",
+        "en": "NIS2 in Spain: The August 2026 Deadline and How to Prepare Your Clients"
+      },
+      "description": "Guía práctica sobre el estado de transposición de la Directiva NIS2 en España, el plazo crítico de agosto 2026 y cómo los despachos pueden asesorar a empresas en su cumplimiento.",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas reguladas",
+      "keywords": [
+        "NIS2",
+        "ciberseguridad",
+        "transposición",
+        "España",
+        "cumplimiento",
+        "despachos"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-05",
+      "files": [
+        "nis2-espana-plazo-agosto-2026-preparar-cliente.mdx",
+        "nis2-spain-august-2026-deadline-prepare-clients.mdx"
+      ]
     }
   ]
 }
