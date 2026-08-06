@@ -27,7 +27,7 @@ The **GDPR** is not just a privacy policy: it is an architectural constraint. Ap
 
 **DORA** demands that resilience is not a wish-list item but a testable requirement. This translates into:
 
-- **RPO < 4 hours** and **RTO < 8 hours** for critical systems
+- **RPO &lt; 4 hours** and **RTO &lt; 8 hours** for critical systems
 - **Scheduled chaos engineering**: simulated dependency failures
 - **Circuit breakers** on all external integrations
 - **Full observability**: centralized metrics, logs, and traces
@@ -170,7 +170,7 @@ A law firm developing its own product without compliance by design faces:
 ### Deployment
 - [ ] Signed images, rootless, with seccomp
 - [ ] mTLS between all services
-- [ ] Encrypted backup with RPO < 4h verified
+- [ ] Encrypted backup with RPO &lt; 4h verified
 
 ### Operations
 - [ ] Incident runbooks updated
