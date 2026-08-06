@@ -1,6 +1,6 @@
 ---
 title: "Data Quality in AI: AEPD Guide for GDPR Compliance"
-date: "2026-08-01"
+date: "2026-08-06"
 description: "Analysis of the AEPD technical note on data quality, accuracy, and minimization in AI systems and its impact on law firms."
 tags: ["AEPD", "data quality", "GDPR", "AI", "accuracy", "minimization", "compliance"]
 image: "https://placehold.co/800x400/1e3a8a/white?text=Data+Quality+in+AI"
@@ -8,133 +8,134 @@ image: "https://placehold.co/800x400/1e3a8a/white?text=Data+Quality+in+AI"
 
 ## Introduction
 
-On **July 21, 2026**, the Spanish Data Protection Agency (AEPD) published a groundbreaking technical note: a comprehensive analysis of how the GDPR principles of **accuracy and data minimization** apply to personal data processing involving artificial intelligence systems. This is one of the first works in the world to systematically address this issue, marking a milestone in AI regulation in Europe.
+On July 21, 2026, the Spanish Data Protection Agency (AEPD) published a pioneering technical note analyzing how the principles of **accuracy and minimization under the GDPR** apply to data processing involving artificial intelligence systems. This document, one of the first comprehensive analyses worldwide, establishes an interpretive framework that enables the application of GDPR principles in AI environments without falling into overly restrictive interpretations that could hinder the development of these systems.
 
-For **law firms** advising technology companies or implementing AI in their own processes, understanding this guide is not optional—it is a strategic necessity.
+For law firms advising companies on data protection and artificial intelligence, understanding this guide is essential to provide precise and up-to-date counsel.
 
-## 1. The Context: Why Now?
+## 1. The Principle of Accuracy in the Context of AI
 
-The proliferation of AI systems in the legal sector—from contract analysis tools to due diligence platforms—has raised an urgent question: **how to reconcile the GDPR accuracy principle with the probabilistic nature of AI models?**
+### Beyond Absolute Truthfulness
 
-The AEPD responds with a pragmatic approach: accuracy should not be understood in absolute terms, but in relation to the **purpose of the processing**. This nuance is crucial to avoid overly restrictive interpretations that could paralyze innovation.
+The AEPD clarifies a fundamental point: the principle of accuracy set out in **Article 5.1(d) of the GDPR** does not require that data always be fully truthful or completely up-to-date. Instead, it establishes that data must be **adequate for fulfilling the purpose of the processing** in which they are used.
 
-## 2. Key Conclusions from the Technical Note
+This interpretation represents an evolution from more restrictive approaches that linked accuracy exclusively to the truthfulness of data. The Agency emphasizes that excessive requirements in this regard could conflict with the principle of minimization or generate disproportionate burdens, especially in the development and use of artificial intelligence systems.
 
-### 2.1. Relative, Not Absolute Accuracy
+> "The principle of accuracy is not understood in absolute terms, but in relation to the purpose of the processing."
 
-The AEPD clarifies that the GDPR accuracy principle **does not require data to be always fully truthful or completely up-to-date**. What is required is that they be adequate to fulfill the purpose of the processing.
+### Data Quality in Machine Learning Models
 
-> "The level of accuracy required may vary depending on the type of processing and its effects on individuals."
+The technical note explains that data quality must be analyzed not only in relation to each individual data point, but especially with respect to the **dataset as a whole** used for developing AI systems. In these systems, the representativeness, absence of bias, or relevance of the data can be decisive for the outcome, even above the individual accuracy of each record.
 
-**Practical implication:** A firm using AI for portfolio statistical analysis can accept higher levels of abstraction than if using AI to generate personalized legal recommendations for specific clients.
+| Aspect | Relevance in AI |
+|--------|-----------------|
+| Individual accuracy | Important for decisions about specific individuals |
+| Dataset representativeness | Critical for machine learning models |
+| Absence of bias | Decisive for avoiding algorithmic discrimination |
+| Feature relevance | Fundamental for model suitability |
 
-### 2.2. Dataset Quality vs. Individual Record Quality
+## 2. Projecting Data Quality Across the Entire Lifecycle
 
-One of the most relevant contributions of the guide is the distinction between:
+### Beyond Input Data
 
-| Level | Focus | Relevance |
-|-------|-------|-----------|
-| **Individual record** | Accuracy of each data point | High when affecting specific individuals |
-| **Global dataset** | Representativeness, absence of bias, relevance | Critical in machine learning models |
+The AEPD highlights that the data quality requirement is not limited to input data, but must be projected across **the entire processing operation**, including results generated by artificial intelligence systems, such as inferences, predictions, or decisions.
 
-The AEPD emphasizes that in machine learning systems, the **representativeness of the dataset** may be more determinative than the individual accuracy of each record.
+This implies evaluating the suitability of the processing as a whole, taking into account:
+- System design
+- Operations performed
+- Safeguards incorporated
 
-### 2.3. Differentiated Phases: Development vs. Deployment
+### Variable Level of Accuracy Depending on Impact
 
-The technical note establishes a key distinction between:
+The Agency notes that the level of accuracy required may vary depending on the type of processing and its effects on individuals:
 
-- **Development phase:** Greater flexibility in data quality, focused on representativeness
-- **Deployment phase:** Greater guarantees needed, especially when results affect specific individuals
+- **Aggregated or statistical processing**: May admit greater levels of abstraction or data transformation
+- **Decisions about specific individuals**: The principle of accuracy must be applied as extensively as possible
 
-**Practical example:** An AI model trained with historical contract data (development phase) can admit some noise. But when that model generates a recommendation for a specific client (deployment phase), the results must be verifiable and justifiable.
+## 3. AI Techniques and GDPR Compatibility
 
-## 3. Techniques Compatible with GDPR
+### Synthetic Data and Anonymization
 
-The AEPD explicitly validates several common practices in AI development:
+The note addresses the use of common techniques in AI system development:
 
-### 3.1. Synthetic Data
+- **Synthetic data generation**
+- **Anonymization**
+- **Bias correction**
 
-Synthetic data generation is compatible with the accuracy principle when:
-- It is justified by the purpose of the processing
-- It does not generate adverse effects on individuals
-- It is adequately documented
+The AEPD clarifies that these practices can be compatible with the principle of accuracy under the GDPR, even when they involve using values that do not directly reflect individual reality, provided they are justified in relation to the purpose of the processing and do not generate adverse effects on individuals.
 
-### 3.2. Anonymization
+### Development vs. Deployment
 
-Anonymization of data for model training is a valid safeguard, provided it is verified to be non-reversible.
+One of the most highlighted aspects is the distinction between data quality requirements in the **development** phase and the **deployment** phase:
 
-### 3.3. Bias Correction
+| Phase | Data Quality Requirements |
+|-------|--------------------------|
+| Development | Focus on representativeness and minimization of biases |
+| Deployment | Greater emphasis on accuracy of results for specific individuals |
 
-Bias mitigation techniques (such as dataset rebalancing or attribute weighting) are compatible with GDPR, provided they are documented and do not introduce new biases.
+The Agency emphasizes that both phases must be evaluated differently, taking into account that in the deployment phase, results can produce direct effects on individuals.
 
-## 4. Data Governance: The Role of the DPO
+## 4. Practical Implications for Law Firms
 
-The AEPD highlights the need to implement **data governance** with:
+### Advising Clients
 
-- **Objectively defined quality requirements**, based on the purpose of processing
-- **Established quality metrics** and monitored
-- **Lifecycle documentation** of the processing
-- **Continuous monitoring** in line with the proactive accountability principle
+Law firms must consider these points when advising companies that develop or use AI systems:
 
-### Checklist for DPOs and Compliance Officers
+1. **Define objective data quality requirements** based on the purpose of the processing
+2. **Document these requirements** explicitly
+3. **Establish data quality metrics**
+4. **Conduct continuous monitoring** throughout the processing lifecycle
+
+### Data Governance
+
+The AEPD highlights the importance of implementing **data governance** as a key element for compliance. This includes:
+
+- Data quality policies
+- Clear roles and responsibilities
+- Control and audit procedures
+- Team training
+
+### Non-Personal Data
+
+The Agency reminds us that quality requirements do not apply solely to personal data. **Non-personal data** used in processing can also be decisive for its suitability, especially in AI models where the correlation between non-personal and personal variables can generate unexpected results.
+
+## 5. Safeguards and Limitations of AI
+
+The technical note emphasizes that GDPR compliance requires designing processing operations that adequately manage the **limitations of artificial intelligence systems** through appropriate measures and safeguards:
+
+- **Human review** of automated decisions
+- **Explainability mechanisms** for the model
+- **Periodic audits** of quality and biases
+- **Right to rectification** of inaccurate data
+- **Continuous oversight** procedures
+
+## 6. Compliance Checklist for Law Firms
+
+### When Advising on AI Implementation
+
+- [ ] Has the purpose of the processing been defined clearly and specifically?
+- [ ] Have objective data quality requirements been established and documented?
+- [ ] Has the representativeness of the training dataset been evaluated?
+- [ ] Have potential biases in the data been identified and mitigated?
+- [ ] Is there a distinction between quality requirements for development and deployment?
+- [ ] Have safeguards been implemented for decisions about specific individuals?
+- [ ] Is there a human review procedure for results?
+- [ ] Have metrics and continuous quality monitoring been established?
+
+### Recommended Documentation
 
 ```markdown
-- [ ] Has the required level of accuracy been defined for each AI processing?
-- [ ] Is there a distinction between development and deployment phases?
-- [ ] Have data improvement techniques (synthetic, anonymization) been documented?
-- [ ] Is there human review for decisions affecting individuals?
-- [ ] Have dataset quality metrics been established?
-- [ ] Are individuals informed about AI use with their data?
+1. Data quality policy for AI
+2. Dataset representativeness analysis
+3. Bias risk assessment
+4. Human review procedure
+5. Established quality metrics
+6. Monitoring and audit plan
 ```
-
-## 5. Impact on Law Firms
-
-### 5.1. Advising Technology Clients
-
-Law firms must be prepared to:
-- Review **Data Processing Agreements** with AI providers
-- Evaluate whether **DPIAs** (Data Protection Impact Assessments) adequately reflect data quality risks
-- Advise on the **documentation required** to demonstrate compliance to the AEPD
-
-### 5.2. Internal AI Use
-
-If the firm uses AI tools for:
-- **Contract analysis:** Anonymize client data before processing
-- **Due diligence:** Limit data shared with the tool to the minimum necessary
-- **Litigation outcome prediction:** Ensure transparency about model limitations
-
-## 6. Relationship with AI Act and Other Frameworks
-
-The AEPD technical note complements the **AI Act** framework, especially for high-risk systems. The combination of both regulations creates a compliance ecosystem where:
-
-| Framework | Focus | Key Requirement |
-|-----------|-------|---------------|
-| **GDPR** (via AEPD) | Data quality, accuracy, minimization | Documentation and governance |
-| **AI Act** | Algorithmic risk, transparency | Conformity and registration |
-| **DORA** (financial sector) | Operational resilience | Technology risk management |
-
-## 7. Recommended Next Steps
-
-### For Companies Developing or Using AI
-
-1. **Audit** current datasets according to AEPD criteria
-2. **Document** decisions about data quality and techniques used
-3. **Review** contracts with AI providers to include data quality clauses
-4. **Train** technical and legal teams on these criteria
-
-### For Law Firms
-
-1. **Incorporate** data quality analysis into DPIAs you draft
-2. **Develop** contractual clause templates on data governance in AI
-3. **Offer** GDPR compliance audit services for AI projects
-4. **Stay updated** on upcoming AEPD and AESIA guidelines
 
 ## Conclusion
 
-The AEPD technical note represents a significant advance toward a regulatory framework that **protects individuals' rights without blocking innovation**. For law firms, mastering these criteria is not just a compliance obligation—it is a **business opportunity** in a market where demand for AI and data protection advice is growing exponentially.
+The AEPD's technical note represents a significant advance in understanding how to apply the GDPR in artificial intelligence environments. Its pragmatic approach, which avoids overly restrictive interpretations without sacrificing the protection of individuals, provides a useful framework for both companies and legal advisors.
 
-**Need advice on how to apply these criteria in your organization?** [Contact our team](/en/contact) of data protection and artificial intelligence specialists.
+For law firms, mastering these criteria is essential for providing valuable advice in an area where regulation and technology are constantly evolving. The key is to understand that data quality in AI is not an absolute concept, but must be evaluated in relation to the purpose of the processing and the potential impact on affected individuals.
 
----
-
-*Published on August 1, 2026. This information is for guidance purposes only and does not constitute specific legal advice.*
+**Contact us** for specialized advice on GDPR compliance for artificial intelligence systems in your organization.
