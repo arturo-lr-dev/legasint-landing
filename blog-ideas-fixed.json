@@ -1914,12 +1914,8 @@
         "legal tech",
         "desarrollo seguro"
       ],
-      "status": "published",
-      "publishedDate": "2026-08-07",
-      "files": [
-        "devsecops-legal-tech-seguridad-ciclo-vida-desarrollo.mdx",
-        "devsecops-legal-tech-security-development-lifecycle.mdx"
-      ]
+      "status": "pending",
+      "publishedDate": null
     },
     {
       "id": 84,
