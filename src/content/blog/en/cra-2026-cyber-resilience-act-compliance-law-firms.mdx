@@ -1,0 +1,233 @@
+---
+title: "CRA 2026: Cyber Resilience Act Compliance Guide for Law Firms"
+date: "2026-08-07"
+description: "Practical guide on the EU Cyber Resilience Act (CRA): obligations for law firms advising digital product manufacturers and compliance strategies."
+tags: ["CRA", "Cyber Resilience Act", "cybersecurity", "digital products", "compliance", "EU 2026"]
+image: "https://placehold.co/800x400/1e3a8a/white?text=CRA+2026+Compliance"
+---
+
+## Introduction
+
+The **Cyber Resilience Act (CRA)** of the European Union entered into force in 2026, marking a turning point in the regulation of cybersecurity for digital products. Unlike other regulations that focus on services or infrastructure, the CRA imposes direct obligations on **manufacturers, importers, and distributors of products with digital elements**.
+
+For law firms, the CRA represents both a challenge and an opportunity: their manufacturing clients will need specialized advice to comply with complex technical requirements, and the firms themselves that develop software must assess whether it applies to them.
+
+## What is the Cyber Resilience Act?
+
+### Scope and objectives
+
+The CRA establishes cybersecurity requirements for products with digital elements (PDE) marketed in the EU. Its main objective is to ensure that:
+
+- Digital products are designed with security from their conception
+- Vulnerabilities are managed proactively throughout the lifecycle
+- Users receive clear information about product security
+- Cybersecurity incidents are reported in a coordinated manner
+
+### Who does it apply to?
+
+| Category | Obligations |
+|----------|-------------|
+| **Manufacturers** | Secure design, risk assessment, CE declaration, security manual |
+| **Importers** | Verify manufacturer compliance, do not modify products |
+| **Distributors** | Verify CE marking, security information available |
+| **Firms with proprietary software** | Assess whether their software constitutes a digital product |
+
+### Covered products
+
+The CRA applies to virtually any product with software or connectivity:
+
+- **Connected hardware**: routers, IoT cameras, medical devices
+- **Software**: applications, operating systems, firmware
+- **Associated digital services**: updates, remote support
+- **Consumer products**: wearables, smart appliances
+
+## Product classification by risk
+
+### Class I products (standard risk)
+
+Require compliance with essential requirements and self-declaration:
+
+- Non-critical software
+- General mobile applications
+- Basic consumer IoT devices
+
+### Class II products (high risk)
+
+Require notification to authority and third-party assessment:
+
+- Operating systems
+- Identity management software
+- VPN and network products
+- Security management systems
+- Payment software
+
+### Excluded products
+
+- Non-commercial open-source software
+- Pure cloud services (covered by NIS2/DORA)
+- Military or defense products
+- Medical software already regulated by MDR
+
+## Essential requirements of the CRA
+
+### 1. Security by Design
+
+Products must be designed considering:
+
+```markdown
+- [ ] Documented threat and risk analysis
+- [ ] Secure architecture with least privilege principle
+- [ ] Encryption of sensitive data in transit and at rest
+- [ ] Robust authentication and access control
+- [ ] Protection against known vulnerabilities (OWASP Top 10)
+```
+
+### 2. Vulnerability management
+
+Continuous obligations throughout the lifecycle:
+
+| Action | Deadline | Responsible |
+|--------|----------|-------------|
+| Identify vulnerabilities | Continuous | Manufacturer |
+| Patch critical vulnerabilities | Without undue delay | Manufacturer |
+| Inform users about patches | Together with update | Manufacturer |
+| Report active exploitation | 24 hours to ENISA | Manufacturer |
+
+### 3. Transparency and documentation
+
+Each product must include:
+
+- **Security manual**: secure configuration, known risks
+- **Support policy**: duration of security updates
+- **CE declaration of conformity**: verified compliance
+- **Contact information**: vulnerability reporting point
+
+### 4. Incident reporting
+
+The CRA establishes a notification system:
+
+1. **Immediate notification** (24h): to ENISA if there is active exploitation
+2. **Incident notification** (72h): if it affects product security
+3. **Final report** (14 days): analysis and measures taken
+
+## Implications for law firms
+
+### 1. Advising manufacturing clients
+
+Firms must be prepared to:
+
+- Assess whether a client's products fall within the scope of the CRA
+- Classify products according to risk level (Class I or II)
+- Review development contracts to include CRA obligations
+- Advise on certification and CE declaration processes
+- Manage incident notifications to ENISA
+
+### 2. Contractual review
+
+Software development contracts must be adapted:
+
+```markdown
+**Recommended clauses:**
+- Security by design obligations
+- Commitment to security patches for X years
+- Vulnerability reporting procedure
+- Liability in case of CRA non-compliance
+- Right to security audit
+```
+
+### 3. Due diligence in M&A and financing
+
+In corporate transactions, the CRA adds new due diligence elements:
+
+- Inventory of target's digital products
+- CRA compliance status by product
+- History of vulnerabilities and patches
+- Incident management processes
+- Exposure to sanctions for non-compliance
+
+## Sanctions and liability
+
+### Sanctions regime
+
+The CRA delegates to Member States the definition of sanctions, but establishes a minimum framework:
+
+| Infringement | Indicative maximum sanction |
+|--------------|----------------------------|
+| Non-compliance with essential requirements | Up to €15M or 2.5% turnover |
+| Non-compliance with incident reporting | Up to €10M or 1.5% turnover |
+| Obstruction of authorities | Up to €5M or 1% turnover |
+
+### Civil liability
+
+The CRA interacts with the AI Liability Directive and the general civil liability regime:
+
+- **Strict liability** for defective products (Product Liability Directive)
+- **Liability for non-compliance** with CRA obligations
+- **Collective actions** by mass affected parties in case of breaches
+
+## CRA compliance checklist
+
+### For manufacturers
+
+**Design phase:**
+- [ ] Documented cybersecurity risk assessment
+- [ ] Approved secure architecture
+- [ ] Security testing performed (pentesting)
+- [ ] Complete technical documentation
+
+**Commercialization phase:**
+- [ ] CE declaration of conformity issued
+- [ ] Security manual in user's language
+- [ ] Published vulnerability contact point
+- [ ] Defined update policy
+
+**Post-sale phase:**
+- [ ] Active vulnerability monitoring system
+- [ ] Documented patching process
+- [ ] ENISA reporting channel configured
+- [ ] Incident register maintained
+
+### For advising firms
+
+- [ ] Team training on CRA requirements
+- [ ] Adapted contract templates
+- [ ] CRA due diligence checklist
+- [ ] ENISA notification procedure
+- [ ] Collaboration with technical experts established
+
+## Comparison: CRA vs other regulations
+
+| Aspect | CRA | NIS2 | DORA | GDPR |
+|--------|-----|------|------|------|
+| **Focus** | Digital products | Essential services | Financial sector | Personal data |
+| **Obliged party** | Manufacturers | Important entities | Financial entities | Data controllers |
+| **Cybersecurity** | By design | Risk management | Operational resilience | Data protection |
+| **Reporting** | To ENISA | To national authority | To financial authority | To DPA |
+| **Sanctions** | Up to €15M | Up to €10M | Up to 2% turnover | Up to €20M |
+
+## The CRA and the legal tech ecosystem
+
+### Software-developing firms
+
+If your firm develops software for clients or for internal use that is marketed:
+
+- **Assess the scope**: does it constitute a "digital product" under CRA?
+- **Review your stack**: do you use third-party components? Verify their compliance
+- **Document everything**: maintain a record of security design decisions
+
+### Legal tech providers
+
+Companies that sell software to law firms must:
+
+- Obtain CE certification/declaration for their products
+- Provide security manuals
+- Establish vulnerability reporting channels
+- Guarantee security updates throughout the lifecycle
+
+## Conclusion
+
+The Cyber Resilience Act represents the largest digital product cybersecurity regulation in EU history. For law firms, mastering the CRA is not optional: it is a necessary competency to advise clients in the technology sector and an obligation if they develop proprietary software.
+
+The key lies in **early preparation**: understanding the scope, correctly classifying products, establishing vulnerability management processes, and adapting contracts and commercial practices.
+
+**Contact us** for specialized advice on Cyber Resilience Act compliance for your company or firm.

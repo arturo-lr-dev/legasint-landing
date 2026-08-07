@@ -2291,5 +2291,29 @@
         "nis2-spain-august-2026-deadline-prepare-clients.mdx"
       ]
     }
+    {
+      "id": 100,
+      "title": {
+        "es": "CRA 2026: Guía de cumplimiento del Cyber Resilience Act para despachos de abogados",
+        "en": "CRA 2026: Cyber Resilience Act Compliance Guide for Law Firms"
+      },
+      "description": "Guía práctica sobre el Cyber Resilience Act (CRA) de la UE: obligaciones para despachos que asesoran a fabricantes de productos digitales y estrategias de cumplimiento.",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "CRA",
+        "Cyber Resilience Act",
+        "ciberseguridad",
+        "productos digitales",
+        "cumplimiento",
+        "UE 2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-07",
+      "files": [
+        "cra-2026-cyber-resilience-act-cumplimiento-despachos.mdx",
+        "cra-2026-cyber-resilience-act-compliance-law-firms.mdx"
+      ]
+    }
   ]
 }
