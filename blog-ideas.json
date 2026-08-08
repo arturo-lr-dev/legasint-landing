@@ -2065,6 +2065,28 @@
         "criptografia-post-cuantica-sector-legal-2030.mdx",
         "post-quantum-cryptography-legal-sector-2030.mdx"
       ]
+    {
+      "id": 90,
+      "title": {
+        "es": "Red flags al elegir una empresa de desarrollo de software",
+        "en": "Red Flags When Choosing a Software Development Company"
+      },
+      "description": "Señales de alarma que indican que una consultora o empresa de desarrollo no es la elección adecuada para tu proyecto tecnológico",
+      "category": "Consultoría",
+      "audience": "Empresas que contratan desarrollo de software, directores, CTOs",
+      "keywords": [
+        "desarrollo software",
+        "consultora IT",
+        "red flags",
+        "outsourcing",
+        "selección proveedor"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-08",
+      "files": [
+        "red-flags-elegir-empresa-desarrollo-software.mdx",
+        "red-flags-choosing-software-development-company.mdx"
+      ]
     }
   ]
 }
