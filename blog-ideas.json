@@ -2065,8 +2065,33 @@
         "criptografia-post-cuantica-sector-legal-2030.mdx",
         "post-quantum-cryptography-legal-sector-2030.mdx"
       ]
+    },
     {
-      "id": 90,
+      "id": 91,
+      "title": {
+        "es": "Automatización del Compliance Legal: De la Teoría a la Práctica",
+        "en": "Legal Compliance Automation: From Theory to Practice"
+      },
+      "description": "Guía práctica para automatizar procesos de cumplimiento normativo en despachos de abogados: herramientas, flujos de trabajo y estrategias de implementación.",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, compliance officers, directores de operaciones",
+      "keywords": [
+        "compliance",
+        "automatización",
+        "despachos de abogados",
+        "cumplimiento normativo",
+        "legal tech",
+        "2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-09",
+      "files": [
+        "automatizacion-del-compliance-legal-teoria-practica.mdx",
+        "legal-compliance-automation-theory-practice.mdx"
+      ]
+    }
+  ]
+}
       "title": {
         "es": "Red flags al elegir una empresa de desarrollo de software",
         "en": "Red Flags When Choosing a Software Development Company"
