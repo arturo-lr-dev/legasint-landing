@@ -2089,6 +2089,30 @@
         "automatizacion-del-compliance-legal-teoria-practica.mdx",
         "legal-compliance-automation-theory-practice.mdx"
       ]
+    },
+    {
+      "id": 92,
+      "title": {
+        "es": "El impacto de la IA generativa en la redacción de contratos: oportunidades y riesgos para despachos en 2026",
+        "en": "The Impact of Generative AI on Contract Drafting: Opportunities and Risks for Law Firms in 2026"
+      },
+      "description": "Análisis de cómo la IA generativa está transformando la redacción de contratos: herramientas disponibles, riesgos de cumplimiento, estrategias de implementación y el rol futuro del abogado",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, legal ops, compliance officers",
+      "keywords": [
+        "IA generativa",
+        "redacción contratos",
+        "legal tech",
+        "cumplimiento",
+        "despachos",
+        "2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-10",
+      "files": [
+        "ia-generativa-redaccion-contratos-despachos-2026.mdx",
+        "generative-ai-contract-drafting-law-firms-2026.mdx"
+      ]
     }
   ]
 }
