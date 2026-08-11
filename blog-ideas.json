@@ -2136,6 +2136,29 @@
         "red-flags-elegir-empresa-desarrollo-software.mdx",
         "red-flags-choosing-software-development-company.mdx"
       ]
+    },
+    {
+      "id": 93,
+      "title": {
+        "es": "Directiva de Responsabilidad por IA: guía práctica para despachos españoles en 2026",
+        "en": "AI Liability Directive: Practical Guide for Spanish Law Firms in 2026"
+      },
+      "description": "Análisis de la nueva Directiva de Responsabilidad por IA aplicable desde 2026: obligaciones, riesgos legales y estrategias de cumplimiento para despachos de abogados",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "responsabilidad IA",
+        "AI Liability Directive",
+        "cumplimiento",
+        "despachos",
+        "España 2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-11",
+      "files": [
+        "directiva-responsabilidad-ia-despachos-espanoles-2026.mdx",
+        "ai-liability-directive-spanish-law-firms-2026.mdx"
+      ]
     }
   ]
 }
