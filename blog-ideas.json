@@ -2113,51 +2113,73 @@
         "ia-generativa-redaccion-contratos-despachos-2026.mdx",
         "generative-ai-contract-drafting-law-firms-2026.mdx"
       ]
-    }
-  ]
-}
-      "title": {
-        "es": "Red flags al elegir una empresa de desarrollo de software",
-        "en": "Red Flags When Choosing a Software Development Company"
-      },
-      "description": "Señales de alarma que indican que una consultora o empresa de desarrollo no es la elección adecuada para tu proyecto tecnológico",
-      "category": "Consultoría",
-      "audience": "Empresas que contratan desarrollo de software, directores, CTOs",
-      "keywords": [
-        "desarrollo software",
-        "consultora IT",
-        "red flags",
-        "outsourcing",
-        "selección proveedor"
-      ],
-      "status": "published",
-      "publishedDate": "2026-08-08",
-      "files": [
-        "red-flags-elegir-empresa-desarrollo-software.mdx",
-        "red-flags-choosing-software-development-company.mdx"
-      ]
     },
     {
       "id": 93,
       "title": {
-        "es": "Directiva de Responsabilidad por IA: guía práctica para despachos españoles en 2026",
-        "en": "AI Liability Directive: Practical Guide for Spanish Law Firms in 2026"
+        "es": "El futuro del trabajo legal: como la IA redefine los roles del bufete en 2026",
+        "en": "The Future of Legal Work: How AI Redefines Law Firm Roles in 2026"
       },
-      "description": "Análisis de la nueva Directiva de Responsabilidad por IA aplicable desde 2026: obligaciones, riesgos legales y estrategias de cumplimiento para despachos de abogados",
-      "category": "Regulación",
-      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "description": "Analisis de como la inteligencia artificial esta transformando los roles tradicionales en los despachos de abogados y que competencias seran esenciales en el futuro",
+      "category": "Transformacion Digital",
+      "audience": "Despachos de abogados, RRHH, directores de estrategia",
       "keywords": [
-        "responsabilidad IA",
-        "AI Liability Directive",
-        "cumplimiento",
+        "IA",
+        "futuro trabajo legal",
+        "roles",
+        "competencias",
         "despachos",
-        "España 2026"
+        "2026"
       ],
       "status": "published",
-      "publishedDate": "2026-08-11",
       "files": [
-        "directiva-responsabilidad-ia-despachos-espanoles-2026.mdx",
-        "ai-liability-directive-spanish-law-firms-2026.mdx"
+        "futuro-trabajo-legal-ia-roles-bufete-2026.mdx",
+        "future-legal-work-ai-law-firm-roles-2026.mdx"
+      ],
+      "publishedDate": "2026-08-12"
+    },
+    {
+      "id": 94,
+      "title": {
+        "es": "Ciberseguridad proactiva: mas alla del antivirus en despachos legales",
+        "en": "Proactive Cybersecurity: Beyond Antivirus in Law Firms"
+      },
+      "description": "Estrategias avanzadas de ciberseguridad para despachos: threat hunting, SOC, inteligencia de amenazas y respuesta a incidentes",
+      "category": "Ciberseguridad",
+      "audience": "Despachos de abogados, CISOs, equipos de seguridad",
+      "keywords": [
+        "ciberseguridad",
+        "threat hunting",
+        "SOC",
+        "inteligencia amenazas",
+        "despachos"
+      ],
+      "status": "pending",
+      "files": [
+        "ciberseguridad-proactiva-antivirus-despachos-legales.mdx",
+        "proactive-cybersecurity-beyond-antivirus-law-firms.mdx"
+      ]
+    },
+    {
+      "id": 95,
+      "title": {
+        "es": "Legal Design: cuando el derecho encuentra al diseno UX",
+        "en": "Legal Design: When Law Meets UX Design"
+      },
+      "description": "Como aplicar principios de diseno de experiencia de usuario a documentos legales, contratos y procesos para mejorar la comprension y cumplimiento",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, legal designers, UX professionals",
+      "keywords": [
+        "legal design",
+        "UX",
+        "diseno legal",
+        "contratos",
+        "experiencia usuario"
+      ],
+      "status": "pending",
+      "files": [
+        "legal-design-derecho-diseno-ux.mdx",
+        "legal-design-law-meets-ux-design.mdx"
       ]
     }
   ]
