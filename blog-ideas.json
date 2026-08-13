@@ -2154,11 +2154,12 @@
         "inteligencia amenazas",
         "despachos"
       ],
-      "status": "pending",
+      "status": "published",
       "files": [
         "ciberseguridad-proactiva-antivirus-despachos-legales.mdx",
         "proactive-cybersecurity-beyond-antivirus-law-firms.mdx"
-      ]
+      ],
+      "publishedDate": "2026-08-13"
     },
     {
       "id": 95,
