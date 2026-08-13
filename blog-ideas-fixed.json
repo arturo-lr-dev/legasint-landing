@@ -1731,7 +1731,7 @@
         "eficiencia"
       ],
       "status": "published",
-      "publishedDate": "2026-07-27",
+      "publishedDate": "2026-07-25",
       "files": [
         "despacho-inteligente-iot-automatizacion-espacio-fisico.mdx",
         "smart-law-firm-iot-physical-space-automation.mdx"
@@ -1740,472 +1740,199 @@
     {
       "id": 76,
       "title": {
-        "es": "Sostenibilidad digital: reducir la huella de carbono del despacho",
-        "en": "Digital Sustainability: Reducing Your Firm's Carbon Footprint"
+        "es": "Sostenibilidad digital en despachos: reducir huella sin perder eficiencia",
+        "en": "Digital Sustainability in Law Firms: Reducing Footprint Without Losing Efficiency"
       },
-      "description": "Cómo la digitalización ayuda a cumplir objetivos ESG y reducir impacto ambiental",
+      "description": "Estrategias para que los despachos sean más sostenibles digitalmente: cloud verde, optimización de datos y políticas de responsabilidad ambiental",
       "category": "Transformación Digital",
-      "audience": "Directores, compliance, RSC",
+      "audience": "Directores, RSC, facilities",
       "keywords": [
         "sostenibilidad",
-        "ESG",
-        "carbono",
-        "medio ambiente",
-        "digital"
+        "digital",
+        "huella de carbono",
+        "cloud verde",
+        "RSC"
       ],
       "status": "published",
-      "publishedDate": "2026-07-29",
+      "publishedDate": "2026-07-26",
       "files": [
-        "sostenibilidad-digital-reducir-huella-carbono-despacho.mdx",
-        "digital-sustainability-reducing-law-firm-carbon-footprint.mdx"
+        "sostenibilidad-digital-despachos-reducir-huella.mdx",
+        "digital-sustainability-law-firms-reducing-footprint.mdx"
       ]
     },
     {
       "id": 77,
       "title": {
-        "es": "Gestión de conocimiento legal: de la cabeza del abogado al sistema",
-        "en": "Legal Knowledge Management: From Lawyer's Head to System"
+        "es": "Accesibilidad web en servicios legales: cumplimiento y buenas prácticas",
+        "en": "Web Accessibility in Legal Services: Compliance and Best Practices"
       },
-      "description": "Capturar y estructurar el conocimiento tácito para que no se pierda cuando el abogado se va",
+      "description": "Cómo cumplir con la normativa de accesibilidad web (WCAG, Ley 11/2024) en sitios y servicios digitales de despachos de abogados",
       "category": "Transformación Digital",
-      "audience": "Directores, knowledge management",
+      "audience": "Marketing legal, desarrolladores web, compliance",
       "keywords": [
-        "conocimiento",
-        "tácito",
-        "gestión",
-        "captura",
-        "sistema"
+        "accesibilidad",
+        "WCAG",
+        "Ley 11/2024",
+        "web",
+        "inclusión",
+        "cumplimiento"
       ],
       "status": "published",
-      "publishedDate": "2026-07-29",
+      "publishedDate": "2026-07-27",
       "files": [
-        "gestion-conocimiento-legal-cabeza-abogado-sistema.mdx",
-        "legal-knowledge-management-lawyer-head-system.mdx"
+        "accesibilidad-web-servicios-legales-cumplimiento.mdx",
+        "web-accessibility-legal-services-compliance.mdx"
       ]
     },
     {
       "id": 78,
       "title": {
-        "es": "Software a medida vs. SaaS legal: cuándo merece la pena desarrollar",
-        "en": "Custom Software vs. Legal SaaS: When Development Pays Off"
+        "es": "Gestión del conocimiento legal: de la cabeza del socio al sistema",
+        "en": "Legal Knowledge Management: From Partner's Head to System"
       },
-      "description": "Análisis de coste-beneficio para decidir entre comprar software existente o construir uno propio",
-      "category": "Software a Medida",
-      "audience": "CTOs, directores, fundadores",
+      "description": "Cómo capturar, estructurar y reutilizar el conocimiento tácito de los abogados senior mediante sistemas de gestión del conocimiento",
+      "category": "Transformación Digital",
+      "audience": "Directores, socios, knowledge managers",
       "keywords": [
-        "software a medida",
-        "SaaS",
-        "coste-beneficio",
-        "desarrollo",
-        "decisión"
+        "gestión del conocimiento",
+        "knowledge management",
+        "tácito",
+        "sistemas",
+        "reutilización"
       ],
       "status": "published",
-      "publishedDate": "2026-07-30",
+      "publishedDate": "2026-07-28",
       "files": [
-        "software-a-medida-vs-saas-legal-cuando-merece-desarrollar.mdx",
-        "custom-software-vs-legal-saas-when-development-pays-off.mdx"
+        "gestion-conocimiento-legal-cabeza-socio-sistema.mdx",
+        "legal-knowledge-management-partner-head-system.mdx"
       ]
     },
     {
       "id": 79,
       "title": {
-        "es": "El proceso de desarrollo de software legal: de la idea al MVP en 12 semanas",
-        "en": "Legal Software Development: From Idea to MVP in 12 Weeks"
+        "es": "Ciberseguridad proactiva: threat hunting para despachos de abogados",
+        "en": "Proactive Cybersecurity: Threat Hunting for Law Firms"
       },
-      "description": "Roadmap completo para desarrollar un producto legal tech desde cero",
-      "category": "Software a Medida",
-      "audience": "Emprendedores legal tech, CTOs",
+      "description": "Cómo implementar caza de amenazas proactiva en despachos: metodologías, herramientas y equipos dedicados",
+      "category": "Ciberseguridad",
+      "audience": "CISOs, equipos de seguridad, directores de despachos",
       "keywords": [
-        "MVP",
-        "desarrollo",
-        "roadmap",
-        "producto",
-        "12 semanas"
+        "threat hunting",
+        "ciberseguridad proactiva",
+        "amenazas",
+        "despachos",
+        "SOC"
       ],
       "status": "published",
-      "publishedDate": "2026-07-26",
+      "publishedDate": "2026-07-29",
       "files": [
-        "proceso-desarrollo-software-legal-mvp-12-semanas.mdx",
-        "legal-software-development-mvp-12-weeks.mdx"
+        "ciberseguridad-proactiva-threat-hunting-despachos.mdx",
+        "proactive-cybersecurity-threat-hunting-law-firms.mdx"
       ]
     },
     {
       "id": 80,
       "title": {
-        "es": "Arquitectura de software legal: monolito vs microservicios",
-        "en": "Legal Software Architecture: Monolith vs Microservices"
+        "es": "Zero Trust en despachos: el modelo de seguridad que necesitas",
+        "en": "Zero Trust in Law Firms: The Security Model You Need"
       },
-      "description": "Cuándo elegir cada arquitectura para aplicaciones legales: escalabilidad, mantenimiento y costes",
-      "category": "Software a Medida",
-      "audience": "CTOs, arquitectos de software",
+      "description": "Implementación del modelo Zero Trust en despachos de abogados: nunca confíes, siempre verifica",
+      "category": "Ciberseguridad",
+      "audience": "CISOs, IT legal, directores",
       "keywords": [
-        "arquitectura",
-        "monolito",
-        "microservicios",
-        "software legal",
-        "escalabilidad"
+        "Zero Trust",
+        "seguridad",
+        "modelo",
+        "despachos",
+        "verificación"
       ],
       "status": "published",
-      "publishedDate": "2026-08-01",
+      "publishedDate": "2026-07-30",
       "files": [
-        "arquitectura-software-legal-monolito-vs-microservicios.mdx",
-        "legal-software-architecture-monolith-vs-microservices.mdx"
+        "zero-trust-despachos-modelo-seguridad.mdx",
+        "zero-trust-law-firms-security-model.mdx"
       ]
     },
     {
       "id": 81,
       "title": {
-        "es": "Integración de APIs de terceros en software legal: riesgos y oportunidades",
-        "en": "Third-Party API Integration in Legal Software: Risks and Opportunities"
+        "es": "Respuesta a incidentes en despachos: plan y simulacros",
+        "en": "Incident Response in Law Firms: Plan and Drills"
       },
-      "description": "Cómo integrar servicios externos (firma, pago, KYC) sin comprometer seguridad ni compliance",
-      "category": "Software a Medida",
-      "audience": "CTOs, desarrolladores, compliance",
+      "description": "Cómo preparar y ejecutar un plan de respuesta a incidentes de ciberseguridad en despachos de abogados",
+      "category": "Ciberseguridad",
+      "audience": "CISOs, compliance, directores",
       "keywords": [
-        "APIs",
-        "integración",
-        "terceros",
-        "riesgos",
-        "software legal"
+        "respuesta a incidentes",
+        "ciberseguridad",
+        "plan",
+        "simulacros",
+        "despachos"
       ],
       "status": "published",
-      "publishedDate": "2026-08-02",
+      "publishedDate": "2026-07-31",
       "files": [
-        "integracion-apis-terceros-software-legal-riesgos-oportunidades.mdx",
-        "third-party-api-integration-legal-software-risks-opportunities.mdx"
+        "respuesta-incidentes-despachos-plan-simulacros.mdx",
+        "incident-response-law-firms-plan-drills.mdx"
       ]
     },
     {
       "id": 82,
       "title": {
-        "es": "Testing y calidad en software legal: por qué no puedes fallar",
-        "en": "Testing and Quality in Legal Software: Why You Can't Fail"
+        "es": "Cumplimiento normativo automatizado: de la hoja de cálculo al sistema",
+        "en": "Automated Regulatory Compliance: From Spreadsheet to System"
       },
-      "description": "Metodologías de testing específicas para software que maneja datos sensibles y procesos críticos",
-      "category": "Software a Medida",
-      "audience": "CTOs, QA, desarrolladores",
+      "description": "Cómo automatizar el seguimiento de obligaciones normativas mediante sistemas de GRC integrados",
+      "category": "Ciberseguridad",
+      "audience": "Compliance officers, directores, legal ops",
       "keywords": [
-        "testing",
-        "calidad",
-        "QA",
-        "software legal",
-        "datos sensibles"
+        "cumplimiento",
+        "automatizado",
+        "GRC",
+        "normativa",
+        "seguimiento"
       ],
       "status": "published",
-      "publishedDate": "2026-08-02",
+      "publishedDate": "2026-08-01",
       "files": [
-        "testing-calidad-software-legal-por-que-no-puedes-fallar.mdx",
-        "testing-quality-legal-software-why-you-cant-fail.mdx"
+        "cumplimiento-normativo-automatizado-hoja-calculo-sistema.mdx",
+        "automated-regulatory-compliance-spreadsheet-system.mdx"
       ]
     },
     {
       "id": 83,
       "title": {
-        "es": "Seguridad en el ciclo de vida del desarrollo (DevSecOps) para legal tech",
-        "en": "Security in the Development Lifecycle (DevSecOps) for Legal Tech"
+        "es": "Seguridad en el desarrollo legal tech: DevSecOps para abogados",
+        "en": "Security in Legal Tech Development: DevSecOps for Lawyers"
       },
-      "description": "Integrar seguridad desde el diseño hasta el deploy en productos legal tech",
-      "category": "Software a Medida",
-      "audience": "CTOs, desarrolladores, seguridad",
+      "description": "Cómo integrar seguridad en el ciclo de vida del desarrollo de software legal: pipelines, testing y despliegue seguro",
+      "category": "Ciberseguridad",
+      "audience": "CTOs, desarrolladores legal tech, CISOs",
       "keywords": [
         "DevSecOps",
         "seguridad",
-        "ciclo vida",
+        "desarrollo",
         "legal tech",
-        "desarrollo seguro"
+        "pipelines"
       ],
-      "status": "pending",
-      "publishedDate": null
+      "status": "published",
+      "publishedDate": "2026-08-02",
+      "files": [
+        "seguridad-desarrollo-legal-tech-devsecops-abogados.mdx",
+        "security-legal-tech-development-devsecops-lawyers.mdx"
+      ]
     },
     {
       "id": 84,
       "title": {
-        "es": "Escalabilidad de software legal: de 10 a 10.000 usuarios",
-        "en": "Legal Software Scalability: From 10 to 10,000 Users"
+        "es": "Post-AI Omnibus: primeros pasos para despachos en agosto 2026",
+        "en": "Post-AI Omnibus: First Steps for Law Firms in August 2026"
       },
-      "description": "Diseñar arquitectura que crece con tu despacho o empresa sin reescribir desde cero",
-      "category": "Software a Medida",
-      "audience": "CTOs, arquitectos, fundadores",
-      "keywords": [
-        "escalabilidad",
-        "usuarios",
-        "arquitectura",
-        "crecimiento",
-        "software legal"
-      ],
-      "status": "pending",
-      "publishedDate": null
-    },
-    {
-      "id": 85,
-      "title": {
-        "es": "Mantenimiento y evolución de software legal: más allá del launch",
-        "en": "Legal Software Maintenance: Beyond the Launch"
-      },
-      "description": "Cómo planificar el mantenimiento, actualizaciones y evolución de productos legal tech a largo plazo",
-      "category": "Software a Medida",
-      "audience": "CTOs, product managers, fundadores",
-      "keywords": [
-        "mantenimiento",
-        "evolución",
-        "software legal",
-        "actualizaciones",
-        "largo plazo"
-      ],
-      "status": "pending",
-      "publishedDate": null
-    },
-    {
-      "id": 86,
-      "title": {
-        "es": "UX/UI en software legal: diseñar para abogados, no para desarrolladores",
-        "en": "UX/UI in Legal Software: Designing for Lawyers, Not Developers"
-      },
-      "description": "Principios de diseño de interfaz específicos para usuarios legales: flujos, visualización, accesibilidad",
-      "category": "Software a Medida",
-      "audience": "UX designers, product managers, desarrolladores",
-      "keywords": [
-        "UX",
-        "UI",
-        "diseño",
-        "abogados",
-        "usabilidad",
-        "software legal"
-      ],
-      "status": "pending",
-      "publishedDate": null
-    },
-    {
-      "id": 87,
-      "title": {
-        "es": "Costes ocultos del desarrollo de software legal: guía para no sopresas",
-        "en": "Hidden Costs of Legal Software Development: A No-Surprises Guide"
-      },
-      "description": "Los gastos que nadie te cuenta al presupuestar un proyecto legal tech: compliance, seguridad, integraciones",
-      "category": "Software a Medida",
-      "audience": "CTOs, fundadores, directores",
-      "keywords": [
-        "costes",
-        "ocultos",
-        "desarrollo",
-        "software legal",
-        "presupuesto"
-      ],
-      "status": "pending",
-      "publishedDate": null
-    },
-    {
-      "id": 88,
-      "title": {
-        "es": "Open source en software legal: cuándo usarlo y cuándo no",
-        "en": "Open Source in Legal Software: When to Use It and When Not"
-      },
-      "description": "Análisis de componentes open source útiles para legal tech y sus riesgos de compliance",
-      "category": "Software a Medida",
-      "audience": "CTOs, desarrolladores, compliance",
-      "keywords": [
-        "open source",
-        "software legal",
-        "compliance",
-        "riesgos",
-        "licencias"
-      ],
-      "status": "pending",
-      "publishedDate": null
-    },
-    {
-      "id": 89,
-      "title": {
-        "es": "Blockchain en software legal: más allá de los smart contracts",
-        "en": "Blockchain in Legal Software: Beyond Smart Contracts"
-      },
-      "description": "Aplicaciones reales de blockchain para pruebas, timestamps y registro inmutable en software legal",
-      "category": "Software a Medida",
-      "audience": "CTOs, desarrolladores, innovación",
-      "keywords": [
-        "blockchain",
-        "smart contracts",
-        "pruebas",
-        "timestamp",
-        "inmutable"
-      ],
-      "status": "pending",
-      "publishedDate": null
-    },
-    {
-      "id": 90,
-      "title": {
-        "es": "Accesibilidad en software legal: cumplir WCAG para todos los usuarios",
-        "en": "Accessibility in Legal Software: Meeting WCAG for All Users"
-      },
-      "description": "Cómo diseñar software legal usable por personas con discapacidad cumpliendo normativa",
-      "category": "Software a Medida",
-      "audience": "UX, desarrolladores, compliance",
-      "keywords": [
-        "accesibilidad",
-        "WCAG",
-        "discapacidad",
-        "software legal",
-        "normativa"
-      ],
-      "status": "pending",
-      "publishedDate": null
-    },
-    {
-      "id": 91,
-      "title": {
-        "es": "AI Act: Guía de última hora para el cumplimiento de sistemas de IA de alto riesgo (agosto 2026)",
-        "en": "AI Act: Last-Minute Guide to High-Risk AI Systems Compliance (August 2026)"
-      },
-      "description": "A dos meses del plazo de agosto 2026, guía práctica para despachos y empresas que deben cumplir con las obligaciones del AI Act para sistemas de IA de alto riesgo",
+      "description": "Guía práctica con acciones inmediatas que los despachos deben tomar tras la entrada en vigor del AI Omnibus en agosto 2026",
       "category": "Regulación",
-      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
-      "keywords": [
-        "AI Act",
-        "sistemas de alto riesgo",
-        "cumplimiento",
-        "agosto 2026",
-        "plazo"
-      ],
-      "status": "published",
-      "publishedDate": "2026-06-30",
-      "files": [
-        "ai-act-alto-riesgo-plazo-agosto-2026.mdx",
-        "ai-act-high-risk-compliance-august-2026.mdx"
-      ]
-    },
-    {
-      "id": 92,
-      "title": {
-        "es": "Digital Omnibus 2026: Simplificación normativa que transforma el cumplimiento digital en Europa",
-        "en": "Digital Omnibus 2026: Regulatory Simplification Transforming Digital Compliance in Europe"
-      },
-      "description": "Análisis del paquete Digital Omnibus de la UE: cómo simplifica GDPR, AI Act, DORA y DSA para reducir la carga regulatoria de empresas y despachos en 2026",
-      "category": "Regulación",
-      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
-      "keywords": [
-        "Digital Omnibus",
-        "simplificación normativa",
-        "GDPR",
-        "AI Act",
-        "cumplimiento",
-        "UE 2026"
-      ],
-      "status": "published",
-      "publishedDate": "2026-07-05",
-      "files": [
-        "digital-omnibus-2026-simplificacion-normativa-europa.mdx",
-        "digital-omnibus-2026-regulatory-simplification-europe.mdx"
-      ]
-    },
-    {
-      "id": 93,
-      "title": {
-        "es": "Cuenta atrás para el AI Act: checklist final para sistemas de alto riesgo (julio 2026)",
-        "en": "AI Act Countdown: Final Checklist for High-Risk Systems (July 2026)"
-      },
-      "description": "A un mes del plazo de agosto 2026, checklist definitiva de acciones urgentes para cumplir con el AI Act en sistemas de IA de alto riesgo",
-      "category": "Regulación",
-      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
-      "keywords": [
-        "AI Act",
-        "sistemas de alto riesgo",
-        "cumplimiento",
-        "agosto 2026",
-        "checklist",
-        "urgente"
-      ],
-      "status": "published",
-      "publishedDate": "2026-07-08",
-      "files": [
-        "cuenta-atras-ai-act-checklist-final-alto-riesgo-julio-2026.mdx",
-        "ai-act-countdown-final-checklist-high-risk-july-2026.mdx"
-      ]
-    },
-    {
-      "id": 93,
-      "title": {
-        "es": "Cuenta atrás para el AI Act: checklist final para sistemas de alto riesgo (julio 2026)",
-        "en": "AI Act Countdown: Final Checklist for High-Risk Systems (July 2026)"
-      },
-      "description": "A un mes del plazo de agosto 2026, checklist definitiva de acciones urgentes para cumplir con el AI Act en sistemas de IA de alto riesgo",
-      "category": "Regulación",
-      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
-      "keywords": [
-        "AI Act",
-        "sistemas de alto riesgo",
-        "cumplimiento",
-        "agosto 2026",
-        "checklist",
-        "urgente"
-      ],
-      "status": "published",
-      "publishedDate": "2026-07-06",
-      "files": [
-        "cuenta-atras-ai-act-checklist-final-alto-riesgo-julio-2026.mdx",
-        "ai-act-countdown-final-checklist-high-risk-july-2026.mdx"
-      ]
-    },
-    {
-      "id": 94,
-      "title": {
-        "es": "AI Act: qué pasa después del plazo de agosto 2026",
-        "en": "AI Act: What Happens After the August 2026 Deadline"
-      },
-      "description": "Guía sobre las consecuencias, sanciones y obligaciones continuas tras el plazo de cumplimiento del AI Act para sistemas de alto riesgo en agosto 2026",
-      "category": "Regulación",
-      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
-      "keywords": [
-        "AI Act",
-        "sanciones",
-        "cumplimiento",
-        "agosto 2026",
-        "sistemas de alto riesgo",
-        "post-deadline"
-      ],
-      "status": "published",
-      "publishedDate": "2026-07-25",
-      "files": [
-        "ai-act-que-pasa-despues-plazo-agosto-2026.mdx",
-        "ai-act-what-happens-after-august-2026-deadline.mdx"
-      ]
-    },
-    {
-      "id": 95,
-      "title": {
-        "es": "AI Omnibus 2026: Qué cambia para empresas y despachos tras su entrada en vigor",
-        "en": "AI Omnibus 2026: What Changes for Companies and Law Firms After It Takes Effect"
-      },
-      "description": "Análisis práctico de la entrada en vigor del AI Omnibus el 27 de julio de 2026: simplificación de obligaciones para sistemas de IA de alto riesgo, nuevos plazos y cómo afecta a empresas y despachos de abogados.",
-      "category": "Regulación",
-      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "audience": "Despachos de abogados, compliance officers, DPOs",
       "keywords": [
         "AI Omnibus",
-        "AI Act",
-        "simplificación normativa",
-        "cumplimiento IA",
-        "despachos de abogados",
-        "julio 2026"
-      ],
-      "status": "published",
-      "publishedDate": "2026-07-28",
-      "files": [
-        "ai-omnibus-2026-entra-vigor-cambios-empresas-despachos.mdx",
-        "ai-omnibus-2026-takes-effect-changes-companies-law-firms.mdx"
-      ]
-    },
-    {
-      "id": 96,
-      "title": {
-        "es": "Post-AI Omnibus: primeros pasos para despachos tras la entrada en vigor",
-        "en": "Post-AI Omnibus: First Steps for Law Firms After It Takes Effect"
-      },
-      "description": "Guía de acción inmediata para despachos tras la entrada en vigor del AI Omnibus: qué cambios aplican ya, qué plazos se extienden y cómo adaptar la compliance en tiempo real",
-      "category": "Regulación",
-      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
-      "keywords": [
-        "AI Omnibus",
-        "AI Act",
         "cumplimiento",
         "despachos",
         "agosto 2026",
@@ -2219,7 +1946,7 @@
       ]
     },
     {
-      "id": 97,
+      "id": 85,
       "title": {
         "es": "Calidad de datos en IA: guía de la AEPD para cumplir con el GDPR",
         "en": "Data Quality in AI: AEPD Guide for GDPR Compliance"
@@ -2244,7 +1971,7 @@
       ]
     },
     {
-      "id": 98,
+      "id": 86,
       "title": {
         "es": "El futuro del compliance legal: cómo la IA agéntica transforma la supervisión regulatoria en 2026",
         "en": "The Future of Legal Compliance: How Agentic AI Transforms Regulatory Oversight in 2026"
@@ -2268,7 +1995,7 @@
       ]
     },
     {
-      "id": 99,
+      "id": 87,
       "title": {
         "es": "NIS2 en España: el plazo de agosto 2026 y cómo preparar a tu cliente",
         "en": "NIS2 in Spain: The August 2026 Deadline and How to Prepare Your Clients"
@@ -2292,7 +2019,7 @@
       ]
     },
     {
-      "id": 100,
+      "id": 88,
       "title": {
         "es": "CRA 2026: Guía de cumplimiento del Cyber Resilience Act para despachos de abogados",
         "en": "CRA 2026: Cyber Resilience Act Compliance Guide for Law Firms"
@@ -2313,6 +2040,78 @@
       "files": [
         "cra-2026-cyber-resilience-act-cumplimiento-despachos.mdx",
         "cra-2026-cyber-resilience-act-compliance-law-firms.mdx"
+      ]
+    },
+    {
+      "id": 89,
+      "title": {
+        "es": "Criptografía post-cuántica en el sector legal: por qué los despachos deben actuar antes de 2030",
+        "en": "Post-Quantum Cryptography in the Legal Sector: Why Law Firms Must Act Before 2030"
+      },
+      "description": "Análisis de la amenaza cuántica para la criptografía actual, los nuevos estándares NIST y EuroQCI, y estrategias de migración para despachos que protegen datos confidenciales a largo plazo.",
+      "category": "Ciberseguridad",
+      "audience": "Despachos de abogados, CISOs, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "criptografía post-cuántica",
+        "NIST",
+        "EuroQCI",
+        "ciberseguridad",
+        "despachos",
+        "datos confidenciales"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-08",
+      "files": [
+        "criptografia-post-cuantica-sector-legal-2030.mdx",
+        "post-quantum-cryptography-legal-sector-2030.mdx"
+      ]
+    },
+    {
+      "id": 91,
+      "title": {
+        "es": "Automatización del Compliance Legal: De la Teoría a la Práctica",
+        "en": "Legal Compliance Automation: From Theory to Practice"
+      },
+      "description": "Guía práctica para automatizar procesos de cumplimiento normativo en despachos de abogados: herramientas, flujos de trabajo y estrategias de implementación.",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, compliance officers, directores de operaciones",
+      "keywords": [
+        "compliance",
+        "automatización",
+        "despachos de abogados",
+        "cumplimiento normativo",
+        "legal tech",
+        "2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-09",
+      "files": [
+        "automatizacion-del-compliance-legal-teoria-practica.mdx",
+        "legal-compliance-automation-theory-practice.mdx"
+      ]
+    },
+    {
+      "id": 92,
+      "title": {
+        "es": "El impacto de la IA generativa en la redacción de contratos: oportunidades y riesgos para despachos en 2026",
+        "en": "The Impact of Generative AI on Contract Drafting: Opportunities and Risks for Law Firms in 2026"
+      },
+      "description": "Análisis de cómo la IA generativa está transformando la redacción de contratos: herramientas disponibles, riesgos de cumplimiento, estrategias de implementación y el rol futuro del abogado",
+      "category": "Legal Tech",
+      "audience": "Despachos de abogados, legal ops, compliance officers",
+      "keywords": [
+        "IA generativa",
+        "redacción contratos",
+        "legal tech",
+        "cumplimiento",
+        "despachos",
+        "2026"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-10",
+      "files": [
+        "ia-generativa-redaccion-contratos-despachos-2026.mdx",
+        "generative-ai-contract-drafting-law-firms-2026.mdx"
       ]
     }
   ]
