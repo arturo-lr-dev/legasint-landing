@@ -2177,11 +2177,12 @@
         "contratos",
         "experiencia usuario"
       ],
-      "status": "pending",
+      "status": "published",
       "files": [
         "legal-design-derecho-diseno-ux.mdx",
         "legal-design-law-meets-ux-design.mdx"
-      ]
+      ],
+      "publishedDate": "2026-08-14"
     }
   ]
 }
