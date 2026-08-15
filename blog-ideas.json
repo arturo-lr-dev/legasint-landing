@@ -2183,6 +2183,30 @@
         "legal-design-law-meets-ux-design.mdx"
       ],
       "publishedDate": "2026-08-14"
+    },
+    {
+      "id": 96,
+      "title": {
+        "es": "AI Omnibus 2026: Cómo simplifica el cumplimiento del AI Act para empresas y despachos",
+        "en": "AI Omnibus 2026: How It Simplifies AI Act Compliance for Companies and Law Firms"
+      },
+      "description": "Análisis del AI Omnibus de 2026: enmiendas al AI Act que reducen la carga regulatoria, simplifican obligaciones para pymes y aceleran la innovación en Europa.",
+      "category": "Regulación",
+      "audience": "Despachos de abogados, compliance officers, empresas tecnológicas",
+      "keywords": [
+        "AI Act",
+        "AI Omnibus",
+        "cumplimiento",
+        "simplificación normativa",
+        "UE 2026",
+        "despachos"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-15",
+      "files": [
+        "ai-omnibus-2026-simplifica-cumplimiento-ai-act.mdx",
+        "ai-omnibus-2026-simplifies-ai-act-compliance.mdx"
+      ]
     }
   ]
 }
