@@ -2208,5 +2208,29 @@
         "ai-omnibus-2026-simplifies-ai-act-compliance.mdx"
       ]
     }
+    {
+      "id": 97,
+      "title": {
+        "es": "Computación cuántica y criptografía legal: preparando los despachos para la era post-cuántica",
+        "en": "Quantum Computing and Legal Cryptography: Preparing Law Firms for the Post-Quantum Era"
+      },
+      "description": "La computación cuántica amenaza los sistemas criptográficos actuales. Guía para despachos de abogados sobre migración post-cuántica, regulación y protección de datos confidenciales.",
+      "category": "Ciberseguridad",
+      "audience": "Despachos de abogados, compliance officers, equipos de seguridad",
+      "keywords": [
+        "computación cuántica",
+        "criptografía post-cuántica",
+        "ciberseguridad",
+        "NIS2",
+        "protección datos",
+        "despachos"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-16",
+      "files": [
+        "computacion-cuantica-criptografia-legal-despachos-2026.mdx",
+        "quantum-computing-legal-cryptography-law-firms-2026.mdx"
+      ]
+    }
   ]
 }
