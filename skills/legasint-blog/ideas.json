@@ -134,6 +134,7 @@
       "title": "Migrar de PHP/WordPress a Next.js/React: ¿Vale la pena?",
       "status": "published",
       "published": "2026-07-28",
+      "created": "2026-02-16"
     },
     {
       "id": 48,
@@ -146,44 +147,49 @@
     {
       "id": 49,
       "title": "Anatomía de un proyecto IT que salió mal (post-mortem real)",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-07-31",
       "created": "2026-02-16",
       "notes": "Target: empresas con proyectos estancados. Caso real anónimo, lecciones, cómo recuperar"
     },
     {
       "id": 50,
       "title": "Tu MVP lleva 6 meses y no está listo: Qué hacer",
-      "status": "idea",
+      "status": "published",
+      "priority": "high",
       "created": "2026-02-16",
-      "notes": "Target: startups con proyectos eternos. Kill/pivot/rescue decision framework"
+      "published": "2026-08-03",
+      "notes": "Kill/Pivot/Rescue framework for startups with eternal projects. Decision framework, not just advice."
     },
     {
       "id": 51,
       "title": "Backups que funcionan vs backups decorativos",
-      "status": "idea",
-      "created": "2026-02-16",
-      "notes": "Target: empresas que 'tienen backups' pero nunca los probaron. Disaster recovery real, casos de pérdida de datos"
+      "status": "published",
+      "published": "2026-08-04",
+      "files": ["backups-funcionan-vs-decorativos-guia-disaster-recovery-2026.mdx","working-backups-vs-decorative-disaster-recovery-guide-2026.mdx"]
     },
     {
       "id": 52,
       "title": "El final de las cookies: Qué significa para tu negocio online",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-08-05",
       "created": "2026-02-16",
       "notes": "Target: E-commerce, marketing digital. Alternativas prácticas, preparación"
     },
     {
       "id": 53,
       "title": "GDPR en 2026: Lo que importa (sin legal speak)",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-08-06",
       "created": "2026-02-16",
-      "notes": "Target: PYMEs asustadas con compliance. Checklist práctico, casos reales de multas"
+      "notes": "Published as GDPR 2026 practical guide for SMEs"
     },
     {
       "id": 54,
       "title": "Remote teams para desarrollo: ¿Funciona en 2026?",
-      "status": "idea",
-      "created": "2026-02-16",
-      "notes": "Target: empresas considerando outsourcing offshore. Costos reales, gestión, riesgos"
+      "status": "published",
+      "published": "2026-08-09",
+      "files": ["equipos-remotos-desarrollo-2026.mdx","remote-teams-development-2026.mdx"]
     },
     {
       "id": 11,
@@ -195,50 +201,63 @@
     {
       "id": 12,
       "title": "Red flags al elegir una empresa de desarrollo de software",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-08-08",
       "created": "2026-02-02"
     },
     {
       "id": 13,
       "title": "5 errores que las empresas cometen al contratar desarrollo de software",
-      "status": "idea",
-      "created": "2026-02-03"
+      "status": "published",
+      "published": "2026-08-10",
+      "created": "2026-02-03",
+      "files": ["5-errores-contratar-desarrollo-software-2026.mdx","5-mistakes-hiring-software-development-2026.mdx"]
     },
     {
       "id": 14,
       "title": "App nativa vs híbrida vs web: Cuál necesita tu negocio",
-      "status": "idea",
-      "created": "2026-02-03"
+      "status": "published",
+      "published": "2026-08-12",
+      "files": ["app-nativa-vs-hibrida-vs-web-2026.mdx","native-vs-hybrid-vs-web-app-2026.mdx"]
     },
     {
       "id": 15,
       "title": "De la idea a la app: Las 7 fases del desarrollo que debes conocer",
-      "status": "idea",
-      "created": "2026-02-03"
+      "status": "published",
+      "published": "2026-08-13",
+      "created": "2026-02-03",
+      "files": ["de-la-idea-a-la-app-7-fases-desarrollo-2026.mdx","from-idea-to-app-7-development-phases-2026.mdx"]
     },
     {
       "id": 16,
       "title": "¿Por qué tu proyecto de software fracasó? Análisis de casos reales",
-      "status": "idea",
-      "created": "2026-02-03"
+      "status": "published",
+      "published": "2026-08-14",
+      "created": "2026-02-03",
+      "files": ["por-que-proyecto-software-fracaso-2026.mdx","why-software-project-failed-2026.mdx"]
     },
     {
       "id": 17,
       "title": "Cómo validar tu idea de app antes de invertir en desarrollo",
-      "status": "idea",
-      "created": "2026-02-03"
+      "status": "published",
+      "created": "2026-02-03",
+      "published": "2026-08-15",
+      "files": ["como-validar-idea-app-antes-invertir-desarrollo-2026.mdx","how-to-validate-app-idea-before-development-2026.mdx"]
     },
     {
       "id": 18,
       "title": "Señales de que necesitas modernizar tu sistema legacy (antes de que sea tarde)",
-      "status": "idea",
-      "created": "2026-02-03"
+      "status": "published",
+      "published": "2026-08-19",
+      "created": "2026-02-03",
+      "files": ["senales-modernizar-sistema-legacy-2026.mdx","signs-you-need-to-modernize-legacy-system-2026.mdx"]
     },
     {
       "id": 19,
       "title": "MVP vs producto completo: Cuándo lanzar y qué incluir",
-      "status": "idea",
-      "created": "2026-02-03"
+      "status": "published",
+      "published": "2026-08-20",
+      "files": ["mvp-vs-producto-completo-cuando-lanzar.mdx","mvp-vs-full-product-when-to-launch.mdx"]
     },
     {
       "id": 20,
@@ -363,8 +382,8 @@
   ],
   "meta": {
     "total": 54,
-    "lastUpdated": "2026-07-28T12:00:00Z",
+    "lastUpdated": "2026-08-20T11:00:00Z",
     "priorityIdeas": [],
-    "notes": "Idea 47 publicada el 2026-07-28."
+    "notes": "Idea 19 publicada el 2026-08-20. Post sobre MVP vs producto completo."
   }
 }
