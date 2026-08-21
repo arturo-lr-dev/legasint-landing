@@ -1,0 +1,238 @@
+---
+title: "Plataforma Web Escalable: Qué Preguntar Antes de Contratar"
+date: "2026-08-21"
+description: "Descubre las 8 preguntas criticas que debes hacer antes de contratar el desarrollo de una plataforma web escalable. Evita costos ocultos, retrasos y arquitecturas que no crecen contigo."
+tags: ["Plataforma Web", "Escalabilidad", "Desarrollo Software", "Contratacion IT", "Arquitectura", "Negocio"]
+image: "/blog-images/es-plataforma-web-escalable-que-preguntar-antes-contratar.png"
+---
+
+## La promesa que cuesta millones
+
+"Construiremos una plataforma escalable que crezca con tu negocio." Es la frase que escuchan todos nuestros clientes antes de venir a nosotros. Y suena bien. Suena profesional. Suena como lo que necesitas.
+
+El problema es que **"escalable" es la palabra mas abusada del sector tecnologico**. Cualquiera la dice. Pocos la entregan. Y la diferencia entre una plataforma que escala y una que se rompe cuando creces un 20% puede costarte cientos de miles de euros en reconstruccion.
+
+En LegaSint hemos rescatado proyectos donde "escalable" significaba "funciona con 50 usuarios, pero no con 500". Hemos visto arquitecturas que colapsaban en Black Friday, bases de datos que tardaban minutos en responder, y facturas de infraestructura que se multiplicaban por 10 sin avisar.
+
+Este articulo no es teorico. Son **las 8 preguntas que deberias haber hecho antes de firmar** — y que ahora puedes hacer en tu proximo proyecto.
+
+---
+
+## 1. Que significa "escalable" en tu propuesta?
+
+### La trampa
+
+"Escalable" sin definicion es como "calidad" o "innovador": una palabra vacia que suena bien en una presentacion. Para un proveedor puede significar "puedes anadir mas servidores". Para ti puede significar "puedo duplicar mi base de clientes sin que se rompa nada".
+
+### La pregunta correcta
+
+> "Define exactamente que metricas de escalabilidad garantizas: usuarios concurrentes, transacciones por segundo, tiempo de respuesta bajo carga, y coste por usuario anadido."
+
+### Que esperar
+
+Un proveedor serio te dara numeros concretos:
+
+- "La plataforma soporta 1.000 usuarios concurrentes con tiempo de respuesta < 200ms"
+- "El coste de infraestructura por usuario se mantiene estable hasta 10.000 usuarios activos"
+- "Podemos escalar horizontalmente anadiendo nodos sin downtime"
+
+Si te responden con "no te preocupes, eso se resuelve despues" o "usamos la nube, ya escala sola", **corre**. La nube no escala sola. Necesita arquitectura.
+
+---
+
+## 2. Cual es la arquitectura propuesta y por que?
+
+### La trampa
+
+Muchos proveedores proponen la arquitectura que conocen, no la que necesitas. Si solo saben WordPress, todo es WordPress. Si solo saben Laravel, todo es monolito. Si descubrieron los microservicios el mes pasado, todo son microservicios.
+
+### La pregunta correcta
+
+> "Dibuja la arquitectura completa: frontend, backend, base de datos, cache, colas, almacenamiento. Explica por que cada componente esta ahi y que alternativas descartasteis."
+
+### Que esperar
+
+Una respuesta que demuestre que han pensado en **tu** caso, no en el suyo:
+
+- **Monolito:** Valido para MVPs y plataformas con logica de negocio cohesionada. Mas simple, mas rapido de desarrollar.
+- **Microservicios:** Necesario cuando diferentes equipos trabajan en dominios independientes que escalan de forma desigual.
+- **Serverless:** Ideal para cargas variables o event-driven, pero puede ser costoso con trafico sostenido.
+
+La respuesta "microservicios porque es lo moderno" es tan mala como "monolito porque es mas facil". La arquitectura debe responder a tu modelo de negocio, no a la moda del momento.
+
+---
+
+## 3. Como manejais la base de datos cuando crecemos?
+
+### La trampa
+
+La base de datos es el cuello de botella silencioso. Funciona bien en desarrollo con 100 registros. En produccion con 10 millones, se convierte en tu peor pesadilla. Y migrar una base de datos en produccion es como cambiar las ruedas de un coche en marcha: tecnicamente posible, pero costoso y arriesgado.
+
+### La pregunta correcta
+
+> "Que estrategia de base de datos proponéis para cuando tengamos 1M de registros? ¿Y 100M? ¿Como manejais backups, replicacion y sharding?"
+
+### Que esperar
+
+- **Indices optimizados desde el diseno**, no anadidos como parche despues
+- **Estrategia de particionado** (partitioning/sharding) planificada desde el inicio
+- **Replicacion master-slave** para lecturas distribuidas
+- **Backups automatizados** con tested recovery procedures
+- **Migraciones reversibles**: si algo falla, puedes volver atras
+
+Una respuesta alarmante: "MySQL esta bien para todo" o "usamos SQLite porque es mas simple". SQLite no escala horizontalmente. MySQL escala, pero requiere diseno.
+
+---
+
+## 4. Que pasa si tenemos un pico de trafico inesperado?
+
+### La trampa
+
+Muchas plataformas funcionan perfectamente con trafico constante pero colapsan con picos. Un articulo viral, una campana de marketing exitosa, una mencion en prensa — de repente tu "plataforma escalable" esta caida justo cuando mas visitantes tienes.
+
+### La pregunta correcta
+
+> "Como se comporta la plataforma si el trafico se multiplica por 10 en una hora? ¿Que mecanismos de auto-scaling, rate limiting y proteccion contra picos teneis?"
+
+### Que esperar
+
+- **Auto-scaling configurado** con limites claros (minimo y maximo de instancias)
+- **Load balancer** que distribuya trafico y detecte nodos caidos
+- **Rate limiting** para proteger APIs contra abuso
+- **Circuit breakers** que eviten que un servicio lento colapse todo el sistema
+- **CDN** para contenido estatico, reduciendo carga en servidores
+
+La respuesta "ponemos mas servidores" sin mecanismos automaticos significa que alguien tiene que despertarse a las 3 AM cuando tu campana de Black Friday arranca.
+
+---
+
+## 5. Cual es el coste real de infraestructura a los 6, 12 y 24 meses?
+
+### La trampa
+
+El presupuesto de desarrollo es solo la punta del iceberg. La infraestructura en la nube puede pasar de 200 EUR/mes a 8.000 EUR/mes sin que nadie te lo haya advertido. Y cuando llega la factura, ya es tarde para replantear la arquitectura.
+
+### La pregunta correcta
+
+> "Dame una estimacion de costes de infraestructura para 1.000, 10.000 y 100.000 usuarios activos mensuales. Incluye compute, almacenamiento, transferencia, CDN y servicios gestionados."
+
+### Que esperar
+
+Una tabla honesta con rangos:
+
+| Usuarios activos/mes | Infraestructura estimada | Notas |
+|---|---|---|
+| 1.000 | 150-300 EUR/mes | 2 instancias small, RDS basico |
+| 10.000 | 800-1.500 EUR/mes | Auto-scaling, RDS multi-AZ, CDN |
+| 100.000 | 4.000-8.000 EUR/mes | Kubernetes, sharding, cache distribuida |
+
+Si te dicen "depende de muchos factores" sin dar numeros, no han hecho los deberes. Si te dicen "la nube es barata", no entienden la nube.
+
+---
+
+## 6. Como garantizais que no perdemos datos?
+
+### La trampa
+
+"Hacemos backups" no es una estrategia de recuperacion. Es una frase tranquilizadora. Un backup que no se ha probado es un backup que probablemente no funciona. Y un backup que tarda 48 horas en restaurarse no sirve cuando tu negocio pierde 10.000 EUR por hora caido.
+
+### La pregunta correcta
+
+> "Cual es vuestro RTO (Recovery Time Objective) y RPO (Recovery Point Objective)? ¿Cuando fue la ultima vez que probasteis una restauracion completa?"
+
+### Que esperar
+
+- **RTO < 1 hora** para servicios criticos (tiempo maximo para estar operativos)
+- **RPO < 15 minutos** (perdida maxima de datos aceptable)
+- **Backups automatizados** con retencion definida (7 dias, 30 dias, 1 ano)
+- **Restauraciones probadas periodicamente** (no "confiamos en que funcionan")
+- **Estrategia multi-region** si tu negocio no puede tolerar downtime prolongado
+
+Un proveedor que no sabe que es RTO/RPO o que nunca ha hecho un fire drill de recuperacion esta jugando a la ruleta rusa con tus datos.
+
+---
+
+## 7. Quien puede tocar el codigo si vosotros no estais?
+
+### La trampa
+
+La dependencia de proveedor es una de las formas mas sutiles y costosas de quedar atrapado. Codigo propietario, frameworks poco comunes, documentacion inexistente, despliegues que solo ellos entienden. Cuando quieres cambiar de proveedor — o simplemente traer equipo interno — descubres que es mas facil reconstruir desde cero.
+
+### La pregunta correcta
+
+> "El codigo es nuestro? ¿Que stack tecnologico usais? ¿Hay documentacion tecnica? ¿Cualquier desarrollador puede entender y desplegar esto, o depende de conocimiento tribal?"
+
+### Que esperar
+
+- **Codigo fuente en tu repositorio** (GitHub/GitLab), no en el suyo
+- **Stack estandar y bien documentado** (Node.js, Python, PostgreSQL, React... no frameworks caseros)
+- **Documentacion tecnica actualizada**: arquitectura, APIs, despliegue
+- **CI/CD automatizado** que cualquier dev puede ejecutar
+- **Contrato con clausula de propiedad intelectual** clara
+
+Senales de alarma: "usamos nuestro framework interno", "la documentacion esta en el codigo", "el despliegue lo hacemos nosotros manualmente".
+
+---
+
+## 8. Que pasa si queremos cambiar de proveedor en el futuro?
+
+### La trampa
+
+Nadie piensa en romper una relacion al empezarla. Pero la realidad es que el 40% de los proyectos IT cambian de proveedor antes de los 3 anos. Razones: crecimiento que el proveedor no puede acompanar, cambio de estrategia, fusiones, o simplemente porque la relacion no funciona.
+
+### La pregunta correcta
+
+> "Si decidimos cambiar de proveedor o traer desarrollo interno dentro de 2 anos, que nos facilita la transicion? ¿Hay vendor lock-in en algun componente?"
+
+### Que esperar
+
+- **Codigo limpio y estandar** que cualquier equipo pueda mantener
+- **Base de datos en formato estandar** (SQL exportable, no formatos propietarios)
+- **APIs documentadas** con OpenAPI/Swagger
+- **Infraestructura como codigo** (Terraform, CloudFormation) que puedas transferir
+- **Sin dependencias de servicios exclusivos** del proveedor
+
+Un proveedor que se niega a hablar de esto o que te dice "no vas a querer cambiar" no esta siendo realista. Esta construyendo una trampa.
+
+---
+
+## El framework de decision: Este proveedor entiende escalabilidad?
+
+Despues de hacer estas 8 preguntas, evalua las respuestas con este scoring:
+
+| Criterio | Peso | Puntuacion (1-5) |
+|---|---|---|
+| Metricas concretas de escalabilidad | Alto | ___ |
+| Arquitectura justificada para tu caso | Alto | ___ |
+| Estrategia de base de datos a largo plazo | Alto | ___ |
+| Manejo de picos y auto-scaling | Alto | ___ |
+| Costes de infraestructura transparentes | Medio | ___ |
+| Estrategia de backup y recuperacion | Alto | ___ |
+| Independencia y documentacion | Alto | ___ |
+| Sin vendor lock-in | Medio | ___ |
+
+**< 24 puntos:** Busca otro proveedor. Este no ha pensado en escalabilidad mas alla del buzzword.
+
+**24-32 puntos:** Aceptable, pero negocia mejoras en los puntos debiles antes de firmar.
+
+**> 32 puntos:** Probablemente saben lo que hacen. Pide referencias de clientes con crecimiento similar al tuyo.
+
+---
+
+## Conclusion: Escalable no es una caracteristica, es una disciplina
+
+Construir una plataforma web escalable no es cuestion de usar la tecnologia de moda o de "ponerlo en la nube". Es una disciplina que empieza en el diseno, se valida en la arquitectura, y se demuestra en la operacion.
+
+Las 8 preguntas de este articulo no son tecnicas por capricho. Cada una responde a un fracaso real que hemos visto en proyectos que llegaron a LegaSint demasiado tarde. Plataformas que "escalaban" hasta que no lo hacian. Costos que "eran predecibles" hasta que se disparaban. Datos que "estaban a salvo" hasta que desaparecian.
+
+> **La escalabilidad no se compra con una factura. Se construye con decisiones correctas desde el dia uno.**
+
+Y esas decisiones empiezan con las preguntas correctas.
+
+---
+
+## Vas a contratar el desarrollo de una plataforma web?
+
+En LegaSint no vendemos escalabilidad como buzzword. La disenamos, la documentamos, y la garantizamos con numeros. Si estas planeando una plataforma web y quieres asegurarte de que crecera contigo — sin sorpresas ni costos ocultos — hablemos antes de que firmes con alguien que no pueda responder estas 8 preguntas.
+
+**[Contacta con nosotros](/contacto) para una consulta estrategica sin compromiso.**
