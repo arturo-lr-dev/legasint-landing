@@ -262,7 +262,9 @@
     {
       "id": 20,
       "title": "Plataforma web escalable: Qué preguntar antes de contratar",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-08-21",
+      "files": ["plataforma-web-escalable-que-preguntar-antes-contratar.mdx","scalable-web-platform-what-to-ask-before-hiring.mdx"],
       "created": "2026-02-03"
     },
     {
@@ -382,8 +384,8 @@
   ],
   "meta": {
     "total": 54,
-    "lastUpdated": "2026-08-20T11:00:00Z",
+    "lastUpdated": "2026-08-21T11:00:00Z",
     "priorityIdeas": [],
-    "notes": "Idea 19 publicada el 2026-08-20. Post sobre MVP vs producto completo."
+    "notes": "Idea 20 publicada el 2026-08-21. Post sobre plataforma web escalable."
   }
 }
