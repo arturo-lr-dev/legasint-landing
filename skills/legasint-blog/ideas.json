@@ -270,8 +270,10 @@
     {
       "id": 21,
       "title": "Integraciones que tu negocio necesita: APIs, CRM, ERP y más",
-      "status": "idea",
-      "created": "2026-02-03"
+      "status": "published",
+      "published": "2026-08-22",
+      "created": "2026-02-03",
+      "files": ["integraciones-negocio-apis-crm-erp-2026.mdx","integrations-business-apis-crm-erp-2026.mdx"]
     },
     {
       "id": 22,
