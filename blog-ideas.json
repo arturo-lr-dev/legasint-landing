@@ -2241,7 +2241,14 @@
       "description": "Análisis comparativo de ERPs estándar (SAP, Odoo, Microsoft Dynamics) frente a desarrollo a medida para empresas con procesos específicos",
       "category": "Software a Medida",
       "audience": "Directores de operaciones, CFOs, empresas en crecimiento",
-      "keywords": ["ERP", "software a medida", "desarrollo custom", "Odoo", "SAP", "eficiencia operativa"],
+      "keywords": [
+        "ERP",
+        "software a medida",
+        "desarrollo custom",
+        "Odoo",
+        "SAP",
+        "eficiencia operativa"
+      ],
       "status": "published",
       "publishedDate": "2026-08-18",
       "files": [
@@ -2258,8 +2265,19 @@
       "description": "Casos en los que un CRM a medida supera a las soluciones genéricas: flujos de venta complejos, integraciones específicas, costes a largo plazo",
       "category": "Software a Medida",
       "audience": "Directores comerciales, equipos de ventas, startups B2B",
-      "keywords": ["CRM", "software a medida", "Salesforce", "ventas", "automatización comercial"],
-      "status": "pending"
+      "keywords": [
+        "CRM",
+        "software a medida",
+        "Salesforce",
+        "ventas",
+        "automatización comercial"
+      ],
+      "status": "published",
+      "publishedDate": "2026-08-23",
+      "files": [
+        "crm-personalizado-por-que-salesforce-no-siempre-respuesta.mdx",
+        "custom-crm-why-salesforce-isnt-always-answer.mdx"
+      ]
     },
     {
       "id": 100,
@@ -2270,7 +2288,13 @@
       "description": "Cómo un DMS desarrollado específicamente para un despacho supera a las soluciones genéricas en flujo de trabajo, búsqueda y cumplimiento",
       "category": "Software a Medida",
       "audience": "Despachos de abogados, legal ops, directores de TI legal",
-      "keywords": ["gestión documental", "DMS", "despachos", "software a medida", "flujo trabajo"],
+      "keywords": [
+        "gestión documental",
+        "DMS",
+        "despachos",
+        "software a medida",
+        "flujo trabajo"
+      ],
       "status": "pending"
     },
     {
@@ -2282,7 +2306,13 @@
       "description": "Por qué las empresas de formación invierten en plataformas propias: gamificación, reporting avanzado, integraciones y experiencia de marca",
       "category": "Software a Medida",
       "audience": "Empresas de formación, edtech, RRHH corporativos",
-      "keywords": ["e-learning", "plataforma educativa", "software a medida", "formación", "edtech"],
+      "keywords": [
+        "e-learning",
+        "plataforma educativa",
+        "software a medida",
+        "formación",
+        "edtech"
+      ],
       "status": "pending"
     },
     {
@@ -2294,7 +2324,13 @@
       "description": "Cómo aprovechar la obligatoriedad de factura-e para desarrollar un sistema integrado con tu ERP, contabilidad y CRM",
       "category": "Software a Medida",
       "audience": "Empresas españolas, despachos, departamentos financieros",
-      "keywords": ["factura-e", "facturación electrónica", "software a medida", "VeriFactu", "TicketBAI"],
+      "keywords": [
+        "factura-e",
+        "facturación electrónica",
+        "software a medida",
+        "VeriFactu",
+        "TicketBAI"
+      ],
       "status": "pending"
     },
     {
@@ -2306,7 +2342,14 @@
       "description": "Cómo un dashboard desarrollado a medida conecta tus fuentes de datos en tiempo real y elimina el trabajo manual de reporting",
       "category": "Software a Medida",
       "audience": "Directores, CFOs, equipos de datos, CEOs",
-      "keywords": ["dashboard", "BI", "reporting", "software a medida", "datos", "KPIs"],
+      "keywords": [
+        "dashboard",
+        "BI",
+        "reporting",
+        "software a medida",
+        "datos",
+        "KPIs"
+      ],
       "status": "pending"
     },
     {
@@ -2318,7 +2361,13 @@
       "description": "Cómo una app móvil desarrollada a medida transforma la productividad de equipos comerciales en campo: rutas, pedidos, clientes",
       "category": "Software a Medida",
       "audience": "Empresas con fuerza de ventas, distribución, retail",
-      "keywords": ["app móvil", "fuerza de ventas", "software a medida", "comercial", "productividad"],
+      "keywords": [
+        "app móvil",
+        "fuerza de ventas",
+        "software a medida",
+        "comercial",
+        "productividad"
+      ],
       "status": "pending"
     },
     {
@@ -2330,7 +2379,14 @@
       "description": "Por qué las pymes logísticas eligen WMS custom sobre soluciones enterprise: trazabilidad, integraciones y costes adaptados",
       "category": "Software a Medida",
       "audience": "Pymes logísticas, almacenes, operaciones",
-      "keywords": ["WMS", "almacén", "logística", "software a medida", "trazabilidad", "inventario"],
+      "keywords": [
+        "WMS",
+        "almacén",
+        "logística",
+        "software a medida",
+        "trazabilidad",
+        "inventario"
+      ],
       "status": "pending"
     },
     {
@@ -2342,7 +2398,13 @@
       "description": "Cómo una plataforma de reservas desarrollada a medida supera a Booking, Calendly o soluciones genéricas en control y branding",
       "category": "Software a Medida",
       "audience": "Hoteles, clínicas, centros de servicio, spas",
-      "keywords": ["reservas", "booking", "software a medida", "gestión citas", "servicios"],
+      "keywords": [
+        "reservas",
+        "booking",
+        "software a medida",
+        "gestión citas",
+        "servicios"
+      ],
       "status": "pending"
     },
     {
@@ -2354,7 +2416,14 @@
       "description": "Casos de empresas que desarrollaron su propio PM tool: flujos únicos, integraciones sectoriales, reporting específico",
       "category": "Software a Medida",
       "audience": "Empresas de servicios, consultoras, equipos de proyecto",
-      "keywords": ["gestión proyectos", "PM", "software a medida", "Jira", "Asana", "flujos trabajo"],
+      "keywords": [
+        "gestión proyectos",
+        "PM",
+        "software a medida",
+        "Jira",
+        "Asana",
+        "flujos trabajo"
+      ],
       "status": "pending"
     },
     {
@@ -2366,7 +2435,13 @@
       "description": "Cómo un sistema de control horario desarrollado a medida cumple el registro obligatorio y aporta insights de productividad reales",
       "category": "Software a Medida",
       "audience": "RRHH, directores, empresas con obligatorio registro horario",
-      "keywords": ["control horario", "registro jornada", "software a medida", "productividad", "compliance"],
+      "keywords": [
+        "control horario",
+        "registro jornada",
+        "software a medida",
+        "productividad",
+        "compliance"
+      ],
       "status": "pending"
     },
     {
@@ -2378,7 +2453,14 @@
       "description": "Desarrollo de plataformas de suscripción con billing recurrente, tiers personalizados y gestión de ciclo de vida del cliente",
       "category": "Software a Medida",
       "audience": "Startups SaaS, negocios por suscripción, membership sites",
-      "keywords": ["suscripción", "membership", "SaaS", "software a medida", "billing", "recurrente"],
+      "keywords": [
+        "suscripción",
+        "membership",
+        "SaaS",
+        "software a medida",
+        "billing",
+        "recurrente"
+      ],
       "status": "pending"
     },
     {
@@ -2390,7 +2472,14 @@
       "description": "Software a medida para sectores agroalimentario, industrial y farmacéutico: trazabilidad completa, lotes, caducidad y normativas",
       "category": "Software a Medida",
       "audience": "Industria alimentaria, farmacéutica, agricultura, calidad",
-      "keywords": ["trazabilidad", "calidad", "software a medida", "ERP", "normativas", "lotes"],
+      "keywords": [
+        "trazabilidad",
+        "calidad",
+        "software a medida",
+        "ERP",
+        "normativas",
+        "lotes"
+      ],
       "status": "pending"
     },
     {
@@ -2402,7 +2491,14 @@
       "description": "Desarrollo de plataformas para gestión de vehículos empresariales: geolocalización, mantenimiento predictivo y control de gastos",
       "category": "Software a Medida",
       "audience": "Empresas con flotas, transporte, logística, servicios",
-      "keywords": ["flotas", "gestión vehículos", "GPS", "software a medida", "mantenimiento", "transporte"],
+      "keywords": [
+        "flotas",
+        "gestión vehículos",
+        "GPS",
+        "software a medida",
+        "mantenimiento",
+        "transporte"
+      ],
       "status": "pending"
     },
     {
@@ -2414,7 +2510,13 @@
       "description": "Por qué algunas empresas desarrollan su propio sistema de soporte: integraciones internas, flujos complejos, costes a escala",
       "category": "Software a Medida",
       "audience": "Empresas con alto volumen de soporte, SaaS, servicios",
-      "keywords": ["ticketing", "atención cliente", "soporte", "software a medida", "Zendesk"],
+      "keywords": [
+        "ticketing",
+        "atención cliente",
+        "soporte",
+        "software a medida",
+        "Zendesk"
+      ],
       "status": "pending"
     },
     {
@@ -2426,7 +2528,14 @@
       "description": "Herramientas desarrolladas a medida para cálculo de costes, presupuestos y control de proyectos de construcción e ingeniería",
       "category": "Software a Medida",
       "audience": "Constructoras, ingenierías, arquitectos, proyectos técnicos",
-      "keywords": ["presupuestación", "construcción", "ingeniería", "software a medida", "costes", "proyectos"],
+      "keywords": [
+        "presupuestación",
+        "construcción",
+        "ingeniería",
+        "software a medida",
+        "costes",
+        "proyectos"
+      ],
       "status": "pending"
     },
     {
@@ -2438,7 +2547,14 @@
       "description": "Software a medida para planificación de materiales, órdenes de producción y control de stock en entornos manufactureros",
       "category": "Software a Medida",
       "audience": "Fabricantes, industria, producción, operaciones",
-      "keywords": ["MRP", "producción", "fabricación", "software a medida", "planificación", "stock"],
+      "keywords": [
+        "MRP",
+        "producción",
+        "fabricación",
+        "software a medida",
+        "planificación",
+        "stock"
+      ],
       "status": "pending"
     },
     {
@@ -2450,7 +2566,14 @@
       "description": "Desarrollo de marketplaces verticales B2B con catálogos, cotizaciones, negociación y gestión de pedidos integrada",
       "category": "Software a Medida",
       "audience": "Empresas B2B, distribuidores, plataformas sectoriales",
-      "keywords": ["marketplace", "B2B", "software a medida", "proveedores", "e-commerce", "cotizaciones"],
+      "keywords": [
+        "marketplace",
+        "B2B",
+        "software a medida",
+        "proveedores",
+        "e-commerce",
+        "cotizaciones"
+      ],
       "status": "pending"
     },
     {
@@ -2462,7 +2585,14 @@
       "description": "Plataformas desarrolladas a medida para clínicas y centros médicos: historial, citas, recordatorios, telemedicina y facturación",
       "category": "Software a Medida",
       "audience": "Clínicas, centros médicos, consultas, sanitarios",
-      "keywords": ["pacientes", "citas médicas", "software a medida", "clínicas", "telemedicina", "sanidad"],
+      "keywords": [
+        "pacientes",
+        "citas médicas",
+        "software a medida",
+        "clínicas",
+        "telemedicina",
+        "sanidad"
+      ],
       "status": "pending"
     },
     {
@@ -2474,7 +2604,13 @@
       "description": "Software a medida para inmobiliarias y gestoras: inventario, visitas, contratos, comunicación con propietarios e inquilinos",
       "category": "Software a Medida",
       "audience": "Inmobiliarias, gestoras de propiedades, proptech",
-      "keywords": ["inmobiliaria", "PMS", "gestión propiedades", "software a medida", "proptech"],
+      "keywords": [
+        "inmobiliaria",
+        "PMS",
+        "gestión propiedades",
+        "software a medida",
+        "proptech"
+      ],
       "status": "pending"
     },
     {
@@ -2486,7 +2622,14 @@
       "description": "Desarrollo de plataformas para eventos corporativos: registro, agenda, networking, encuestas y app móvil del evento",
       "category": "Software a Medida",
       "audience": "Organizadores de eventos, agencias, departamentos de marketing",
-      "keywords": ["eventos", "congresos", "software a medida", "networking", "app evento", "registro"],
+      "keywords": [
+        "eventos",
+        "congresos",
+        "software a medida",
+        "networking",
+        "app evento",
+        "registro"
+      ],
       "status": "pending"
     },
     {
@@ -2498,7 +2641,14 @@
       "description": "Sistemas HR desarrollados a medida para procesos específicos: selección, onboarding, evaluación, nómina y desarrollo",
       "category": "Software a Medida",
       "audience": "RRHH, empresas medianas, consultoras de selección",
-      "keywords": ["RRHH", "recursos humanos", "software a medida", "selección", "nómina", "evaluación"],
+      "keywords": [
+        "RRHH",
+        "recursos humanos",
+        "software a medida",
+        "selección",
+        "nómina",
+        "evaluación"
+      ],
       "status": "pending"
     },
     {
@@ -2510,7 +2660,14 @@
       "description": "Software a medida para gestión de normas ISO: documentación, auditorías, no conformidades, acciones correctivas y evidencias",
       "category": "Software a Medida",
       "audience": "Calidad, compliance, empresas certificadas ISO",
-      "keywords": ["QMS", "ISO 9001", "calidad", "software a medida", "auditorías", "normativas"],
+      "keywords": [
+        "QMS",
+        "ISO 9001",
+        "calidad",
+        "software a medida",
+        "auditorías",
+        "normativas"
+      ],
       "status": "pending"
     },
     {
@@ -2522,7 +2679,14 @@
       "description": "Desarrollo de tiendas online B2B con catálogos personalizados, tarifas por cliente, aprobaciones de pedido y integración con ERP",
       "category": "Software a Medida",
       "audience": "Mayoristas, distribuidores, fabricantes B2B",
-      "keywords": ["e-commerce", "B2B", "software a medida", "catálogos", "tarifas", "pedidos"],
+      "keywords": [
+        "e-commerce",
+        "B2B",
+        "software a medida",
+        "catálogos",
+        "tarifas",
+        "pedidos"
+      ],
       "status": "pending"
     },
     {
@@ -2534,7 +2698,14 @@
       "description": "Software a medida para gestión de mantenimiento preventivo y correctivo: equipos, órdenes de trabajo, repuestos y costes",
       "category": "Software a Medida",
       "audience": "Industria, mantenimiento, facilities, operaciones",
-      "keywords": ["CMMS", "mantenimiento", "industrial", "software a medida", "preventivo", "equipos"],
+      "keywords": [
+        "CMMS",
+        "mantenimiento",
+        "industrial",
+        "software a medida",
+        "preventivo",
+        "equipos"
+      ],
       "status": "pending"
     },
     {
@@ -2546,7 +2717,14 @@
       "description": "Desarrollo de plataformas de crowdfunding con gestión de campañas, pagos, recompensas y reporting para inversores",
       "category": "Software a Medida",
       "audience": "Startups fintech, plataformas de financiación, inversores",
-      "keywords": ["crowdfunding", "financiación", "software a medida", "fintech", "inversión", "campanas"],
+      "keywords": [
+        "crowdfunding",
+        "financiación",
+        "software a medida",
+        "fintech",
+        "inversión",
+        "campanas"
+      ],
       "status": "pending"
     },
     {
@@ -2558,7 +2736,14 @@
       "description": "Sistemas de control de inventario desarrollados a medida: multi-almacén, rotación, previsiones y integración con tiendas",
       "category": "Software a Medida",
       "audience": "Retail, mayoristas, e-commerce, logística",
-      "keywords": ["inventario", "stock", "retail", "software a medida", "multi-almacén", "previsiones"],
+      "keywords": [
+        "inventario",
+        "stock",
+        "retail",
+        "software a medida",
+        "multi-almacén",
+        "previsiones"
+      ],
       "status": "pending"
     },
     {
@@ -2570,7 +2755,14 @@
       "description": "Software a medida para franquicias: operaciones, marketing, supply chain, reporting y comunicación entre central y franquiciados",
       "category": "Software a Medida",
       "audience": "Franquicias, retail, cadenas, expansión",
-      "keywords": ["franquicias", "gestión", "software a medida", "retail", "cadenas", "expansión"],
+      "keywords": [
+        "franquicias",
+        "gestión",
+        "software a medida",
+        "retail",
+        "cadenas",
+        "expansión"
+      ],
       "status": "pending"
     },
     {
@@ -2582,7 +2774,14 @@
       "description": "Plataformas para control de obras: planificación, certificaciones, subcontratistas, materiales y costes en tiempo real",
       "category": "Software a Medida",
       "audience": "Constructoras, promotoras, arquitectos técnicos",
-      "keywords": ["construcción", "obras", "gestión proyectos", "software a medida", "certificaciones", "costes"],
+      "keywords": [
+        "construcción",
+        "obras",
+        "gestión proyectos",
+        "software a medida",
+        "certificaciones",
+        "costes"
+      ],
       "status": "pending"
     },
     {
@@ -2594,7 +2793,14 @@
       "description": "Plataformas propias para gestión de alquileres turísticos: reservas, limpieza, check-in, precios dinámicos y multi-plataforma",
       "category": "Software a Medida",
       "audience": "Gestores de alquileres, inmobiliarias turísticas, propietarios",
-      "keywords": ["alquileres vacacionales", "turístico", "software a medida", "Airbnb", "gestión", "reservas"],
+      "keywords": [
+        "alquileres vacacionales",
+        "turístico",
+        "software a medida",
+        "Airbnb",
+        "gestión",
+        "reservas"
+      ],
       "status": "pending"
     },
     {
@@ -2606,7 +2812,14 @@
       "description": "Desarrollo de CMS personalizados para necesidades específicas: flujos editoriales, multi-idioma, integraciones, rendimiento y seguridad",
       "category": "Software a Medida",
       "audience": "Medios, editoriales, grandes corporaciones, marketing",
-      "keywords": ["CMS", "gestión contenidos", "software a medida", "WordPress", "editorial", "multi-idioma"],
+      "keywords": [
+        "CMS",
+        "gestión contenidos",
+        "software a medida",
+        "WordPress",
+        "editorial",
+        "multi-idioma"
+      ],
       "status": "pending"
     }
   ]
