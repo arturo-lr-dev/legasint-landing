@@ -2295,7 +2295,12 @@
         "software a medida",
         "flujo trabajo"
       ],
-      "status": "pending"
+      "status": "published",
+      "publishedDate": "2026-08-24",
+      "files": [
+        "software-gestion-documental-a-medida-despachos-legales.mdx",
+        "custom-document-management-software-law-firms.mdx"
+      ]
     },
     {
       "id": 101,
