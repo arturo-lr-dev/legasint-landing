@@ -278,13 +278,15 @@
     {
       "id": 22,
       "title": "Mantenimiento de software: El costo oculto que nadie te cuenta",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-08-23",
       "created": "2026-02-03"
     },
     {
       "id": 23,
       "title": "¿Startup o empresa tradicional? Cómo adaptar el desarrollo a tu realidad",
-      "status": "idea",
+      "status": "published",
+      "published": "2026-08-25",
       "created": "2026-02-03"
     },
     {
