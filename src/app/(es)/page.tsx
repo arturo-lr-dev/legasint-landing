@@ -1,6 +1,7 @@
 // app/(es)/page.tsx — Home en español (/)
 import type { Metadata } from 'next';
 import AnimatedLanding from '@/components/landing/AnimatedLanding';
+import ServicesSection from '@/components/landing/ServicesSection';
 import PortfolioSection from '@/components/landing/PortfolioSection';
 import SocialImpactSection from '@/components/landing/SocialSection';
 import FaqSection from '@/components/landing/FaqSection';
@@ -52,6 +53,7 @@ export default function Home() {
         }}
       >
         <AnimatedLanding locale="es" />
+        <ServicesSection locale="es" />
         <PortfolioSection locale="es" />
         <SocialImpactSection locale="es" />
         <FaqSection locale="es" />

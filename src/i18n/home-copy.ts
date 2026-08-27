@@ -29,6 +29,11 @@ export interface HomeCopy {
     subtitle: string;
     items: { question: string; answer: string }[];
   };
+  services: {
+    title: string;
+    subtitle: string;
+    items: { title: string; description: string; features: string[] }[];
+  };
 }
 
 export const homeCopy: Record<Locale, HomeCopy> = {
@@ -138,6 +143,32 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         },
       ],
     },
+    services: {
+      title: '// Servicios',
+      subtitle: 'Soluciones de software a medida para tu negocio',
+      items: [
+        {
+          title: 'Software a medida',
+          description: 'Aplicaciones web, plataformas internas y sistemas de gestión diseñados específicamente para tus procesos.',
+          features: ['Aplicaciones web', 'Sistemas internos', 'SaaS y multi-tenant', 'MVP y prototipos'],
+        },
+        {
+          title: 'APIs e integraciones',
+          description: 'Conectamos tus herramientas existentes con APIs robustas y workflows automatizados.',
+          features: ['APIs REST', 'Integraciones con terceros', 'n8n y Make', 'Webhooks y eventos'],
+        },
+        {
+          title: 'Inteligencia artificial',
+          description: 'Implementamos IA útil para tu negocio: agentes, automatización y análisis de datos.',
+          features: ['Agentes y chatbots', 'RAG y búsqueda semántica', 'Análisis predictivo', 'Automatización con IA'],
+        },
+        {
+          title: 'Consultoría y modernización',
+          description: 'Te ayudamos a migrar sistemas legacy, escalar arquitecturas y tomar decisiones técnicas con criterio.',
+          features: ['Auditoría técnica', 'Migración de sistemas', 'Escalabilidad', 'CTO as a Service'],
+        },
+      ],
+    },
   },
   en: {
     hero: {
@@ -242,6 +273,32 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           question: 'What is a tech partner and how is it different from a consultancy?',
           answer:
             'A tech partner is involved in your business for the long term: we don\u2019t just deliver code, we support you in technical decisions, product strategy and the continuous evolution of your software.',
+        },
+      ],
+    },
+    services: {
+      title: '// Services',
+      subtitle: 'Custom software solutions for your business',
+      items: [
+        {
+          title: 'Custom software',
+          description: 'Web applications, internal platforms and management systems designed specifically for your processes.',
+          features: ['Web applications', 'Internal systems', 'SaaS & multi-tenant', 'MVPs and prototypes'],
+        },
+        {
+          title: 'APIs & integrations',
+          description: 'We connect your existing tools with robust APIs and automated workflows.',
+          features: ['REST APIs', 'Third-party integrations', 'n8n and Make', 'Webhooks and events'],
+        },
+        {
+          title: 'Artificial intelligence',
+          description: 'We implement useful AI for your business: agents, automation and data analysis.',
+          features: ['Agents and chatbots', 'RAG & semantic search', 'Predictive analytics', 'AI automation'],
+        },
+        {
+          title: 'Consulting & modernization',
+          description: 'We help you migrate legacy systems, scale architectures and make technical decisions with confidence.',
+          features: ['Technical audit', 'System migration', 'Scalability', 'CTO as a Service'],
         },
       ],
     },
