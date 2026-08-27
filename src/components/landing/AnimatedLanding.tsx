@@ -1,6 +1,6 @@
 'use client';
 import { fadeInUp } from '@/lib/animations';
-import { trackEvent, GA_EVENTS } from '@/lib/analytics';
+import { trackLead } from '@/lib/analytics';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
@@ -140,10 +140,7 @@ const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
               background: 'linear-gradient(135deg, #22c55e 0%, #15803d 50%, #166534 100%)',
             }}
             aria-label={t.whatsappAria}
-            onClick={() => trackEvent(GA_EVENTS.WHATSAPP_CLICK, {
-              event_category: 'engagement',
-              event_label: 'whatsapp_button'
-            })}
+            onClick={() => trackLead('whatsapp_button')}
           >
             {/* Animated glow ring */}
             <div
@@ -180,10 +177,7 @@ const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
               background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #4f46e5 100%)',
             }}
             aria-label={t.emailAria}
-            onClick={() => trackEvent(GA_EVENTS.CONTACT_CLICK, {
-              event_category: 'engagement',
-              event_label: 'email_button'
-            })}
+            onClick={() => trackLead('email_button')}
           >
             {/* Animated glow ring */}
             <div

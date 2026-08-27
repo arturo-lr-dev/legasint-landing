@@ -355,21 +355,33 @@ No se encontro ninguna implementacion de schema markup en todo el sitio.
 
 ## 16. Analytics
 
-**Estado: BUENO**
+**Estado: COMPLETO PARA GOOGLE ADS + GA4**
 
-**Archivos:** `src/analitics/google.tsx`, `src/lib/analytics.ts`
+**Archivos:** `src/analytics/google.tsx`, `src/lib/analytics.ts`, `src/components/CookieConsent.tsx`, `src/components/ContactForm.tsx`
 
-- Google Analytics via GTM con `NEXT_PUBLIC_GOOGLE_ANALYTICS`
+- Google Analytics 4 via gtag.js con `NEXT_PUBLIC_GOOGLE_ANALYTICS`
+- Google Ads tag (`AW-18414116550`) cargado con `next/script`
+- Conversion linker activado via `gtag('config', 'AW-...')`
+- Enhanced Conversions habilitado (`allow_enhanced_conversions: true`)
+- Google Consent Mode v2 con banner de cookies (`src/components/CookieConsent.tsx`)
+- Formulario de contacto con Web3Forms + honeypot antibots en `/contacto` y `/contact`
+- Eventos de lead: `generate_lead` en WhatsApp, email, descarga de contacto QR y envío de formulario
+- Conversión de Google Ads disparada desde el formulario (requiere `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL`)
+- Eventos sociales: `social_click` en Instagram/LinkedIn
 - Carga async (no bloquea renderizado)
-- Eventos custom: CONTACT_CLICK, WHATSAPP_CLICK, SOCIAL_CLICK
 
-### Problemas
+### Variables de entorno
+
+- `NEXT_PUBLIC_GOOGLE_ANALYTICS` — ID de GA4
+- `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` — etiqueta de conversión de Google Ads
+- `NEXT_PUBLIC_WEB3FORMS_KEY` — access key de Web3Forms
+
+### Problemas pendientes
 
 | Problema | Severidad |
 |----------|-----------|
 | Sin Google Search Console configurado | MEDIA |
 | Sin meta de verificacion de Search Console | MEDIA |
-| Directorio se llama `analitics` (typo, deberia ser `analytics`) | BAJA |
 
 ---
 

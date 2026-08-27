@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import RootShell from "@/components/RootShell";
+import ConsentDefaultScript from "@/analytics/ConsentDefaultScript";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://legasint.com'),
@@ -93,6 +94,7 @@ export default function RootLayoutEn({
   return (
     <html lang="en">
       <head>
+        <ConsentDefaultScript />
         <link rel="alternate" type="application/rss+xml" title="Legasint Blog" href="/feed.xml" />
         <OrganizationJsonLd />
         <WebSiteJsonLd />

@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { trackEvent, GA_EVENTS } from '@/lib/analytics';
+import { trackLead } from '@/lib/analytics';
+import ContactForm from '@/components/ContactForm';
 import { useState, useEffect } from 'react';
 
 export default function ContactoContent() {
@@ -93,10 +94,7 @@ export default function ContactoContent() {
                   background: 'linear-gradient(135deg, #22c55e 0%, #15803d 50%, #166534 100%)',
                 }}
                 aria-label="Enviar mensaje por WhatsApp"
-                onClick={() => trackEvent(GA_EVENTS.WHATSAPP_CLICK, {
-                  event_category: 'engagement',
-                  event_label: 'contact_page_whatsapp'
-                })}
+                onClick={() => trackLead('contact_page_whatsapp')}
               >
                 <div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
@@ -150,10 +148,7 @@ export default function ContactoContent() {
                   background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #4f46e5 100%)',
                 }}
                 aria-label="Enviar correo electrónico"
-                onClick={() => trackEvent(GA_EVENTS.CONTACT_CLICK, {
-                  event_category: 'engagement',
-                  event_label: 'contact_page_email'
-                })}
+                onClick={() => trackLead('contact_page_email')}
               >
                 <div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
@@ -164,6 +159,11 @@ export default function ContactoContent() {
             </div>
           </motion.div>
         </div>
+
+        {/* Contact Form CTA */}
+        <motion.div variants={fadeInUp} className="mt-16 max-w-3xl mx-auto">
+          <ContactForm locale="es" />
+        </motion.div>
 
         {/* Additional Info */}
         <motion.div

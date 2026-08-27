@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { trackEvent, GA_EVENTS } from "@/lib/analytics";
+import { trackEvent, GA_EVENTS, trackLead } from "@/lib/analytics";
 import { useState, useEffect } from "react";
 import company from "@/data/company.json";
 
@@ -124,10 +124,7 @@ export default function QrLandingClient() {
             className="group relative flex items-center gap-2 px-6 py-3 text-sm font-bold text-white rounded-full overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_35px_rgba(139,92,246,0.7)] hover:scale-105 bg-gradient-to-r from-violet-500 to-indigo-600"
             aria-label="Guardar contacto"
             onClick={() =>
-              trackEvent(GA_EVENTS.CONTACT_CLICK, {
-                event_category: "engagement",
-                event_label: "qr_save_contact",
-              })
+              trackLead("qr_save_contact")
             }
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" aria-hidden="true" />
@@ -199,10 +196,7 @@ export default function QrLandingClient() {
             }}
             aria-label="Contactar por WhatsApp"
             onClick={() =>
-              trackEvent(GA_EVENTS.WHATSAPP_CLICK, {
-                event_category: "engagement",
-                event_label: "qr_whatsapp",
-              })
+              trackLead("qr_whatsapp")
             }
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 rounded-full opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500 animate-pulse" aria-hidden="true" />
