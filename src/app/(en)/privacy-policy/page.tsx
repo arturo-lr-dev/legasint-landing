@@ -26,14 +26,13 @@ export default function PrivacyPolicyPage() {
         <h1 className="text-3xl md:text-4xl font-bold mb-6">Privacy Policy</h1>
 
         <p className="text-blue-200 mb-6">
-          At Legasint, we take your privacy very seriously. This policy explains what information we collect, for what
-          purpose, and what your rights are.
+          At Legasint we build custom software, automation and artificial intelligence solutions for businesses. We take your privacy very seriously. This policy explains what information we collect, for what purpose, and what your rights are.
         </p>
 
         <section className="mb-8">
           <h2 className="text-xl font-bold mb-3">1. Data controller</h2>
           <p className="text-blue-100 leading-relaxed">
-            <strong>Controller:</strong> Legasint<br />
+            <strong>Controller:</strong> Legasint — Custom software development<br />
             <strong>Contact email:</strong> arturo@legasint.com<br />
             <strong>Website:</strong> https://legasint.com
           </p>
@@ -43,7 +42,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-bold mb-3">2. Data we collect</h2>
           <ul className="list-disc list-inside text-blue-100 leading-relaxed space-y-2">
             <li>
-              <strong>Contact data:</strong> name, email, phone, company and message you send us through the contact form.
+              <strong>Contact data:</strong> name, email, phone, company and message you send us through the contact form to request information or a quote for our software development services.
             </li>
             <li>
               <strong>Browsing data:</strong> information collected through cookies and similar technologies (IP address,

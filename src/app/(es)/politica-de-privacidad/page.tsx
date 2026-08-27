@@ -26,14 +26,13 @@ export default function PoliticaPrivacidadPage() {
         <h1 className="text-3xl md:text-4xl font-bold mb-6">Política de privacidad</h1>
 
         <p className="text-blue-200 mb-6">
-          En Legasint nos tomamos muy en serio la privacidad de tus datos. Esta política explica qué información recopilamos,
-          con qué finalidad y cuáles son tus derechos.
+          En Legasint desarrollamos software a medida, automatización e inteligencia artificial para empresas. Nos tomamos muy en serio la privacidad de tus datos. Esta política explica qué información recopilamos, con qué finalidad y cuáles son tus derechos.
         </p>
 
         <section className="mb-8">
           <h2 className="text-xl font-bold mb-3">1. Responsable del tratamiento</h2>
           <p className="text-blue-100 leading-relaxed">
-            <strong>Responsable:</strong> Legasint<br />
+            <strong>Responsable:</strong> Legasint — Desarrollo de software a medida<br />
             <strong>Email de contacto:</strong> arturo@legasint.com<br />
             <strong>Web:</strong> https://legasint.com
           </p>
@@ -44,7 +43,8 @@ export default function PoliticaPrivacidadPage() {
           <ul className="list-disc list-inside text-blue-100 leading-relaxed space-y-2">
             <li>
               <strong>Datos de contacto:</strong> nombre, email, teléfono, empresa y mensaje que nos envías a través del
-              formulario de contacto.
+              formulario de contacto para solicitar información o un presupuesto sobre nuestros servicios de desarrollo de
+              software.
             </li>
             <li>
               <strong>Datos de navegación:</strong> información recopilada mediante cookies y tecnologías similares
