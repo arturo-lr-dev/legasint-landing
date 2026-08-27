@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import ContactForm from '@/components/ContactForm';
+import HeroBackground from '@/components/landing/three/HeroBackground';
 import { homeCopy } from '@/i18n/home-copy';
 
 export default function ServicesContent() {
@@ -46,11 +47,12 @@ export default function ServicesContent() {
         backgroundAttachment: 'fixed',
       }}
     >
+      <HeroBackground />
       <motion.div
         variants={staggerContainer}
         initial="initial"
         animate="animate"
-        className="max-w-4xl mx-auto"
+        className="max-w-4xl mx-auto relative z-10"
       >
         {/* Header */}
         <motion.header variants={fadeInUp} className="text-center mb-16">
