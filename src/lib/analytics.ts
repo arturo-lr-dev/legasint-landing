@@ -2,7 +2,7 @@
 
 export const GOOGLE_ADS_ID = 'AW-18414116550';
 export const GOOGLE_ADS_CONVERSION_LABEL =
-  process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL;
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL || 'YmEoCNKphukcEMa9xMxE';
 
 type GtagEvent = {
   event_category?: string;
