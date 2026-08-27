@@ -71,7 +71,8 @@ export const trackEvent = (
  */
 export const trackGoogleAdsConversion = (
   conversionLabel?: string,
-  params?: GtagConversionParams
+  params?: GtagConversionParams,
+  callback?: () => void
 ): void => {
   const label = conversionLabel || GOOGLE_ADS_CONVERSION_LABEL;
   if (!label) return;
@@ -80,7 +81,10 @@ export const trackGoogleAdsConversion = (
     window.gtag('event', 'conversion', {
       send_to: `${GOOGLE_ADS_ID}/${label}`,
       ...params,
+      ...(callback && { event_callback: callback, event_timeout: 2000 }),
     });
+  } else if (callback) {
+    callback();
   }
 };
 
@@ -137,10 +141,15 @@ export const trackOutboundLead = (
   channel: string
 ): boolean => {
   trackLead(channel);
-  return gtagSendEvent(url, 'ads_conversion', {
-    event_category: 'lead',
-    event_label: channel,
-  });
+
+  const navigate = () => {
+    if (typeof window !== 'undefined') {
+      window.location.href = url;
+    }
+  };
+
+  trackGoogleAdsConversion(undefined, { value: 1.0, currency: 'EUR' }, navigate);
+  return false;
 };
 
 // Predefined events for consistency
