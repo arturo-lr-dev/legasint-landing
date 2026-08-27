@@ -4,6 +4,7 @@ import AnimatedLanding from '@/components/landing/AnimatedLanding';
 import PortfolioSection from '@/components/landing/PortfolioSection';
 import SocialImpactSection from '@/components/landing/SocialSection';
 import FaqSection from '@/components/landing/FaqSection';
+import ContactForm from '@/components/ContactForm';
 import SmoothScroll from '@/components/landing/SmoothScroll';
 import ScrollProgress from '@/components/landing/ScrollProgress';
 import ConsoleEasterEgg from '@/components/landing/ConsoleEasterEgg';
@@ -54,6 +55,11 @@ export default function Home() {
         <PortfolioSection locale="es" />
         <SocialImpactSection locale="es" />
         <FaqSection locale="es" />
+        <section className="relative z-10 px-4 py-16 md:py-24">
+          <div className="max-w-3xl mx-auto">
+            <ContactForm locale="es" />
+          </div>
+        </section>
       </div>
     </>
   );
