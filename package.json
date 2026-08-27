@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-slug-map.mjs && node scripts/generate-blog-markdown.mjs",
+    "prebuild": "node scripts/generate-slug-map.mjs && node scripts/generate-blog-markdown.mjs && node scripts/generate-blog-index.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

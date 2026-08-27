@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export interface BlogPost {
   slug: string;
@@ -14,6 +14,7 @@ export interface BlogPost {
   locale: string;
   readingTime: number;
   translationKey?: string;
+  serialized?: MDXRemoteSerializeResult;
 }
 
 export interface BlogPostMeta {
@@ -29,95 +30,71 @@ export interface BlogPostMeta {
   translationKey?: string;
 }
 
-const WORDS_PER_MINUTE = 200;
-
-function calculateReadingTime(content: string): number {
-  const text = content.replace(/[#*`\[\]()>_~|\\-]/g, '').trim();
-  const words = text.split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
-}
-
-const contentDirectory = path.join(process.cwd(), 'src/content/blog');
-
-export function getPostSlugs(locale: string = 'es'): string[] {
-  const localeDir = path.join(contentDirectory, locale);
-
-  if (!fs.existsSync(localeDir)) {
-    return [];
-  }
-
-  return fs.readdirSync(localeDir)
-    .filter((file) => file.endsWith('.mdx'))
-    .map((file) => file.replace(/\.mdx$/, ''));
-}
-
-export function getPostBySlug(slug: string, locale: string = 'es'): BlogPost | null {
-  const filePath = path.join(contentDirectory, locale, `${slug}.mdx`);
-
-  if (!fs.existsSync(filePath)) {
-    return null;
-  }
-
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const { data, content } = matter(fileContents);
-
-  return {
-    slug,
-    title: data.title || '',
-    date: data.date || '',
-    description: data.description || '',
-    tags: data.tags || [],
-    image: data.image,
-    author: data.author || 'Legasint',
-    content,
-    locale,
-    readingTime: calculateReadingTime(content),
-    translationKey: data.translationKey,
-  };
-}
-
-export function getAllPosts(locale: string = 'es'): BlogPostMeta[] {
-  const slugs = getPostSlugs(locale);
-
-  const posts = slugs
-    .map((slug) => {
-      const post = getPostBySlug(slug, locale);
-      if (!post) return null;
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { content: _, ...meta } = post;
-      return meta;
-    })
-    .filter((post): post is BlogPostMeta => post !== null)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  return posts;
-}
-
-export function getAllPostsAllLocales(): BlogPostMeta[] {
-  const locales = ['es', 'en'];
-  const allPosts: BlogPostMeta[] = [];
-
-  for (const locale of locales) {
-    const posts = getAllPosts(locale);
-    allPosts.push(...posts);
-  }
-
-  return allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
-
-export function getAvailableLocales(): string[] {
-  if (!fs.existsSync(contentDirectory)) {
-    return [];
-  }
-
-  return fs.readdirSync(contentDirectory)
-    .filter((item) => fs.statSync(path.join(contentDirectory, item)).isDirectory());
+export interface TocItem {
+  id: string;
+  text: string;
+  level: number;
 }
 
 export interface AdjacentPosts {
   previous: BlogPostMeta | null;
   next: BlogPostMeta | null;
+}
+
+interface LocaleIndex {
+  posts: Record<string, BlogPost>;
+  allPosts: BlogPostMeta[];
+  tags: string[];
+  postsByTag: Record<string, string[]>;
+}
+
+interface BlogIndex {
+  es: LocaleIndex;
+  en: LocaleIndex;
+}
+
+function loadIndex(): BlogIndex {
+  const indexPath = path.join(process.cwd(), 'src', 'data', 'blog-index.json');
+
+  if (!fs.existsSync(indexPath)) {
+    throw new Error(
+      `Blog index not found at ${indexPath}. Run "npm run prebuild" (or "node scripts/generate-blog-index.mjs") before building or starting the dev server.`
+    );
+  }
+
+  const raw = fs.readFileSync(indexPath, 'utf8');
+  return JSON.parse(raw) as BlogIndex;
+}
+
+const blogIndex = loadIndex();
+
+function getLocaleIndex(locale: string = 'es'): LocaleIndex {
+  const index = blogIndex[locale as keyof BlogIndex];
+  if (!index) {
+    throw new Error(`Unsupported blog locale: ${locale}`);
+  }
+  return index;
+}
+
+export function getPostSlugs(locale: string = 'es'): string[] {
+  return getLocaleIndex(locale).allPosts.map((post) => post.slug);
+}
+
+export function getPostBySlug(slug: string, locale: string = 'es'): BlogPost | null {
+  return getLocaleIndex(locale).posts[slug] ?? null;
+}
+
+export function getAllPosts(locale: string = 'es'): BlogPostMeta[] {
+  return getLocaleIndex(locale).allPosts;
+}
+
+export function getAllPostsAllLocales(): BlogPostMeta[] {
+  const allPosts: BlogPostMeta[] = [...blogIndex.es.allPosts, ...blogIndex.en.allPosts];
+  return allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getAvailableLocales(): string[] {
+  return ['es', 'en'];
 }
 
 export function getAdjacentPosts(slug: string, locale: string = 'es'): AdjacentPosts {
@@ -138,20 +115,27 @@ export function getAdjacentPosts(slug: string, locale: string = 'es'): AdjacentP
 }
 
 export function getAllTags(locale: string = 'es'): string[] {
-  const posts = getAllPosts(locale);
-  const tagSet = new Set<string>();
-  for (const post of posts) {
-    for (const tag of post.tags) {
-      tagSet.add(tag);
-    }
-  }
-  return Array.from(tagSet).sort();
+  return getLocaleIndex(locale).tags;
 }
 
-export interface TocItem {
-  id: string;
-  text: string;
-  level: number;
+export function getPostsByTag(tag: string, locale: string = 'es'): BlogPostMeta[] {
+  const index = getLocaleIndex(locale);
+  const slugs = index.postsByTag[tag.toLowerCase()] ?? [];
+  return slugs
+    .map((slug) => index.posts[slug])
+    .filter((post): post is BlogPost => Boolean(post))
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      date: post.date,
+      description: post.description,
+      tags: post.tags,
+      image: post.image,
+      author: post.author,
+      locale: post.locale,
+      readingTime: post.readingTime,
+      translationKey: post.translationKey,
+    }));
 }
 
 export function extractHeadings(content: string): TocItem[] {
@@ -170,13 +154,6 @@ export function extractHeadings(content: string): TocItem[] {
   }
 
   return items;
-}
-
-export function getPostsByTag(tag: string, locale: string = 'es'): BlogPostMeta[] {
-  const posts = getAllPosts(locale);
-  return posts.filter((post) =>
-    post.tags.some((t) => t.toLowerCase() === tag.toLowerCase())
-  );
 }
 
 export function getRelatedPosts(slug: string, locale: string = 'es', limit: number = 3): BlogPostMeta[] {
