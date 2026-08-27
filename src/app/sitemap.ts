@@ -28,7 +28,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: {
         languages: {
           es: BASE_URL,
-          en: BASE_URL,
+          en: `${BASE_URL}/en`,
+          'x-default': BASE_URL,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/en`,
+          es: BASE_URL,
+          'x-default': BASE_URL,
         },
       },
     },
@@ -41,6 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           es: `${BASE_URL}/contacto`,
           en: `${BASE_URL}/contact`,
+          'x-default': `${BASE_URL}/contacto`,
         },
       },
     },
@@ -53,6 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           en: `${BASE_URL}/contact`,
           es: `${BASE_URL}/contacto`,
+          'x-default': `${BASE_URL}/contacto`,
         },
       },
     },
@@ -65,6 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           es: `${BASE_URL}/blog`,
           en: `${BASE_URL}/blog/en`,
+          'x-default': `${BASE_URL}/blog`,
         },
       },
     },
@@ -77,6 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           en: `${BASE_URL}/blog/en`,
           es: `${BASE_URL}/blog`,
+          'x-default': `${BASE_URL}/blog`,
         },
       },
     },
@@ -95,6 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           languages: {
             es: `${BASE_URL}/blog/${post.slug}`,
             en: `${BASE_URL}/blog/en/${enSlug}`,
+            'x-default': `${BASE_URL}/blog/${post.slug}`,
           },
         },
       }),
@@ -114,26 +133,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
           languages: {
             en: `${BASE_URL}/blog/en/${post.slug}`,
             es: `${BASE_URL}/blog/${esSlug}`,
+            'x-default': `${BASE_URL}/blog/${esSlug}`,
           },
         },
       }),
     };
   });
 
-  // Tag pages
-  const esTags = getAllTags('es').map((tag) => ({
-    url: `${BASE_URL}/blog/tag/${encodeURIComponent(tag.toLowerCase())}`,
-    lastModified: latestDate(getPostsByTag(tag, 'es').map((p) => p.date), currentDate),
-    changeFrequency: 'weekly' as const,
-    priority: 0.4,
-  }));
+  // Tag pages (hreflang only when the tag exists in the other language)
+  const esTags = getAllTags('es').map((tag) => {
+    const encoded = encodeURIComponent(tag.toLowerCase());
+    const hasEnVersion = getPostsByTag(tag, 'en').length > 0;
+    return {
+      url: `${BASE_URL}/blog/tag/${encoded}`,
+      lastModified: latestDate(getPostsByTag(tag, 'es').map((p) => p.date), currentDate),
+      changeFrequency: 'weekly' as const,
+      priority: 0.4,
+      ...(hasEnVersion && {
+        alternates: {
+          languages: {
+            es: `${BASE_URL}/blog/tag/${encoded}`,
+            en: `${BASE_URL}/blog/en/tag/${encoded}`,
+            'x-default': `${BASE_URL}/blog/tag/${encoded}`,
+          },
+        },
+      }),
+    };
+  });
 
-  const enTags = getAllTags('en').map((tag) => ({
-    url: `${BASE_URL}/blog/en/tag/${encodeURIComponent(tag.toLowerCase())}`,
-    lastModified: latestDate(getPostsByTag(tag, 'en').map((p) => p.date), currentDate),
-    changeFrequency: 'weekly' as const,
-    priority: 0.4,
-  }));
+  const enTags = getAllTags('en').map((tag) => {
+    const encoded = encodeURIComponent(tag.toLowerCase());
+    const hasEsVersion = getPostsByTag(tag, 'es').length > 0;
+    return {
+      url: `${BASE_URL}/blog/en/tag/${encoded}`,
+      lastModified: latestDate(getPostsByTag(tag, 'en').map((p) => p.date), currentDate),
+      changeFrequency: 'weekly' as const,
+      priority: 0.4,
+      ...(hasEsVersion && {
+        alternates: {
+          languages: {
+            en: `${BASE_URL}/blog/en/tag/${encoded}`,
+            es: `${BASE_URL}/blog/tag/${encoded}`,
+            'x-default': `${BASE_URL}/blog/tag/${encoded}`,
+          },
+        },
+      }),
+    };
+  });
 
   return [...staticPages, ...spanishPosts, ...englishPosts, ...esTags, ...enTags];
 }

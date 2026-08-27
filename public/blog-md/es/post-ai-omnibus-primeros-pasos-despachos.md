@@ -1,0 +1,221 @@
+---
+title: "Post-AI Omnibus: primeros pasos para despachos tras la entrada en vigor"
+date: "2026-07-31"
+language: "es"
+canonical: "https://legasint.com/blog/post-ai-omnibus-primeros-pasos-despachos"
+tags: ["AI Omnibus", "AI Act", "cumplimiento", "despachos", "agosto 2026", "pasos inmediatos"]
+---
+
+# Post-AI Omnibus: primeros pasos para despachos tras la entrada en vigor
+
+Guía de acción inmediata para despachos tras la entrada en vigor del AI Omnibus: qué cambios aplican ya, qué plazos se extienden y cómo adaptar la compliance en tiempo real.
+
+## Introducción
+
+El **27 de julio de 2026** entró en vigor el **AI Omnibus**, el paquete de simplificación normativa que modifica el AI Act, el GDPR y otras regulaciones europeas. Para los despachos de abogados que asesoran a empresas con sistemas de IA de alto riesgo, esto no es solo una noticia regulatoria más: es un **punto de inflexión operativo**.
+
+Con el plazo original del AI Act para sistemas de alto riesgo a solo **48 horas** (2 de agosto de 2026), muchos clientes están en modo pánico. Otros, que habían acelerado su compliance pensando que se acababa el tiempo, ahora descubren que el Omnibus les da algo de oxígeno... pero no para todos.
+
+Este artículo explica **qué ha cambiado realmente**, **qué no ha cambiado** y **qué debe hacer un despacho hoy mismo** para aconsejar correctamente a sus clientes.
+
+---
+
+## 1. Qué ha cambiado con el AI Omnibus
+
+### 1.1 Simplificación de obligaciones para sistemas de alto riesgo
+
+El AI Omnibus introduce una **reducción significativa de la carga regulatoria** para ciertos sistemas de IA previamente clasificados como de alto riesgo. En concreto:
+
+- **Sistemas de IA en áreas de recursos humanos y educación**: reclasificación a riesgo limitado en determinados casos
+- **Sistemas de detección de fraude financiero**: exenciones parciales si cumplen criterios técnicos específicos
+- **Sistemas de mantenimiento predictivo industrial**: eliminación de la clasificación de alto riesgo
+
+**Impacto práctico**: Clientes que habían invertido miles de euros en cumplimiento ahora pueden descubrir que su sistema ya no es de alto riesgo. Pero cuidado: la reclasificación **no es automática** y requiere evaluación documentada.
+
+### 1.2 Extensión de plazos selectiva
+
+| Sistema | Plazo original | Plazo post-Omnibus |
+|---------|---------------|-------------------|
+| IA de alto riesgo (general) | 2 agosto 2026 | **2 agosto 2026** (sin cambio) |
+| IA de alto riesgo (reclasificados) | 2 agosto 2026 | **2 de noviembre 2026** |
+| Sistemas de prohibición | 2 febrero 2025 | Sin cambio |
+| GPAI (modelos de propósito general) | 2 agosto 2026 | Sin cambio |
+
+**La regla de oro**: Si un cliente no está seguro de si su sistema ha sido reclasificado, **debe actuar como si el plazo fuera el 2 de agosto**.
+
+### 1.3 Nuevos umbrales para GPAI
+
+Los modelos de propósito general (GPAI) con **menos de 10^25 FLOPs** de entrenamiento quedan exentos de ciertas obligaciones de evaluación de riesgos. Esto beneficia a startups y empresas medianas que usan modelos pre-entrenados sin fine-tuning masivo.
+
+---
+
+## 2. Qué NO ha cambiado (y sigue siendo urgente)
+
+### 2.1 El plazo del 2 de agosto para sistemas de alto riesgo no reclasificados
+
+Si un sistema sigue siendo de alto riesgo post-Omnibus, el plazo se mantiene. Esto incluye:
+
+- Sistemas de IA en **sanidad** (diagnóstico, triaje, cirugía)
+- Sistemas de IA en **transporte** (conducción autónoma, gestión de tráfico aéreo)
+- Sistemas de IA en **justicia** (evaluación de pruebas, asistencia judicial)
+- Sistemas de IA en **seguridad pública** (reconocimiento facial en espacios públicos)
+
+### 2.2 Las sanciones
+
+El régimen sancionador del AI Act sigue intacto:
+
+- Hasta **35 millones de euros** o el **7% de la facturación mundial**
+- Sanciones proporcionales al tamaño de la empresa (startups y PYMES tienen tratamiento diferenciado)
+
+### 2.3 Las obligaciones de transparencia
+
+Incluso los sistemas reclasificados deben cumplir con:
+
+- Información clara a los usuarios de que interactúan con IA
+- Etiquetado de contenido generado por IA
+- Documentación técnica básica
+
+---
+
+## 3. Checklist de acción inmediata para despachos
+
+### Hoy mismo (31 de julio - 1 de agosto)
+
+```markdown
+- [ ] Revisar la lista de clientes con sistemas de IA de alto riesgo
+- [ ] Determinar para cada uno si el sistema ha sido reclasificado por el Omnibus
+- [ ] Contactar urgentemente a clientes con plazo del 2 de agosto que NO han reclasificado
+- [ ] Preparar comunicación modelo sobre la entrada en vigor del Omnibus
+```
+
+### Esta semana (del 3 al 8 de agosto)
+
+```markdown
+- [ ] Auditar documentación de compliance de clientes con sistemas reclasificados
+- [ ] Actualizar políticas internas de uso de IA del propio despacho
+- [ ] Revisar contratos de servicios con cláusulas de IA
+- [ ] Formar al equipo sobre los cambios del Omnibus
+```
+
+### Este mes (agosto 2026)
+
+```markdown
+- [ ] Diseñar nuevos flujos de asesoramiento post-Omnibus
+- [ ] Crear plantillas de DPIA actualizadas
+- [ ] Establecer partnerships con consultoras técnicas si es necesario
+- [ ] Publicar comunicación a clientes sobre los cambios
+```
+
+---
+
+## 4. Cómo asesorar a clientes según su situación
+
+### Escenario A: Cliente con sistema reclasificado
+
+**Mensaje clave**: "Tienes más tiempo, pero no te relajes."
+
+**Acciones recomendadas**:
+1. Documentar la evaluación de reclasificación (por qué el sistema ya no es de alto riesgo)
+2. Ajustar el plan de compliance al nuevo calendario (noviembre 2026)
+3. Mantener las medidas de transparencia y gobernanza ya implementadas
+4. Revisar si el proveedor de IA ha actualizado sus términos post-Omnibus
+
+### Escenario B: Cliente con sistema de alto riesgo no reclasificado
+
+**Mensaje clave**: "El plazo sigue siendo el 2 de agosto. Actúa ahora."
+
+**Acciones urgentes**:
+1. Verificar que tienen DPIA aprobada y registrada
+2. Confirmar que el sistema cumple con los requisitos técnicos del Anexo IV
+3. Asegurar que hay supervisión humana efectiva documentada
+4. Revisar contratos con proveedores (¿el proveedor es "provider" o "deployer"?)
+5. Preparar documentación para autoridades competentes
+
+### Escenario C: Cliente que no sabe si le afecta
+
+**Mensaje clave**: "Hagamos una evaluación rápida. Mejor prevenir que sancionar."
+
+**Proceso**:
+1. Clasificación del sistema según el Anexo III del AI Act (modificado por Omnibus)
+2. Evaluación de riesgos según criterios técnicos
+3. Determinación de plazo aplicable
+4. Plan de acción documentado
+
+---
+
+## 5. Impacto en la operativa del propio despacho
+
+### Uso interno de IA
+
+Muchos despachos usan herramientas de IA para:
+- Revisión de contratos
+- Investigación jurisprudencial
+- Generación de documentos
+- Análisis de casos
+
+**Post-Omnibus, ¿cambia algo para el despacho?**
+
+| Uso de IA en el despacho | Clasificación | Acción requerida |
+|--------------------------|---------------|------------------|
+| Asistente de redacción (Claude, GPT) | Probablemente no alto riesgo | Transparencia con clientes |
+| IA para predicción de resultados de casos | Evaluar caso a caso | Posible DPIA |
+| IA para selección de candidatos (RRHH) | Reclasificado por Omnibus | Obligaciones reducidas |
+| IA para análisis de documentos sensibles | Evaluar según datos procesados | Posible alto riesgo |
+
+### Responsabilidad profesional
+
+Los abogados tienen una **obligación de consejo actualizado**. Aconsejar sobre el AI Act sin conocer el Omnibus puede constituir negligencia profesional si el cliente incurre en sanciones evitables.
+
+**Recomendación**: Documentar en el expediente del cliente que se ha informado sobre el AI Omnibus y sus implicaciones.
+
+---
+
+## 6. Oportunidades de negocio para despachos
+
+### 6.1 Auditoría post-Omnibus
+
+Ofrecer a clientes una **revisión express** de su clasificación de riesgo post-Omnibus. Muchas empresas no saben si han sido reclasificadas.
+
+**Paquete sugerido**:
+- Evaluación de clasificación de riesgo (1-2 días)
+- Informe de gap analysis (3-5 días)
+- Plan de remediación (opcional)
+
+### 6.2 Actualización de contratos
+
+Los contratos de servicios de IA necesitan cláusulas actualizadas que reflejen:
+- La nueva clasificación de riesgo
+- La distribución de responsabilidades provider/deployer
+- Los nuevos plazos de compliance
+
+### 6.3 Formación a equipos de compliance
+
+Las empresas necesitan formar a sus equipos internos sobre qué ha cambiado. Los despachos pueden ofrecer:
+- Sesiones ejecutivas (2-3 horas)
+- Talleres prácticos (1 día)
+- Programas de acompañamiento (mensual)
+
+---
+
+## 7. Recursos oficiales y enlaces útiles
+
+- [Reglamento AI Omnibus (UE) 2026/...](https://eur-lex.europa.eu) - Texto oficial en EUR-Lex
+- [Guía de la Comisión Europea sobre el AI Act](https://digital-strategy.ec.europa.eu) - Actualizada post-Omnibus
+- [Opiniones de la AEPD sobre IA](https://www.aepd.es) - En español, con foco en GDPR+IA
+- [Documentación del AI Office](https://artificial-intelligence-act.com) - Recursos técnicos
+
+---
+
+## Conclusión
+
+El AI Omnibus no es una excusa para relajarse, sino una **oportunidad para hacer las cosas bien con algo más de tiempo** (para algunos). Para otros, el plazo del 2 de agosto sigue siendo inminente.
+
+El papel del despacho de abogados en este momento es crítico: **separar el ruido de la señal**, evaluar caso a caso y dar consejo preciso, documentado y actualizado.
+
+**La pregunta que todo cliente debería hacerle a su abogado esta semana**: "¿Mi sistema de IA sigue siendo de alto riesgo después del Omnibus, y si es así, estoy listo para el 2 de agosto?"
+
+Si la respuesta no es un "sí" rotundo acompañado de documentación, hay trabajo que hacer.
+
+---
+
+*¿Necesitas asesoramiento urgente sobre la aplicación del AI Omnibus a tu empresa o despacho? [Contacta con nuestro equipo](/contacto) para una evaluación express.*

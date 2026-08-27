@@ -1,0 +1,131 @@
+---
+title: "Red Flags When Choosing a Software Development Company"
+date: "2026-08-08"
+language: "en"
+canonical: "https://legasint.com/blog/en/red-flags-choosing-software-development-company"
+tags: ["software development", "IT consultancy", "red flags", "outsourcing", "vendor selection"]
+---
+
+# Red Flags When Choosing a Software Development Company
+
+Warning signs that indicate a consultancy or development company is not the right choice for your technology project.
+
+## Introduction
+
+Hiring a software development company is one of the most important decisions your business will make. The right technology partner can accelerate your growth, while the wrong choice can cost you months of delays, thousands of euros, and lost opportunities.
+
+In this article, we analyze the **warning signs** you should detect before signing with any consultancy or development company.
+
+## 1. They Don't Ask About Your Business
+
+If the first meeting focuses exclusively on features and budget, without inquiring about your business model, customers, or strategic objectives, it's a clear sign they're going to sell you a generic solution, not a solution for you.
+
+**A good technology partner** wants to understand:
+- Who your customers are
+- How you generate revenue
+- What problem you solve
+- What your key metrics are
+
+## 2. Fixed Budget Without Prior Analysis
+
+A detailed budget without having done a discovery or prior analysis is, at best, a rough estimate. At worst, it's a trap: they sell you a low price to win the project and then bombard you with extras.
+
+**Warning sign:** Budgets that arrive within 24-48 hours without having had in-depth conversations.
+
+## 3. They Don't Talk About Maintenance or Scalability
+
+Development doesn't end at launch. If the company doesn't mention:
+- Post-launch maintenance costs
+- System scalability
+- Technical debt
+- Security updates
+
+...they're thinking about delivering and disappearing, not building a sustainable product.
+
+## 4. Imposed Technology, Not Chosen
+
+If they tell you "we do it in X because it's what we use" without justifying why that technology is appropriate for your specific case, they're prioritizing their convenience over your success.
+
+**A good team** justifies the technical choice based on:
+- Performance requirements
+- Expected scalability
+- Ecosystem and long-term maintenance
+- Talent availability
+
+## 5. Lack of Transparency About the Team
+
+Who will work on your project? If they don't introduce you to the team, if they talk about "resources" without names, or if the team changes constantly without explanation, there's a management and commitment problem.
+
+**Ask directly:**
+- Who will be the technical lead?
+- How many dedicated developers will you have?
+- Is team turnover common?
+
+## 6. Poor Communication From First Contact
+
+If they take days to respond to emails, if meetings are chaotic, or if they don't document what's agreed, imagine what communication will be like when the project is underway and there are problems.
+
+**Communication is the most reliable predictor** of the success or failure of a technology project.
+
+## 7. No Demonstrable Success Stories
+
+Everyone has to start somewhere, but if a company can't show you:
+- Similar completed projects
+- Client references
+- Results metrics
+
+...you're hiring blindly.
+
+**Ask for:**
+- Demos or access to launched products
+- Conversations with previous clients
+- Concrete results (timelines, scalability, satisfaction)
+
+## 8. Ambiguous or Unbalanced Contracts
+
+Review carefully:
+- **Intellectual property:** Who keeps the code?
+- **Confidentiality clauses:** Do they protect your data and your clients' data?
+- **Delay penalties:** Are there real consequences?
+- **Payment terms:** Are they aligned with delivery milestones?
+
+A contract that only protects the provider is a serious warning sign.
+
+## 9. They Don't Talk About Risks or Plan B
+
+Every technology project has risks. If the company doesn't mention them, or worse, if they tell you "there won't be any problems," they're selling you smoke.
+
+**A professional team** identifies risks, proposes mitigations, and has alternative plans.
+
+## 10. Suspiciously Low Price
+
+If a budget is significantly lower than the rest, ask yourself why. The reasons usually are:
+- Underestimation of scope (they'll ask for extras later)
+- Junior team without experience
+- Resources shared among multiple clients
+- Poor quality that will cost more to fix later
+
+**Remember:** Cheap is expensive, especially in technology.
+
+## Evaluation Checklist
+
+Before hiring, verify:
+
+- [ ] They've asked questions about your business, not just features
+- [ ] The budget is based on prior analysis (discovery)
+- [ ] They talk about maintenance, scalability, and technical debt
+- [ ] They justify the technology choice with solid arguments
+- [ ] They introduce you to the team that will work on the project
+- [ ] Communication has been smooth and professional from the start
+- [ ] They have success stories and verifiable references
+- [ ] The contract protects your interests (IP, confidentiality, milestones)
+- [ ] They identify risks and propose mitigations
+- [ ] The price is aligned with the market (neither excessively high nor suspiciously low)
+
+## Conclusion
+
+Choosing a technology partner isn't just about comparing prices and technologies. It's about evaluating whether that company understands your business, commits to your objectives, and has the capacity to execute professionally.
+
+Red flags don't mean a company is bad, but they do indicate that it may not be the right fit for your project. Listen to them before signing.
+
+**Need help evaluating development proposals?** At LegaSint, we help companies and law firms choose the right technology partner and supervise project execution. [Contact us](https://legasint.com/contacto) for an initial consultation.

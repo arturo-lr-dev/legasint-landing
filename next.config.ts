@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    // Custom global 404 with multiple root layouts ((es) / (en) route groups)
+    globalNotFound: true,
+  },
 };
 
 const withMDX = createMDX({

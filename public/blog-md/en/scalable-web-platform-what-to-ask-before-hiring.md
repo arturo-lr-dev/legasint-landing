@@ -1,0 +1,242 @@
+---
+title: "Scalable Web Platform: What to Ask Before Hiring a Developer"
+date: "2026-08-21"
+language: "en"
+canonical: "https://legasint.com/blog/en/scalable-web-platform-what-to-ask-before-hiring"
+tags: ["Web Platform", "Scalability", "Software Development", "IT Hiring", "Architecture", "Business"]
+---
+
+# Scalable Web Platform: What to Ask Before Hiring a Developer
+
+Discover the 8 critical questions you must ask before hiring a developer for a scalable web platform. Avoid hidden costs, delays, and architectures that won't grow with your business.
+
+## The promise that costs millions
+
+"We'll build a scalable platform that grows with your business." It's the phrase every client hears before coming to us. And it sounds good. It sounds professional. It sounds like exactly what you need.
+
+The problem is that **"scalable" is the most abused word in tech**. Anyone can say it. Few can deliver it. And the difference between a platform that actually scales and one that breaks when you grow 20% can cost you hundreds of thousands in reconstruction.
+
+At LegaSint, we've rescued projects where "scalable" meant "works with 50 users, but not 500." We've seen architectures that collapsed on Black Friday, databases that took minutes to respond, and infrastructure bills that multiplied by 10 without warning.
+
+This article isn't theoretical. These are **the 8 questions you should have asked before signing** — and that you can now ask on your next project.
+
+---
+
+## 1. What does "scalable" mean in your proposal?
+
+### The trap
+
+"Scalable" without definition is like "quality" or "innovative": an empty word that sounds good in a presentation. For one provider it might mean "you can add more servers." For you it might mean "I can double my customer base without anything breaking."
+
+### The right question
+
+> "Define exactly what scalability metrics you guarantee: concurrent users, transactions per second, response time under load, and cost per added user."
+
+### What to expect
+
+A serious provider will give you concrete numbers:
+
+- "The platform supports 1,000 concurrent users with response time < 200ms"
+- "Infrastructure cost per user remains stable up to 10,000 active users"
+- "We can scale horizontally by adding nodes without downtime"
+
+If they respond with "don't worry, we'll solve that later" or "we use the cloud, it scales automatically" — **run**. The cloud doesn't scale by itself. It needs architecture.
+
+---
+
+## 2. What's the proposed architecture and why?
+
+### The trap
+
+Many providers propose the architecture they know, not the one you need. If they only know WordPress, everything is WordPress. If they only know Laravel, everything is a monolith. If they discovered microservices last month, everything is microservices.
+
+### The right question
+
+> "Draw the complete architecture: frontend, backend, database, cache, queues, storage. Explain why each component is there and what alternatives you discarded."
+
+### What to expect
+
+A response that demonstrates they've thought about **your** case, not theirs:
+
+- **Monolith:** Valid for MVPs and platforms with cohesive business logic. Simpler, faster to develop.
+- **Microservices:** Necessary when different teams work on independent domains that scale unevenly.
+- **Serverless:** Ideal for variable loads or event-driven systems, but can be costly with sustained traffic.
+
+The answer "microservices because it's modern" is as bad as "monolith because it's easier." The architecture should respond to your business model, not the current trend.
+
+---
+
+## 3. How do you handle the database as we grow?
+
+### The trap
+
+The database is the silent bottleneck. It works fine in development with 100 records. In production with 10 million, it becomes your worst nightmare. And migrating a production database is like changing a car's wheels while driving: technically possible, but costly and risky.
+
+### The right question
+
+> "What database strategy do you propose for when we have 1M records? And 100M? How do you handle backups, replication, and sharding?"
+
+### What to expect
+
+- **Optimized indexes from design**, not added as patches later
+- **Partitioning/sharding strategy** planned from the start
+- **Master-slave replication** for distributed reads
+- **Automated backups** with tested recovery procedures
+- **Reversible migrations**: if something fails, you can roll back
+
+An alarming response: "MySQL is fine for everything" or "we use SQLite because it's simpler." SQLite doesn't scale horizontally. MySQL scales, but requires design.
+
+---
+
+## 4. What happens if we get unexpected traffic spikes?
+
+### The trap
+
+Many platforms work perfectly with constant traffic but collapse with spikes. A viral article, a successful marketing campaign, a press mention — suddenly your "scalable platform" is down right when you have the most visitors.
+
+### The right question
+
+> "How does the platform behave if traffic multiplies by 10 in one hour? What auto-scaling, rate limiting, and spike protection mechanisms do you have?"
+
+### What to expect
+
+- **Configured auto-scaling** with clear limits (minimum and maximum instances)
+- **Load balancer** that distributes traffic and detects failed nodes
+- **Rate limiting** to protect APIs against abuse
+- **Circuit breakers** that prevent one slow service from collapsing the entire system
+- **CDN** for static content, reducing load on servers
+
+The response "we add more servers" without automatic mechanisms means someone has to wake up at 3 AM when your Black Friday campaign starts.
+
+---
+
+## 5. What's the real infrastructure cost at 6, 12, and 24 months?
+
+### The trap
+
+The development budget is just the tip of the iceberg. Cloud infrastructure can go from EUR 200/month to EUR 8,000/month without anyone warning you. And when the bill arrives, it's too late to rethink the architecture.
+
+### The right question
+
+> "Give me an infrastructure cost estimate for 1,000, 10,000, and 100,000 monthly active users. Include compute, storage, transfer, CDN, and managed services."
+
+### What to expect
+
+An honest table with ranges:
+
+| Monthly Active Users | Estimated Infrastructure | Notes |
+|---|---|---|
+| 1,000 | EUR 150-300/month | 2 small instances, basic RDS |
+| 10,000 | EUR 800-1,500/month | Auto-scaling, RDS multi-AZ, CDN |
+| 100,000 | EUR 4,000-8,000/month | Kubernetes, sharding, distributed cache |
+
+If they say "it depends on many factors" without giving numbers, they haven't done their homework. If they say "the cloud is cheap," they don't understand the cloud.
+
+---
+
+## 6. How do you guarantee we won't lose data?
+
+### The trap
+
+"We do backups" is not a recovery strategy. It's a reassuring phrase. An untested backup is a backup that probably doesn't work. And a backup that takes 48 hours to restore is useless when your business loses EUR 10,000 per hour of downtime.
+
+### The right question
+
+> "What's your RTO (Recovery Time Objective) and RPO (Recovery Point Objective)? When was the last time you tested a complete restoration?"
+
+### What to expect
+
+- **RTO < 1 hour** for critical services (maximum time to be operational)
+- **RPO < 15 minutes** (maximum acceptable data loss)
+- **Automated backups** with defined retention (7 days, 30 days, 1 year)
+- **Periodically tested restorations** (not "we trust they work")
+- **Multi-region strategy** if your business can't tolerate prolonged downtime
+
+A provider who doesn't know what RTO/RPO is or who has never done a recovery fire drill is playing Russian roulette with your data.
+
+---
+
+## 7. Who can touch the code if you're not available?
+
+### The trap
+
+Vendor dependency is one of the most subtle and costly ways to get trapped. Proprietary code, uncommon frameworks, nonexistent documentation, deployments that only they understand. When you want to change providers — or simply bring in internal team — you discover it's easier to rebuild from scratch.
+
+### The right question
+
+> "Is the code ours? What tech stack do you use? Is there technical documentation? Can any developer understand and deploy this, or does it depend on tribal knowledge?"
+
+### What to expect
+
+- **Source code in your repository** (GitHub/GitLab), not theirs
+- **Standard, well-documented stack** (Node.js, Python, PostgreSQL, React... not homemade frameworks)
+- **Updated technical documentation**: architecture, APIs, deployment
+- **Automated CI/CD** that any dev can run
+- **Contract with clear intellectual property clause**
+
+Red flags: "we use our internal framework," "the documentation is in the code," "we deploy manually ourselves."
+
+---
+
+## 8. What if we want to change providers in the future?
+
+### The trap
+
+Nobody thinks about breaking up at the start. But the reality is that 40% of IT projects change providers before year 3. Reasons: growth the provider can't keep up with, strategy changes, mergers, or simply because the relationship isn't working.
+
+### The right question
+
+> "If we decide to change providers or bring development in-house in 2 years, what makes the transition easy? Is there vendor lock-in in any component?"
+
+### What to expect
+
+- **Clean, standard code** that any team can maintain
+- **Database in standard format** (exportable SQL, not proprietary formats)
+- **Documented APIs** with OpenAPI/Swagger
+- **Infrastructure as code** (Terraform, CloudFormation) that you can transfer
+- **No dependencies on vendor-exclusive services**
+
+A provider who refuses to talk about this or tells you "you won't want to change" isn't being realistic. They're building a trap.
+
+---
+
+## The decision framework: Does this provider understand scalability?
+
+After asking these 8 questions, evaluate the responses with this scoring:
+
+| Criterion | Weight | Score (1-5) |
+|---|---|---|
+| Concrete scalability metrics | High | ___ |
+| Architecture justified for your case | High | ___ |
+| Long-term database strategy | High | ___ |
+| Spike handling and auto-scaling | High | ___ |
+| Transparent infrastructure costs | Medium | ___ |
+| Backup and recovery strategy | High | ___ |
+| Independence and documentation | High | ___ |
+| No vendor lock-in | Medium | ___ |
+
+**< 24 points:** Find another provider. This one hasn't thought about scalability beyond the buzzword.
+
+**24-32 points:** Acceptable, but negotiate improvements on weak points before signing.
+
+**> 32 points:** They probably know what they're doing. Ask for references from clients with similar growth to yours.
+
+---
+
+## Conclusion: Scalable isn't a feature, it's a discipline
+
+Building a scalable web platform isn't about using trendy technology or "putting it in the cloud." It's a discipline that starts in design, is validated in architecture, and is proven in operation.
+
+The 8 questions in this article aren't technical for the sake of it. Each one addresses a real failure we've seen in projects that came to LegaSint too late. Platforms that "scaled" until they didn't. Costs that "were predictable" until they skyrocketed. Data that "was safe" until it wasn't.
+
+> **Scalability isn't bought with an invoice. It's built with correct decisions from day one.**
+
+And those decisions start with the right questions.
+
+---
+
+## Are you planning to hire web platform development?
+
+At LegaSint, we don't sell scalability as a buzzword. We design it, document it, and guarantee it with numbers. If you're planning a web platform and want to make sure it grows with you — without surprises or hidden costs — let's talk before you sign with someone who can't answer these 8 questions.
+
+**[Contact us](/contact) for a no-commitment strategic consultation.**

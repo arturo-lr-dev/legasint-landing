@@ -1,0 +1,221 @@
+---
+title: "Post-AI Omnibus: First Steps for Law Firms After It Takes Effect"
+date: "2026-07-31"
+language: "en"
+canonical: "https://legasint.com/blog/en/post-ai-omnibus-first-steps-law-firms"
+tags: ["AI Omnibus", "AI Act", "compliance", "law firms", "August 2026", "immediate steps"]
+---
+
+# Post-AI Omnibus: First Steps for Law Firms After It Takes Effect
+
+Immediate action guide for law firms after the AI Omnibus enters into force: what changes apply now, which deadlines are extended, and how to adapt compliance in real time.
+
+## Introduction
+
+On **July 27, 2026**, the **AI Omnibus** entered into force—the regulatory simplification package that amends the AI Act, GDPR, and other European regulations. For law firms advising companies with high-risk AI systems, this isn't just another regulatory update: it's an **operational inflection point**.
+
+With the original AI Act deadline for high-risk systems just **48 hours away** (August 2, 2026), many clients are in panic mode. Others, who had accelerated their compliance thinking time was running out, now discover that the Omnibus gives them some breathing room... but not everyone.
+
+This article explains **what has actually changed**, **what hasn't changed**, and **what a law firm must do today** to properly advise its clients.
+
+---
+
+## 1. What Has Changed with the AI Omnibus
+
+### 1.1 Simplification of Obligations for High-Risk Systems
+
+The AI Omnibus introduces a **significant reduction in regulatory burden** for certain AI systems previously classified as high-risk. Specifically:
+
+- **AI systems in HR and education areas**: reclassification to limited risk in certain cases
+- **AI systems for financial fraud detection**: partial exemptions if specific technical criteria are met
+- **AI systems for industrial predictive maintenance**: removal of high-risk classification
+
+**Practical impact**: Clients who had invested thousands of euros in compliance may now discover their system is no longer high-risk. But beware: reclassification is **not automatic** and requires documented assessment.
+
+### 1.2 Selective Deadline Extensions
+
+| System | Original Deadline | Post-Omnibus Deadline |
+|--------|------------------|----------------------|
+| High-risk AI (general) | August 2, 2026 | **August 2, 2026** (no change) |
+| High-risk AI (reclassified) | August 2, 2026 | **November 2, 2026** |
+| Prohibited systems | February 2, 2025 | No change |
+| GPAI (general-purpose models) | August 2, 2026 | No change |
+
+**The golden rule**: If a client isn't sure whether their system has been reclassified, **they should act as if the deadline is August 2**.
+
+### 1.3 New Thresholds for GPAI
+
+General-purpose models (GPAI) with **less than 10^25 FLOPs** of training are exempt from certain risk assessment obligations. This benefits startups and mid-sized companies using pre-trained models without massive fine-tuning.
+
+---
+
+## 2. What Has NOT Changed (And Remains Urgent)
+
+### 2.1 The August 2 Deadline for Non-Reclassified High-Risk Systems
+
+If a system remains high-risk post-Omnibus, the deadline stands. This includes:
+
+- AI systems in **healthcare** (diagnosis, triage, surgery)
+- AI systems in **transportation** (autonomous driving, air traffic management)
+- AI systems in **justice** (evidence evaluation, judicial assistance)
+- AI systems in **public security** (facial recognition in public spaces)
+
+### 2.2 The Sanctions
+
+The AI Act sanction regime remains intact:
+
+- Up to **€35 million** or **7% of worldwide turnover**
+- Proportionate sanctions based on company size (startups and SMEs have differentiated treatment)
+
+### 2.3 Transparency Obligations
+
+Even reclassified systems must comply with:
+
+- Clear information to users that they are interacting with AI
+- Labeling of AI-generated content
+- Basic technical documentation
+
+---
+
+## 3. Immediate Action Checklist for Law Firms
+
+### Today (July 31 - August 1)
+
+```markdown
+- [ ] Review the list of clients with high-risk AI systems
+- [ ] Determine for each whether the system has been reclassified by the Omnibus
+- [ ] Urgently contact clients with August 2 deadlines who have NOT reclassified
+- [ ] Prepare model communication about the Omnibus entering into force
+```
+
+### This Week (August 3-8)
+
+```markdown
+- [ ] Audit compliance documentation for clients with reclassified systems
+- [ ] Update the firm's own internal AI use policies
+- [ ] Review service contracts with AI clauses
+- [ ] Train the team on Omnibus changes
+```
+
+### This Month (August 2026)
+
+```markdown
+- [ ] Design new post-Omnibus advisory workflows
+- [ ] Create updated DPIA templates
+- [ ] Establish partnerships with technical consultants if needed
+- [ ] Publish client communication about the changes
+```
+
+---
+
+## 4. How to Advise Clients Based on Their Situation
+
+### Scenario A: Client with Reclassified System
+
+**Key message**: "You have more time, but don't relax."
+
+**Recommended actions**:
+1. Document the reclassification assessment (why the system is no longer high-risk)
+2. Adjust the compliance plan to the new timeline (November 2026)
+3. Maintain transparency and governance measures already implemented
+4. Check if the AI provider has updated their terms post-Omnibus
+
+### Scenario B: Client with Non-Reclassified High-Risk System
+
+**Key message**: "The deadline is still August 2. Act now."
+
+**Urgent actions**:
+1. Verify they have an approved and registered DPIA
+2. Confirm the system meets Annex IV technical requirements
+3. Ensure effective human oversight is documented
+4. Review contracts with providers (is the provider a "provider" or "deployer"?)
+5. Prepare documentation for competent authorities
+
+### Scenario C: Client Unsure If It Affects Them
+
+**Key message**: "Let's do a quick assessment. Better safe than sanctioned."
+
+**Process**:
+1. System classification according to AI Act Annex III (as modified by Omnibus)
+2. Risk assessment according to technical criteria
+3. Determination of applicable deadline
+4. Documented action plan
+
+---
+
+## 5. Impact on the Firm's Own Operations
+
+### Internal AI Use
+
+Many law firms use AI tools for:
+- Contract review
+- Case law research
+- Document generation
+- Case analysis
+
+**Post-Omnibus, does anything change for the firm?**
+
+| AI Use in the Firm | Classification | Action Required |
+|-------------------|----------------|-----------------|
+| Drafting assistant (Claude, GPT) | Likely not high-risk | Transparency with clients |
+| AI for case outcome prediction | Evaluate case by case | Possible DPIA |
+| AI for candidate selection (HR) | Reclassified by Omnibus | Reduced obligations |
+| AI for sensitive document analysis | Evaluate based on data processed | Possible high-risk |
+
+### Professional Responsibility
+
+Lawyers have an **obligation to provide updated advice**. Advising on the AI Act without knowledge of the Omnibus could constitute professional negligence if the client incurs avoidable sanctions.
+
+**Recommendation**: Document in the client file that they have been informed about the AI Omnibus and its implications.
+
+---
+
+## 6. Business Opportunities for Law Firms
+
+### 6.1 Post-Omnibus Audit
+
+Offer clients an **express review** of their post-Omnibus risk classification. Many companies don't know if they've been reclassified.
+
+**Suggested package**:
+- Risk classification assessment (1-2 days)
+- Gap analysis report (3-5 days)
+- Remediation plan (optional)
+
+### 6.2 Contract Updates
+
+AI service contracts need updated clauses reflecting:
+- The new risk classification
+- Distribution of provider/deployer responsibilities
+- New compliance deadlines
+
+### 6.3 Compliance Team Training
+
+Companies need to train their internal teams on what has changed. Law firms can offer:
+- Executive sessions (2-3 hours)
+- Practical workshops (1 day)
+- Ongoing support programs (monthly)
+
+---
+
+## 7. Official Resources and Useful Links
+
+- [AI Omnibus Regulation (EU) 2026/...](https://eur-lex.europa.eu) - Official text in EUR-Lex
+- [European Commission AI Act Guidance](https://digital-strategy.ec.europa.eu) - Updated post-Omnibus
+- [AEPD Opinions on AI](https://www.aepd.es) - In Spanish, focused on GDPR+AI
+- [AI Office Documentation](https://artificial-intelligence-act.com) - Technical resources
+
+---
+
+## Conclusion
+
+The AI Omnibus is not an excuse to relax, but an **opportunity to do things right with a bit more time** (for some). For others, the August 2 deadline remains imminent.
+
+The role of the law firm at this moment is critical: **separate signal from noise**, evaluate case by case, and provide precise, documented, and updated advice.
+
+**The question every client should ask their lawyer this week**: "Is my AI system still high-risk after the Omnibus, and if so, am I ready for August 2?"
+
+If the answer isn't a resounding "yes" accompanied by documentation, there's work to do.
+
+---
+
+*Need urgent advice on applying the AI Omnibus to your company or law firm? [Contact our team](/contact) for an express assessment.*

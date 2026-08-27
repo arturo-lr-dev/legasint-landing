@@ -1,0 +1,145 @@
+---
+title: "Calidad de datos en IA: guía de la AEPD para cumplir con el GDPR"
+date: "2026-08-06"
+language: "es"
+canonical: "https://legasint.com/blog/calidad-datos-ia-aepd-gdpr-2026"
+tags: ["AEPD", "calidad de datos", "GDPR", "IA", "exactitud", "minimización", "cumplimiento"]
+---
+
+# Calidad de datos en IA: guía de la AEPD para cumplir con el GDPR
+
+Análisis de la nota técnica de la AEPD sobre calidad, exactitud y minimización de datos en sistemas de IA y su impacto en despachos de abogados.
+
+## Introducción
+
+El 21 de julio de 2026, la Agencia Española de Protección de Datos (AEPD) publicó una nota técnica pionera que analiza cómo se proyectan los principios de **exactitud y minimización del RGPD** en tratamientos de datos que incorporan sistemas de inteligencia artificial. Este documento, uno de los primeros análisis integrales a nivel mundial, establece un marco interpretativo que permite aplicar los principios del GDPR en entornos de IA sin caer en interpretaciones excesivamente restrictivas que pudieran dificultar el desarrollo de estos sistemas.
+
+Para los despachos de abogados que asesoran a empresas en materia de protección de datos e inteligencia artificial, comprender esta guía es esencial para ofrecer un asesoramiento preciso y actualizado.
+
+## 1. El principio de exactitud en el contexto de la IA
+
+### Más allá de la veracidad absoluta
+
+La AEPD aclara un punto fundamental: el principio de exactitud recogido en el **Artículo 5.1.d) del RGPD** no exige que los datos sean siempre plenamente veraces o estén completamente actualizados. En su lugar, establece que los datos deben ser **adecuados para cumplir el objetivo del tratamiento** en el que se utilizan.
+
+Esta interpretación supone una evolución respecto a enfoques más restrictivos que vinculaban la exactitud exclusivamente a la veracidad de los datos. La Agencia subraya que una exigencia excesiva en este sentido podría entrar en conflicto con el principio de minimización o generar cargas desproporcionadas, especialmente en el desarrollo y uso de sistemas de inteligencia artificial.
+
+> "El principio de exactitud no se entiende en términos absolutos, sino en relación con la finalidad del tratamiento."
+
+### Calidad de datos en modelos de aprendizaje automático
+
+La nota técnica explica que la calidad de los datos debe analizarse no solo en relación con cada dato individual, sino especialmente respecto al **conjunto de datos** utilizado para el desarrollo de sistemas de IA. En estos sistemas, la representatividad, la ausencia de sesgos o la relevancia de los datos pueden ser determinantes para el resultado, incluso por encima de la exactitud individual de cada registro.
+
+| Aspecto | Relevancia en IA |
+|---------|------------------|
+| Exactitud individual | Importante para decisiones sobre personas concretas |
+| Representatividad del dataset | Crítica para modelos de aprendizaje automático |
+| Ausencia de sesgos | Determinante para evitar discriminación algorítmica |
+| Relevancia de features | Fundamental para la idoneidad del modelo |
+
+## 2. Proyección de la calidad de datos en todo el ciclo de vida
+
+### Más allá de los datos de entrada
+
+La AEPD destaca que el requisito de calidad de los datos no se limita a los datos de entrada, sino que debe proyectarse sobre **todo el tratamiento**, incluyendo los resultados generados por sistemas de inteligencia artificial, como inferencias, predicciones o decisiones.
+
+Esto implica evaluar la idoneidad del tratamiento en su conjunto, teniendo en cuenta:
+- El diseño del sistema
+- Las operaciones realizadas
+- Las salvaguardas incorporadas
+
+### Nivel de exactitud variable según el impacto
+
+La Agencia señala que el nivel de exactitud exigible puede variar en función del tipo de tratamiento y de sus efectos sobre las personas:
+
+- **Tratamientos agregados o estadísticos**: Pueden admitir mayores niveles de abstracción o transformación de los datos
+- **Decisiones sobre personas concretas**: El principio de exactitud debe aplicarse de la forma más extensa posible
+
+## 3. Técnicas de IA y compatibilidad con el RGPD
+
+### Datos sintéticos y anonimización
+
+La nota aborda el uso de técnicas habituales en el desarrollo de sistemas de IA:
+
+- **Generación de datos sintéticos**
+- **Anonimización**
+- **Corrección de sesgos**
+
+La AEPD aclara que estas prácticas pueden ser compatibles con el principio de exactitud del RGPD, incluso cuando implican la utilización de valores que no reflejan directamente la realidad individual, siempre que estén justificadas en relación con la finalidad del tratamiento y no generen efectos adversos sobre las personas.
+
+### Desarrollo vs. explotación
+
+Uno de los aspectos más destacados es la distinción entre los requisitos de calidad en la fase de **desarrollo** y la fase de **explotación**:
+
+| Fase | Requisitos de calidad |
+|------|----------------------|
+| Desarrollo | Enfoque en representatividad y minimización de sesgos |
+| Explotación | Mayor énfasis en exactitud de resultados sobre personas concretas |
+
+La Agencia subraya que ambas fases deben evaluarse de forma diferenciada, teniendo en cuenta que en la fase de explotación los resultados pueden producir efectos directos sobre personas.
+
+## 4. Implicaciones prácticas para despachos de abogados
+
+### Asesoramiento a clientes
+
+Los despachos deben considerar estos puntos al asesorar a empresas que desarrollan o utilizan sistemas de IA:
+
+1. **Definir requisitos de calidad objetivos** basados en la finalidad del tratamiento
+2. **Documentar estos requisitos** de forma explícita
+3. **Establecer métricas** de calidad de datos
+4. **Realizar seguimiento continuo** a lo largo del ciclo de vida del tratamiento
+
+### Gobierno del dato
+
+La AEPD destaca la importancia de implementar la **gobernanza del dato** como elemento clave para el cumplimiento. Esto incluye:
+
+- Políticas de calidad de datos
+- Roles y responsabilidades claras
+- Procedimientos de control y auditoría
+- Formación del equipo
+
+### Datos no personales
+
+La Agencia recuerda que los requisitos de calidad no se aplican únicamente a los datos personales. Los **datos no personales** utilizados en un tratamiento pueden ser también determinantes para su idoneidad, especialmente en modelos de IA donde la correlación entre variables no personales y personales puede generar resultados inesperados.
+
+## 5. Salvaguardas y limitaciones de la IA
+
+La nota técnica subraya que el cumplimiento del RGPD exige diseñar tratamientos que gestionen adecuadamente las **limitaciones de los sistemas de inteligencia artificial** mediante medidas y salvaguardas adecuadas:
+
+- **Revisión humana** de decisiones automatizadas
+- **Mecanismos de explicabilidad** del modelo
+- **Auditorías periódicas** de calidad y sesgos
+- **Derecho a la rectificación** de datos inexactos
+- **Procedimientos de supervisión** continua
+
+## 6. Checklist de cumplimiento para despachos
+
+### Al asesorar sobre implementación de IA
+
+- [ ] ¿Se ha definido la finalidad del tratamiento de forma clara y específica?
+- [ ] ¿Se han establecido requisitos de calidad de datos objetivos y documentados?
+- [ ] ¿Se ha evaluado la representatividad del dataset de entrenamiento?
+- [ ] ¿Se han identificado y mitigado posibles sesgos en los datos?
+- [ ] ¿Se distingue entre requisitos de calidad para desarrollo y explotación?
+- [ ] ¿Se han implementado salvaguardas para decisiones sobre personas concretas?
+- [ ] ¿Existe un procedimiento de revisión humana de resultados?
+- [ ] ¿Se han establecido métricas y seguimiento continuo de calidad?
+
+### Documentación recomendada
+
+```markdown
+1. Política de calidad de datos para IA
+2. Análisis de representatividad del dataset
+3. Evaluación de riesgos de sesgos
+4. Procedimiento de revisión humana
+5. Métricas de calidad establecidas
+6. Plan de seguimiento y auditoría
+```
+
+## Conclusión
+
+La nota técnica de la AEPD representa un avance significativo en la comprensión de cómo aplicar el RGPD en entornos de inteligencia artificial. Su enfoque pragmático, que evita interpretaciones excesivamente restrictivas sin sacrificar la protección de las personas, proporciona un marco útil tanto para empresas como para asesores legales.
+
+Para los despachos de abogados, dominar estos criterios es fundamental para ofrecer un asesoramiento de valor en un área donde la regulación y la tecnología evolucionan constantemente. La clave está en entender que la calidad de datos en IA no es un concepto absoluto, sino que debe evaluarse en relación con la finalidad del tratamiento y el impacto potencial sobre las personas afectadas.
+
+**Contacta con nosotros** para asesoramiento especializado en cumplimiento GDPR para sistemas de inteligencia artificial en tu organización.

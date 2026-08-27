@@ -1,0 +1,149 @@
+---
+title: "No-Code Workflows: n8n & Make for Legal Teams"
+date: "2026-05-10"
+language: "en"
+canonical: "https://legasint.com/blog/en/nocode-workflows-n8n-make-for-legal-teams"
+tags: ["no-code", "n8n", "Make", "workflows", "legal automation", "integrations"]
+---
+
+# No-Code Workflows: n8n & Make for Legal Teams
+
+Practical guide to create automations without coding: integrations between Gmail, Drive, Calendar, and legal tools.
+
+## Introduction
+
+Law firms use dozens of tools: Gmail for email, Google Drive for documents, Calendar for deadlines, Notion for internal wiki, a CRM for clients, and perhaps e-signature software. The problem: these tools don't talk to each other. Lawyers copy and paste data from one place to another, losing hours weekly in bridge work.
+
+**No-code workflows** solve this by connecting applications through visual drag-and-drop interfaces. No programming required: the user configures "when X happens in Gmail, do Y in Drive and notify Z in Slack." In 2026, platforms like **n8n** and **Make (formerly Integromat)** are so powerful that medium-sized legal teams can automate complex processes without touching a line of code.
+
+## 1. n8n vs. Make: which to choose
+
+### n8n
+
+- **Open-source:** You can install it on your own server (data sovereignty).
+- **Active community:** 1,000+ integrations available.
+- **Free self-hosting:** No operation limits on your infrastructure.
+- **Learning curve:** Medium. Requires understanding "nodes" and "connections".
+
+### Make
+
+- **Managed SaaS:** No servers or maintenance needed.
+- **More polished visual interface:** Ideal for beginners.
+- **Pricing:** Free up to 1,000 operations/month; plans from $9/month.
+- **Integrations:** 2,000+ apps, including Spanish tools (Holded, Factorial).
+
+### Quick decision
+
+| Situation | Recommendation |
+|-----------|---------------|
+| Data sovereignty priority | n8n (self-hosted) |
+| Want to start in 30 minutes | Make |
+| Zero budget | n8n (self-hosted) |
+| Need official support | Make (Pro plan) |
+
+## 2. Essential flows for law firms
+
+### 1. New client onboarding
+
+**Trigger:** Web form completed (Typeform, Google Forms).
+
+**Actions:**
+1. Create folder in Google Drive: `Clients/Name_Surname/`.
+2. Create Notion page with client data and onboarding checklist.
+3. Send personalized welcome email from Gmail.
+4. Add Calendar event: "Initial meeting" in 48 hours.
+5. Notify responsible lawyer via Slack.
+
+**Time saved:** From 20 manual minutes to 0 (automatic).
+
+### 2. Important email archiving
+
+**Trigger:** Email with label "Signed contract" in Gmail.
+
+**Actions:**
+1. Extract PDF attachments.
+2. Upload to Drive in client folder detected from email subject.
+3. Rename: `YYYY-MM-DD_Contract_Name.pdf`.
+4. Update CRM status to "Documentation complete".
+5. Send confirmation to client.
+
+**Time saved:** 5 minutes per email, ~10 emails/week = 50 min/week.
+
+### 3. Deadline alerts
+
+**Trigger:** Date in Google Sheets (procedural deadlines list).
+
+**Actions:**
+1. Check each morning for deadlines in 7, 3, or 1 day.
+2. Send email to responsible lawyer with case details.
+3. If 24 hours remain, also send SMS or push notification.
+4. Log in audit trail.
+
+**Value:** Zero missed deadlines from forgetfulness.
+
+### 4. Time report generation
+
+**Trigger:** Last Friday of the month at 18:00.
+
+**Actions:**
+1. Extract logged hours from time tracking system.
+2. Generate PDF summary by client and matter.
+3. Send to director by email.
+4. Upload to "Internal reports" folder.
+
+**Time saved:** 2 hours monthly of manual compilation.
+
+## 3. Step-by-step tutorial: first workflow in Make
+
+### Step 1: Create account
+
+Sign up at [make.com](https://www.make.com) with your firm email.
+
+### Step 2: Create scenario
+
+Click "Create a new scenario" → search "Gmail" as trigger.
+
+### Step 3: Configure trigger
+
+Select "Watch emails" → connect your Gmail account → filter by label "Contracts".
+
+### Step 4: Add actions
+
+Add chained modules:
+1. **Google Drive** → "Upload a file" (select destination folder).
+2. **Google Sheets** → "Add a row" (log date, client, type).
+3. **Slack** → "Send a message" (notify #documents channel).
+
+### Step 5: Activate
+
+Save and activate the scenario. Test by sending an email with the label.
+
+**Total time:** 15 minutes for your first functional workflow.
+
+## 4. Security considerations
+
+### Granular permissions
+
+- Don't connect the firm's Gmail account with "full access" permissions.
+- Use dedicated service accounts (e.g., `automation@firm.com`).
+- Review OAuth scopes granted to each platform.
+
+### Sensitive data
+
+- Avoid workflows processing special category data (health, ideology) unless end-to-end encrypted.
+- If using Make (cloud), review their DPA and server location (EU vs. US).
+- With n8n self-hosted, data never leaves your infrastructure.
+
+### Logs and audit
+
+- Enable execution logs in both platforms.
+- Monthly review of which workflows failed and why.
+- Document who has editing permissions for each scenario.
+
+## Conclusion
+
+No-code workflows democratize automation. A junior lawyer without technical knowledge can, in an afternoon, configure flows that save hours weekly for the entire team. The barrier to entry is almost zero; the ROI, immediate.
+
+The first step: identify a task you repeat 5+ times weekly involving 2+ applications. That's your perfect workflow candidate.
+
+**Want us to design the 3 priority workflows for your firm?** [Contact LegaSint](/contacto) and we'll guide you through implementation step by step.

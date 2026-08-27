@@ -4,10 +4,12 @@ import { trackEvent, GA_EVENTS } from '@/lib/analytics';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
+import { homeCopy, Locale } from '@/i18n/home-copy';
 
-const AnimatedLanding = () => {
+const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
+  const t = homeCopy[locale].hero;
   const letters = "Legasint".split("");
-  const tagline = "Your Vision, Our Technology".split(" ");
+  const tagline = t.tagline.split(" ");
   const isMobile = useIsMobile();
   const prefersReducedMotion = usePrefersReducedMotion();
   const mainRef = useRef<HTMLElement>(null);
@@ -43,7 +45,7 @@ const AnimatedLanding = () => {
         style={prefersReducedMotion ? undefined : { y: contentY, opacity: contentOpacity }}
       >
         <h1 className="sr-only">
-          Legasint - Desarrollo de software a medida y socio tecnológico | Your Vision, Our Technology
+          {t.h1}
         </h1>
 
         {/* Logo / Company Name */}
@@ -116,7 +118,7 @@ const AnimatedLanding = () => {
             animationFillMode: 'forwards'
           }}
         >
-          We transform your ideas into custom software solutions. <br className="" /> We develop technology that drives your business into the future.
+          {t.description}
         </motion.p>
 
         {/* Contact Buttons */}
@@ -137,7 +139,7 @@ const AnimatedLanding = () => {
             style={{
               background: 'linear-gradient(135deg, #22c55e 0%, #15803d 50%, #166534 100%)',
             }}
-            aria-label="Contact us via WhatsApp"
+            aria-label={t.whatsappAria}
             onClick={() => trackEvent(GA_EVENTS.WHATSAPP_CLICK, {
               event_category: 'engagement',
               event_label: 'whatsapp_button'
@@ -177,7 +179,7 @@ const AnimatedLanding = () => {
               animationDelay: '0.15s',
               background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #4f46e5 100%)',
             }}
-            aria-label="Contact us via email"
+            aria-label={t.emailAria}
             onClick={() => trackEvent(GA_EVENTS.CONTACT_CLICK, {
               event_category: 'engagement',
               event_label: 'email_button'
@@ -232,14 +234,9 @@ const AnimatedLanding = () => {
 
       {/* Technology Stack - Hidden visually but good for SEO */}
       <div className="sr-only">
-        <p>
-          Legasint es un socio tecnológico especializado en desarrollo de software a medida,
-          automatización de procesos, inteligencia artificial y legal tech para despachos de
-          abogados y empresas en España y Europa. Ofrecemos CTO as a Service, desarrollo web,
-          APIs, integraciones y soluciones de cumplimiento normativo (AI Act, RGPD, NIS2, DORA).
-        </p>
-        <p>Technology Stack: Angular, React, Node.js, Python, Java, AWS, Azure, Google Cloud, Docker, Kubernetes</p>
-        <p>Industries Served: Finance, Healthcare, E-commerce, Manufacturing, Education, Technology, Legal</p>
+        <p>{t.seoParagraph}</p>
+        <p>{t.techStack}</p>
+        <p>{t.industries}</p>
       </div>
     </main>
   );

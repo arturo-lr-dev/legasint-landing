@@ -1,0 +1,300 @@
+---
+title: "Migrar de PHP/WordPress a Next.js/React: ¿Vale la pena?"
+date: "2026-07-28"
+language: "es"
+canonical: "https://legasint.com/blog/migrar-php-wordpress-nextjs-react-2026"
+tags: ["Next.js", "React", "WordPress", "Migración", "Desarrollo Web", "2026"]
+---
+
+# Migrar de PHP/WordPress a Next.js/React: ¿Vale la pena?
+
+¿Tu web en WordPress o PHP ya no da más de sí? Descubre cuándo merece la pena migrar a Next.js/React, cuánto cuesta de verdad y qué riesgos debes conocer antes de dar el salto.
+
+## El cliente que odiaba su WordPress (y no sabía qué hacer)
+
+Hace un mes, una directora de marketing nos escribió frustrada. Su empresa llevaba 8 años con una web en WordPress. Funcionaba. "Más o menos", decía ella.
+
+La web tardaba 6 segundos en cargar. El editor de contenidos se rompía cada dos meses. Las actualizaciones de plugins provocaban caídas. Y cada vez que querían añadir una funcionalidad nueva —un comparador de productos, una calculadora, una experiencia interactiva— el desarrollador WordPress les decía: "Eso no se puede hacer bien con WordPress."
+
+Cuando le propusimos migrar a Next.js, su primera reacción fue: "¿No es eso para startups de Silicon Valley? Somos una empresa industrial de 40 años."
+
+Tres meses después, su nueva web cargaba en 0.8 segundos. El tráfico orgánico había subido un 34%. Y su equipo de marketing podía publicar contenidos sin depender de un técnico cada vez que querían cambiar una coma.
+
+Pero no todo es color de rosa. La migración le costó €28.000 y 4 meses de trabajo. Y no todas las empresas deberían hacerlo.
+
+Este artículo te dice la verdad: cuándo SÍ merece la pena, cuándo NO, y cuánto cuesta de verdad.
+
+---
+
+## Por qué WordPress sigue vivo (y por qué eso no siempre es bueno)
+
+WordPress alimenta el 43% de todas las webs del mundo. No es casualidad. Es fácil de usar, tiene miles de plugins, y cualquier desarrollador junior lo conoce.
+
+Pero esa popularidad tiene un precio oculto:
+
+- **Arquitectura monolítica:** El frontend y el backend están acoplados. Cada petición de página requiere que el servidor PHP procese todo, consulte la base de datos MySQL, genere HTML y lo envíe. Es lento por diseño.
+- **Dependencia de plugins:** Cada plugin es una potencial vulnerabilidad de seguridad. En 2025, el 52% de las infecciones de malware en webs provenían de plugins WordPress desactualizados.
+- **Escalabilidad limitada:** Cuando el tráfico crece, WordPress sufre. No está diseñado para miles de usuarios simultáneos sin infraestructura costosa (caching agresivo, CDNs, servidores potentes).
+- **Experiencia de usuario estática:** Las webs WordPress tradicionales recargan la página completa en cada navegación. No hay transiciones fluidas, no hay interactividad real, no hay esa sensación de "app" que los usuarios esperan en 2026.
+
+No estamos diciendo que WordPress sea malo. Es la herramienta equivocada para ciertos problemas. Como usar un martillo para atornillar.
+
+---
+
+## Qué ofrece Next.js/React que WordPress no puede
+
+### Rendimiento sin competencia
+
+Next.js genera páginas estáticas en tiempo de compilación (Static Site Generation, SSG) o las renderiza en el servidor con caché agresiva (Server-Side Rendering, SSR). El resultado:
+
+- **Tiempo de carga:** De 4-8 segundos (WordPress) a 0.5-1.5 segundos (Next.js)
+- **Core Web Vitals:** Mejora drástica en LCP, FID y CLS —factores directos de posicionamiento SEO en Google
+- **Tráfico simultáneo:** Una web estática en Vercel/Netlify soporta picos de tráfico masivo sin caerse
+
+**Dato real:** Un e-commerce que migró de WooCommerce (WordPress) a Next.js + Shopify (headless) redujo su tiempo de carga del 72% y aumentó las conversiones un 23%.
+
+### Experiencia de usuario moderna
+
+React permite crear interfaces interactivas sin recargar la página:
+- Transiciones fluidas entre páginas
+- Filtros y búsquedas en tiempo real
+- Formularios que validan mientras escribes
+- Dashboards y visualizaciones de datos dinámicas
+- Experiencias personalizadas según el usuario
+
+En 2026, los usuarios esperan esto. No porque sean exigentes, sino porque lo ven en todas partes. Una web WordPress tradicional se siente "vieja" por comparación.
+
+### Seguridad inherente
+
+Una web estática (HTML/CSS/JS pregenerado) no tiene servidor PHP ejecutándose, no tiene base de datos MySQL expuesta, no tiene plugins vulnerables. La superficie de ataque se reduce drásticamente.
+
+### Escalabilidad sin límites
+
+Next.js desacopla el frontend del backend. Puedes:
+- Servir contenido estático desde una CDN global (barato y rápido)
+- Conectar con cualquier CMS headless (Contentful, Sanity, Strapi) o API
+- Escalar el frontend y el backend de forma independiente
+
+---
+
+## Cuándo SÍ merece la pena migrar
+
+### ✅ Tu web es lenta y pierdes tráfico/ventas
+
+Si tu web tarda más de 3 segundos en cargar, estás perdiendo visitantes. Google penaliza en el ranking. Los usuarios abandonan. Si el negocio depende del tráfico orgánico o de conversiones online, la lentitud cuesta dinero real.
+
+**Regla práctica:** Si una mejora de velocidad del 50% se traduciría en un aumento de ingresos superior al coste de la migración (€15k-€40k para la mayoría de webs empresariales), la migración tiene sentido económico.
+
+### ✅ Necesitas funcionalidades que WordPress no hace bien
+
+- Buscadores semánticos con IA
+- Experiencias interactivas complejas (configuradores de producto, visualizadores 3D)
+- Dashboards de usuario personalizados
+- Integraciones en tiempo real (chat, notificaciones, colaboración)
+- Apps progresivas (PWA) que funcionen offline
+
+Si tu roadmap de producto incluye cualquiera de estas, WordPress se convertirá en un obstáculo, no en una herramienta.
+
+### ✅ Tu equipo de marketing necesita autonomía real
+
+Con un CMS headless como Sanity o Contentful conectado a Next.js, el equipo de marketing puede:
+- Crear y editar contenidos sin tocar código
+- Previsualizar cambios en tiempo real
+- Publicar sin miedo a "romper la web"
+- Gestionar múltiples idiomas y versiones
+
+La diferencia clave: el CMS headless gestiona contenido. El frontend gestiona la experiencia. Cada uno hace lo suyo bien.
+
+### ✅ Tu negocio está creciendo y la infraestructura actual no da más
+
+Si estás pagando €300/mes en hosting WordPress optimizado y sigues teniendo caídas en picos de tráfico, una migración a arquitectura moderna puede reducir costes de infraestructura a €30-€50/mes con mejor rendimiento.
+
+### ✅ Quieres diferenciarte de tu competencia
+
+En sectores B2B tradicionales (industria, servicios profesionales, logística), tener una web rápida, moderna y con buena experiencia de usuario es una ventaja competitiva real. La mayoría de tus competidores seguirán con WordPress lento.
+
+---
+
+## Cuándo NO merece la pena (aunque te lo vendan)
+
+### ❌ Tu web es "brochure" y no vas a cambiarla en años
+
+Si tienes una web corporativa de 5 páginas que actualizas una vez al trimestre, y el rendimiento es aceptable, no gastes €20.000 en una migración. WordPress funciona. Usa PageSpeed Insights, optimiza imágenes, instala un buen caching. Listo.
+
+### ❌ Tu presupuesto es menor a €15.000
+
+Una migración bien hecha a Next.js requiere:
+- Diseño y desarrollo frontend (React/Next.js)
+- Configuración de CMS headless
+- Migración de contenidos
+- SEO técnico (redirecciones, estructura de URLs, meta tags)
+- Testing y optimización de rendimiento
+
+Hacerlo por menos de €15.000 significa cortar esquinas. Y cortar esquinas en una migración técnica es pedir problemas.
+
+### ❌ No tienes un equipo técnico interno ni presupuesto para mantenimiento
+
+WordPress es fácil de mantener: cualquier desarrollador junior lo conoce, hay miles de freelancers, los plugins se actualizan con un clic.
+
+Next.js requiere:
+- Desarrolladores que conozcan React y el ecosistema moderno (más caros y escasos)
+- Actualizaciones de dependencias (Node.js, React, Next.js, librerías)
+- Conocimiento de despliegue en plataformas modernas (Vercel, Netlify, AWS)
+
+Si no tienes acceso a este perfil técnico, te estarás cambiando de un problema a otro.
+
+### ❌ Tu negocio depende de plugins WordPress específicos
+
+Si usas WooCommerce con 15 plugins de envíos, pasarelas de pago, marketing automation y CRM integrado, migrar todo eso a un stack moderno es un proyecto de 6-12 meses. No es imposible, pero es complejo y caro.
+
+**Alternativa:** Considera una migración parcial. Mantén WordPress/WooCommerce como backend y usa Next.js solo para el frontend (headless WordPress). No es perfecto, pero reduce el riesgo.
+
+### ❌ Acabas de rediseñar la web hace menos de un año
+
+Si tu web WordPress tiene menos de 12 meses, probablemente no hayas amortizado la inversión. Espera. Recupera el ROI de la web actual antes de pensar en la siguiente.
+
+---
+
+## La calculadora honesta: cuánto cuesta de verdad
+
+| Concepto | WordPress (mantener) | Migración a Next.js |
+|----------|---------------------|---------------------|
+| **Desarrollo inicial** | €3k - €10k (tema + plugins) | €15k - €40k |
+| **Mantenimiento anual** | €1k - €3k (hosting + updates) | €3k - €8k (dev + hosting) |
+| **Hosting mensual** | €20 - €200 | €0 - €100 (Vercel/Netlify) |
+| **Tiempo de desarrollo** | 2-4 semanas | 8-16 semanas |
+| **Coste desarrollador/hora** | €30 - €50 (WordPress) | €60 - €120 (React/Next.js) |
+| **Escalabilidad** | Limitada (servidor + caching) | Ilimitada (CDN global) |
+| **Seguridad** | Requiere vigilancia constante | Alta por defecto |
+| **Rendimiento** | 3-8 segundos carga | 0.5-1.5 segundos carga |
+
+### Break-even point
+
+Si la migración cuesta €25.000 y el mantenimiento anual es €3.000 más caro, ¿cuándo recuperas la inversión?
+
+- Si la mejora de velocidad aumenta conversiones un 15% y tu facturación online es €200.000/año → ROI en 10 meses.
+- Si tu facturación online es €50.000/año → ROI en 3-4 años. Quizás no merece la pena.
+
+**Haz los números antes de decidir.**
+
+---
+
+## Estrategias de migración (de menos a más arriesgosa)
+
+### Opción 1: "WordPress headless" (bajo riesgo)
+
+Mantienes WordPress como CMS (backend) y usas Next.js solo para el frontend. WordPress expone contenido vía REST API o GraphQL. Next.js lo consume y renderiza.
+
+**Pros:** No migras contenidos. El equipo editorial sigue usando WordPress familiar.
+**Contras:** No eliminas WordPress del todo. El rendimiento mejora pero no es óptimo.
+**Coste:** €12k - €25k
+
+### Opción 2: "Migración progresiva" (riesgo medio)
+
+Migras página por página. Empiezas con la home y las páginas de alto tráfico en Next.js. El resto sigue en WordPress. Rediriges con proxy inverso.
+
+**Pros:** Menor riesgo. Ves resultados rápido. Inversión escalonada.
+**Contras:** Complejidad técnica de mantener dos sistemas conviviendo.
+**Coste:** €20k - €35k (en fases)
+
+### Opción 3: "Big bang" (alto riesgo, alto reward)
+
+Migras todo de golpe. Nuevo diseño, nuevo CMS, nuevo frontend. Redireccionas todo el tráfico en un día.
+
+**Pros:** Resultado final óptimo. Una sola codebase que mantener.
+**Contras:** Si algo falla, todo falla. Requiere planificación exhaustiva.
+**Coste:** €25k - €50k
+
+---
+
+## Errores que destruyen migraciones
+
+### Error 1: No planificar el SEO antes de empezar
+
+Cambiar URLs sin redirecciones 301 = perder todo el tráfico orgánico acumulado en años. Hemos visto empresas perder el 60% de su tráfico por este error.
+
+**Checklist SEO de migración:**
+- [ ] Auditoría completa de URLs actuales
+- [ ] Mapa de redirecciones 301
+- [ ] Conservar o mejorar estructura de URLs
+- [ ] Mantener meta titles y descriptions
+- [ ] Sitemap XML actualizado
+- [ ] Configurar canonicals correctamente
+- [ ] Monitorizar tráfico post-migración semana a semana
+
+### Error 2: Subestimar la migración de contenidos
+
+Un blog con 200 artículos no se migra "copiando y pegando". Hay que:
+- Extraer contenido de WordPress (exportación XML o acceso a base de datos)
+- Transformar formato (WordPress usa HTML con shortcodes, el nuevo CMS usa otro formato)
+- Migrar imágenes y assets
+- Revisar cada artículo para asegurar que se ve bien
+- Actualizar enlaces internos
+
+**Tiempo estimado:** 1-2 semanas solo para contenidos, para webs medianas.
+
+### Error 3: No probar con tráfico real antes del lanzamiento
+
+Haz soft launch. Lanza para el 10% del tráfico. Mide. Ajusta. Luego el 50%. Y finalmente el 100%.
+
+### Error 4: Olvidar que el equipo necesita formación
+
+Tu equipo de marketing ha usado WordPress 5 años. Ahora usa Sanity/Contentful/Strapi. Necesitan formación. No es difícil, pero tampoco es trivial.
+
+---
+
+## Predicciones para 2026-2027
+
+**Lo que SÍ pasará:**
+- Next.js seguirá ganando adopción en empresas no-tech (ya está pasando)
+- Los CMS headless serán tan fáciles de usar que la barrera para migrar bajará
+- WordPress lanzará mejoras de rendimiento (ya están en ello con Gutenberg y FSE)
+- Más empresas optarán por arquitecturas híbridas en lugar de migraciones totales
+
+**Lo que NO pasará:**
+- WordPress no desaparecerá. Seguirá siendo la opción por defecto para webs simples
+- No será trivial migrar webs complejas con muchos plugins personalizados
+- No bajará el coste de desarrolladores React/Next.js (la demanda sigue creciendo)
+
+---
+
+## La decisión en 5 minutos
+
+Responde estas preguntas:
+
+1. **¿Tu web actual es lenta (>3s) y afecta a negocio?** → Considera migrar
+2. **¿Necesitas funcionalidades que WordPress no hace bien?** → Migrar
+3. **¿Tu facturación online >€100k/año?** → El ROI probablemente justifica la migración
+4. **¿Tienes presupuesto >€15k y acceso a desarrolladores React?** → Migrar
+5. **¿Tu web es brochure sin cambios frecuentes?** → No migres
+6. **¿Acabas de invertir en la web actual (&lt;12 meses)?** → Espera
+7. **¿Dependes críticamente de plugins WooCommerce complejos?** → Evalúa headless primero
+
+Si tienes más sí en 1-4 → **Migra**
+Si tienes más sí en 5-7 → **Quédate en WordPress (por ahora)**
+
+---
+
+## Conclusión: La pregunta correcta
+
+No es "¿WordPress o Next.js?"
+
+Es: **"¿Mi web actual me está costando dinero por ser lenta, limitada o insegura? Y si es así, ¿la inversión en migrar se recupera en un plazo razonable?"**
+
+WordPress sigue siendo una herramienta válida para miles de casos. Next.js es superior para webs que necesitan rendimiento, interactividad y escalabilidad. La trampa es dejarse llevar por el hype de "lo moderno" o por el miedo a "lo viejo".
+
+La decisión correcta depende de tu negocio, tu presupuesto, tu equipo técnico y tu roadmap de producto. No hay una respuesta universal.
+
+Pero sí hay una regla de oro: **nunca migres por migra. Migra porque los números lo justifican.**
+
+---
+
+## ¿Necesitas ayuda para decidir?
+
+En Legasint analizamos tu caso concreto: tu web actual, tu tráfico, tu negocio, tu presupuesto. Te decimos si migrar tiene sentido, cuánto costaría, y qué estrategia de migración minimiza riesgos. No vendemos migraciones: vendemos **la decisión correcta**.
+
+**[Hablemos de tu proyecto →](/contacto)**
+
+---
+
+*¿Te ha sido útil este artículo? Compártelo con alguien que esté a punto de gastar €30.000 en una migración sin haber leído esto primero.*

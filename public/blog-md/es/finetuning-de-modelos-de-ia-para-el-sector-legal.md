@@ -1,0 +1,103 @@
+---
+title: "Fine-tuning de modelos de IA para el sector legal"
+date: "2026-05-13"
+language: "es"
+canonical: "https://legasint.com/blog/finetuning-de-modelos-de-ia-para-el-sector-legal"
+tags: ["fine-tuning", "LLMs", "modelos IA", "sector legal", "jurisprudencia", "RAG"]
+---
+
+# Fine-tuning de modelos de IA para el sector legal
+
+Cómo adaptar LLMs al vocabulario, jurisprudencia y casos específicos de una empresa o jurisdicción.
+
+## Introducción
+
+Los modelos de lenguaje grandes (LLMs) como GPT-4 o Claude dominan el vocabulario general, pero cuando se enfrentan a textos jurídicos españoles cometen errores graves: confunden el Código Civil con el Código de Comercio, inventan jurisprudencia inexistente o proponen cláusulas válidas en EE.UU. pero ilegales en España.
+
+El **fine-tuning** —entrenar un modelo base con datos específicos del sector legal español— resuelve gran parte de estos problemas. En este artículo explicamos cuándo merece la pena, cómo hacerlo y qué alternativas existen.
+
+## 1. Cuándo usar fine-tuning vs. RAG
+
+### RAG (Retrieval-Augmented Generation)
+
+El modelo consulta una base de datos externa (jurisprudencia, contratos, normativa) antes de responder. Es más rápido de implementar y no requiere reentrenar el modelo.
+
+**Ideal para:** Consultas puntuales sobre documentos específicos, búsqueda de cláusulas, análisis de contratos.
+
+### Fine-tuning
+
+Se modifican los pesos internos del modelo con miles de ejemplos jurídicos. El modelo "aprende" el estilo, vocabulario y patrones del sector.
+
+**Ideal para:** Redacción de documentos legales, análisis jurisprudencial complejo, tareas donde el contexto legal es más importante que los datos concretos.
+
+## 2. Dataset de entrenamiento legal
+
+### Fuentes recomendadas
+
+- **Sentencias del TS, TJUE y TEDH:** ~50,000 documentos públicos.
+- **Contratos anonimizados:** Plantillas de despachos, acuerdos de confidencialidad, contratos de arrendamiento.
+- **DOUE y BOE:** Normativa vigente con estructura legal formal.
+- **Comentarios doctrinales:** Obras de Derecho Civil, Mercantil, Procesal.
+
+### Preparación del dataset
+
+1. **Anonimización:** Eliminar nombres, DNI, direcciones y datos identificables.
+2. **Estructuración:** Formato JSON con campos (prompt, completion) o conversaciones (role, content).
+3. **Limpieza:** Eliminar duplicados, corregir OCR fallido, normalizar citas.
+4. **Balance:** Asegurar representación de todas las materias (civil, penal, mercantil, laboral, administrativo).
+
+Un dataset efectivo para fine-tuning legal en español suele requerir **20,000-50,000 ejemplos de alta calidad**.
+
+## 3. Stack tecnológico
+
+### Plataformas de fine-tuning
+
+- **OpenAI Fine-Tuning API:** Sencillo pero costoso para datasets grandes.
+- **Azure OpenAI:** Opción para empresas con requisitos de soberanía de datos.
+- **Together AI / Fireworks:** Fine-tuning de modelos open-source (Llama 3, Mistral) a coste reducido.
+- **Local (LoRA):** Con una GPU A100 o H100, ajustes eficientes usando Low-Rank Adaptation.
+
+### Costes estimados
+
+| Enfoque | Dataset | Coste aproximado | Tiempo |
+|---------|---------|-------------------|--------|
+| Open API fine-tuning | 30k ejemplos | €300-800 | 2-4 horas |
+| LoRA local (A100) | 30k ejemplos | €50 (compute) | 4-8 horas |
+| RAG básico | 10k documentos | €20/mes | 1 día setup |
+
+## 4. Caso práctico: modelo de análisis contractual
+
+**Objetivo:** Un modelo que revise contratos de arrendamiento comercial y detecte cláusulas abusivas según la LAU.
+
+**Dataset:** 5,000 contratos de arrendamiento anonimizados, etiquetados por tipo de cláusula (fianza excesiva, duración mínima abusiva, obligaciones del arrendatario desproporcionadas).
+
+**Proceso:**
+1. Fine-tuning de Llama 3 70B con LoRA durante 6 horas.
+2. Evaluación contra 200 contratos de test (juzgados por abogados senior).
+3. Resultado: 94% de precisión en detección, vs. 67% del modelo base sin fine-tuning.
+
+## 5. Consideraciones legales y éticas
+
+### Propiedad intelectual
+
+¿Quién posee el modelo fine-tuneado? Depende del acuerdo con el proveedor de base. OpenAI retiene derechos sobre el modelo derivado; con modelos open-source (Llama, Mistral), el despacho posee completamente el artefacto.
+
+### Confidencialidad
+
+El fine-tuning con datos de clientes requiere:
+- Consentimiento explícito en el contrato de servicios.
+- Anonimización agresiva antes del entrenamiento.
+- Opción preferente: entrenar en infraestructura privada (on-premise o VPC) sin que los datos salgan del entorno controlado.
+
+### Transparencia
+
+El AI Act exige que sistemas de IA de alto riesgo sean explicables. Un modelo fine-tuneado debe acompañarse de:
+- Documentación del dataset de entrenamiento.
+- Métricas de rendimiento y sesgo.
+- Procedimiento de auditoría periódica.
+
+## Conclusión
+
+El fine-tuning transforma un LLM genérico en un asistente jurídico especializado. No es necesario para todos los casos de uso —RAG suele ser suficiente— pero para tareas de redacción y análisis profundo, la inversión se amortiza en semanas.
+
+**¿Quieres explorar si el fine-tuning es adecuado para tu caso de uso?** [Contacta con LegaSint](/contacto) y evaluamos tu dataset y objetivos.

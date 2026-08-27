@@ -1,0 +1,263 @@
+---
+title: "SaaS vs desarrollo a medida: La calculadora honesta"
+date: "2026-07-30"
+language: "es"
+canonical: "https://legasint.com/blog/saas-vs-desarrollo-custom-calculadora-honesta"
+tags: ["SaaS", "Desarrollo a Medida", "Consultoría IT", "Transformación Digital", "PYMEs"]
+---
+
+# SaaS vs desarrollo a medida: La calculadora honesta
+
+¿Te conviene comprar un SaaS existente o desarrollar una solución custom? Descubre el punto de equilibrio real con casos prácticos, números claros y un framework para decidir sin arrepentimientos.
+
+## La pregunta que paraliza a cada CEO
+
+> *"¿Contratamos Salesforce/HubSpot/Monday o desarrollamos nuestro propio CRM?"*
+
+Es la pregunta que hemos escuchado cientos de veces. Y la respuesta que suele darse —"depende"— no ayuda a nadie.
+
+En este artículo vamos a hacer algo distinto: **poner números sobre la mesa**. Con casos reales, un framework de decisión y la calculadora que usamos con nuestros clientes para decidir entre SaaS y desarrollo a medida.
+
+No hay una respuesta única. Pero sí hay una respuesta correcta *para tu caso*.
+
+---
+
+## El error más común: comparar manzanas con naranjas
+
+La mayoría de empresas comparan:
+- **SaaS:** €50/usuario/mes → "barato"
+- **Custom:** €40.000 upfront → "caro"
+
+Y eligen SaaS porque el número es más pequeño. **Error fatal.**
+
+Lo que no ven:
+- El SaaS sube de precio un 15-20% cada año
+- Necesitas 3 SaaS distintos que no se hablan
+- Pagas por 200 funcionalidades cuando usas 20
+- Tu equipo pierde 10h/semana en workarounds
+- Cuando escales, el costo del SaaS se dispara
+
+**La comparación honesta no es precio vs precio. Es TCO (Total Cost of Ownership) a 3-5 años.**
+
+---
+
+## Caso real #1: El despacho de abogados que "ahorró" con SaaS
+
+**Situación:** Despacho de 15 abogados. Necesitaban gestión de casos, facturación y CRM.
+
+**Opción A - SaaS stack:**
+- CRM (HubSpot): €1.200/año
+- Gestión de casos (Clio): €3.600/año
+- Facturación (Facturama): €600/año
+- Integraciones (Zapier/Make): €1.200/año
+- **Total año 1: €6.600**
+
+**Opción B - Desarrollo custom:**
+- Plataforma integrada: €35.000
+- Mantenimiento: €4.000/año
+- **Total año 1: €39.000**
+
+**¿Qué eligieron?** El SaaS. Obvio, ¿verdad?
+
+### Lo que pasó después
+
+**Año 2:**
+- HubSpot subió de precio: +€400
+- Necesitaron un campo personalizado que Clio no tenía → workaround manual
+- Querían informes cruzados CRM + casos + facturación → imposible sin exportar a Excel
+- Contrataron a alguien 8h/semana solo para consolidar datos: €8.000/año
+- **Total año 2: €15.000+**
+
+**Año 3:**
+- El stack creció a 5 herramientas
+- El "gurú de Excel" se fue → crisis operativa de 3 semanas
+- Intentaron migrar datos a un nuevo SaaS → €5.000 en consultoría + 2 meses de caos
+- **Total año 3: €22.000+**
+
+**TCO a 3 años: €43.600+** (y contando)
+
+**El custom les habría costado €43.000** con una plataforma que hace *exactamente* lo que necesitan, integrada, escalable, y sin dependencia de terceros.
+
+**El "ahorro" del SaaS se convirtió en un costo oculto de €20.000+ y 3 años de fricción.**
+
+---
+
+## Caso real #2: La startup que acertó con custom desde el principio
+
+**Situación:** Startup B2B SaaS con modelo de suscripción complejo (planes, addons, uso medido, prorrateos).
+
+**Opción A - SaaS:** Stripe + Chargebee + HubSpot + Intercom + herramientas internas
+**Opción B - Custom:** Plataforma propia con Stripe como pasarela
+
+**Decisión:** Custom desde el día 1. Inversión inicial: €28.000.
+
+**Resultado a 2 años:**
+- Facturación 100% automatizada (antes, 2 personas dedicaban 20h/semana)
+- Onboarding de clientes en minutos, no en días
+- Informes de negocio en tiempo real
+- Escalaron de 50 a 500 clientes sin añadir personal operativo
+- **Ahorro estimado: €60.000/año en personal + €15.000/año en suscripciones**
+
+**ROI en 6 meses.**
+
+---
+
+## La calculadora: ¿Cuándo SaaS y cuándo custom?
+
+Usa este framework. Responde con honestidad:
+
+### 1. ¿Tu proceso es estándar o específico?
+
+| SaaS | Custom |
+|------|--------|
+| Email marketing (Mailchimp) | Flujo de aprobación legal con 5 roles y reglas condicionales |
+| Contabilidad básica | Facturación con lógica de negocio compleja |
+| Gestión de tareas simple | Coordinación de 3 departamentos con SLAs |
+
+**Regla:** Si el 80% de tus necesidades son estándar → SaaS. Si el 50%+ es específico → Custom.
+
+### 2. ¿Cuántos usuarios tendrás en 3 años?
+
+| Usuarios | Recomendación |
+|----------|---------------|
+| 1-5 | SaaS casi siempre |
+| 5-20 | Evaluar caso a caso |
+| 20-100 | Custom empieza a compensar |
+| 100+ | Custom suele ser más barato a 2-3 años |
+
+**Regla:** El SaaS escala linealmente (€/usuario). El custom es fijo + mantenimiento.
+
+### 3. ¿Necesitas integraciones complejas?
+
+Si necesitas que 4+ sistemas se hablen en tiempo real con lógica de negocio entre ellos, los SaaS te obligarán a usar Zapier/Make con workarounds. **Eso no es integración, es parcheo.**
+
+**Regla:** >3 integraciones críticas → considera custom.
+
+### 4. ¿Los datos son tu ventaja competitiva?
+
+Si tu valor está en *cómo usas los datos* (análisis predictivo, automatización inteligente, personalización masiva), un SaaS genérico te limita. **Tu IP debe estar en tu infraestructura, no en la de terceros.**
+
+**Regla:** Datos = ventaja competitiva → Custom.
+
+### 5. ¿Qué tan rápido necesitas cambiar?
+
+Los SaaS tienen su roadmap. Si necesitas una funcionalidad que no existe, esperas 6-12 meses (si llega). Con custom, la prioridad la pones tú.
+
+**Regla:** Velocidad de innovación crítica → Custom.
+
+---
+
+## La tabla de verdad: SaaS vs Custom en 2026
+
+| Factor | SaaS | Desarrollo Custom |
+|--------|------|-------------------|
+| **Inversión inicial** | Baja (€50-500/mes) | Alta (€15.000-100.000) |
+| **Costo a 3 años** | Medio-Alto (escala con usuarios) | Medio (fijo + mantenimiento) |
+| **Tiempo de implementación** | Días-semanas | Semanas-meses |
+| **Personalización** | Limitada (configuración) | Total |
+| **Integraciones** | Básicas vía APIs/Zapier | Nativas y complejas |
+| **Escalabilidad** | Depende del proveedor | Diseñada a medida |
+| **Dependencia** | Alta (vendor lock-in) | Baja (código propio) |
+| **Mantenimiento** | Incluido | €3.000-10.000/año |
+| **Seguridad de datos** | En cloud de terceros | Control total |
+| **IP / Ventaja competitiva** | Limitada | Máxima |
+
+---
+
+## El punto de equilibrio (break-even)
+
+Aquí está la fórmula que usamos:
+
+```
+Break-even (meses) = Costo desarrollo custom / (Costo mensual SaaS - Costo mensual custom)
+```
+
+**Ejemplo:**
+- Custom: €40.000 + €400/mes mantenimiento
+- SaaS equivalente: €2.000/mes para 20 usuarios
+
+```
+Break-even = 40.000 / (2.000 - 400) = 25 meses (~2 años)
+```
+
+**Después de 2 años, el custom es más barato.** Y tienes una plataforma que hace exactamente lo que necesitas.
+
+---
+
+## Cuándo definitivamente elegir SaaS
+
+No todo es custom. Hay casos donde el SaaS es la respuesta obvia:
+
+1. **Necesitas algo hoy, no en 3 meses**
+2. **Tu proceso es 100% estándar** (email, contabilidad básica, calendario)
+3. **Tienes &lt;5 usuarios y presupuesto limitado**
+4. **Quieres probar antes de invertir** (MVP de proceso)
+5. **No tienes equipo técnico ni partner de confianza**
+
+---
+
+## Cuándo definitivamente elegir custom
+
+1. **Tu proceso es tu ventaja competitiva** (no puedes usar lo mismo que tu competencia)
+2. **Necesitas integrar 4+ sistemas críticos**
+3. **Tienes >20 usuarios y crecimiento planificado**
+4. **Los datos son sensibles o estratégicos** (salud, legal, financiero)
+5. **El SaaS existente cubre el 40% de lo que necesitas**
+6. **Llevas 2 años "adaptándote" a las limitaciones del SaaS**
+
+---
+
+## El híbrido: la opción que nadie te cuenta
+
+Hay una tercera vía que funciona muy bien: **SaaS para lo estándar + custom para lo específico.**
+
+**Ejemplo:**
+- Email: Mailchimp (SaaS)
+- Contabilidad: Holded (SaaS)
+- Gestión de casos: **Custom** (tu IP, tu flujo, tus datos)
+- Integración: API entre custom y SaaS
+
+**Ventaja:** Aprovechas lo mejor de ambos mundos. Inversión moderada. Escalabilidad. Sin reinventar la rueda.
+
+---
+
+## Cómo no arrepentirte de tu decisión
+
+### Si eliges SaaS:
+- Evalúa el TCO a 3 años, no el precio mensual
+- Asegúrate de poder exportar tus datos (vendor lock-in)
+- Planifica qué pasa si suben precios un 30%
+- Documenta los workarounds (te costarán más de lo que crees)
+
+### Si eliges custom:
+- Elige un partner con experiencia, no el más barato
+- Empieza con MVP, no con todo
+- Exige código limpio, documentado y testeado
+- Presupuesta mantenimiento desde el día 1
+- Asegúrate de que puedes escalar sin rehacer
+
+---
+
+## Conclusión: La calculadora honesta
+
+No hay respuesta única. Pero sí hay una respuesta *honesta*:
+
+> **Elige SaaS cuando tu proceso sea estándar, tus usuarios sean pocos, y necesites velocidad.**
+>
+> **Elige custom cuando tu proceso sea tu ventaja, tus datos sean estratégicos, y el crecimiento sea inevitable.**
+
+Y si estás en la zona gris —lo más probable— haz los números. Calcula el TCO a 3 años. Cuantifica el costo de los workarounds. Y decide con datos, no con el precio del mes 1.
+
+**La tecnología es una inversión, no un gasto. La pregunta no es cuánto cuesta, es cuánto te ahorra y cuánto te hace crecer.**
+
+---
+
+## ¿Necesitas ayuda para decidir?
+
+En LegaSInt hacemos auditorías de procesos y calculamos el TCO real de SaaS vs custom para tu caso específico. Sin compromiso, sin venta agresiva. Solo números y recomendación honesta.
+
+**[Hablemos de tu caso →](/contacto)**
+
+---
+
+*¿Te ha resultado útil este artículo? Compártelo con alguien que esté decidiendo entre SaaS y desarrollo a medida.*

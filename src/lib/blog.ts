@@ -13,6 +13,7 @@ export interface BlogPost {
   content: string;
   locale: string;
   readingTime: number;
+  translationKey?: string;
 }
 
 export interface BlogPostMeta {
@@ -25,6 +26,7 @@ export interface BlogPostMeta {
   author: string;
   locale: string;
   readingTime: number;
+  translationKey?: string;
 }
 
 const WORDS_PER_MINUTE = 200;
@@ -70,6 +72,7 @@ export function getPostBySlug(slug: string, locale: string = 'es'): BlogPost | n
     content,
     locale,
     readingTime: calculateReadingTime(content),
+    translationKey: data.translationKey,
   };
 }
 

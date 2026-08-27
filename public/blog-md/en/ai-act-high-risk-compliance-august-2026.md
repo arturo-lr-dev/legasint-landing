@@ -1,0 +1,221 @@
+---
+title: "AI Act: Last-Minute Guide to High-Risk AI Systems Compliance (August 2026)"
+date: "2026-06-30"
+language: "en"
+canonical: "https://legasint.com/blog/en/ai-act-high-risk-compliance-august-2026"
+tags: ["AI Act", "high-risk systems", "compliance", "August 2026", "deadline"]
+---
+
+# AI Act: Last-Minute Guide to High-Risk AI Systems Compliance (August 2026)
+
+With two months until the August 2026 deadline, practical guide for law firms and companies that must comply with AI Act obligations for high-risk AI systems
+
+## Introduction
+
+We are **two months away** from the definitive deadline of the **EU Artificial Intelligence Regulation (AI Act)**. Starting **August 2, 2026**, all high-risk AI systems operating in the European market must comply with a demanding regulatory framework. For law firms, tech companies, and compliance officers, this is not just a regulatory challenge—it is a **strategic positioning opportunity**.
+
+In this article, we analyze what compliance actually means, who is obligated, which systems are considered high-risk, and most importantly, **what concrete steps must be taken now** to avoid sanctions that can reach **7% of global annual turnover**.
+
+---
+
+## What Changes on August 2, 2026?
+
+### The Definitive Deadline for High-Risk Systems
+
+The AI Act establishes a staggered implementation calendar:
+
+| Date | Obligation |
+|------|------------|
+| **February 2025** | Prohibition of unacceptable AI practices |
+| **August 2025** | Requirements for general-purpose AI models (GPAI) |
+| **August 2026** | **Full compliance for high-risk AI systems** |
+| **2027+** | Evaluation and framework adjustments |
+
+From August 2026, any AI system classified as **high-risk** that is marketed or used in the EU must comply with requirements for:
+- **Data quality and governance**
+- **Transparency and documentation**
+- **Human oversight**
+- **Robustness, accuracy, and security**
+- **Registration in EU databases**
+
+### Who Is Obligated?
+
+Obligations fall on:
+- **Providers** (those who develop or market high-risk AI systems)
+- **Deployers** (those who implement these systems in real environments)
+- **Authorized representatives** in the EU (for foreign providers)
+- **Importers and distributors**
+
+---
+
+## What Systems Are Considered High-Risk?
+
+### Categories Defined by the AI Act
+
+The Regulation explicitly identifies sectors and uses considered high-risk:
+
+1. **Critical infrastructure** (transport, energy, water, telecommunications)
+2. **Education and vocational training** (evaluation, admission, tutoring systems)
+3. **Employment and worker management** (personnel selection, performance evaluation)
+4. **Access to essential services** (credit, insurance, public services)
+5. **Justice and law applications** (legal interpretation assistance, evidence analysis)
+6. **Migration, asylum, and border control management**
+7. **Law enforcement applications** (risk assessment, evidence analysis)
+
+### The Case of the Legal Sector
+
+For law firms, the most relevant systems are:
+- **Predictive analysis tools** for litigation
+- **Contract review systems** with automated decision-making capability
+- **E-discovery platforms** with automatic classification
+- **Legal interpretation assistance tools**
+- **Case scoring systems** for strategic viability
+
+> **Important:** Not all AI tools in law firms are high-risk. A basic drafting assistant may not be included, but a system that recommends procedural strategies based on historical data would be.
+
+---
+
+## Compliance Requirements: Practical Checklist
+
+### 1. Risk Management System
+
+A continuous process must be established for:
+- **Identification and analysis** of known and foreseeable risks
+- **Assessment of emerging risks** during the lifecycle
+- **Documented and verifiable mitigation measures**
+- **Robustness testing** under adverse conditions
+
+### 2. Data Governance
+
+High-risk systems must comply with:
+- **Verified usage rights** for training data
+- **Quality and representativeness** of datasets
+- **Demonstrable bias protection** through testing
+- **Traceability** of data from origin to output
+
+### 3. Transparency and Technical Documentation
+
+Each system must include:
+- **Clear and complete usage instructions**
+- **Known limitations** and risk scenarios
+- **Measured and documented performance characteristics**
+- **Interoperability** with oversight systems
+
+### 4. Effective Human Oversight
+
+Article 14 of the AI Act requires:
+- **Design for oversight** (human-in-the-loop)
+- **Intervention capability** during operation
+- **Prevention of excessive automation** in critical decisions
+- **Training** of human operators
+
+### 5. Accuracy, Robustness, and Security
+
+- **Defined and measured precision metrics**
+- **Resilience** against errors, inconsistencies, or attacks
+- **Cybersecurity** according to recognized standards
+- **Continuous updating** for new vulnerabilities
+
+### 6. Registration and Notification
+
+- **Registration in the EU database** of high-risk AI systems
+- **Notification of serious incidents** to national authorities
+- **Cooperation** with market authorities during investigations
+
+---
+
+## Sanctions for Non-Compliance
+
+The AI Act establishes a progressive sanction regime:
+
+| Type of Infringement | Maximum Sanction |
+|---------------------|------------------|
+| Prohibited practices (unacceptable AI) | **€35 million or 7% of global turnover** |
+| Non-compliance with high-risk system obligations | **€15 million or 3% of global turnover** |
+| Transparency infringements | **€7.5 million or 1.5% of global turnover** |
+| Incorrect information to authorities | **€7.5 million or 1% of global turnover** |
+
+> **Note:** Sanctions are applied per infringement and can accumulate. For large tech companies, amounts can reach millions.
+
+---
+
+## Immediate Action Guide: 8 Weeks to Comply
+
+### Weeks 1-2: Inventory and Classification
+
+- [ ] **Complete audit** of all AI systems in use or development
+- [ ] **Risk level classification** according to the AI Act
+- [ ] **Provider identification** and contract review
+- [ ] **Data flow mapping** and legal bases for processing
+
+### Weeks 3-4: Gap Assessment
+
+- [ ] **Compliance analysis** vs. Chapter III requirements
+- [ ] **Training data evaluation** (quality, bias, rights)
+- [ ] **Review of existing technical documentation**
+- [ ] **Identification of systems** requiring redesign
+
+### Weeks 5-6: Measure Implementation
+
+- [ ] **Update of internal policies** on AI use
+- [ ] **Implementation of human oversight** where necessary
+- [ ] **Technical documentation** according to Annex IV
+- [ ] **Documented robustness and bias testing**
+
+### Weeks 7-8: Registration and Verification
+
+- [ ] **Registration in EU database** (when operational)
+- [ ] **Notification to national authorities** (AEPD in Spain)
+- [ ] **Final review** by specialized external counsel
+- [ ] **Continuous compliance maintenance plan**
+
+---
+
+## Opportunities for Law Firms
+
+The AI Act not only imposes obligations: it creates **new legal services**:
+
+### 1. AI Act Compliance Advisory
+
+- Auditing client systems
+- Risk classification of AI tools
+- Preparation of technical documentation
+- Representation before authorities
+
+### 2. AI Provider Contract Review
+
+- Compliance guarantee clauses
+- Indemnities for non-compliance
+- Third-party provider audits
+- Specific Data Processing Agreements
+
+### 3. Litigation and Defense Against Sanctions
+
+- Appeals against infringements
+- Defense in regulatory investigations
+- Claims for damages from defective AI
+- Emerging class actions
+
+### 4. Specialized Training
+
+- Programs for compliance officers
+- Workshops for technical teams
+- Sector-specific certifications
+
+---
+
+## Conclusion
+
+**August 2, 2026** marks a turning point for AI regulation in Europe. Companies that act now will not only avoid million-euro sanctions: they will position themselves as **leaders in a market where regulatory trust will be a competitive differentiator**.
+
+For law firms, this is the time to:
+1. **Audit** their own AI systems
+2. **Develop** specialized advisory capabilities
+3. **Communicate** to clients the importance of compliance
+4. **Invest** in multidisciplinary team training
+
+> **Regulated AI is not limited AI: it is AI that can be trusted.** And trust, in the legal sector, is the most valuable asset.
+
+---
+
+**Need advice on AI Act compliance?** [Contact our specialized team](https://legasint.com/en/contact) for a personalized audit of your AI systems.

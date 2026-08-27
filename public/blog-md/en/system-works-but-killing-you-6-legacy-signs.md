@@ -1,0 +1,261 @@
+---
+title: "Your System 'Works' But It's Killing You: 6 Signs"
+date: "2026-07-25"
+language: "en"
+canonical: "https://legasint.com/blog/en/system-works-but-killing-you-6-legacy-signs"
+tags: ["Legacy Systems", "Modernization", "Digital Transformation", "SMBs", "Efficiency"]
+---
+
+# Your System 'Works' But It's Killing You: 6 Signs
+
+Your Excel with macros or 10-year-old software seems to work. But it's costing you money, time, and opportunities. Discover the 6 signs that your legacy system is silently killing your business.
+
+## The Myth of "If It Ain't Broke, Don't Fix It"
+
+Three months ago, a client told us something we hear constantly:
+
+> *"Our system works. It's been running for 8 years. Why change it?"*
+
+We asked them to calculate one thing: **how many hours per week their team spends copying data from one place to another, fixing Excel errors, and waiting for the system to respond.**
+
+The result: **32 hours per week** across 6 people. At €25/hour, that's **€3,200 per month** in pure friction. Not counting lost clients due to slow responses, billing errors, or opportunities they can't seize because their system doesn't scale.
+
+Their system "worked." But it was costing them **€38,400 per year** without them knowing it.
+
+This article isn't here to sell you a migration. It's here to help you identify **when your legacy system has become an anchor** before it's too late.
+
+---
+
+## Sign #1: Your Team Spends More Time "Working Around" the System Than Using It
+
+### The Symptom
+
+Your team has developed a collection of "tricks" to get their job done:
+
+- Exporting data to Excel, manipulating it, and re-importing it
+- Copying and pasting information between 3 or 4 tools that don't talk to each other
+- Creating parallel spreadsheets because the main system "doesn't allow that"
+- Writing processes on post-its or personal notes because the system doesn't guide them
+
+### The Reality
+
+If your team has built an **ecosystem of workarounds** to compensate for the system's limitations, the problem isn't the team. It's the technology.
+
+**Every workaround is a small technical debt** that accumulates interest: more errors, more time, more frustration, more staff turnover.
+
+### How to Detect It
+
+Ask this question at your next team meeting:
+
+> *"What tasks do you do manually because the system doesn't automate them?"*
+
+If the answer takes more than 30 seconds, you have a problem.
+
+---
+
+## Sign #2: Only One Person Knows How It Works (And If They Leave, Everything Falls)
+
+### The Symptom
+
+You have an internal "guru." John, Mary, or the vendor from 5 years ago who "understands the system." When something breaks, everyone looks at that person. When they're on vacation, certain processes simply **stop**.
+
+### The Reality
+
+This is the **most dangerous operational risk** for an SMB. It's not a question of "if" that person leaves, it's "when." And when it happens:
+
+- Critical processes come to a halt
+- Nobody knows how to recover backups (if they exist)
+- The company depends on tribal knowledge, not documented knowledge
+- The cost of recovery is 5-10x higher than a planned modernization
+
+### How to Detect It
+
+Try documenting a critical process using only what a new employee could find. If you need to ask a specific person, you have a **single point of failure**.
+
+---
+
+## Sign #3: "Small Improvements" Take Weeks or Months
+
+### The Symptom
+
+You need to add a field to a form, change an approval flow, or integrate with a new tool. Your vendor (or internal team) tells you:
+
+> *"That will take 3 weeks."*
+> *"The system doesn't allow that without reprogramming the entire module."*
+> *"We'd need to upgrade to version X first, which costs €Y."*
+
+### The Reality
+
+In 2026, a "small improvement" shouldn't be a project. If your technology architecture turns every change into an odyssey, it means:
+
+- The code is fragile and tightly coupled
+- There are no automated tests (changing something breaks something else)
+- The underlying technology is obsolete and nobody wants to touch it
+- Your vendor has you locked in
+
+**The real cost isn't the development time. It's the opportunity cost** of all the improvements you never make because "it's too complicated."
+
+### How to Detect It
+
+Make a list of the last 5 "small improvements" you requested. How long did they take? How many were discarded due to "complexity"? If the ratio is concerning, your system is in survival mode.
+
+---
+
+## Sign #4: Errors Repeat and Nobody Knows Why
+
+### The Symptom
+
+You have recurring errors that the team has learned to "manage":
+
+- Duplicate invoices that must be manually canceled
+- Clients receiving incorrect emails that require apologies
+- Reports that "sometimes" show numbers that don't add up
+- Data that "disappears" and reappears
+
+The typical response: *"The system just does that sometimes. We know how to fix it."*
+
+### The Reality
+
+**Normalizing errors is the first step toward crisis.** If your team has internalized that "the system fails sometimes" and has built processes to compensate, you're investing resources in managing inefficiency instead of eliminating it.
+
+Plus, these errors have a reputational cost. A client who receives an incorrect invoice doesn't see "a system bug." They see **lack of professionalism**.
+
+### How to Detect It
+
+Ask your team: *"What technical problems do you routinely handle that you shouldn't have to handle?"*
+
+If the list has more than 3 items, your system is generating unnecessary work.
+
+---
+
+## Sign #5: You Can't Answer Basic Questions About Your Business
+
+### The Symptom
+
+You want to know:
+
+- What's the real margin per client?
+- How long does a typical case/project take from start to finish?
+- Where is the most time lost in our processes?
+- Which clients are profitable and which aren't?
+
+And the answer is: *"Let me gather data from several places and prepare an Excel for you."*
+
+### The Reality
+
+In 2026, **not having real-time visibility into your business** is a competitive disadvantage. We're not talking about sophisticated dashboards. We're talking about being able to answer basic questions without spending 2 hours consolidating data from 4 different sources.
+
+If your system doesn't let you make informed decisions quickly, you're operating blind. And operating blind in a competitive market is expensive.
+
+### How to Detect It
+
+Choose 3 important business questions. Time how long it takes your team to answer them. If any of them requires more than 15 minutes or involves manual Excel work, you have a visibility problem.
+
+---
+
+## Sign #6: Your Competition Does Things You Can't Do
+
+### The Symptom
+
+You see competitors (even smaller ones) doing things that seem impossible to you:
+
+- Responding to clients in minutes, not days
+- Offering client portals with real-time information
+- Scaling their operation without multiplying staff
+- Launching new services in weeks, not months
+
+And you think: *"They must have more resources."* Or worse: *"That's just marketing."*
+
+### The Reality
+
+Most of the time, it's not that they have more resources. It's that **their technology infrastructure allows them to move faster**. They have modern, integrated, scalable systems. You have a system that "works" but was designed for the needs of 8 years ago.
+
+**The technology gap doesn't close on its own. It widens.** Every year you wait, modernization costs more and the opportunity cost grows.
+
+### How to Detect It
+
+Make a list of 3 things you'd like to offer your clients but your current system doesn't allow. If the list isn't empty, your technology is limiting your business strategy.
+
+---
+
+## The Hidden Cost Calculator
+
+Let's use conservative numbers. Imagine a 10-person company:
+
+| Item | Calculation | Annual Cost |
+|------|-------------|-------------|
+| Time on workarounds | 5h/week × 10 people × €25/h | €65,000 |
+| Errors and corrections | 2h/week × 5 people × €25/h | €13,000 |
+| Lost opportunities | 1 client/month × €2,000 | €24,000 |
+| Turnover from tech frustration | 1 person/year × €5,000 (recruitment + training) | €5,000 |
+| **TOTAL** | | **€107,000/year** |
+
+This doesn't include:
+- Fines for compliance errors
+- Clients lost due to poor experience
+- Delayed decisions due to lack of visibility
+- Opportunity cost of not being able to scale
+
+**How much would modernization cost?** Typically between €15,000 and €60,000 for an SMB. The ROI pays for itself in months, not years.
+
+---
+
+## But... Isn't Changing Risky?
+
+Yes. Changing a critical system has risks. But **not changing has more**.
+
+The risk of modernization is temporary and manageable:
+- Proper planning
+- Phased migration
+- Parallel operation during transition
+- Planned rollback strategy
+
+The risk of not modernizing is chronic and growing:
+- Dependency on obsolete technology
+- Inability to scale
+- Loss of competitiveness
+- Crisis when the "guru" leaves or the system fails
+
+**The question isn't whether to modernize. It's when.** And the sooner, the less painful.
+
+---
+
+## How to Start Without Trauma
+
+If you recognize several of these signs, you don't need a "big bang." Start like this:
+
+### Step 1: Audit (1-2 weeks)
+Document the 3 processes that steal the most time. Quantify. Don't guess: measure.
+
+### Step 2: Prioritize (1 week)
+Don't modernize everything at once. Choose the process with the highest impact and lowest risk.
+
+### Step 3: Prototype (2-4 weeks)
+Develop a minimal solution for that process. Don't replace everything. Prove value.
+
+### Step 4: Scale (progressive)
+Once the team sees the benefit, the rest flows more easily.
+
+---
+
+## Conclusion: Working Isn't Enough
+
+A system that "works" but generates friction, errors, and limits your growth isn't working. It's **surviving**.
+
+And surviving isn't a business strategy.
+
+The 6 signs are warnings, not death sentences. If you recognize them in time, modernization is an investment with clear ROI. If you ignore them, eventually the system will force you to act... under the worst possible conditions.
+
+**Don't wait until "working" stops being enough.**
+
+---
+
+## Does This Sound Familiar?
+
+At LegaSInt, we help companies and law firms evaluate their technology infrastructure without selling you what you don't need. We audit processes, quantify hidden costs, and design phased modernization plans.
+
+**[Let's talk about your case →](/contact)**
+
+---
+
+*Did you find this article useful? Share it with someone who's still defending their 10-year-old system.*

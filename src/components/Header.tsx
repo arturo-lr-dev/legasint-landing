@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
+import slugMap from '@/data/slug-map.json';
 
 const menuVariants = {
   hidden: { opacity: 0 },
@@ -80,13 +81,57 @@ export const Header: React.FC = () => {
 
   if (pathname === '/qr') return null;
 
-  const isEnglish = pathname?.includes('/blog/en');
-  const isBlogPage = pathname?.startsWith('/blog');
+  const isEnglish =
+    pathname === '/en' ||
+    pathname === '/contact' ||
+    !!pathname?.startsWith('/blog/en');
+  const isBlogPage = !!pathname?.startsWith('/blog');
+
+  const homeHref = isEnglish ? '/en' : '/';
+  const blogHref = isEnglish ? '/blog/en' : '/blog';
 
   const navLinks = [
-    { href: '/', label: 'Home', active: pathname === '/' },
-    { href: '/blog', label: 'Blog', active: isBlogPage && !isEnglish },
+    { href: homeHref, label: isEnglish ? 'Home' : 'Inicio', active: pathname === homeHref },
+    { href: blogHref, label: 'Blog', active: isBlogPage },
   ];
+
+  // Resolve the alternate-language URL for the current page
+  const getAlternateUrl = (targetLocale: 'es' | 'en'): string => {
+    const path = pathname || '/';
+
+    if (path === '/' || path === '/en') return targetLocale === 'en' ? '/en' : '/';
+    if (path === '/contacto' || path === '/contact')
+      return targetLocale === 'en' ? '/contact' : '/contacto';
+    if (path === '/blog' || path === '/blog/en')
+      return targetLocale === 'en' ? '/blog/en' : '/blog';
+
+    const blogPostMatch = path.match(/^\/blog\/(en\/)?([^/]+)$/);
+    if (blogPostMatch) {
+      const slug = blogPostMatch[2];
+      const key = `${targetLocale === 'en' ? 'es' : 'en'}:${slug}` as keyof typeof slugMap.posts;
+      const alternate = slugMap.posts[key];
+      if (alternate) return targetLocale === 'en' ? `/blog/en/${alternate}` : `/blog/${alternate}`;
+      return targetLocale === 'en' ? '/blog/en' : '/blog';
+    }
+
+    const tagMatch = path.match(/^\/blog\/(en\/)?tag\/([^/]+)$/);
+    if (tagMatch) {
+      const tag = decodeURIComponent(tagMatch[2]).toLowerCase();
+      const exists = targetLocale === 'en'
+        ? (slugMap.tagsEn as string[]).includes(tag)
+        : (slugMap.tagsEs as string[]).includes(tag);
+      if (exists) {
+        const encoded = encodeURIComponent(tag);
+        return targetLocale === 'en' ? `/blog/en/tag/${encoded}` : `/blog/tag/${encoded}`;
+      }
+      return targetLocale === 'en' ? '/blog/en' : '/blog';
+    }
+
+    return targetLocale === 'en' ? '/en' : '/';
+  };
+
+  const esUrl = getAlternateUrl('es');
+  const enUrl = getAlternateUrl('en');
 
   return (
     <header
@@ -162,35 +207,35 @@ export const Header: React.FC = () => {
               </ul>
 
               {/* Language Selector */}
-              {isBlogPage && (
-                <motion.div variants={itemVariants} className="mt-10">
-                  <div className="h-px w-16 bg-gradient-to-r from-blue-400/60 to-transparent mb-6" />
-                  <div className="inline-flex items-center gap-1 p-1 rounded-full border border-white/15 bg-white/5">
-                    <Link
-                      href="/blog"
-                      onClick={() => setMenuOpen(false)}
-                      className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
-                        !isEnglish
-                          ? 'bg-gradient-to-r from-blue-500/40 to-purple-500/40 text-white shadow-inner'
-                          : 'text-blue-200 hover:text-white'
-                      }`}
-                    >
-                      ES
-                    </Link>
-                    <Link
-                      href="/blog/en"
-                      onClick={() => setMenuOpen(false)}
-                      className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
-                        isEnglish
-                          ? 'bg-gradient-to-r from-blue-500/40 to-purple-500/40 text-white shadow-inner'
-                          : 'text-blue-200 hover:text-white'
-                      }`}
-                    >
-                      EN
-                    </Link>
-                  </div>
-                </motion.div>
-              )}
+              <motion.div variants={itemVariants} className="mt-10">
+                <div className="h-px w-16 bg-gradient-to-r from-blue-400/60 to-transparent mb-6" />
+                <div className="inline-flex items-center gap-1 p-1 rounded-full border border-white/15 bg-white/5">
+                  <Link
+                    href={esUrl}
+                    onClick={() => setMenuOpen(false)}
+                    hrefLang="es"
+                    className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                      !isEnglish
+                        ? 'bg-gradient-to-r from-blue-500/40 to-purple-500/40 text-white shadow-inner'
+                        : 'text-blue-200 hover:text-white'
+                    }`}
+                  >
+                    ES
+                  </Link>
+                  <Link
+                    href={enUrl}
+                    onClick={() => setMenuOpen(false)}
+                    hrefLang="en"
+                    className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                      isEnglish
+                        ? 'bg-gradient-to-r from-blue-500/40 to-purple-500/40 text-white shadow-inner'
+                        : 'text-blue-200 hover:text-white'
+                    }`}
+                  >
+                    EN
+                  </Link>
+                </div>
+              </motion.div>
 
               {/* Footer tagline */}
               <motion.div
@@ -212,7 +257,7 @@ export const Header: React.FC = () => {
         <nav className="flex items-center justify-between h-14 md:h-16">
           {/* Logo */}
           <Link
-            href="/"
+            href={homeHref}
             onClick={() => setMenuOpen(false)}
             className="font-mono text-lg md:text-xl font-bold text-white hover:text-blue-200 transition-colors"
           >
@@ -221,52 +266,45 @@ export const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <Link
-              href="/"
-              className={`text-sm font-medium transition-colors ${
-                pathname === '/'
-                  ? 'text-white'
-                  : 'text-blue-200 hover:text-white'
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/blog"
-              className={`text-sm font-medium transition-colors ${
-                isBlogPage && !isEnglish
-                  ? 'text-white'
-                  : 'text-blue-200 hover:text-white'
-              }`}
-            >
-              Blog
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors ${
+                  link.active
+                    ? 'text-white'
+                    : 'text-blue-200 hover:text-white'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
 
             {/* Language Selector - Desktop */}
-            {isBlogPage && (
-              <div className="flex items-center gap-2 ml-4 pl-4 border-l border-white/20">
-                <Link
-                  href="/blog"
-                  className={`text-xs px-2 py-1 rounded transition-colors ${
-                    !isEnglish
-                      ? 'bg-white/20 text-white'
-                      : 'text-blue-200 hover:text-white'
-                  }`}
-                >
-                  ES
-                </Link>
-                <Link
-                  href="/blog/en"
-                  className={`text-xs px-2 py-1 rounded transition-colors ${
-                    isEnglish
-                      ? 'bg-white/20 text-white'
-                      : 'text-blue-200 hover:text-white'
-                  }`}
-                >
-                  EN
-                </Link>
-              </div>
-            )}
+            <div className="flex items-center gap-2 ml-4 pl-4 border-l border-white/20">
+              <Link
+                href={esUrl}
+                hrefLang="es"
+                className={`text-xs px-2 py-1 rounded transition-colors ${
+                  !isEnglish
+                    ? 'bg-white/20 text-white'
+                    : 'text-blue-200 hover:text-white'
+                }`}
+              >
+                ES
+              </Link>
+              <Link
+                href={enUrl}
+                hrefLang="en"
+                className={`text-xs px-2 py-1 rounded transition-colors ${
+                  isEnglish
+                    ? 'bg-white/20 text-white'
+                    : 'text-blue-200 hover:text-white'
+                }`}
+              >
+                EN
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

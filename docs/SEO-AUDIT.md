@@ -1,6 +1,6 @@
 # Auditoria SEO Completa - legasint.com
 
-**Fecha:** 2026-02-16
+**Fecha:** 2026-02-16 (ultima actualizacion: 2026-08-27, Fase 4)
 **Sitio:** https://legasint.com
 **Framework:** Next.js 15.5.9 (App Router, Static Export)
 
@@ -8,7 +8,9 @@
 
 ## Resumen Ejecutivo
 
-El sitio tiene una base tecnica solida con Next.js, sitemap dinamico, robots.txt correcto, semantic HTML y buen sistema de blog con MDX. Sin embargo, carece de elementos SEO criticos como datos estructurados (JSON-LD), etiquetas hreflang para internacionalizacion, canonical tags y tiene la imagen OG con dimensiones incorrectas.
+El sitio tiene una base tecnica solida con Next.js, sitemap dinamico, robots.txt correcto, semantic HTML y buen sistema de blog con MDX. Tras las Fases 1-3 (febrero 2026) y la Fase 4 (agosto 2026), el sitio cuenta con datos estructurados (JSON-LD), hreflang bidireccional con `x-default`, canonicals, home bilingue real (/ ES + /en EN), 321 posts con imagenes locales y schemas Organization, WebSite, Article, BreadcrumbList, LocalBusiness, Service y FAQPage.
+
+> **Nota de contexto:** esta auditoria se escribio cuando el blog tenia 40 posts. El blog crecio a 329 posts y varias afirmaciones quedaron desactualizadas (imagenes placehold.co, mapeo hreflang por fecha, `<html lang>` unico). La Fase 4 corrigio esos problemas; el detalle esta al final del documento.
 
 ### Puntuacion por Area
 
@@ -32,7 +34,7 @@ El sitio tiene una base tecnica solida con Next.js, sitemap dinamico, robots.txt
 | Analytics | ~~Bueno~~ RESUELTO | ~~7/10~~ 8/10 |
 | RSS Feed | ~~No existe~~ RESUELTO | ~~0/10~~ 9/10 |
 
-**Puntuacion global estimada: ~~5.5/10~~ ~~7.2/10~~ ~~8.4/10~~ 9.0/10 (post Fase 3)**
+**Puntuacion global estimada: ~~5.5/10~~ ~~7.2/10~~ ~~8.4/10~~ ~~9.0/10~~ 9.4/10 (post Fase 4)**
 
 ---
 
@@ -477,6 +479,63 @@ No se encontro ninguna implementacion de schema markup en todo el sitio.
 - Author con fallback a "Legasint" (lee del frontmatter si existe)
 
 ### Nota: Tarea 2.6 (Twitter cards) ya completada en Fase 1
+
+---
+
+## Fase 4 - Correccion de deuda y home bilingue -- COMPLETADA (2026-08-27)
+
+### Contexto
+
+El blog crecio de 40 a 329 posts tras la Fase 3, rompiendo varias suposiciones de la auditoria original.
+
+### Bugs corregidos
+
+| Problema | Solucion |
+|----------|----------|
+| 238 posts con imagenes placehold.co + 51 og:image rotos (404) | Scripts `generate-blog-images.mjs` + `generate-missing-blog-images.mjs`; 329 imagenes locales generadas |
+| hreflang incorrecto: mapeo ES<->EN por fecha (166 posts ES / 134 fechas unicas -> colisiones) | Campo `translationKey` en frontmatter (160 pares via `add-translation-keys.mjs`); `getAlternateSlug` lo usa |
+| `<html lang="es">` hardcodeado para todo el sitio | Route groups `(es)` y `(en)` con root layouts propios (`<html lang>` correcto por idioma) |
+| Home visible en ingles con metadata en espanol | Home bilingue real: `/` (ES) + `/en` (EN) con diccionario `src/i18n/home-copy.ts` |
+| Home sin hreflang (sitemap declaraba es+en -> misma URL) | hreflang `/` <-> `/en` + `x-default` en metadata y sitemap |
+| Tag pages con hreflang a tags inexistentes en el otro idioma | hreflang cruzado solo si el tag existe en ambos idiomas |
+| Canibalizacion: 5 grupos de posts duplicados (8 posts) | Consolidados; redirects 301 en `vercel.json` |
+| Selector de idioma solo en blog (y solo al listing) | Selector global en Header: mapea home, contacto, posts (via `slug-map.json` generado en prebuild) y tags |
+| Meta verificacion GSC nunca se renderizaba | Ahora condicional a `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` (documentada en scripts/README.md) |
+| 404 generico de Next tras route groups | `app/global-not-found.tsx` + `experimental.globalNotFound` |
+
+### Mejoras nuevas
+
+- Schemas `LocalBusiness` (ProfessionalService) en /contacto y /contact, `Service` (ItemList) y `FAQPage` en home ES/EN (con seccion FAQ visible alimentada por el mismo diccionario).
+- `x-default` en hreflang de home, contacto, blog, posts y tags.
+- `og:locale:alternate` en posts.
+- Eliminado `src/i18n/i18n.ts` (boilerplate sin uso) y dependencias `i18next`/`react-i18next`.
+
+### Estado final (2026-08-27)
+
+- **321 posts** (160 ES + 161 EN), **160 pares** de traduccion, 1 post EN sin par legitimo (`eu-ai-regulation-compliance-2026`).
+- **1.174 paginas estaticas** en el build; 0 referencias placehold.co; 0 og:image rotos; 0 colisiones hreflang.
+- **Pendiente (externo al repo):** configurar Google Search Console (crear propiedad, poner token en `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`), www->non-www en el dashboard de Vercel, y validar schemas en Rich Results Test.
+
+### GEO (Generative Engine Optimization) — añadido 2026-08-27
+
+Optimizacion para motores generativos (ChatGPT, Perplexity, Gemini, AI Overviews):
+
+| Medida | Estado |
+|--------|--------|
+| robots.txt con crawlers IA permitidos (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.) | Ya existia |
+| `/llms.txt` | Actualizado: sin legal tech (coherente con home), home /en enlazada, datos clave de empresa, links .md por post, seccion Optional |
+| `/llms-full.txt` | NUEVO: contenido completo de los 321 articulos (~3MB) para RAG/ingesta |
+| Versiones Markdown por post (`/blog-md/{es,en}/<slug>.md`, 321 archivos via prebuild) | NUEVO |
+| Entidad de autor: `founder` (Person) en Organization schema (E-E-A-T) | NUEVO |
+| FAQ + FAQPage schema en home (contenido citable) | Hecho en Fase 4 |
+
+**Pendiente GEO (contenido, no automatizable):** TL;DR/resumen respondible al inicio de los posts, datos y estadisticas propias citables, y autor con bio en los posts (frontmatter `author`).
+
+### Futuro (fuera de alcance de Fase 4)
+
+- Paginas de servicios dedicadas (`/servicios/...`) para keyword targeting comercial.
+- Estrategia de contenidos/keywords y backlinks.
+- Evaluar `/en` como prefijo para todo el ingles (unificar `/contact` y `/blog/en` bajo `/en`) — requiere redirects masivos, decidido no hacerlo para no romper URLs indexadas.
 
 ---
 

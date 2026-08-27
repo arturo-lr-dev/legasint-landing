@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Reveal from './Reveal';
 import TiltCard from './TiltCard';
 import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
+import { homeCopy, Locale } from '@/i18n/home-copy';
 
 interface Project {
   title: string;
@@ -14,7 +15,8 @@ interface Project {
   tags: string[];
 }
 
-const PortfolioSection: React.FC = () => {
+const PortfolioSection: React.FC<{ locale?: Locale }> = ({ locale = 'es' }) => {
+  const copy = homeCopy[locale].portfolio;
   const [mounted, setMounted] = useState<boolean>(false);
   const isMobile = useIsMobile();
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -26,50 +28,19 @@ const PortfolioSection: React.FC = () => {
   });
   const parallaxY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%']);
 
-  const projects: Project[] = [
-    {
-      title: "Valle Hub",
-      description: "Discover your city",
-      imageUrl: "/projects/offpeaks.webp",
-      projectUrl: "https://www.vallehub.com/",
-      tags: ["Ubication", "Commerces", "Offers", "Claude", "Supabase"]
-    },
-    {
-      title: "SF Education",
-      description: "Change the way of learning",
-      imageUrl: "/projects/sfeducation.webp",
-      projectUrl: "https://sfeducation.es",
-      tags: ["Education", "Courses", "Responsive"]
-    },
-    {
-      title: "LeCrep",
-      description: "A modern web site atractive for the client",
-      imageUrl: "/projects/lacrep.webp",
-      projectUrl: "https://la-crep-webapp.web.app",
-      tags: ["Small Client", "Landing Page", "Responsive"]
-    },
-    {
-      title: "Sumeria",
-      description: "Your best AI assistant for your business",
-      imageUrl: "/projects/sumeria.webp",
-      projectUrl: "https://github.com/arturo-lr-dev/sumeria",
-      tags: ["AI", "Business", "Assistant", "Open Source"]
-    },
-    {
-      title: "Smart Stadium Pricing",
-      description: "Dynamic pricing for stadium events",
-      imageUrl: "/projects/smart-stadium-pricing.webp",
-      projectUrl: "https://github.com/arturo-lr-dev/stadium-smart-pricing",
-      tags: ["ML", "Pricing", "Events", "Open Source"]
-    },
-    {
-      title: "Ambar PRO",
-      description: "Advanced Modelling Solutions for Complex Industrial Systems",
-      imageUrl: "/projects/ambarpro.webp",
-      projectUrl: "https://ambarpro.net",
-      tags: ["Modelling", "Industrial", "Solutions"]
-    }
+  const projectMeta = [
+    { imageUrl: "/projects/offpeaks.webp", projectUrl: "https://www.vallehub.com/" },
+    { imageUrl: "/projects/sfeducation.webp", projectUrl: "https://sfeducation.es" },
+    { imageUrl: "/projects/lacrep.webp", projectUrl: "https://la-crep-webapp.web.app" },
+    { imageUrl: "/projects/sumeria.webp", projectUrl: "https://github.com/arturo-lr-dev/sumeria" },
+    { imageUrl: "/projects/smart-stadium-pricing.webp", projectUrl: "https://github.com/arturo-lr-dev/stadium-smart-pricing" },
+    { imageUrl: "/projects/ambarpro.webp", projectUrl: "https://ambarpro.net" },
   ];
+
+  const projects: Project[] = copy.projects.map((p, i) => ({
+    ...p,
+    ...projectMeta[i],
+  }));
 
   useEffect(() => {
     setMounted(true);
@@ -102,7 +73,7 @@ const PortfolioSection: React.FC = () => {
         <Reveal>
           <div className="text-center mb-16">
             <h2 className="font-mono text-2xl font-bold text-white mb-4">
-             {"// "} Our Projects
+              {copy.title}
             </h2>
           </div>
         </Reveal>
@@ -164,7 +135,7 @@ const PortfolioSection: React.FC = () => {
         <Reveal delay={projects.length * 200}>
           <div className="text-center mt-16">
             <p className="font-mono text-xl text-blue-200 mb-8">
-              Explore our portfolio of innovative solutions
+              {copy.cta}
             </p>
           </div>
         </Reveal>

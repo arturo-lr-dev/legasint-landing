@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Reveal from './Reveal';
 import TiltCard from './TiltCard';
 import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
+import { homeCopy, Locale } from '@/i18n/home-copy';
 
 interface SocialCause {
   title: string;
@@ -11,7 +12,8 @@ interface SocialCause {
   icon: React.ReactNode;
 }
 
-const SocialImpactSection: React.FC = () => {
+const SocialImpactSection: React.FC<{ locale?: Locale }> = ({ locale = 'es' }) => {
+  const copy = homeCopy[locale].social;
   const [mounted, setMounted] = useState<boolean>(false);
   const isMobile = useIsMobile();
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -84,10 +86,10 @@ const SocialImpactSection: React.FC = () => {
         <Reveal>
           <div className="text-center mb-16">
             <h2 className="font-mono text-2xl font-bold text-white mb-4">
-              {"/* "} Our Social Impact {" */"}
+              {copy.title}
             </h2>
             <p className="text-blue-200/80 text-lg max-w-xl mx-auto">
-              Technology with purpose, beyond the code
+              {copy.subtitle}
             </p>
           </div>
         </Reveal>
@@ -158,11 +160,11 @@ const SocialImpactSection: React.FC = () => {
               <div className="h-px w-16 sm:w-28 bg-gradient-to-l from-transparent to-purple-400/60" />
             </div>
             <p className="font-mono text-lg sm:text-xl text-blue-200 max-w-2xl mx-auto">
-              Join us in our mission to create{' '}
+              {copy.ctaPre}{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300 font-bold">
-                positive impact
+                {copy.ctaHighlight}
               </span>{' '}
-              through technology
+              {copy.ctaPost}
             </p>
           </div>
         </Reveal>

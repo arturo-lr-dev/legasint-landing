@@ -1,0 +1,131 @@
+---
+title: "Red flags al elegir una empresa de desarrollo de software"
+date: "2026-08-08"
+language: "es"
+canonical: "https://legasint.com/blog/red-flags-elegir-empresa-desarrollo-software"
+tags: ["desarrollo software", "consultora IT", "red flags", "outsourcing", "selección proveedor"]
+---
+
+# Red flags al elegir una empresa de desarrollo de software
+
+Señales de alarma que indican que una consultora o empresa de desarrollo no es la elección adecuada para tu proyecto tecnológico.
+
+## Introducción
+
+Contratar una empresa de desarrollo de software es una de las decisiones más importantes que tomará tu negocio. El socio tecnológico adecuado puede acelerar tu crecimiento, mientras que la elección equivocada puede costarte meses de retraso, miles de euros y oportunidades perdidas.
+
+En este artículo analizamos las **señales de alarma** que debes detectar antes de firmar con cualquier consultora o empresa de desarrollo.
+
+## 1. No preguntan sobre tu negocio
+
+Si la primera reunión se centra exclusivamente en funcionalidades y presupuesto, sin indagar en tu modelo de negocio, tus clientes o tus objetivos estratégicos, es una señal clara de que te van a vender una solución genérica, no una solución para ti.
+
+**Un buen socio tecnológico** quiere entender:
+- Quiénes son tus clientes
+- Cómo generas ingresos
+- Qué problema resuelves
+- Cuáles son tus métricas clave
+
+## 2. Presupuesto cerrado sin análisis previo
+
+Un presupuesto detallado sin haber hecho un discovery o análisis previo es, como mínimo, una estimación a ojo. En el peor de los casos, es una trampa: te venden un precio bajo para ganar el proyecto y luego te bombardean con extras.
+
+**Señal de alerta:** Presupuestos que llegan en 24-48 horas sin haber tenido conversaciones profundas.
+
+## 3. No hablan de mantenimiento ni escalabilidad
+
+El desarrollo no termina en el lanzamiento. Si la empresa no menciona:
+- Costes de mantenimiento post-lanzamiento
+- Escalabilidad del sistema
+- Deuda técnica
+- Actualizaciones de seguridad
+
+...están pensando en entregar y desaparecer, no en construir un producto sostenible.
+
+## 4. Tecnología impuesta, no elegida
+
+Si te dicen "lo hacemos en X porque es lo que usamos nosotros" sin justificar por qué esa tecnología es la adecuada para tu caso específico, están priorizando su comodidad sobre tu éxito.
+
+**Un buen equipo** justifica la elección técnica basándose en:
+- Requisitos de rendimiento
+- Escalabilidad esperada
+- Ecosistema y mantenimiento a largo plazo
+- Disponibilidad de talento
+
+## 5. Falta de transparencia en el equipo
+
+¿Quién va a trabajar en tu proyecto? Si no te presentan al equipo, si hablan de "recursos" sin nombres, o si el equipo cambia constantemente sin explicación, hay un problema de gestión y compromiso.
+
+**Pregunta directamente:**
+- ¿Quién será el responsable técnico?
+- ¿Cuántos desarrolladores dedicados tendrás?
+- ¿Hay rotación habitual de equipo?
+
+## 6. Comunicación deficiente desde el primer contacto
+
+Si tardan días en responder emails, si las reuniones son caóticas, o si no documentan lo acordado, imagina cómo será la comunicación cuando el proyecto esté en marcha y haya problemas.
+
+**La comunicación es el predictor más fiable** del éxito o fracaso de un proyecto tecnológico.
+
+## 7. No tienen casos de éxito demostrables
+
+Todo el mundo empieza en algún momento, pero si una empresa no puede mostrarte:
+- Proyectos similares completados
+- Referencias de clientes
+- Métricas de resultados
+
+...estás contratando a ciegas.
+
+**Pide:**
+- Ver demos o acceso a productos lanzados
+- Hablar con clientes anteriores
+- Conocer resultados concretos (tiempos, escalabilidad, satisfacción)
+
+## 8. Contratos ambiguos o desequilibrados
+
+Revisa con lupa:
+- **Propiedad intelectual:** ¿Quién se queda con el código?
+- **Cláusulas de confidencialidad:** ¿Protegen tus datos y los de tus clientes?
+- **Penalizaciones por retraso:** ¿Hay consecuencias reales?
+- **Condiciones de pago:** ¿Están alineadas con hitos de entrega?
+
+Un contrato que solo protege al proveedor es una señal de alerta grave.
+
+## 9. No hablan de riesgos ni plan B
+
+Todo proyecto tecnológico tiene riesgos. Si la empresa no los menciona, o peor aún, si te dicen que "no va a haber problemas", te están vendiendo humo.
+
+**Un equipo profesional** identifica riesgos propone mitigaciones y tiene planes alternativos.
+
+## 10. Precio sospechosamente bajo
+
+Si un presupuesto es significativamente más bajo que el resto, pregúntate por qué. Las razones suelen ser:
+- Subestimación del alcance (te pedirán extras luego)
+- Equipo junior sin experiencia
+- Recursos compartidos entre múltiples clientes
+- Calidad deficiente que costará más arreglar después
+
+**Recuerda:** Lo barato sale caro, especialmente en tecnología.
+
+## Checklist de evaluación
+
+Antes de contratar, verifica:
+
+- [ ] Han hecho preguntas sobre tu negocio, no solo sobre funcionalidades
+- [ ] El presupuesto se basa en un análisis previo (discovery)
+- [ ] Hablan de mantenimiento, escalabilidad y deuda técnica
+- [ ] Justifican la elección tecnológica con argumentos sólidos
+- [ ] Te presentan al equipo que trabajará en el proyecto
+- [ ] La comunicación ha sido fluida y profesional desde el inicio
+- [ ] Tienen casos de éxito y referencias verificables
+- [ ] El contrato protege tus intereses (IP, confidencialidad, hitos)
+- [ ] Identifican riesgos y proponen mitigaciones
+- [ ] El precio está alineado con el mercado (ni excesivamente alto ni sospechosamente bajo)
+
+## Conclusión
+
+Elegir un socio tecnológico no es solo comparar precios y tecnologías. Es evaluar si esa empresa entiende tu negocio, se compromete con tus objetivos y tiene la capacidad de ejecutar con profesionalidad.
+
+Las red flags no significan que una empresa sea mala, pero sí indican que puede no ser la adecuada para tu proyecto. Escúchalas antes de firmar.
+
+**¿Necesitas ayuda evaluando propuestas de desarrollo?** En LegaSint ayudamos a empresas y despachos a elegir el socio tecnológico adecuado y a supervisar la ejecución del proyecto. [Contáctanos](https://legasint.com/contacto) para una consulta inicial.

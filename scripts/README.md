@@ -106,6 +106,43 @@ El cron job del blog (11:00 diario) debe:
 
 Si hay posts duplicados, borrarlos manualmente y actualizar blog-ideas.json para reflejar solo los posts que existen.
 
+## Scripts de imágenes y SEO
+
+### generate-blog-images.mjs
+
+Genera imágenes PNG (800x400, gradiente + título) para posts cuyo frontmatter `image:` es una URL de `placehold.co`, y reescribe el frontmatter para apuntar a `/blog-images/<locale>-<slug>.png`.
+
+```bash
+node scripts/generate-blog-images.mjs
+```
+
+### generate-missing-blog-images.mjs
+
+Genera las imágenes de posts cuyo `image: "/blog-images/*.png"` referencia un archivo que no existe (usa el `title` del post como texto).
+
+```bash
+node scripts/generate-missing-blog-images.mjs
+```
+
+### add-translation-keys.mjs (one-off, ya ejecutado)
+
+Emparejó posts ES↔EN (por fecha + similitud de slug/contenido) y escribió `translationKey` en el frontmatter de ambos posts. El campo `translationKey` es lo que usan hreflang y el selector de idioma para enlazar traducciones.
+
+**⚠️ Al crear posts nuevos:** añadir manualmente el mismo `translationKey` en el frontmatter del post ES y del EN (por convención, el slug ES). Sin él, el post no tendrá hreflang ni cambio de idioma directo.
+
+### generate-slug-map.mjs (automático)
+
+Genera `src/data/slug-map.json` (mapa slug ES↔EN + listas de tags por idioma) que usa el Header para el selector de idioma. Se ejecuta solo en cada build vía `prebuild` en package.json.
+
+### generate-blog-markdown.mjs (automático)
+
+Genera una versión Markdown de cada post en `public/blog-md/{es,en}/<slug>.md` (con frontmatter simplificado + URL canónica) para ingesta por LLMs/agentes. Se enlazan desde `/llms.txt`. Se ejecuta en `prebuild`.
+
+## Variables de entorno
+
+- `NEXT_PUBLIC_GOOGLE_ANALYTICS` — ID de GA/GTM.
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` — token de verificación de Google Search Console (si está vacía, no se renderiza la meta).
+
 ## Best Practices
 
 1. **Diversificar temas:** No publicar 10 posts seguidos del mismo tema
