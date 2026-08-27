@@ -67,9 +67,9 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           tags: ['Cliente Pequeño', 'Landing Page', 'Responsive'],
         },
         {
-          title: 'Sumeria',
-          description: 'Tu mejor asistente de IA para tu negocio',
-          tags: ['IA', 'Negocio', 'Asistente', 'Open Source'],
+          title: 'Cronos',
+          description: 'Aula virtual marca blanca para academias de oposiciones',
+          tags: ['Aula Virtual', 'Oposiciones', 'Multi-tenant', 'SaaS'],
         },
         {
           title: 'Smart Stadium Pricing',
@@ -174,9 +174,9 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           tags: ['Small Client', 'Landing Page', 'Responsive'],
         },
         {
-          title: 'Sumeria',
-          description: 'Your best AI assistant for your business',
-          tags: ['AI', 'Business', 'Assistant', 'Open Source'],
+          title: 'Cronos',
+          description: 'White-label virtual classroom for exam preparation academies',
+          tags: ['Virtual Classroom', 'Exam Prep', 'Multi-tenant', 'SaaS'],
         },
         {
           title: 'Smart Stadium Pricing',
