@@ -1,6 +1,6 @@
 'use client';
 import { fadeInUp } from '@/lib/animations';
-import { trackLead } from '@/lib/analytics';
+import { trackOutboundLead } from '@/lib/analytics';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
@@ -8,6 +8,10 @@ import { homeCopy, Locale } from '@/i18n/home-copy';
 
 const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
   const t = homeCopy[locale].hero;
+  const whatsappUrl = locale === 'es'
+    ? 'https://wa.me/34649355701?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios.'
+    : 'https://wa.me/34649355701?text=Hello%2C%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services.';
+  const emailUrl = 'mailto:arturo@legasint.com';
   const letters = "Legasint".split("");
   const tagline = t.tagline.split(" ");
   const isMobile = useIsMobile();
@@ -132,7 +136,7 @@ const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
         >
           {/* WhatsApp Button */}
           <a
-            href="https://wa.me/34649355701?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios."
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative px-8 py-4 text-xl font-bold text-white rounded-full overflow-hidden transition-all duration-300 animate-bounce-gentle shadow-[0_0_20px_rgba(34,197,94,0.5)] hover:shadow-[0_0_35px_rgba(34,197,94,0.7)] hover:scale-105"
@@ -140,7 +144,10 @@ const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
               background: 'linear-gradient(135deg, #22c55e 0%, #15803d 50%, #166534 100%)',
             }}
             aria-label={t.whatsappAria}
-            onClick={() => trackLead('whatsapp_button')}
+            onClick={(e) => {
+              e.preventDefault();
+              trackOutboundLead(whatsappUrl, 'whatsapp_button');
+            }}
           >
             {/* Animated glow ring */}
             <div
@@ -170,14 +177,17 @@ const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
 
           {/* Email Button */}
           <a
-            href="mailto:arturo@legasint.com"
+            href={emailUrl}
             className="group relative px-8 py-4 text-xl font-bold text-white rounded-full overflow-hidden transition-all duration-300 animate-bounce-gentle shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_35px_rgba(139,92,246,0.7)] hover:scale-105"
             style={{
               animationDelay: '0.15s',
               background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #4f46e5 100%)',
             }}
             aria-label={t.emailAria}
-            onClick={() => trackLead('email_button')}
+            onClick={(e) => {
+              e.preventDefault();
+              trackOutboundLead(emailUrl, 'email_button');
+            }}
           >
             {/* Animated glow ring */}
             <div
