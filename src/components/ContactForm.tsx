@@ -23,7 +23,10 @@ const copy = {
     success: '¡Mensaje enviado! Te contactamos pronto.',
     error: 'Hubo un error. Inténtalo de nuevo o escríbenos por WhatsApp.',
     required: 'Campo obligatorio',
-    invalidEmail: 'Email no válido',
+    invalidEmail: 'Introduce un email válido',
+    nameTooShort: 'El nombre debe tener al menos 2 caracteres',
+    messageTooShort: 'El mensaje debe tener al menos 10 caracteres',
+    chars: 'caracteres',
   },
   en: {
     title: 'Tell us about your project',
@@ -39,7 +42,10 @@ const copy = {
     success: 'Message sent! We will contact you soon.',
     error: 'Something went wrong. Please try again or reach us on WhatsApp.',
     required: 'Required field',
-    invalidEmail: 'Invalid email',
+    invalidEmail: 'Please enter a valid email',
+    nameTooShort: 'Name must be at least 2 characters',
+    messageTooShort: 'Message must be at least 10 characters',
+    chars: 'characters',
   },
 };
 
@@ -47,16 +53,22 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
   const t = copy[locale];
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [messageLength, setMessageLength] = useState(0);
 
   const validate = (formData: FormData) => {
     const nextErrors: Record<string, string> = {};
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const message = formData.get('message') as string;
+    const name = (formData.get('name') as string) || '';
+    const email = (formData.get('email') as string) || '';
+    const message = (formData.get('message') as string) || '';
 
-    if (!name || name.trim().length < 2) nextErrors.name = t.required;
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = t.invalidEmail;
-    if (!message || message.trim().length < 10) nextErrors.message = t.required;
+    if (name.trim().length === 0) nextErrors.name = t.required;
+    else if (name.trim().length < 2) nextErrors.name = t.nameTooShort;
+
+    if (email.trim().length === 0) nextErrors.email = t.required;
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = t.invalidEmail;
+
+    if (message.trim().length === 0) nextErrors.message = t.required;
+    else if (message.trim().length < 10) nextErrors.message = t.messageTooShort;
 
     return nextErrors;
   };
@@ -151,13 +163,14 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
 
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-blue-100 mb-1.5">
-            {t.name}
+            {t.name} <span className="text-red-300" aria-hidden="true">*</span>
           </label>
           <input
             id="name"
             name="name"
             type="text"
             required
+            minLength={2}
             className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
             placeholder="John Doe"
           />
@@ -166,7 +179,7 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-blue-100 mb-1.5">
-            {t.email}
+            {t.email} <span className="text-red-300" aria-hidden="true">*</span>
           </label>
           <input
             id="email"
@@ -207,17 +220,28 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
 
         <div className="md:col-span-2">
           <label htmlFor="message" className="block text-sm font-medium text-blue-100 mb-1.5">
-            {t.message}
+            {t.message} <span className="text-red-300" aria-hidden="true">*</span>
           </label>
           <textarea
             id="message"
             name="message"
             rows={4}
             required
+            minLength={10}
+            onChange={(e) => setMessageLength(e.target.value.length)}
             className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all resize-none"
             placeholder={t.messagePlaceholder}
           />
-          {errors.message && <p className="mt-1.5 text-sm text-red-300">{errors.message}</p>}
+          <div className="flex items-center justify-between mt-1.5">
+            {errors.message ? (
+              <p className="text-sm text-red-300">{errors.message}</p>
+            ) : (
+              <span />
+            )}
+            <p className={`text-xs ${messageLength < 10 ? 'text-blue-300/70' : 'text-green-300/80'}`}>
+              {messageLength} {t.chars}
+            </p>
+          </div>
         </div>
 
         <div className="md:col-span-2">
