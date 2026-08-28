@@ -99,6 +99,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${BASE_URL}/erp-a-medida`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          es: `${BASE_URL}/erp-a-medida`,
+          en: `${BASE_URL}/custom-erp`,
+          'x-default': `${BASE_URL}/erp-a-medida`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/custom-erp`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/custom-erp`,
+          es: `${BASE_URL}/erp-a-medida`,
+          'x-default': `${BASE_URL}/erp-a-medida`,
+        },
+      },
+    },
+    {
       url: `${BASE_URL}/blog`,
       lastModified: latestEsDate,
       changeFrequency: 'weekly',
