@@ -149,8 +149,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       items: [
         {
           title: 'Software a medida',
-          description: 'Aplicaciones web, plataformas internas y sistemas de gestión diseñados específicamente para tus procesos.',
-          features: ['Aplicaciones web', 'Sistemas internos', 'SaaS y multi-tenant', 'MVP y prototipos'],
+          description: 'Aplicaciones web y apps, plataformas internas y sistemas de gestión diseñados específicamente para tus procesos.',
+          features: ['Aplicaciones web y apps', 'Sistemas internos', 'SaaS y multi-tenant', 'MVP y prototipos'],
         },
         {
           title: 'APIs e integraciones',
@@ -282,8 +282,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       items: [
         {
           title: 'Custom software',
-          description: 'Web applications, internal platforms and management systems designed specifically for your processes.',
-          features: ['Web applications', 'Internal systems', 'SaaS & multi-tenant', 'MVPs and prototypes'],
+          description: 'Web and mobile applications, internal platforms and management systems designed specifically for your processes.',
+          features: ['Web and mobile applications', 'Internal systems', 'SaaS & multi-tenant', 'MVPs and prototypes'],
         },
         {
           title: 'APIs & integrations',
