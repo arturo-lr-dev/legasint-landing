@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import CustomErpContent from './CustomErpContent';
 
 export const metadata: Metadata = {
-  title: 'Custom ERP Development for Businesses | Legasint',
+  title: 'Custom ERP Development for Businesses',
   description:
     'We build custom ERP systems for SMEs and companies that need more than off-the-shelf software. Sales, purchasing, inventory, production, HR and finance integrated.',
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Custom ERP Development for Businesses | Legasint',
+    title: 'Custom ERP Development for Businesses',
     description:
       'Business management software built specifically for your processes. Sales, purchasing, inventory, production, HR and finance in one system.',
     url: 'https://legasint.com/custom-erp',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom ERP Development for Businesses | Legasint',
+    title: 'Custom ERP Development for Businesses',
     description:
       'Business management software built specifically for your processes.',
   },

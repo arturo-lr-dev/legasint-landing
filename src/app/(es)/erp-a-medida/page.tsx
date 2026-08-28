@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ErpAMedidaContent from './ErpAMedidaContent';
 
 export const metadata: Metadata = {
-  title: 'ERP a medida para empresas | Legasint',
+  title: 'ERP a medida para empresas',
   description:
     'Desarrollamos ERP a medida para pymes y empresas que necesitan más que un software estándar. Módulos de ventas, compras, almacén, producción, RRHH y finanzas integrados.',
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'ERP a medida para empresas | Legasint',
+    title: 'ERP a medida para empresas',
     description:
       'Software de gestión empresarial desarrollado específicamente para tus procesos. Ventas, compras, almacén, producción, RRHH y finanzas en un solo sistema.',
     url: 'https://legasint.com/erp-a-medida',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ERP a medida para empresas | Legasint',
+    title: 'ERP a medida para empresas',
     description:
       'Software de gestión empresarial desarrollado específicamente para tus procesos.',
   },
