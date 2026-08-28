@@ -38,3 +38,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated blog index (rebuilt on prebuild)
+src/data/blog-index.json

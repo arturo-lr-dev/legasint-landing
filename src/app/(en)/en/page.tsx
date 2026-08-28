@@ -1,9 +1,11 @@
 // app/(en)/en/page.tsx — English home (/en)
 import type { Metadata } from 'next';
 import AnimatedLanding from '@/components/landing/AnimatedLanding';
+import ServicesSection from '@/components/landing/ServicesSection';
 import PortfolioSection from '@/components/landing/PortfolioSection';
 import SocialImpactSection from '@/components/landing/SocialSection';
 import FaqSection from '@/components/landing/FaqSection';
+import ContactForm from '@/components/ContactForm';
 import SmoothScroll from '@/components/landing/SmoothScroll';
 import ScrollProgress from '@/components/landing/ScrollProgress';
 import ConsoleEasterEgg from '@/components/landing/ConsoleEasterEgg';
@@ -51,9 +53,15 @@ export default function HomeEn() {
         }}
       >
         <AnimatedLanding locale="en" />
+        <ServicesSection locale="en" />
         <PortfolioSection locale="en" />
         <SocialImpactSection locale="en" />
         <FaqSection locale="en" />
+        <section className="relative z-10 px-4 py-16 md:py-24">
+          <div className="max-w-3xl mx-auto">
+            <ContactForm locale="en" />
+          </div>
+        </section>
       </div>
     </>
   );

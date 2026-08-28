@@ -73,6 +73,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${BASE_URL}/servicios`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          es: `${BASE_URL}/servicios`,
+          en: `${BASE_URL}/services`,
+          'x-default': `${BASE_URL}/servicios`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/services`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          en: `${BASE_URL}/services`,
+          es: `${BASE_URL}/servicios`,
+          'x-default': `${BASE_URL}/servicios`,
+        },
+      },
+    },
+    {
       url: `${BASE_URL}/blog`,
       lastModified: latestEsDate,
       changeFrequency: 'weekly',

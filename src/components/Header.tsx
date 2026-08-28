@@ -88,10 +88,12 @@ export const Header: React.FC = () => {
   const isBlogPage = !!pathname?.startsWith('/blog');
 
   const homeHref = isEnglish ? '/en' : '/';
+  const servicesHref = isEnglish ? '/services' : '/servicios';
   const blogHref = isEnglish ? '/blog/en' : '/blog';
 
   const navLinks = [
     { href: homeHref, label: isEnglish ? 'Home' : 'Inicio', active: pathname === homeHref },
+    { href: servicesHref, label: isEnglish ? 'Services' : 'Servicios', active: pathname === servicesHref },
     { href: blogHref, label: 'Blog', active: isBlogPage },
   ];
 
@@ -100,6 +102,8 @@ export const Header: React.FC = () => {
     const path = pathname || '/';
 
     if (path === '/' || path === '/en') return targetLocale === 'en' ? '/en' : '/';
+    if (path === '/servicios' || path === '/services')
+      return targetLocale === 'en' ? '/services' : '/servicios';
     if (path === '/contacto' || path === '/contact')
       return targetLocale === 'en' ? '/contact' : '/contacto';
     if (path === '/blog' || path === '/blog/en')

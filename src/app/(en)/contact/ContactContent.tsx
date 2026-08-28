@@ -2,11 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { trackEvent, GA_EVENTS } from '@/lib/analytics';
+import { trackOutboundContact } from '@/lib/analytics';
+import ContactForm from '@/components/ContactForm';
 import { useState, useEffect } from 'react';
 
 export default function ContactContent() {
   const [isMobile, setIsMobile] = useState(false);
+  const whatsappUrl = 'https://wa.me/34649355701?text=Hello%2C%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services.';
+  const emailUrl = 'mailto:arturo@legasint.com';
 
   useEffect(() => {
     const checkMobile = () => {
@@ -85,7 +88,7 @@ export default function ContactContent() {
               </p>
 
               <a
-                href="https://wa.me/34649355701?text=Hello%2C%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services."
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative px-8 py-3 text-lg font-bold text-white rounded-full overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.5)] hover:shadow-[0_0_35px_rgba(34,197,94,0.7)] hover:scale-105"
@@ -93,10 +96,10 @@ export default function ContactContent() {
                   background: 'linear-gradient(135deg, #22c55e 0%, #15803d 50%, #166534 100%)',
                 }}
                 aria-label="Send a WhatsApp message"
-                onClick={() => trackEvent(GA_EVENTS.WHATSAPP_CLICK, {
-                  event_category: 'engagement',
-                  event_label: 'contact_page_whatsapp_en'
-                })}
+                onClick={(e) => {
+                  e.preventDefault();
+                  trackOutboundContact(whatsappUrl, 'contact_page_whatsapp_en');
+                }}
               >
                 <div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
@@ -144,16 +147,16 @@ export default function ContactContent() {
               </p>
 
               <a
-                href="mailto:arturo@legasint.com"
+                href={emailUrl}
                 className="group relative px-8 py-3 text-lg font-bold text-white rounded-full overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_35px_rgba(139,92,246,0.7)] hover:scale-105"
                 style={{
                   background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #4f46e5 100%)',
                 }}
                 aria-label="Send an email"
-                onClick={() => trackEvent(GA_EVENTS.CONTACT_CLICK, {
-                  event_category: 'engagement',
-                  event_label: 'contact_page_email_en'
-                })}
+                onClick={(e) => {
+                  e.preventDefault();
+                  trackOutboundContact(emailUrl, 'contact_page_email_en');
+                }}
               >
                 <div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
@@ -164,6 +167,11 @@ export default function ContactContent() {
             </div>
           </motion.div>
         </div>
+
+        {/* Contact Form CTA */}
+        <motion.div variants={fadeInUp} className="mt-16 max-w-3xl mx-auto">
+          <ContactForm locale="en" />
+        </motion.div>
 
         {/* Additional Info */}
         <motion.div

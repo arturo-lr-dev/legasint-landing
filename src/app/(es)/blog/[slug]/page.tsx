@@ -5,11 +5,6 @@ import { getAlternateSlug } from '@/lib/slug-mapping';
 import { BlogPostView } from '@/components/blog';
 import MDXContent from '@/components/blog/MDXContent';
 import { ArticleJsonLd, BreadcrumbJsonLd } from '@/components/seo/JsonLd';
-import { serialize } from 'next-mdx-remote/serialize';
-import remarkGfm from 'remark-gfm';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeSlug from 'rehype-slug';
-
 const BASE_URL = 'https://legasint.com';
 
 interface PageProps {
@@ -73,13 +68,6 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const mdxSource = await serialize(post.content, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeHighlight, rehypeSlug],
-    },
-  });
-
   const { previous, next } = getAdjacentPosts(slug, 'es');
   const related = getRelatedPosts(slug, 'es');
   const tocItems = extractHeadings(post.content);
@@ -95,7 +83,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         ]}
       />
       <BlogPostView post={post} previousPost={previous} nextPost={next} relatedPosts={related} tocItems={tocItems}>
-        <MDXContent source={mdxSource} />
+        <MDXContent source={post.serialized!} />
       </BlogPostView>
     </>
   );

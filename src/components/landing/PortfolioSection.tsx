@@ -32,7 +32,7 @@ const PortfolioSection: React.FC<{ locale?: Locale }> = ({ locale = 'es' }) => {
     { imageUrl: "/projects/offpeaks.webp", projectUrl: "https://www.vallehub.com/" },
     { imageUrl: "/projects/sfeducation.webp", projectUrl: "https://sfeducation.es" },
     { imageUrl: "/projects/lacrep.webp", projectUrl: "https://la-crep-webapp.web.app" },
-    { imageUrl: "/projects/sumeria.webp", projectUrl: "https://github.com/arturo-lr-dev/sumeria" },
+    { imageUrl: "/projects/cronos.webp", projectUrl: "https://academiacronos.es" },
     { imageUrl: "/projects/smart-stadium-pricing.webp", projectUrl: "https://github.com/arturo-lr-dev/stadium-smart-pricing" },
     { imageUrl: "/projects/ambarpro.webp", projectUrl: "https://ambarpro.net" },
   ];
