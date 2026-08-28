@@ -103,36 +103,6 @@ export const trackLead = (
 };
 
 /**
- * Delay opening a URL until a gtag event is sent.
- * Use this for outbound CTAs (WhatsApp, email, download) so conversions are not lost.
- * Returns false so it can be used directly in onClick handlers.
- */
-export const gtagSendEvent = (
-  url: string,
-  eventName: string = 'ads_conversion',
-  params?: GtagEvent
-): boolean => {
-  if (typeof window === 'undefined') return true;
-
-  const navigate = () => {
-    window.location.href = url;
-  };
-
-  if (!window.gtag) {
-    navigate();
-    return false;
-  }
-
-  window.gtag('event', eventName, {
-    ...params,
-    event_callback: navigate,
-    event_timeout: 2000,
-  });
-
-  return false;
-};
-
-/**
  * Track an outbound lead (WhatsApp, email, vcf download) and then navigate.
  * Combines GA4 generate_lead + Google Ads delayed conversion.
  */
