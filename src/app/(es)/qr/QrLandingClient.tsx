@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { trackEvent, GA_EVENTS, trackOutboundLead } from "@/lib/analytics";
+import { trackEvent, GA_EVENTS, trackOutboundContact } from "@/lib/analytics";
 import { useState, useEffect } from "react";
 import company from "@/data/company.json";
 
@@ -126,7 +126,7 @@ export default function QrLandingClient() {
             aria-label="Guardar contacto"
             onClick={(e) => {
               e.preventDefault();
-              trackOutboundLead(vcardUrl, "qr_save_contact");
+              trackOutboundContact(vcardUrl, "qr_save_contact");
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" aria-hidden="true" />
@@ -199,7 +199,7 @@ export default function QrLandingClient() {
             aria-label="Contactar por WhatsApp"
             onClick={(e) => {
               e.preventDefault();
-              trackOutboundLead(whatsappUrl, "qr_whatsapp");
+              trackOutboundContact(whatsappUrl, "qr_whatsapp");
             }}
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 rounded-full opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500 animate-pulse" aria-hidden="true" />

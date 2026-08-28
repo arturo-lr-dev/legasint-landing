@@ -103,22 +103,31 @@ export const trackLead = (
 };
 
 /**
- * Track an outbound lead (WhatsApp, email, vcf download) and then navigate.
- * Combines GA4 generate_lead + Google Ads delayed conversion.
+ * Track an outbound contact action (WhatsApp, email, vcf download) and then navigate.
+ * Uses contact_click (engagement), not generate_lead, so only form submissions count as leads.
  */
-export const trackOutboundLead = (
+export const trackOutboundContact = (
   url: string,
   channel: string
 ): boolean => {
-  trackLead(channel);
+  if (typeof window === 'undefined') return true;
 
   const navigate = () => {
-    if (typeof window !== 'undefined') {
-      window.location.href = url;
-    }
+    window.location.href = url;
   };
 
-  trackGoogleAdsConversion(undefined, { value: 1.0, currency: 'EUR' }, navigate);
+  if (!window.gtag) {
+    navigate();
+    return false;
+  }
+
+  window.gtag('event', GA_EVENTS.CONTACT_CLICK, {
+    event_category: 'lead',
+    event_label: channel,
+    event_callback: navigate,
+    event_timeout: 2000,
+  });
+
   return false;
 };
 
