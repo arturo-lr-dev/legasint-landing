@@ -1,6 +1,6 @@
 'use client';
 import { fadeInUp } from '@/lib/animations';
-import { trackOutboundContact } from '@/lib/analytics';
+import { trackOutboundContact, GA_EVENTS } from '@/lib/analytics';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
@@ -146,7 +146,7 @@ const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
             aria-label={t.whatsappAria}
             onClick={(e) => {
               e.preventDefault();
-              trackOutboundContact(whatsappUrl, 'whatsapp_button');
+              trackOutboundContact(whatsappUrl, GA_EVENTS.WHATSAPP_CLICK, 'whatsapp_button');
             }}
           >
             {/* Animated glow ring */}
@@ -186,7 +186,7 @@ const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
             aria-label={t.emailAria}
             onClick={(e) => {
               e.preventDefault();
-              trackOutboundContact(emailUrl, 'email_button');
+              trackOutboundContact(emailUrl, GA_EVENTS.EMAIL_CLICK, 'email_button');
             }}
           >
             {/* Animated glow ring */}

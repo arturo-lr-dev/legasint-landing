@@ -108,7 +108,8 @@ export const trackLead = (
  */
 export const trackOutboundContact = (
   url: string,
-  channel: string
+  eventName: string,
+  label?: string
 ): boolean => {
   if (typeof window === 'undefined') return true;
 
@@ -121,9 +122,9 @@ export const trackOutboundContact = (
     return false;
   }
 
-  window.gtag('event', GA_EVENTS.CONTACT_CLICK, {
+  window.gtag('event', eventName, {
     event_category: 'lead',
-    event_label: channel,
+    event_label: label,
     event_callback: navigate,
     event_timeout: 2000,
   });
@@ -135,6 +136,10 @@ export const trackOutboundContact = (
 export const GA_EVENTS = {
   CONTACT_CLICK: 'contact_click',
   WHATSAPP_CLICK: 'whatsapp_click',
+  EMAIL_CLICK: 'email_click',
+  CONTACT_DOWNLOAD: 'contact_download',
   SOCIAL_CLICK: 'social_click',
+  LINKEDIN_CLICK: 'linkedin_click',
+  INSTAGRAM_CLICK: 'instagram_click',
   GENERATE_LEAD: 'generate_lead',
 } as const;

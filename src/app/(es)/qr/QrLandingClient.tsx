@@ -126,7 +126,7 @@ export default function QrLandingClient() {
             aria-label="Guardar contacto"
             onClick={(e) => {
               e.preventDefault();
-              trackOutboundContact(vcardUrl, "qr_save_contact");
+              trackOutboundContact(vcardUrl, GA_EVENTS.CONTACT_DOWNLOAD, 'qr_save_contact');
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" aria-hidden="true" />
@@ -173,10 +173,15 @@ export default function QrLandingClient() {
                 className="group relative w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-blue-600 shadow-lg hover:shadow-2xl hover:scale-110 transition-all duration-300"
                 aria-label={link.label}
                 onClick={() =>
-                  trackEvent(GA_EVENTS.SOCIAL_CLICK, {
-                    event_category: "social",
-                    event_label: link.label.toLowerCase(),
-                  })
+                  trackEvent(
+                    link.label.toLowerCase() === 'linkedin'
+                      ? GA_EVENTS.LINKEDIN_CLICK
+                      : GA_EVENTS.INSTAGRAM_CLICK,
+                    {
+                      event_category: 'social',
+                      event_label: `qr_${link.label.toLowerCase()}`,
+                    }
+                  )
                 }
               >
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300" />
@@ -199,7 +204,7 @@ export default function QrLandingClient() {
             aria-label="Contactar por WhatsApp"
             onClick={(e) => {
               e.preventDefault();
-              trackOutboundContact(whatsappUrl, "qr_whatsapp");
+              trackOutboundContact(whatsappUrl, GA_EVENTS.WHATSAPP_CLICK, 'qr_whatsapp');
             }}
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 rounded-full opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500 animate-pulse" aria-hidden="true" />

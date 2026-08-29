@@ -32,9 +32,9 @@ const FloatingSocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         className="group relative bg-gradient-to-br from-purple-600 to-blue-600 p-4 rounded-full shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300"
         aria-label="Instagram"
-        onClick={() => trackEvent(GA_EVENTS.SOCIAL_CLICK, {
+        onClick={() => trackEvent(GA_EVENTS.INSTAGRAM_CLICK, {
           event_category: 'social',
-          event_label: 'instagram'
+          event_label: 'floating_instagram'
         })}
       >
         <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300" />
@@ -55,9 +55,9 @@ const FloatingSocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         className="group relative bg-gradient-to-br from-purple-600 to-blue-600 p-4 rounded-full shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300"
         aria-label="LinkedIn"
-        onClick={() => trackEvent(GA_EVENTS.SOCIAL_CLICK, {
+        onClick={() => trackEvent(GA_EVENTS.LINKEDIN_CLICK, {
           event_category: 'social',
-          event_label: 'linkedin'
+          event_label: 'floating_linkedin'
         })}
       >
         <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300" />

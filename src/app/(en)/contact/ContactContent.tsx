@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { trackOutboundContact } from '@/lib/analytics';
+import { trackOutboundContact, GA_EVENTS } from '@/lib/analytics';
 import ContactForm from '@/components/ContactForm';
 import { useState, useEffect } from 'react';
 
@@ -98,7 +98,7 @@ export default function ContactContent() {
                 aria-label="Send a WhatsApp message"
                 onClick={(e) => {
                   e.preventDefault();
-                  trackOutboundContact(whatsappUrl, 'contact_page_whatsapp_en');
+                  trackOutboundContact(whatsappUrl, GA_EVENTS.WHATSAPP_CLICK, 'contact_page_whatsapp_en');
                 }}
               >
                 <div
@@ -155,7 +155,7 @@ export default function ContactContent() {
                 aria-label="Send an email"
                 onClick={(e) => {
                   e.preventDefault();
-                  trackOutboundContact(emailUrl, 'contact_page_email_en');
+                  trackOutboundContact(emailUrl, GA_EVENTS.EMAIL_CLICK, 'contact_page_email_en');
                 }}
               >
                 <div
