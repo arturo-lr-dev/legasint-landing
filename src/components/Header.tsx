@@ -89,13 +89,11 @@ export const Header: React.FC = () => {
 
   const homeHref = isEnglish ? '/en' : '/';
   const servicesHref = isEnglish ? '/services' : '/servicios';
-  const erpHref = isEnglish ? '/custom-erp' : '/erp-a-medida';
   const blogHref = isEnglish ? '/blog/en' : '/blog';
 
   const navLinks = [
     { href: homeHref, label: isEnglish ? 'Home' : 'Inicio', active: pathname === homeHref },
     { href: servicesHref, label: isEnglish ? 'Services' : 'Servicios', active: pathname === servicesHref },
-    { href: erpHref, label: isEnglish ? 'Custom ERP' : 'ERP a medida', active: pathname === erpHref },
     { href: blogHref, label: 'Blog', active: isBlogPage },
   ];
 
