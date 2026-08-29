@@ -9,8 +9,8 @@ import { homeCopy, Locale } from '@/i18n/home-copy';
 const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
   const t = homeCopy[locale].hero;
   const whatsappUrl = locale === 'es'
-    ? 'https://wa.me/34649355701?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios.'
-    : 'https://wa.me/34649355701?text=Hello%2C%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services.';
+    ? 'https://wa.me/34649355701?text=Hola%20Arturo%2C%20vi%20vuestra%20web%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto.%20%C2%BFCu%C3%A1ndo%20tienes%20un%20hueco%3F'
+    : 'https://wa.me/34649355701?text=Hi%20Arturo%2C%20I%20saw%20your%20website%20and%20would%20like%20to%20discuss%20a%20project.%20When%20do%20you%20have%20time%3F';
   const emailUrl = 'mailto:arturo@legasint.com';
   const letters = "Legasint".split("");
   const tagline = t.tagline.split(" ");

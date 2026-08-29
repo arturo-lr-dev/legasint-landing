@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 export default function ContactContent() {
   const [isMobile, setIsMobile] = useState(false);
-  const whatsappUrl = 'https://wa.me/34649355701?text=Hello%2C%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services.';
+  const whatsappUrl = 'https://wa.me/34649355701?text=Hi%20Arturo%2C%20I%20saw%20your%20website%20and%20would%20like%20to%20discuss%20a%20project.%20When%20do%20you%20have%20time%3F';
   const emailUrl = 'mailto:arturo@legasint.com';
 
   useEffect(() => {
