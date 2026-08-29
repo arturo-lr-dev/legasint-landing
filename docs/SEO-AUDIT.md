@@ -361,13 +361,15 @@ No se encontro ninguna implementacion de schema markup en todo el sitio.
 
 - Google Analytics 4 via gtag.js con `NEXT_PUBLIC_GOOGLE_ANALYTICS`
 - Google Ads tag (`AW-18414116550`) cargado con `next/script`
+- PostHog configurado con `NEXT_PUBLIC_POSTHOG_KEY` y `NEXT_PUBLIC_POSTHOG_HOST` (EU)
 - Conversion linker activado via `gtag('config', 'AW-...')`
 - Enhanced Conversions habilitado (`allow_enhanced_conversions: true`)
 - Google Consent Mode v2 con banner de cookies (`src/components/CookieConsent.tsx`)
 - Formulario de contacto con Web3Forms + honeypot antibots en `/contacto` y `/contact`
-- Eventos de lead: `generate_lead` en WhatsApp, email, descarga de contacto QR y envío de formulario
-- Conversión de Google Ads disparada desde el formulario (requiere `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL`)
-- Eventos sociales: `social_click` en Instagram/LinkedIn
+- Eventos de lead: `generate_lead` en envío de formulario
+- Eventos de contacto: `whatsapp_click`, `email_click`, `contact_download` en CTAs
+- Eventos sociales: `linkedin_click`, `instagram_click`
+- Conversión de Google Ads disparada desde el formulario
 - Carga async (no bloquea renderizado)
 
 ### Variables de entorno
@@ -375,6 +377,8 @@ No se encontro ninguna implementacion de schema markup en todo el sitio.
 - `NEXT_PUBLIC_GOOGLE_ANALYTICS` — ID de GA4
 - `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` — etiqueta de conversión de Google Ads
 - `NEXT_PUBLIC_WEB3FORMS_KEY` — access key de Web3Forms
+- `NEXT_PUBLIC_POSTHOG_KEY` — token de PostHog
+- `NEXT_PUBLIC_POSTHOG_HOST` — URL de PostHog (eu.posthog.com)
 
 ### Problemas pendientes
 

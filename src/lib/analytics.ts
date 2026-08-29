@@ -1,4 +1,6 @@
-// Google Analytics 4 & Google Ads Conversion Tracking Utilities
+// Google Analytics 4, Google Ads & PostHog Conversion Tracking Utilities
+
+import posthog from 'posthog-js';
 
 export const GOOGLE_ADS_ID = 'AW-18414116550';
 export const GOOGLE_ADS_CONVERSION_LABEL =
@@ -40,6 +42,18 @@ declare global {
 }
 
 /**
+ * Track an event in PostHog (in addition to GA4/Ads).
+ */
+export const trackPostHogEvent = (
+  eventName: string,
+  params?: Record<string, unknown>
+): void => {
+  if (typeof window !== 'undefined') {
+    posthog.capture(eventName, params);
+  }
+};
+
+/**
  * Apply Consent Mode v2 settings (default or update).
  * Must be called before loading GA/Ads scripts for 'default'.
  */
@@ -53,7 +67,7 @@ export const setConsent = (
 };
 
 /**
- * Track a custom event in Google Analytics 4
+ * Track a custom event in Google Analytics 4 and PostHog.
  */
 export const trackEvent = (
   eventName: string,
@@ -62,6 +76,7 @@ export const trackEvent = (
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, params);
   }
+  trackPostHogEvent(eventName, params);
 };
 
 /**
@@ -86,10 +101,15 @@ export const trackGoogleAdsConversion = (
   } else if (callback) {
     callback();
   }
+
+  trackPostHogEvent('conversion', {
+    send_to: `${GOOGLE_ADS_ID}/${label}`,
+    ...params,
+  });
 };
 
 /**
- * Track a lead generation event in GA4 (recommended event for Google Ads lead campaigns).
+ * Track a lead generation event in GA4 and PostHog (recommended event for Google Ads lead campaigns).
  */
 export const trackLead = (
   channel: string,
@@ -104,7 +124,8 @@ export const trackLead = (
 
 /**
  * Track an outbound contact action (WhatsApp, email, vcf download) and then navigate.
- * Uses contact_click (engagement), not generate_lead, so only form submissions count as leads.
+ * Uses specific event names (whatsapp_click, email_click, etc.), not generate_lead,
+ * so only form submissions count as leads.
  */
 export const trackOutboundContact = (
   url: string,
@@ -127,6 +148,11 @@ export const trackOutboundContact = (
     event_label: label,
     event_callback: navigate,
     event_timeout: 2000,
+  });
+
+  trackPostHogEvent(eventName, {
+    event_category: 'lead',
+    event_label: label,
   });
 
   return false;
