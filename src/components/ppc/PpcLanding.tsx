@@ -1,37 +1,31 @@
 'use client';
 
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import ContactForm from '@/components/ContactForm';
 import HeroBackground from '@/components/landing/three/HeroBackground';
 import { homeCopy } from '@/i18n/home-copy';
-import { trackOutboundContact, GA_EVENTS } from '@/lib/analytics';
+import { trackEvent, trackOutboundContact, GA_EVENTS } from '@/lib/analytics';
+import type { PpcLandingCopy } from '@/i18n/ppc-copy';
 
-export default function ServiciosContent() {
-  const services = homeCopy.es.services.items;
+const process = [
+  { step: '01', title: 'Descubrimiento', description: 'Entendemos tu negocio en una primera sesión gratuita.' },
+  { step: '02', title: 'Propuesta', description: 'Alcance, tecnologías, plazos y precio cerrado. Sin sorpresas.' },
+  { step: '03', title: 'Desarrollo', description: 'Sprints con entregas funcionales cada pocas semanas.' },
+  { step: '04', title: 'Lanzamiento y soporte', description: 'Despliegue, documentación y evolutivo continuo.' },
+];
 
-  const process = [
-    {
-      step: '01',
-      title: 'Descubrimiento',
-      description: 'Entendemos tu negocio, procesos y objetivos en una primera sesión gratuita.',
-    },
-    {
-      step: '02',
-      title: 'Propuesta',
-      description: 'Definimos alcance, tecnologías, plazos y precio cerrado. Sin sorpresas.',
-    },
-    {
-      step: '03',
-      title: 'Desarrollo',
-      description: 'Construimos por sprints con entregas funcionales cada pocas semanas.',
-    },
-    {
-      step: '04',
-      title: 'Lanzamiento y soporte',
-      description: 'Despliegue, documentación y mantenimiento evolutivo continuo.',
-    },
-  ];
+const WHATSAPP_URL =
+  'https://wa.me/34649355701?text=Hola%20Arturo%2C%20vi%20vuestra%20web%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto.%20%C2%BFCu%C3%A1ndo%20tienes%20un%20hueco%3F';
+
+export default function PpcLanding({ copy }: { copy: PpcLandingCopy }) {
+  useEffect(() => {
+    trackEvent('ppc_landing_view', {
+      event_category: 'ppc',
+      event_label: copy.key,
+    });
+  }, [copy.key]);
 
   return (
     <main
@@ -54,26 +48,31 @@ export default function ServiciosContent() {
         animate="animate"
         className="max-w-4xl mx-auto relative z-10"
       >
-        {/* Header */}
+        {/* Hero — message match con el anuncio */}
         <motion.header variants={fadeInUp} className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Servicios
+            {copy.h1}
           </h1>
           <p className="text-lg md:text-xl text-blue-200 max-w-2xl mx-auto mb-8">
-            Desarrollamos software a medida que se adapta a tu negocio, no al revés.
+            {copy.tagline}
           </p>
           <a
             href="#formulario"
+            onClick={() =>
+              trackEvent(GA_EVENTS.CONTACT_CLICK, {
+                event_label: `ppc_${copy.key}_hero`,
+              })
+            }
             className="inline-block px-8 py-3.5 text-lg font-bold text-white rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-lg shadow-violet-900/30 transition-all hover:scale-105"
           >
-            Solicitar presupuesto sin compromiso
+            {copy.ctaPrimary}
           </a>
         </motion.header>
 
-        {/* Social proof */}
+        {/* Prueba social */}
         <motion.section variants={fadeInUp} className="mb-16 text-center">
           <p className="text-sm uppercase tracking-widest text-blue-300/70 mb-4">
-            Proyectos reales que ya hemos construido
+            {copy.proofTitle}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {homeCopy.es.portfolio.projects.map((project) => (
@@ -87,37 +86,25 @@ export default function ServiciosContent() {
           </div>
         </motion.section>
 
-        {/* Services Grid */}
-        <section className="grid md:grid-cols-2 gap-6 mb-16">
-          {services.map((service, index) => {
-            const anchors = ['software', 'apis', 'ia', 'consultoria'];
-            return (
-            <motion.div
-              key={index}
-              id={anchors[index]}
-              variants={fadeInUp}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-[1.02] scroll-mt-28"
-            >
-              <h2 className="text-2xl font-bold text-white mb-3">
-                {service.title}
-              </h2>
-              <p className="text-blue-200 leading-relaxed mb-5">
-                {service.description}
-              </p>
-              <ul className="space-y-2">
-                {service.features.map((feature) => (
-                  <li key={feature} className="text-blue-100 flex items-center gap-2">
-                    <span className="text-violet-400" aria-hidden="true">›</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            );
-          })}
-        </section>
+        {/* Beneficios */}
+        <motion.section variants={fadeInUp} className="mb-16">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            {copy.benefitsTitle}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {copy.benefits.map((benefit) => (
+              <div
+                key={benefit.title}
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300"
+              >
+                <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
+                <p className="text-blue-200 leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
 
-        {/* Process */}
+        {/* Proceso */}
         <motion.section variants={fadeInUp} className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">
             Cómo trabajamos
@@ -128,55 +115,42 @@ export default function ServiciosContent() {
                 key={item.step}
                 className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-colors"
               >
-                <span className="font-mono text-sm text-violet-400 font-bold">
-                  {item.step}
-                </span>
-                <h3 className="text-lg font-bold text-white mt-2 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-blue-200 text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <span className="font-mono text-sm text-violet-400 font-bold">{item.step}</span>
+                <h3 className="text-lg font-bold text-white mt-2 mb-2">{item.title}</h3>
+                <p className="text-blue-200 text-sm leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </motion.section>
 
-        {/* CTA */}
+        {/* CTA final */}
         <motion.section variants={fadeInUp} className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            ¿Hablamos de tu proyecto?
-          </h2>
-          <p className="text-blue-200 mb-6 max-w-2xl mx-auto">
-            Cuéntanos qué necesitas y te preparamos una propuesta sin compromiso.
-          </p>
+          <h2 className="text-3xl font-bold text-white mb-4">{copy.ctaFinal.title}</h2>
+          <p className="text-blue-200 mb-6 max-w-2xl mx-auto">{copy.ctaFinal.subtitle}</p>
           <a
             href="#formulario"
+            onClick={() =>
+              trackEvent(GA_EVENTS.CONTACT_CLICK, {
+                event_label: `ppc_${copy.key}_final`,
+              })
+            }
             className="inline-block px-8 py-3.5 text-lg font-bold text-white rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-lg shadow-violet-900/30 transition-all hover:scale-105"
           >
-            Solicitar presupuesto
+            {copy.ctaPrimary}
           </a>
         </motion.section>
 
-        {/* Form */}
+        {/* Formulario + contacto directo */}
         <motion.section variants={fadeInUp} id="formulario" className="scroll-mt-28">
           <ContactForm locale="es" />
-
-          {/* Direct contact alternatives */}
           <div className="mt-6 text-center">
-            <p className="text-blue-300/80 text-sm mb-3">
-              ¿Prefieres hablar directamente?
-            </p>
+            <p className="text-blue-300/80 text-sm mb-3">¿Prefieres hablar directamente?</p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://wa.me/34649355701?text=Hola%20Arturo%2C%20vi%20vuestra%20p%C3%A1gina%20de%20servicios%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto.%20%C2%BFCu%C3%A1ndo%20tienes%20un%20hueco%3F"
+                href={WHATSAPP_URL}
                 onClick={(e) => {
                   e.preventDefault();
-                  trackOutboundContact(
-                    'https://wa.me/34649355701?text=Hola%20Arturo%2C%20vi%20vuestra%20p%C3%A1gina%20de%20servicios%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto.%20%C2%BFCu%C3%A1ndo%20tienes%20un%20hueco%3F',
-                    GA_EVENTS.WHATSAPP_CLICK,
-                    'servicios_form'
-                  );
+                  trackOutboundContact(WHATSAPP_URL, GA_EVENTS.WHATSAPP_CLICK, `ppc_${copy.key}`);
                 }}
                 className="px-5 py-2.5 rounded-full bg-white/5 border border-white/15 text-blue-100 text-sm font-medium hover:bg-white/10 transition-all"
               >
@@ -186,7 +160,7 @@ export default function ServiciosContent() {
                 href="mailto:arturo@legasint.com"
                 onClick={(e) => {
                   e.preventDefault();
-                  trackOutboundContact('mailto:arturo@legasint.com', GA_EVENTS.EMAIL_CLICK, 'servicios_form');
+                  trackOutboundContact('mailto:arturo@legasint.com', GA_EVENTS.EMAIL_CLICK, `ppc_${copy.key}`);
                 }}
                 className="px-5 py-2.5 rounded-full bg-white/5 border border-white/15 text-blue-100 text-sm font-medium hover:bg-white/10 transition-all"
               >

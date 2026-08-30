@@ -18,6 +18,9 @@ const copy = {
     company: 'Empresa (opcional)',
     message: '¿En qué podemos ayudarte?',
     messagePlaceholder: 'Describe brevemente tu proyecto, necesidades o plazo...',
+    namePlaceholder: 'María García',
+    emailPlaceholder: 'maria@empresa.com',
+    companyPlaceholder: 'Tu empresa S.L.',
     submit: 'Enviar mensaje',
     sending: 'Enviando...',
     success: '¡Mensaje enviado! Te contactamos pronto.',
@@ -37,6 +40,9 @@ const copy = {
     company: 'Company (optional)',
     message: 'How can we help?',
     messagePlaceholder: 'Briefly describe your project, needs or timeline...',
+    namePlaceholder: 'Jane Doe',
+    emailPlaceholder: 'jane@company.com',
+    companyPlaceholder: 'Your company Ltd.',
     submit: 'Send message',
     sending: 'Sending...',
     success: 'Message sent! We will contact you soon.',
@@ -172,7 +178,7 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
             required
             minLength={2}
             className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
-            placeholder="John Doe"
+            placeholder={t.namePlaceholder}
           />
           {errors.name && <p className="mt-1.5 text-sm text-red-300">{errors.name}</p>}
         </div>
@@ -187,7 +193,7 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
             type="email"
             required
             className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
-            placeholder="john@empresa.com"
+            placeholder={t.emailPlaceholder}
           />
           {errors.email && <p className="mt-1.5 text-sm text-red-300">{errors.email}</p>}
         </div>
@@ -214,7 +220,7 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
             name="company"
             type="text"
             className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
-            placeholder="Empresa S.L."
+            placeholder={t.companyPlaceholder}
           />
         </div>
 

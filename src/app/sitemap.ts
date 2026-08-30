@@ -125,6 +125,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${BASE_URL}/software-a-medida`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/cto-as-a-service`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/automatizacion-ia`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/blog`,
       lastModified: latestEsDate,
       changeFrequency: 'weekly',
