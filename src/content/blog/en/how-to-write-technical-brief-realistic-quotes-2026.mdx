@@ -1,0 +1,249 @@
+---
+title: >-
+  How to Write a Technical Brief That Gets Realistic Quotes
+date: '2026-08-30'
+description: >-
+  Learn to write an effective technical brief that eliminates misunderstandings,
+  reduces unexpected costs, and gets you accurate quotes from software
+  development providers.
+tags:
+  - technical brief
+  - software quotes
+  - software development
+  - project management
+  - SMEs
+  - '2026'
+image: /blog-images/en-how-to-write-technical-brief-realistic-quotes-2026.png
+translationKey: como-escribir-brief-tecnico-presupuestos-realistas-2026
+---
+
+## The Problem: Quotes That Skyrocket
+
+An email arrives from your development provider: *"The project is going to cost double the estimate. We need 3 more months."*
+
+If you've experienced this, the problem probably wasn't the provider. It was the **technical brief**.
+
+A poorly written brief is like asking an architect to build you a house by saying *"I want something nice with 3 bedrooms"*. The result will be unpredictable, expensive, and probably not what you need.
+
+In 2026, with development costs rising 8% annually, a solid technical brief isn't a luxury. It's insurance against overruns, delays, and broken vendor relationships.
+
+This article gives you a practical framework for writing briefs that get realistic quotes from day one.
+
+---
+
+## What Is a Technical Brief (And What It Isn't)
+
+A technical brief is **not**:
+- A feature list copied from your competitor
+- A 2-page document with general ideas
+- An email saying *"I want something like Uber but for X"*
+
+A technical brief **is**:
+- A document describing the business problem, users, features, integrations, and constraints
+- The contractual foundation of your relationship with the provider
+- The tool that aligns expectations before the clock starts ticking
+
+**Golden rule:** If a provider gives you a quote in 24 hours without asking questions, they're either selling you smoke or the price will be a lottery ticket.
+
+---
+
+## The 6 Sections Every Technical Brief Must Have
+
+### 1. Context and Business Problem
+
+**What most people write:** *"I want an app to manage orders."*
+
+**What you should write:**
+- What current process are you trying to improve or replace?
+- How much does that process cost you today (in time, money, errors)?
+- What happens if you do nothing?
+- Who makes the final decision and who will use the system?
+
+**Real example:**
+> "We currently manage orders via WhatsApp and Excel. One employee spends 4 hours daily transcribing messages into spreadsheets. We average 8 errors per week that cost €200 each in returns. We need to reduce those errors to less than 1 per week and free up those 4 daily hours for customer service."
+
+This paragraph tells the provider: the problem costs €1,600/week + €1,600/week in errors = **€3,200/week**. Now they know the budget must be justified against that opportunity cost.
+
+---
+
+### 2. Users and Main Flows
+
+Define **who** will use the system and **what they'll do** with it.
+
+**Users:**
+- Role (administrator, customer, employee, supplier...)
+- Technical level (are they tech-savvy or do they need something ultra-intuitive?)
+- Primary device (mobile, desktop, tablet)
+- Usage frequency (daily, weekly, occasional)
+
+**Main flows (User Stories):**
+> "As a [role], I want [action], so that [benefit]"
+
+**Example:**
+> "As a delivery driver, I want to see my optimized daily route on mobile, so I can deliver all orders in the shortest time possible without depending on the office."
+
+**How many flows to include:** Between 5 and 15 main flows cover 80% of the value for most projects. More than 20 and you're describing a complete product, not an MVP.
+
+---
+
+### 3. Features: Must-Have vs Nice-to-Have
+
+The most ignored rule in technical briefs: **not everything is a priority**.
+
+Divide into three categories:
+
+| Priority | Description | Example |
+|----------|-------------|---------|
+| **Must-have (P0)** | Without this, the project makes no sense | Drivers can see their routes |
+| **Should-have (P1)** | Important, but can be delayed 1-2 months | Real-time push notifications |
+| **Nice-to-have (P2)** | Would improve experience, but not critical | Dark mode, Instagram integration |
+
+**Why this matters for the quote:**
+A provider seeing 20 P0 features knows you're asking for a complete product. One seeing 5 P0 and 15 P1/P2 knows you can launch in phases, reducing initial cost by 40-60%.
+
+---
+
+### 4. Integrations and External Dependencies
+
+This section separates realistic quotes from fantasy ones.
+
+**Key questions:**
+- Does it need to connect with existing systems? (ERP, CRM, payment gateway...)
+- Are there documented APIs or is web scraping needed?
+- Does it require authentication with Google, Microsoft, SAML?
+- Does it need to comply with specific regulations? (GDPR, healthcare, legal...)
+
+**Example of an integration that doubles the budget if not mentioned:**
+> "We need the app to integrate with our SAP Business One. It doesn't have a REST API, only SQL Server database access."
+
+A provider reading this knows they'll need:
+- Direct database access (security risk)
+- Or develop an integration middleware
+- Or budget for a third-party integration license
+
+Without this information, the initial quote will be fictional and the surprise will hit in week 3.
+
+---
+
+### 5. Technical and Business Constraints
+
+**Technical:**
+- Preferred (or prohibited) tech stack
+- Supported browsers/devices
+- Performance requirements ("page must load in `<2` seconds")
+- Expected scalability limits ("prepared for 10,000 users in 6 months")
+
+**Business:**
+- Launch deadline (is there an event, campaign, or regulation?)
+- Approximate maximum budget (yes, sharing it helps adjust scope)
+- Available internal team (do you have a CTO who will review code or do you need full management?)
+
+**About sharing your budget:**
+Many clients hide their budget thinking the provider will max it out. The reality: a serious provider will tell you *"with €15,000 we can do A, B, and C; with €30,000 we add D and E"*. Hiding the budget only generates miscalibrated proposals.
+
+---
+
+### 6. Acceptance Criteria and Definition of "Done"
+
+**The most important question:** How will we know the project is ready?
+
+Define:
+- Tests it must pass (functional, performance, security)
+- Deliverable documentation (user manual, technical documentation, architecture diagrams)
+- Training for internal team
+- Post-launch warranty period
+
+**Example:**
+> "The project is considered complete when:
+> - All P0 flows pass automated tests
+> - API documentation is delivered for future integrations
+> - 3 test users use the system for 1 week without reporting critical bugs
+> - A 2-hour training session is held for the admin team"
+
+This eliminates discussions like *"but I thought it included..."*.
+
+---
+
+## Quick Template: Checklist for Your Next Brief
+
+Before sending your brief to a provider, verify:
+
+- [ ] I've described the business problem with numbers (current cost, cost of inaction)
+- [ ] I've defined the main users and their flows (minimum 5, maximum 15)
+- [ ] I've classified features into Must-have / Should-have / Nice-to-have
+- [ ] I've listed all integrations with existing systems
+- [ ] I've mentioned technical constraints (stack, devices, performance)
+- [ ] I've indicated the deadline and approximate budget
+- [ ] I've defined what "project complete" means
+- [ ] I've attached mockups, wireframes, or visual references (even hand-drawn sketches)
+
+If you check fewer than 6 of these 8 boxes, your brief needs more work before requesting quotes.
+
+---
+
+## Common Mistakes That Inflate Quotes
+
+### Mistake 1: "I Want Everything Just Like My Competitor"
+
+Your competitor has 5 years and €500,000 invested. You're just starting. A provider receiving this request will either quote €500,000 (and lose the project) or give an unrealistic price to win the work (and then there will be overruns).
+
+**Solution:** Define what YOU need, not what your competitor has.
+
+### Mistake 2: Not Mentioning the Current State
+
+If you have a 2018 WordPress site and want "something modern", the provider needs to know:
+- Are we migrating data or starting from scratch?
+- Is there content to preserve?
+- Are there existing users with passwords they can't lose?
+
+Migrating 5,000 users with purchase history is not the same as launching from zero.
+
+### Mistake 3: Asking for "Something Flexible That Scales"
+
+Everyone wants something that scales. But to what scale?
+
+- 100 users → Any modern stack works
+- 10,000 users → You need architecture decisions
+- 1,000,000 users → You need a dedicated infrastructure team
+
+**Solution:** Define the scenario at 6, 12, and 24 months. Don't ask for "scalable" without numbers.
+
+### Mistake 4: Ignoring Post-Launch Maintenance
+
+Development is 40% of a project's total cost over 5 years. Maintenance is 60%.
+
+A brief that doesn't mention:
+- Hosting and domain
+- Security updates
+- Technical support
+- Product evolution
+
+...is asking for a partial quote on something that will cost double.
+
+---
+
+## How to Review a Quote Based on Your Brief
+
+When you receive proposals, verify that the provider has addressed:
+
+1. **Have they included all P0 features?** If any are missing, the quote is incomplete
+2. **Have they broken it down by phases?** A €50,000 proposal without phases is a red flag
+3. **Do they mention technical risks?** A provider who sees no risks hasn't read the brief carefully
+4. **Do they include testing and warranty?** 30% of development time should be testing
+5. **Is there a communication plan?** Weekly meetings? Bi-weekly demos? Access to a testing environment?
+
+**Warning sign:** A quote that's 40% cheaper than the others without a clear explanation. They're probably underestimating complexity or outsourcing to low-cost providers without quality.
+
+---
+
+## Conclusion: A Good Brief Is a Good Contract
+
+A well-written technical brief doesn't guarantee a perfect project. But it does guarantee that:
+- You and the provider start from the same foundation
+- The quote reflects the real scope
+- There are fewer surprises along the way
+- The business relationship starts with transparency
+
+**Invest 4-8 hours in writing a good brief.** It will save you weeks of misunderstandings and thousands of euros in scope changes.
+
+**Need help defining the scope of your next project?** At LegaSint, we help companies structure technical briefs that get accurate quotes from day one. [Let's talk about your project →](/contact)
