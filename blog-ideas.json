@@ -2318,7 +2318,12 @@
         "formación",
         "edtech"
       ],
-      "status": "pending"
+      "status": "published",
+      "publishedDate": "2026-08-31",
+      "files": [
+        "plataforma-e-learning-custom-ventajas-sobre-moodle-o-teachable.mdx",
+        "custom-e-learning-platform-advantages-over-moodle-or-teachable.mdx"
+      ]
     },
     {
       "id": 102,
