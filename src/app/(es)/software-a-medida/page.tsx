@@ -5,7 +5,8 @@ import { ppcCopy } from '@/i18n/ppc-copy';
 const copy = ppcCopy['software-a-medida'];
 
 export const metadata: Metadata = {
-  title: copy.metaTitle,
+  // absolute: metaTitle ya incluye "| Legasint"; evita que el template del layout lo duplique
+  title: { absolute: copy.metaTitle },
   description: copy.metaDescription,
   alternates: {
     canonical: 'https://legasint.com/software-a-medida',

@@ -16,7 +16,8 @@ import { homeCopy } from '@/i18n/home-copy';
 const BASE_URL = 'https://legasint.com';
 
 export const metadata: Metadata = {
-  title: 'Legasint - Desarrollo de software a medida y socio tecnológico',
+  // absolute: el título ya incluye la marca; evita que el template del layout añada "| Legasint" de nuevo
+  title: { absolute: 'Legasint - Desarrollo de software a medida y socio tecnológico' },
   description:
     'Legasint es tu socio tecnológico: desarrollo de software a medida, automatización e inteligencia artificial para empresas en España.',
   alternates: {
