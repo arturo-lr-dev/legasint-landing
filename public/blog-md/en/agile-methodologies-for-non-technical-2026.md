@@ -1,0 +1,240 @@
+---
+title: "Agile Methodologies Explained for Non-Technical People: Scrum, Kanban, and More"
+date: "2026-09-02"
+language: "en"
+canonical: "https://legasint.com/blog/en/agile-methodologies-for-non-technical-2026"
+tags: ["agile methodologies", "Scrum", "Kanban", "project management", "software development", "2026"]
+---
+
+# Agile Methodologies Explained for Non-Technical People: Scrum, Kanban, and More
+
+Practical guide to understanding Scrum, Kanban, and other agile methodologies without being a tech expert. How to choose the right one for your team and project.
+
+## The Problem: Projects That Never End
+
+You've been waiting six months for your provider to "deliver the app." Every meeting is the same: *"We're working on it"*, *"Almost there"*, *"It'll be ready next week."* But next week never comes.
+
+The problem isn't necessarily that your provider is bad. It's likely that **you're not speaking the same language** about how to organize the work.
+
+In 2026, 67% of software projects in Spain suffer significant delays, and half of those delays are due to poor project management, not technical problems. Understanding agile methodologies doesn't make you a developer, but it gives you the tools to **manage your provider better** and detect problems before they become irreversible.
+
+This article explains Scrum, Kanban, and other agile methodologies as if you were in a coffee meeting, not an engineering class.
+
+---
+
+## What Does "Agile" Really Mean?
+
+**Agile doesn't mean fast.** That's the most common mistake.
+
+Agile means **adapting quickly to change**. It means building something small, testing it, learning, and improving. Instead of planning a 12-month project all at once, you divide it into short cycles (usually 1-4 weeks) where you deliver something functional at the end of each cycle.
+
+**Traditional methodology (waterfall):**
+> Plan everything → Design everything → Develop everything → Test everything → Deliver everything
+
+**The problem:** If in month 8 you discover the original design doesn't work, you've wasted 8 months of work.
+
+**Agile methodology:**
+> Plan a little → Design a little → Develop a little → Test a little → Deliver something that works → Repeat
+
+**The advantage:** If something doesn't work, you discover it in 2 weeks, not 8 months.
+
+---
+
+## Scrum: The Most Popular Framework (And the Most Misunderstood)
+
+Scrum is like a gym: everyone knows it exists, few use it correctly, and many think they go just because they have the membership card.
+
+### Roles in Scrum
+
+**Product Owner (PO):** This is your voice within the team. The person who decides WHAT gets built and in what order. In projects with external providers, you should be the PO or designate someone from your team. **Never let the provider be the PO.**
+
+**Scrum Master:** Not the team boss. The "facilitator" who ensures Scrum is done right. Removes obstacles, improves processes, and protects the team from interruptions. Think of them as the coach, not the captain.
+
+**Development Team:** The people who actually build. In a typical project: 3-9 people.
+
+### Scrum Events (The Meetings)
+
+| Meeting | Frequency | Duration | Purpose |
+|---------|-----------|----------|---------|
+| **Sprint Planning** | At the start of each sprint | 2-4 hours | Decide what will be done in the next 2 weeks |
+| **Daily Standup** | Every day | 15 minutes | Quick sync: what did I do yesterday? What will I do today? Any blockers? |
+| **Sprint Review** | At the end of the sprint | 1-2 hours | Show what was built to the PO and stakeholders. This is where you give feedback |
+| **Sprint Retrospective** | At the end of the sprint | 1 hour | The team reflects: what worked? What can we improve? |
+
+**Sprint = work cycle**, normally 2 weeks. At the end of each sprint, you should have something that works and that you can test.
+
+### The Product Backlog: Your Prioritized Wish List
+
+It's an ordered list of everything you want the system to do. The PO maintains it and reorders it according to business priority.
+
+**Example Product Backlog:**
+1. Users can register with email (P0)
+2. Users can log in (P0)
+3. Users can view their profile (P0)
+4. Email notification system (P1)
+5. Google Calendar integration (P2)
+6. Dark mode (P2)
+
+### When to Use Scrum
+
+✅ **Use Scrum if:**
+- You have a product to build from scratch
+- You need frequent deliveries to validate with users
+- Your team can dedicate themselves to the project consistently
+- You have a PO available to make quick decisions
+
+❌ **Don't use Scrum if:**
+- Your team is constantly interrupted by urgent tasks
+- You don't have a PO available to prioritize and answer questions
+- The project is mainly maintenance of something existing
+- You need exact predictability of dates and costs in the long term
+
+---
+
+## Kanban: Visualizing the Flow of Work
+
+Kanban is simpler than Scrum. No sprints, no formal roles, no mandatory meetings. Its only rule: **visualize the work and limit work in progress.**
+
+### The Kanban Board
+
+It's a board with columns. Each task is a card that moves from left to right:
+
+```
+[To Do] → [In Progress] → [In Review] → [Done]
+```
+
+**The golden rule:** Limit how many cards can be in "In Progress" at the same time. If your limit is 3, there can't be 4 tasks in progress simultaneously. This forces you to finish before starting something new.
+
+### When to Use Kanban
+
+✅ **Use Kanban if:**
+- Your team manages continuous tasks (support, maintenance, marketing)
+- Priorities change constantly
+- You want to start with something simple without changing the whole organization
+- You need total flexibility about what gets worked on and when
+
+❌ **Don't use Kanban if:**
+- You need predictable deliveries on specific dates
+- Your team has discipline problems finishing what they start
+- You're building a new product that requires planning
+
+---
+
+## Scrumban: The Best of Both Worlds
+
+Many hybrid teams use **Scrumban**: Scrum sprints with Kanban's visual board. You have 2-week cycles, but within each sprint you use a Kanban board to manage daily flow.
+
+It's the most popular option for teams starting with agile because it gives you structure (sprints) without being too rigid.
+
+---
+
+## Extreme Programming (XP): For Demanding Technical Teams
+
+XP is an agile methodology focused on **technical excellence**. It includes practices like:
+
+- **Pair programming:** Two programmers work on the same code
+- **Test-driven development (TDD):** Write tests before code
+- **Continuous integration:** Every change is automatically tested
+- **Constant refactoring:** Improve code without changing its behavior
+
+**Should you care as a client?** Not directly. But if your provider says they use XP, that's a good sign: they care about code quality, not just delivering features.
+
+---
+
+## Lean Startup: Agile Applied to New Businesses
+
+Lean Startup isn't a development methodology, it's a business philosophy that aligns perfectly with agile:
+
+1. **Build** an MVP (minimum viable product)
+2. **Measure** how customers use it
+3. **Learn** and decide: do we pivot or persevere?
+
+If you're launching a new product or startup, combine Lean Startup with Scrum: 2-week sprints where each sprint seeks to validate a business hypothesis, not just deliver features.
+
+---
+
+## How to Choose the Right Methodology for Your Project
+
+| Situation | Recommended methodology | Why |
+|-----------|------------------------|-----|
+| Startup building MVP | Scrum + Lean Startup | Frequent deliveries to validate with users |
+| Company with external provider | Scrum | Clear structure, defined roles, predictable deliveries |
+| Maintenance of existing system | Kanban | Flexibility for unforeseen urgent tasks |
+| Internal multidisciplinary team | Scrumban | Structure + flexibility |
+| Project with very stable requirements | Traditional waterfall | If nothing will change, detailed planning works |
+| Crisis: delayed project | Kanban or Scrumban | Prioritize critical tasks and visualize bottlenecks |
+
+---
+
+## Signs Your Provider Isn't Using Agile (Even If They Say They Are)
+
+### 🚩 Red Flag 1: No Functional Demos
+
+If it's been 3 months and you've never seen anything working, they're not doing agile. In Scrum, every 2 weeks you should see something that works.
+
+**What to ask:** *"I want to see a demo of the previous sprint. Don't tell me what you've done, show me it working."*
+
+### 🚩 Red Flag 2: The PO Is from the Provider, Not Yours
+
+If the person who decides what gets built works for the provider, you have a conflict of interest. The PO should be from your company or at least report to you.
+
+### 🚩 Red Flag 3: No Retrospectives
+
+If they never have meetings about "what can we improve?", they're not learning. 50% of agile's value is in continuous improvement.
+
+### 🚩 Red Flag 4: The Scope Is Immovable
+
+Agile means adapting to change. If your provider tells you *"that wasn't in the original contract"* every time you ask for an adjustment, they're doing waterfall with daily meetings, not agile.
+
+### 🚩 Red Flag 5: Estimates Are Promises
+
+In agile, estimates are approximations, not commitments. If your provider tells you *"this will take exactly 47 hours"* and then gets upset when it takes 50, they don't understand agile.
+
+---
+
+## Metrics You Should Ask Your Provider For
+
+If your provider says they use agile, ask to see these metrics monthly:
+
+| Metric | What it measures | What it indicates |
+|--------|-----------------|-------------------|
+| **Velocity** | Story points delivered per sprint | Team capacity (stable = good, drop = problem) |
+| **Burndown chart** | Progress within a sprint | Are we going to finish this sprint on time? |
+| **Cycle time** | Time from when they start a task until they finish it | Efficiency of workflow |
+| **Bug ratio** | Bugs found vs. features delivered | Code quality (less than 10% is healthy) |
+
+**If your provider can't show you these metrics, they're not managing the project with rigor.**
+
+---
+
+## How You, As a Client, Can Help Agile Work
+
+### 1. Be Available for the PO
+
+The PO needs to make quick decisions. If you take 5 days to respond to *"should the button go on the left or right?"*, the sprint gets delayed.
+
+### 2. Attend the Reviews
+
+The sprint review is where you give feedback. If you don't go, the team assumes everything is fine and keeps building on incorrect foundations.
+
+### 3. Prioritize Wisely
+
+Not everything is "urgent and important." If you put 20 tasks as P0, the team doesn't know what to do first. Be honest about what's truly critical.
+
+### 4. Accept That Change Has a Cost
+
+Agile allows changes, but not for free. If in the middle of a sprint you ask to change direction, that impacts the current sprint. Change is possible, but it needs to be managed.
+
+### 5. Don't Micromanage
+
+You hired experts to build. Don't tell them how to write code. Tell them WHAT you need, not HOW to do it.
+
+---
+
+## Conclusion: Agile Is a Tool, Not a Magic Wand
+
+Agile methodologies don't guarantee your project's success. What they guarantee is **visibility and adaptability**. They let you see problems early and change direction without throwing away months of work.
+
+**The key:** Don't choose a methodology because it's trendy. Choose the one that fits your team, your project, and your way of working. And above all, make sure your provider is actually applying it, not just using the word "sprint" in meetings.
+
+**Need help managing a development project?** At LegaSint we work with agile methodologies adapted to each client, with total transparency in every sprint. [Let's talk about your project →](/contacto)
