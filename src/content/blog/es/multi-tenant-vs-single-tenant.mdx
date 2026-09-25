@@ -1,0 +1,359 @@
+---
+title: 'Multi-Tenant vs Single-Tenant: Arquitectura para SaaS a Medida'
+date: '2026-09-30'
+description: >-
+  Guía técnica para elegir la arquitectura correcta de tu SaaS a medida:
+  multi-tenant, single-tenant o híbrido, con costes, seguridad y escalabilidad.
+tags:
+  - SaaS a medida
+  - arquitectura
+  - multi-tenant
+  - single-tenant
+  - desarrollo
+image: /blog-images/es-multi-tenant-vs-single-tenant.png
+translationKey: multi-tenant-vs-single-tenant
+---
+
+## La Decisión de €500.000 Que Tomas en 5 Minutos
+
+**Una startup eligió multi-tenant "porque es lo estándar". Dos años después, migrar a single-tenant para su cliente enterprise les costó €180.000 y 6 meses de retraso.**
+
+Cuando construyes un SaaS a medida, hay una decisión arquitectónica que afecta todo lo demás: **¿cómo separas los datos de tus clientes?**
+
+La respuesta no es trivial. Afecta a:
+- Coste de infraestructura (€50.000 vs €500.000 en 5 años)
+- Seguridad y compliance (¿puedes vender a bancos y hospitales?)
+- Velocidad de desarrollo (¿iteras en semanas o en meses?)
+- Escalabilidad (¿creces sin fricción o rehaces cada año?)
+- Capacidad de personalización (¿cada cliente es único o son clones?)
+
+Este artículo analiza los tres modelos principales y cuándo usar cada uno. Con datos reales de costes y casos donde la elección fue catastrrófica o brillante.
+
+---
+
+## Los Tres Modelos de Arquitectura
+
+### 1. Multi-Tenant: Una Base de Datos, Todos los Clientes
+
+**Concepto:** Todos los clientes comparten la misma base de datos y aplicación. Los datos se separan lógicamente mediante un `tenant_id` en cada tabla.
+
+```
+┌─────────────────────────────────────────┐
+│           APLICACIÓN ÚNICA              │
+│         (Código compartido)             │
+└─────────────────────────────────────────┘
+                   │
+┌─────────────────────────────────────────┐
+│        BASE DE DATOS ÚNICA              │
+│    ┌─────────────────────────┐          │
+│    │  tenant_id | datos...   │          │
+│    │  --------- | ---------  │          │
+│    │  cliente_a | ...        │          │
+│    │  cliente_b | ...        │          │
+│    │  cliente_c | ...        │          │
+│    └─────────────────────────┘          │
+└─────────────────────────────────────────┘
+```
+
+**Ventajas:**
+- **Coste:** Mínimo. Una sola infraestructura para todos.
+- **Desarrollo:** Más rápido. Un solo codebase.
+- **Despliegues:** Un update para todos los clientes simultáneamente.
+- **Escalabilidad:** Añadir un cliente nuevo cuesta casi cero.
+
+**Desventajas:**
+- **Seguridad:** Un bug en el filtrado por `tenant_id` expone datos de todos.
+- **Personalización:** Difícil. Cambios para un cliente afectan a todos.
+- **Compliance:** Algunos sectores (salud, finanzas) exigen aislamiento físico.
+- **Rendimiento:** Un cliente con carga masiva puede degradar el servicio para todos.
+
+**Cuándo usarlo:**
+- MVP o fase inicial
+- Clientes pequeños/medianos sin requisitos de compliance estrictos
+- Producto estándar con poca personalización
+- Presupuesto limitado
+
+---
+
+### 2. Single-Tenant: Una Infraestructura Por Cliente
+
+**Concepto:** Cada cliente tiene su propia base de datos, y posiblemente su propia instancia de la aplicación.
+
+```
+┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+│  APP + DB   │  │  APP + DB   │  │  APP + DB   │
+│  Cliente A  │  │  Cliente B  │  │  Cliente C  │
+└─────────────┘  └─────────────┘  └─────────────┘
+     (aislado)       (aislado)        (aislado)
+```
+
+**Ventajas:**
+- **Seguridad máxima:** Aislamiento físico completo.
+- **Personalización total:** Cada cliente puede tener su propia lógica.
+- **Compliance:** Cumple con requisitos más estrictos (GDPR, HIPAA, etc.).
+- **Rendimiento:** Un cliente no afecta a otros.
+
+**Desventajas:**
+- **Coste:** Alto. N clientes = N infraestructuras.
+- **Desarrollo:** Más lento. Mantener N instancias.
+- **Despliegues:** Actualizar N clientes es lento y costoso.
+- **Escalabilidad:** Añadir un cliente nuevo implica crear infraestructura.
+
+**Cuándo usarlo:**
+- Clientes enterprise con requisitos de seguridad extremos
+- Sectores regulados (salud, finanzas, defensa)
+- Personalización profunda por cliente
+- Contratos con SLA estrictos
+
+---
+
+### 3. Híbrido: El Modelo Pragmático
+
+**Concepto:** Separar por "pools". Clientes pequeños comparten (multi-tenant), clientes grandes tienen su propia instancia (single-tenant).
+
+```
+┌─────────────────────────────────────────┐
+│         POOL MULTI-TENANT               │
+│    (Clientes pequeños/medianos)         │
+│         tenant_id separation            │
+└─────────────────────────────────────────┘
+                   │
+┌─────────────────────────────────────────┐
+│       INSTANCIAS DEDICADAS              │
+│    (Clientes enterprise)                │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐   │
+│  │ Cliente │ │ Cliente │ │ Cliente │   │
+│  │   X     │ │   Y     │ │   Z     │   │
+│  └─────────┘ └─────────┘ └─────────┘   │
+└─────────────────────────────────────────┘
+```
+
+**Ventajas:**
+- **Coste optimizado:** La mayoría de clientes en pool compartido, solo los grandes dedicados.
+- **Flexibilidad:** Puedes migrar clientes entre pools según crecen.
+- **Compliance:** Los clientes que lo necesitan tienen aislamiento.
+
+**Desventajas:**
+- **Complejidad:** Dos modelos arquitectónicos que mantener.
+- **Consistencia:** Diferentes versiones del software en pools distintos.
+- **Operaciones:** Más complejo de monitorizar y gestionar.
+
+**Cuándo usarlo:**
+- SaaS con mezcla de clientes SMB y enterprise
+- Estrategia de "land and expand"
+- Necesidad de optimizar costes sin sacrificar compliance
+
+---
+
+## Comparativa Detallada
+
+| Factor | Multi-Tenant | Single-Tenant | Híbrido |
+|--------|--------------|---------------|---------|
+| **Coste infra/cliente** | €€ (bajo) | €€€€€ (alto) | €€€ (medio) |
+| **Coste desarrollo inicial** | €€€ | €€€€€ | €€€€ |
+| **Velocidad de desarrollo** | Rápida | Lenta | Media |
+| **Seguridad datos** | Media | Máxima | Alta |
+| **Personalización** | Baja | Total | Media |
+| **Escalabilidad** | Excelente | Limitada | Buena |
+| **Compliance estricto** | Difícil | Fácil | Posible |
+| **Mantenimiento** | Simple | Complejo | Medio |
+| **Time-to-market** | Rápido | Lento | Medio |
+
+---
+
+## El Coste Real de Cada Modelo
+
+### Multi-Tenant (100 clientes)
+
+| Concepto | Coste mensual |
+|----------|---------------|
+| Infraestructura (AWS/Azure) | €500 - €2.000 |
+| Base de datos (RDS/Cloud SQL) | €200 - €800 |
+| Almacenamiento | €100 - €500 |
+| **Total** | **€800 - €3.300** |
+| **Coste por cliente** | **€8 - €33/mes** |
+
+### Single-Tenant (100 clientes)
+
+| Concepto | Coste mensual |
+|----------|---------------|
+| Infraestructura (100 instancias) | €5.000 - €20.000 |
+| Base de datos (100 instancias) | €2.000 - €8.000 |
+| Almacenamiento | €1.000 - €5.000 |
+| **Total** | **€8.000 - €33.000** |
+| **Coste por cliente** | **€80 - €330/mes** |
+
+### Híbrido (80 multi + 20 single)
+
+| Concepto | Coste mensual |
+|----------|---------------|
+| Pool multi-tenant (80 clientes) | €600 - €2.500 |
+| Instancias dedicadas (20) | €1.600 - €6.600 |
+| **Total** | **€2.200 - €9.100** |
+| **Coste promedio por cliente** | **€22 - €91/mes** |
+
+---
+
+## Cómo Implementar Multi-Tenant Correctamente
+
+Si eliges multi-tenant, estos son los patrones clave:
+
+### Patrón 1: Discriminador en Cada Tabla
+
+```sql
+CREATE TABLE projects (
+    id UUID PRIMARY KEY,
+    tenant_id UUID NOT NULL,
+    name VARCHAR(255),
+    created_at TIMESTAMP,
+    FOREIGN KEY (tenant_id) REFERENCES tenants(id)
+);
+
+-- Índice obligatorio para performance
+CREATE INDEX idx_projects_tenant ON projects(tenant_id);
+```
+
+**Cada query debe incluir el filtro:**
+
+```javascript
+// ❌ MAL: Sin filtro de tenant
+const projects = await db.projects.findAll();
+
+// ✅ BIEN: Con filtro obligatorio
+const projects = await db.projects.findAll({
+    where: { tenant_id: currentTenantId }
+});
+```
+
+### Patrón 2: Middleware de Tenant Resolution
+
+```javascript
+// Middleware que resuelve el tenant desde el dominio o token
+app.use(async (req, res, next) => {
+    const tenant = await resolveTenant(req);
+    if (!tenant) {
+        return res.status(403).json({ error: 'Tenant not found' });
+    }
+    req.tenant = tenant;
+    next();
+});
+```
+
+### Patrón 3: Row Level Security (RLS) en PostgreSQL
+
+```sql
+-- Habilitar RLS en la tabla
+ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
+
+-- Política que filtra automáticamente por tenant
+CREATE POLICY tenant_isolation ON projects
+    USING (tenant_id = current_setting('app.current_tenant')::uuid);
+```
+
+**Ventaja:** Aunque la aplicación olvide el filtro, la base de datos lo aplica automáticamente.
+
+---
+
+## Errores Comunes en Arquitectura SaaS
+
+### Error 1: Empezar Single-Tenant "Por Seguridad"
+
+Muchos empiezan con instancias dedicadas "por si acaso". Resultado: costes desproporcionados, desarrollo lento, imposibilidad de competir en precio.
+
+**Regla:** Empieza multi-tenant. Migra a single-tenant solo los clientes que lo exijan.
+
+### Error 2: No Diseñar para Migración
+
+Si mañana un cliente enterprise exige su propia instancia, ¿puedes migrar sus datos fácilmente? Si tu esquema no está preparado, será un infierno.
+
+**Regla:** Diseña con export/import de datos desde el principio.
+
+### Error 3: Mezclar Código de Clientes
+
+```javascript
+// ❌ MAL: Código específico mezclado
+if (tenantId === 'cliente-especial') {
+    // lógica especial
+}
+
+// ✅ BIEN: Configuración por tenant
+const config = await getTenantConfig(tenantId);
+if (config.features.customWorkflow) {
+    // lógica configurable
+}
+```
+
+### Error 4: Ignorar el "Noisy Neighbor"
+
+En multi-tenant, un cliente que genera carga masiva puede degradar el servicio para todos.
+
+**Soluciones:**
+- Rate limiting por tenant
+- Cuotas de recursos (CPU, memoria, queries)
+- Monitoreo por tenant
+- Planes con recursos dedicados para clientes grandes
+
+---
+
+## Caso Real: Evolución de Arquitectura
+
+**Fase 1: MVP (0-10 clientes)**
+- Multi-tenant puro
+- Coste: €200/mes infraestructura
+- Time-to-market: 4 meses
+
+**Fase 2: Crecimiento (10-50 clientes)**
+- Multi-tenant + rate limiting
+- Coste: €800/mes
+- Migración de 2 clientes enterprise a instancias dedicadas
+
+**Fase 3: Escala (50-200 clientes)**
+- Híbrido: 80% multi-tenant, 20% single-tenant
+- Coste: €3.000/mes (promedio €15/cliente)
+- SLA diferenciado por tipo de cliente
+
+**Resultado:** Crecimiento sostenible sin que la arquitectura fuera un cuello de botella.
+
+---
+
+## Checklist: ¿Qué Modelo Elegir?
+
+### Elige Multi-Tenant si:
+- [ ] Estás construyendo un MVP
+- [ ] Tienes presupuesto limitado
+- [ ] Tus clientes son SMB
+- [ ] No hay requisitos de compliance estrictos
+- [ ] Quieres velocidad de desarrollo
+
+### Elige Single-Tenant si:
+- [ ] Tus clientes son enterprise
+- [ ] Manejas datos sanitarios, financieros o gubernamentales
+- [ ] El compliance exige aislamiento físico
+- [ ] La personalización profunda es core
+- [ ] Tienes recursos para mantener N instancias
+
+### Elige Híbrido si:
+- [ ] Tienes mezcla de clientes SMB y enterprise
+- [ ] Quieres optimizar costes sin sacrificar compliance
+- [ ] Tu estrategia es "land and expand"
+- [ ] Tienes capacidad técnica para gestionar complejidad
+
+---
+
+## Conclusión
+
+La arquitectura de tu SaaS a medida no es una decisión técnica menor. Es **estrategia de negocio**.
+
+El multi-tenant te da velocidad y costes bajos. El single-tenant te da control y compliance. El híbrido te da flexibilidad.
+
+La clave no es elegir "el mejor" modelo, sino **el mejor para tu situación actual**, con la capacidad de evolucionar cuando cambien las circunstancias.
+
+**¿Estás diseñando la arquitectura de tu SaaS?**
+
+La decisión que tomes hoy te costará o ahorrará cientos de miles en 2 años. En 45 minutos revisamos tu modelo de negocio, tipo de clientes y roadmap para recomendarte la arquitectura correcta desde el día 1.
+
+**[Evita el error de los €180.000 →](/contacto)**
+
+---
+
+*¿Conoces a alguien construyendo un SaaS sin pensar en arquitectura? Compártelo.*

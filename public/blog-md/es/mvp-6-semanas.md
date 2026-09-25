@@ -1,0 +1,218 @@
+---
+title: "MVP a Medida: Cómo Validar Tu Idea en 6 Semanas Sin Arruinarte"
+date: "2026-09-28"
+language: "es"
+canonical: "https://legasint.com/blog/mvp-6-semanas"
+tags: ["MVP", "software a medida", "validación", "startups", "producto mínimo viable"]
+---
+
+# MVP a Medida: Cómo Validar Tu Idea en 6 Semanas Sin Arruinarte
+
+Guía práctica para construir un MVP a medida en 6 semanas: qué incluir, qué descartar, cuánto cuesta y cómo evitar los errores que matan startups.
+
+## "Necesito un MVP Completo Con Todas Las Funcionalidades Para Lanzar"
+
+**Esa frase ha costado a startups más de €2 millones en desarrollos que nadie usó.**
+
+Un MVP no es un producto completo. Es un **experimento de validación** que debe responder una pregunta: ¿hay suficiente gente dispuesta a pagar por esto?
+
+En Legasint hemos construido decenas de MVPs. Los que funcionan comparten un patrón: **se construyen en semanas, no meses, y cuestan una fracción de lo que el cliente temía**.
+
+Este artículo te da el método exacto para lanzar un MVP a medida en 6 semanas. Sin "quiero todo". Sin scope creep. Sin arruinarte en el intento.
+
+---
+
+## Semana 1: Definición — Qué Construir (Y Qué No)
+
+### El Error Más Común: Lista de Deseos
+
+La conversación típica:
+- Cliente: "Necesito registro, pagos, notificaciones, chat, reportes, integración con 5 APIs, y una app móvil."
+- Nosotros: "¿Cuál es la funcionalidad que valida tu modelo de negocio?"
+- Cliente: "... todas son importantes."
+
+**No lo son.**
+
+### El Método: La Función Crítica
+
+Pregunta única: **¿Cuál es la acción que tu usuario debe poder hacer para que tu negocio funcione?**
+
+Ejemplos:
+- **Marketplace de servicios:** Publicar solicitud + recibir propuesta. Nada más.
+- **SaaS B2B:** Crear proyecto + invitar equipo + ver dashboard. Nada más.
+- **App de reservas:** Buscar disponibilidad + reservar + pagar. Nada más.
+
+### Ejercicio: La Lista de 3
+
+Escribe todas las funcionalidades que imaginas. Luego fuerza a elegir solo 3:
+
+1. **Core:** Sin esto, el producto no existe.
+2. **Esencial:** Sin esto, el usuario se frustra.
+3. **Diferenciador:** Sin esto, eres un clon más.
+
+Todo lo demás: **descartado para el MVP**.
+
+---
+
+## Semana 2-3: Diseño y Prototipado
+
+### No Programes Todavía
+
+Antes de escribir código, valida la experiencia. Herramientas:
+- **Figma** (gratis): Prototipo interactivo clicable.
+- **Miro**: Flujos de usuario y arquitectura de información.
+
+### El Test de 5 Segundos
+
+Muestra tu prototipo a alguien durante 5 segundos. Luego pregunta:
+- "¿Qué crees que hace esta app?"
+- "¿Qué harías para [acción principal]?"
+
+Si no pueden responder, tu diseño falla. Itera antes de programar.
+
+---
+
+## Semana 4-5: Desarrollo del MVP
+
+### Stack Recomendado para MVPs
+
+| Componente | Recomendación | Por qué |
+|------------|---------------|---------|
+| **Frontend** | Next.js / React | Rápido, escalable, fácil encontrar desarrolladores |
+| **Backend** | Node.js / Python (FastAPI) | Desarrollo ágil, comunidad grande |
+| **Base de datos** | PostgreSQL | Robusta, gratis, escalable |
+| **Autenticación** | Auth0 / Firebase Auth | No reinventes la seguridad |
+| **Hosting** | Vercel / AWS | Deploy en minutos, escala automáticamente |
+| **Pagos** (si aplica) | Stripe | Integración en días, no meses |
+
+### Qué SÍ Incluir en el MVP
+
+- [ ] Función crítica (la de tu lista de 3)
+- [ ] Registro/login (con Auth0 o similar)
+- [ ] Flujo básico sin errores
+- [ ] Diseño limpio y usable (no perfecto, funcional)
+- [ ] Analytics básico (quién usa qué)
+
+### Qué NO Incluir
+
+- [ ] App móvil nativa (usa PWA o web responsive)
+- [ ] Notificaciones push complejas (email basta)
+- [ ] Reportes avanzados (exporta a CSV y ya)
+- [ ] Integraciones no críticas (hazlo manual al principio)
+- [ ] Multi-idioma (empieza con uno)
+- [ ] Temas visuales personalizables
+
+---
+
+## Semana 6: Lanzamiento y Medición
+
+### Soft Launch vs. Hard Launch
+
+**Soft launch (recomendado):**
+- 10-50 usuarios beta invitados manualmente
+- Feedback directo por email/WhatsApp
+- Iteraciones rápidas sin presión
+
+**Hard launch:**
+- Product Hunt, prensa, ads
+- Cientos de usuarios simultáneos
+- Riesgo alto si algo falla
+
+Para MVP, **soft launch siempre**.
+
+### Métricas Que Importan
+
+| Métrica | Objetivo MVP | Señal de alerta |
+|---------|--------------|-----------------|
+| **Activación** | &gt;40% completan onboarding | &lt;20% abandonan en registro |
+| **Retención D1** | &gt;50% vuelven al día siguiente | &lt;30% |
+| **Retención D7** | &gt;20% vuelven a la semana | &lt;10% |
+| **NPS** | &gt;40 | &lt;20 |
+| **Conversión pago** | &gt;5% (si aplica) | &lt;1% |
+
+---
+
+## Cuánto Cuesta un MVP a Medida
+
+| Tipo | Coste | Plazo | Incluye |
+|------|-------|-------|---------|
+| **MVP básico** | €15.000 - €25.000 | 4-6 semanas | Web app, auth, función crítica, deploy |
+| **MVP medio** | €25.000 - €40.000 | 6-8 semanas | + pagos, notificaciones email, dashboard básico |
+| **MVP complejo** | €40.000 - €60.000 | 8-12 semanas | + integraciones API, algoritmos, app móvil |
+
+**Nota:** Estos rangos son para desarrollo profesional en España/UE. Nearshore puede reducir 30-40%, pero añade riesgo de comunicación y calidad.
+
+---
+
+## Errores Que Matan MVPs
+
+### Error 1: Feature Creep
+
+"Y si añadimos...?" No. Cada funcionalidad añade semanas y complejidad. El MVP es un experimento, no un producto final.
+
+### Error 2: Perfeccionismo Visual
+
+Tu MVP no necesita ganar premios de diseño. Necesita que 50 personas lo usen y te digan si pagarían por ello.
+
+### Error 3: No Hablar con Usuarios Reales
+
+Construir 6 semanas sin mostrar nada a nadie es suicidio. Muestra prototipos desde la semana 2.
+
+### Error 4: Escalar Antes de Tiempo
+
+Si tienes 100 usuarios, no necesitas infraestructura para 100.000. Empieza simple. Escala cuando lo necesites.
+
+### Error 5: No Definir Criterios de Éxito
+
+"Ver qué pasa" no es una estrategia. Define antes: "Si X% de usuarios hace Y en Z días, continuamos. Si no, pivotamos."
+
+---
+
+## Caso Real: Marketplace B2B en 6 Semanas
+
+**Contexto:** Emprendedor quería conectar pymes con consultores financieros. Presupuesto limitado: €30.000.
+
+**Semana 1:** Definimos core: publicar necesidad + recibir propuesta + contactar. Descartamos: pagos integrados, chat, reviews, app móvil.
+
+**Semana 2-3:** Prototipo en Figma. Test con 5 pymes y 3 consultores. Ajustamos flujo de registro (era demasiado largo).
+
+**Semana 4-5:** Desarrollo con Next.js + PostgreSQL + Auth0 + Stripe (para futuro, no activo).
+
+**Semana 6:** Soft launch con 20 pymes y 10 consultores invitados manualmente.
+
+**Resultados a 4 semanas post-launch:**
+- 60% de pymes completaron publicación de necesidad
+- 40% recibieron al menos una propuesta
+- 3 transacciones cerradas fuera de plataforma (señal de demanda real)
+- **Decisión: iterar y añadir pagos integrados**
+
+**Coste total:** €32.000. **Tiempo:** 6 semanas. **Validación:** Real.
+
+---
+
+## Checklist: ¿Estás Listo Para tu MVP?
+
+- [ ] Puedo describir mi función crítica en una frase
+- [ ] He hablado con 10+ usuarios potenciales
+- [ ] Tengo presupuesto para MVP + 3 meses de iteración
+- [ ] He definido métricas de éxito claras
+- [ ] Acepto que el MVP será "feo" pero funcional
+- [ ] Tengo alguien que usará el producto desde el día 1
+
+---
+
+## Conclusión
+
+Un MVP a medida no es un producto barato. Es una **inversión en validación**. Los €20.000-40.000 que cuesta son el seguro contra gastar €200.000 en construir algo que nadie quiere.
+
+La velocidad importa. 6 semanas es suficiente para saber si tu idea tiene mercado. 6 meses es tiempo suficiente para que alguien más lo haga primero.
+
+**¿Tienes una idea que quieres validar?**
+
+No necesitas un equipo de 10 personas ni €500.000. Necesitas 6 semanas, €30.000 y alguien que sepa qué construir (y qué no). En 45 minutos definimos tu MVP y te damos un roadmap claro.
+
+**[Define tu MVP en 45 minutos →](/contacto)**
+
+---
+
+*¿Conoces a alguien construyendo un MVP desde hace 6 meses? Compártelo.*
