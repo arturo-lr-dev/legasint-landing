@@ -1,147 +1,90 @@
-'use client';
-import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import Reveal from './Reveal';
-import TiltCard from './TiltCard';
-import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
-import { homeCopy, Locale } from '@/i18n/home-copy';
+import { homeCopy, type Locale } from '@/i18n/home-copy';
 
-interface Project {
-  title: string;
-  description: string;
-  imageUrl: string;
-  projectUrl: string;
-  tags: string[];
-}
+const projectMeta: Record<string, { imageUrl: string; projectUrl: string }> = {
+  'Valle Hub': { imageUrl: '/projects/offpeaks.webp', projectUrl: 'https://www.vallehub.com/' },
+  'SF Education': { imageUrl: '/projects/sfeducation.webp', projectUrl: 'https://sfeducation.es' },
+  LeCrep: { imageUrl: '/projects/lacrep.webp', projectUrl: 'https://la-crep-webapp.web.app' },
+  Cronos: { imageUrl: '/projects/cronos.webp', projectUrl: 'https://academiacronos.es' },
+  'Smart Stadium Pricing': { imageUrl: '/projects/smart-stadium-pricing.webp', projectUrl: 'https://github.com/arturo-lr-dev/stadium-smart-pricing' },
+  'Ambar PRO': { imageUrl: '/projects/ambarpro.webp', projectUrl: 'https://ambarpro.net' },
+};
 
-const PortfolioSection: React.FC<{ locale?: Locale }> = ({ locale = 'es' }) => {
+export default function PortfolioSection({ locale = 'es' }: { locale?: Locale }) {
   const copy = homeCopy[locale].portfolio;
-  const [mounted, setMounted] = useState<boolean>(false);
-  const isMobile = useIsMobile();
-  const prefersReducedMotion = usePrefersReducedMotion();
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
+  const labels = locale === 'es'
+    ? { challenge: 'El reto', solution: 'La solución', outcome: 'Resultado funcional' }
+    : { challenge: 'The challenge', solution: 'The solution', outcome: 'Functional outcome' };
+  const projects = copy.projects.flatMap((project) => {
+    const meta = projectMeta[project.title];
+    if (!project.featured || !meta) return [];
+    return [{ ...project, ...meta }];
   });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%']);
-
-  const projectMeta = [
-    { imageUrl: "/projects/offpeaks.webp", projectUrl: "https://www.vallehub.com/" },
-    { imageUrl: "/projects/sfeducation.webp", projectUrl: "https://sfeducation.es" },
-    { imageUrl: "/projects/lacrep.webp", projectUrl: "https://la-crep-webapp.web.app" },
-    { imageUrl: "/projects/cronos.webp", projectUrl: "https://academiacronos.es" },
-    { imageUrl: "/projects/smart-stadium-pricing.webp", projectUrl: "https://github.com/arturo-lr-dev/stadium-smart-pricing" },
-    { imageUrl: "/projects/ambarpro.webp", projectUrl: "https://ambarpro.net" },
-  ];
-
-  const projects: Project[] = copy.projects.map((p, i) => ({
-    ...p,
-    ...projectMeta[i],
-  }));
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className="relative w-full py-20 -mt-1 overflow-hidden"
-    >
-      {/* Parallax background texture (gated on mounted to avoid a
-          desktop/mobile SVG flash before the breakpoint is known) */}
-      {mounted && (
-        <motion.div
-          className="absolute inset-x-0 -inset-y-[10%]"
-          style={{
-            y: prefersReducedMotion ? 0 : parallaxY,
-            backgroundImage: `url("${isMobile ? '/circuit-mobile.svg' : '/circuit.svg'}")`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            mixBlendMode: 'overlay',
-          }}
-          aria-hidden="true"
-        />
-      )}
+    <section id="casos" className="brand-section-blue scroll-mt-20 px-4 py-16 md:py-24" aria-labelledby="cases-title">
+      <Reveal className="mx-auto w-full max-w-6xl">
+        <div className="max-w-3xl">
+          <h2 id="cases-title" className="text-balance text-3xl font-bold tracking-tight text-brand-heading md:text-4xl">
+            {copy.title}
+          </h2>
+          <p className="mt-4 text-pretty text-base leading-relaxed text-brand-body md:text-lg">{copy.subtitle}</p>
+        </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
-        {/* Section Title */}
-        <Reveal>
-          <div className="text-center mb-16">
-            <h2 className="font-mono text-2xl font-bold text-white mb-4">
-              {copy.title}
-            </h2>
-          </div>
-        </Reveal>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <Reveal key={index} delay={index * 200} index={index} className="h-full">
-              <TiltCard>
+            <article
+              key={project.title}
+              id={`caso-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+              className={`${index % 2 === 0 ? 'brand-card' : 'brand-card-violet'} flex h-full scroll-mt-24 flex-col overflow-hidden rounded-2xl border border-white/10`}
+            >
+              <div className="relative aspect-[16/9] border-b border-white/10">
+                <Image
+                  src={project.imageUrl}
+                  alt={`${project.title}: ${project.description}`}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="text-xl font-semibold text-brand-heading">{project.title}</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="rounded-md bg-brand-blue/10 px-2.5 py-1 text-xs text-brand-blue">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <dl className="mt-6 flex-1 space-y-5">
+                  <div>
+                    <dt className="text-sm font-semibold text-brand-heading">{labels.challenge}</dt>
+                    <dd className="mt-1 text-pretty text-sm leading-relaxed text-brand-body">{project.challenge}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm font-semibold text-brand-heading">{labels.solution}</dt>
+                    <dd className="mt-1 text-pretty text-sm leading-relaxed text-brand-body">{project.solution}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm font-semibold text-brand-heading">{labels.outcome}</dt>
+                    <dd className="mt-1 text-pretty text-sm leading-relaxed text-brand-body">{project.outcome}</dd>
+                  </div>
+                </dl>
                 <a
                   href={project.projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-full"
+                  aria-label={`${copy.cta}: ${project.title}`}
+                  className="mt-6 inline-flex w-fit rounded text-sm font-semibold text-brand-blue underline decoration-brand-blue/35 underline-offset-4 transition-colors hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
                 >
-                  <div className="relative group bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden hover:bg-white/20 transition-all duration-300 h-full">
-                    {/* Hover glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* Project Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={project.imageUrl}
-                        alt={project.title}
-                        fill
-                        className="object-cover transform group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-
-                    {/* Project Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-blue-200 mb-4">
-                        {project.description}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag, tagIndex) => (
-                          <span
-                            key={tagIndex}
-                            className="px-3 py-1 text-sm bg-blue-500/20 text-blue-200 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                  {copy.cta}
                 </a>
-              </TiltCard>
-            </Reveal>
+              </div>
+            </article>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <Reveal delay={projects.length * 200}>
-          <div className="text-center mt-16">
-            <p className="font-mono text-xl text-blue-200 mb-8">
-              {copy.cta}
-            </p>
-          </div>
-        </Reveal>
-      </div>
-    </div>
+      </Reveal>
+    </section>
   );
-};
-
-export default PortfolioSection;
+}

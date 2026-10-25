@@ -1,25 +1,21 @@
-// app/(en)/en/page.tsx — English home (/en)
 import type { Metadata } from 'next';
 import AnimatedLanding from '@/components/landing/AnimatedLanding';
+import ProblemsSection from '@/components/landing/ProblemsSection';
 import ServicesSection from '@/components/landing/ServicesSection';
 import PortfolioSection from '@/components/landing/PortfolioSection';
+import ProcessSection from '@/components/landing/ProcessSection';
 import SocialImpactSection from '@/components/landing/SocialSection';
 import FaqSection from '@/components/landing/FaqSection';
 import ContactForm from '@/components/ContactForm';
-import SmoothScroll from '@/components/landing/SmoothScroll';
-import ScrollProgress from '@/components/landing/ScrollProgress';
 import ConsoleEasterEgg from '@/components/landing/ConsoleEasterEgg';
-import HeroBackground from '@/components/landing/three/HeroBackground';
 import { ServiceJsonLd, FaqPageJsonLd } from '@/components/seo/JsonLd';
 import { homeCopy } from '@/i18n/home-copy';
 
 const BASE_URL = 'https://legasint.com';
 
 export const metadata: Metadata = {
-  // absolute: el título ya incluye la marca; evita que el template del layout añada "| Legasint" de nuevo
-  title: { absolute: 'Legasint - Custom Software Development & Tech Partner' },
-  description:
-    'Legasint is your technology partner: custom software development, automation and AI for businesses.',
+  title: { absolute: 'Custom software for SMEs | Legasint' },
+  description: 'Custom software, ERP, integrations and automation that remove manual work. Request a free 30-minute assessment for your business.',
   alternates: {
     canonical: `${BASE_URL}/en`,
     languages: {
@@ -29,6 +25,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    title: 'Custom software for SMEs | Legasint',
+    description: 'We turn manual processes into tools designed around your business.',
     url: `${BASE_URL}/en`,
     locale: 'en_US',
     alternateLocale: ['es_ES'],
@@ -40,30 +38,21 @@ export default function HomeEn() {
     <>
       <ServiceJsonLd locale="en" />
       <FaqPageJsonLd items={homeCopy.en.faq.items} />
-      <SmoothScroll />
-      <ScrollProgress />
       <ConsoleEasterEgg />
-      <HeroBackground />
-      {/* Single continuous gradient under every section so colors flow
-          smoothly across section boundaries with no visible seams */}
-      <div
-        className="relative"
-        style={{
-          background:
-            'linear-gradient(180deg, #1e3a8a 0%, #581c87 30%, #46217e 55%, #1e3a8a 78%, #581c87 100%)',
-        }}
-      >
+      <main id="main-content" className="brand-page">
         <AnimatedLanding locale="en" />
-        <ServicesSection locale="en" />
+        <ProblemsSection locale="en" />
         <PortfolioSection locale="en" />
-        <SocialImpactSection locale="en" />
+        <ServicesSection locale="en" />
+        <ProcessSection locale="en" />
         <FaqSection locale="en" />
-        <section className="relative z-10 px-4 py-16 md:py-24">
-          <div className="max-w-3xl mx-auto">
-            <ContactForm locale="en" />
+        <section id="diagnostico" aria-label="Free assessment" className="brand-section-violet scroll-mt-20 px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-3xl">
+            <ContactForm locale="en" variant="diagnostic" location="home_en_form" />
           </div>
         </section>
-      </div>
+        <SocialImpactSection locale="en" />
+      </main>
     </>
   );
 }

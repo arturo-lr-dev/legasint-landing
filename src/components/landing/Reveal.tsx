@@ -1,8 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { fadeInUp, fadeInLeft, fadeInRight } from '@/lib/animations';
-import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface RevealProps {
   children: React.ReactNode;
@@ -11,28 +9,26 @@ interface RevealProps {
   className?: string;
 }
 
-const Reveal: React.FC<RevealProps> = ({ children, delay = 0, index = 0, className }) => {
-  const isMobile = useIsMobile();
-  const prefersReducedMotion = usePrefersReducedMotion();
+const revealVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const Reveal: React.FC<RevealProps> = ({ children, className }) => {
+  const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {
     return <div className={className}>{children}</div>;
   }
-
-  const variants = isMobile
-    ? index % 2 === 0
-      ? fadeInLeft
-      : fadeInRight
-    : fadeInUp;
 
   return (
     <motion.div
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.15, margin: '0px 0px 50px 0px' }}
-      variants={variants}
-      transition={{ delay: delay / 1000 }}
+      viewport={{ once: true, amount: 0.15, margin: '0px 0px 50px 0px' }}
+      variants={revealVariants}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
     >
       {children}
     </motion.div>

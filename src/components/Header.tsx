@@ -1,72 +1,45 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import slugMap from '@/data/slug-map.json';
+import { GA_EVENTS, trackEvent } from '@/lib/analytics';
 
 const menuVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.35, ease: 'easeOut' as const },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.25, ease: 'easeIn' as const, delay: 0.1 },
-  },
-};
-
-const listVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.15 },
-  },
-  exit: {
-    transition: { staggerChildren: 0.04, staggerDirection: -1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: 'easeOut' as const },
-  },
-  exit: {
-    opacity: 0,
-    y: 12,
-    transition: { duration: 0.2, ease: 'easeIn' as const },
-  },
+  visible: { opacity: 1, transition: { duration: 0.2, ease: 'easeOut' as const } },
+  exit: { opacity: 0, transition: { duration: 0.15, ease: 'easeIn' as const } },
 };
 
 export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close the menu whenever the route changes
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
-  // Lock body scroll and allow closing with Escape while the menu is open
   useEffect(() => {
     if (!menuOpen) return;
 
     const previousOverflow = document.body.style.overflow;
+    const menuButton = menuButtonRef.current;
     document.body.style.overflow = 'hidden';
+    const focusFrame = requestAnimationFrame(() => {
+      menuRef.current?.querySelector<HTMLElement>('a')?.focus();
+    });
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setMenuOpen(false);
@@ -75,7 +48,9 @@ export const Header: React.FC = () => {
 
     return () => {
       document.body.style.overflow = previousOverflow;
+      cancelAnimationFrame(focusFrame);
       window.removeEventListener('keydown', handleKeyDown);
+      menuButton?.focus();
     };
   }, [menuOpen]);
 
@@ -83,8 +58,11 @@ export const Header: React.FC = () => {
 
   const isEnglish =
     pathname === '/en' ||
+    !!pathname?.startsWith('/en/') ||
     pathname === '/contact' ||
     pathname === '/custom-erp' ||
+    pathname === '/services' ||
+    pathname === '/privacy-policy' ||
     !!pathname?.startsWith('/blog/en');
   const isBlogPage = !!pathname?.startsWith('/blog');
 
@@ -100,7 +78,24 @@ export const Header: React.FC = () => {
     { href: blogHref, label: 'Blog', active: isBlogPage },
   ];
 
-  // Resolve the alternate-language URL for the current page
+  const diagnosticHref =
+    pathname === '/' || pathname === '/en'
+      ? '#diagnostico'
+      : pathname === '/servicios' || pathname === '/services'
+        ? '#formulario'
+        : isEnglish
+          ? '/en#diagnostico'
+          : '/#diagnostico';
+  const diagnosticLabel = isEnglish ? 'Free assessment' : 'Diagnóstico gratuito';
+  const mobileDiagnosticLabel = isEnglish ? diagnosticLabel : 'Diagnóstico';
+
+  const trackDiagnosticClick = (eventLabel: 'header_desktop' | 'header_mobile') => {
+    trackEvent(GA_EVENTS.CONTACT_CLICK, {
+      event_category: 'lead',
+      event_label: eventLabel,
+    });
+  };
+
   const getAlternateUrl = (targetLocale: 'es' | 'en'): string => {
     const path = pathname || '/';
 
@@ -120,7 +115,7 @@ export const Header: React.FC = () => {
       const key = `${targetLocale === 'en' ? 'es' : 'en'}:${slug}` as keyof typeof slugMap.posts;
       const alternate = slugMap.posts[key];
       if (alternate) return targetLocale === 'en' ? `/blog/en/${alternate}` : `/blog/${alternate}`;
-      return targetLocale === 'en' ? '/blog/en' : '/blog';
+      return targetLocale === 'en' ? '/en' : '/';
     }
 
     const tagMatch = path.match(/^\/blog\/(en\/)?tag\/([^/]+)$/);
@@ -131,7 +126,7 @@ export const Header: React.FC = () => {
         : (slugMap.tagsEs as string[]).includes(tag);
       if (exists) {
         const encoded = encodeURIComponent(tag);
-        return targetLocale === 'en' ? `/blog/en/tag/${encoded}` : `/blog/tag/${encoded}`;
+        return targetLocale === 'en' ? `/blog/en/${encoded}` : `/blog/${encoded}`;
       }
       return targetLocale === 'en' ? '/blog/en' : '/blog';
     }
@@ -141,92 +136,66 @@ export const Header: React.FC = () => {
 
   const esUrl = getAlternateUrl('es');
   const enUrl = getAlternateUrl('en');
+  const focusRing = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-canvas';
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
         scrolled && !menuOpen
-          ? 'bg-black/30 backdrop-blur-lg border-b border-white/10'
-          : 'bg-transparent border-b border-transparent'
+          ? 'border-b border-white/10 bg-brand-canvas/90 backdrop-blur-lg'
+          : 'border-b border-transparent bg-transparent'
       }`}
     >
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            ref={menuRef}
             key="mobile-menu"
             id="mobile-menu"
             variants={menuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden fixed inset-0 h-[100dvh] bg-[#060614]/90 backdrop-blur-2xl overflow-hidden"
+            className="brand-page fixed inset-0 z-40 h-[100dvh] overflow-y-auto overscroll-contain md:hidden"
           >
-            {/* Ambient glow, matching the landing's blue → purple palette */}
-            <div
-              className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-br from-blue-500/30 to-purple-500/20 blur-3xl"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -bottom-28 -left-20 w-80 h-80 rounded-full bg-gradient-to-tr from-purple-600/25 to-blue-400/15 blur-3xl"
-              aria-hidden="true"
-            />
-
-            <motion.nav
-              variants={listVariants}
-              className="relative h-full flex flex-col justify-center px-8 pt-14"
-              aria-label="Mobile navigation"
-            >
-              <motion.span
-                variants={itemVariants}
-                className="font-mono text-xs text-blue-300/70 tracking-widest uppercase mb-8"
-              >
-                {'<'} menu {'/>'}
-              </motion.span>
-
-              <ul className="flex flex-col gap-2">
-                {navLinks.map((link, index) => (
-                  <motion.li key={link.href} variants={itemVariants}>
+            <nav className="mx-auto flex min-h-full w-full max-w-sm flex-col justify-center px-6 py-24" aria-label={isEnglish ? 'Mobile navigation' : 'Navegación móvil'}>
+              <ul className="divide-y divide-white/10 border-y border-white/10">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
                     <Link
                       href={link.href}
                       onClick={() => setMenuOpen(false)}
-                      className="group flex items-baseline gap-4 py-3"
+                      aria-current={link.active ? 'page' : undefined}
+                      className={`block rounded-sm py-4 text-3xl font-semibold tracking-tight transition-colors ${focusRing} ${
+                        link.active ? 'text-brand-blue' : 'text-brand-heading hover:text-brand-blue'
+                      }`}
                     >
-                      <span className="font-mono text-xs text-blue-400/60 group-hover:text-blue-300 transition-colors">
-                        0{index + 1}
-                      </span>
-                      <span
-                        className={`text-4xl font-bold tracking-tight transition-colors ${
-                          link.active
-                            ? 'text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300'
-                            : 'text-white group-hover:text-blue-200'
-                        }`}
-                      >
-                        {link.label}
-                      </span>
-                      {link.active && (
-                        <span
-                          className="self-center h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400"
-                          aria-hidden="true"
-                        />
-                      )}
+                      {link.label}
                     </Link>
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
 
-              {/* Language Selector */}
-              <motion.div variants={itemVariants} className="mt-10">
-                <div className="h-px w-16 bg-gradient-to-r from-blue-400/60 to-transparent mb-6" />
-                <div className="inline-flex items-center gap-1 p-1 rounded-full border border-white/15 bg-white/5">
+              <Link
+                href={diagnosticHref}
+                onClick={() => {
+                  trackDiagnosticClick('header_mobile');
+                  setMenuOpen(false);
+                }}
+                className={`mt-8 inline-flex min-h-12 items-center justify-center rounded-xl brand-button-primary px-5 py-3 text-center text-sm font-semibold text-white transition-shadow ${focusRing}`}
+              >
+                {diagnosticLabel}
+              </Link>
+
+              <div className="mt-8" role="group" aria-label={isEnglish ? 'Language' : 'Idioma'}>
+                <div className="inline-flex items-center gap-1 rounded-xl border border-white/15 bg-white/[0.04] p-1">
                   <Link
                     href={esUrl}
                     onClick={() => setMenuOpen(false)}
                     hrefLang="es"
-                    className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
-                      !isEnglish
-                        ? 'bg-gradient-to-r from-blue-500/40 to-purple-500/40 text-white shadow-inner'
-                        : 'text-blue-200 hover:text-white'
+                    aria-current={!isEnglish ? 'page' : undefined}
+                    className={`rounded-lg px-4 py-2 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue ${
+                      !isEnglish ? 'bg-white/15 text-white' : 'text-brand-body hover:text-white'
                     }`}
                   >
                     ES
@@ -235,69 +204,51 @@ export const Header: React.FC = () => {
                     href={enUrl}
                     onClick={() => setMenuOpen(false)}
                     hrefLang="en"
-                    className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
-                      isEnglish
-                        ? 'bg-gradient-to-r from-blue-500/40 to-purple-500/40 text-white shadow-inner'
-                        : 'text-blue-200 hover:text-white'
+                    aria-current={isEnglish ? 'page' : undefined}
+                    className={`rounded-lg px-4 py-2 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue ${
+                      isEnglish ? 'bg-white/15 text-white' : 'text-brand-body hover:text-white'
                     }`}
                   >
                     EN
                   </Link>
                 </div>
-              </motion.div>
-
-              {/* Footer tagline */}
-              <motion.div
-                variants={itemVariants}
-                className="absolute bottom-10 left-8 right-8 flex items-center gap-3"
-              >
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent to-white/15" />
-                <span className="font-mono text-[10px] text-blue-300/50 tracking-widest uppercase whitespace-nowrap">
-                  Your Vision, Our Technology
-                </span>
-                <span className="h-px flex-1 bg-gradient-to-l from-transparent to-white/15" />
-              </motion.div>
-            </motion.nav>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="relative max-w-6xl mx-auto px-4">
-        <nav className="flex items-center justify-between h-14 md:h-16">
-          {/* Logo */}
+      <div className="relative z-50 mx-auto max-w-6xl px-4">
+        <nav className="flex h-14 items-center justify-between md:h-16" aria-label={isEnglish ? 'Main navigation' : 'Navegación principal'}>
           <Link
             href={homeHref}
             onClick={() => setMenuOpen(false)}
-            className="font-mono text-lg md:text-xl font-bold text-white hover:text-blue-200 transition-colors"
+            className={`shrink-0 rounded-sm font-mono text-lg font-bold text-white transition-colors hover:text-brand-blue md:text-xl ${focusRing}`}
           >
             {'<'}Legasint{'/>'}
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden items-center gap-4 md:flex lg:gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  link.active
-                    ? 'text-white'
-                    : 'text-blue-200 hover:text-white'
+                aria-current={link.active ? 'page' : undefined}
+                className={`whitespace-nowrap rounded-sm text-sm font-medium transition-colors ${focusRing} ${
+                  link.active ? 'text-white' : 'text-brand-body hover:text-white'
                 }`}
               >
                 {link.label}
               </Link>
             ))}
 
-            {/* Language Selector - Desktop */}
-            <div className="flex items-center gap-2 ml-4 pl-4 border-l border-white/20">
+            <div className="ml-2 flex items-center gap-1 border-l border-white/20 pl-2 lg:ml-4 lg:gap-2 lg:pl-4" role="group" aria-label={isEnglish ? 'Language' : 'Idioma'}>
               <Link
                 href={esUrl}
                 hrefLang="es"
-                className={`text-xs px-2 py-1 rounded transition-colors ${
-                  !isEnglish
-                    ? 'bg-white/20 text-white'
-                    : 'text-blue-200 hover:text-white'
+                aria-current={!isEnglish ? 'page' : undefined}
+                className={`rounded px-2 py-1 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue ${
+                  !isEnglish ? 'bg-white/15 text-white' : 'text-brand-body hover:text-white'
                 }`}
               >
                 ES
@@ -305,37 +256,47 @@ export const Header: React.FC = () => {
               <Link
                 href={enUrl}
                 hrefLang="en"
-                className={`text-xs px-2 py-1 rounded transition-colors ${
-                  isEnglish
-                    ? 'bg-white/20 text-white'
-                    : 'text-blue-200 hover:text-white'
+                aria-current={isEnglish ? 'page' : undefined}
+                className={`rounded px-2 py-1 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue ${
+                  isEnglish ? 'bg-white/15 text-white' : 'text-brand-body hover:text-white'
                 }`}
               >
                 EN
               </Link>
             </div>
+
+            <Link
+              href={diagnosticHref}
+              onClick={() => trackDiagnosticClick('header_desktop')}
+              className={`inline-flex items-center justify-center whitespace-nowrap rounded-xl brand-button-primary px-3 py-2 text-xs font-semibold text-white transition-shadow lg:px-4 lg:text-sm ${focusRing}`}
+            >
+              {diagnosticLabel}
+            </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden relative w-10 h-10 -mr-2 flex items-center justify-center text-white"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-          >
-            <span className="sr-only">Toggle menu</span>
-            <span
-              className={`absolute h-[2px] w-5 rounded-full bg-current transition-all duration-300 ease-out ${
-                menuOpen ? 'rotate-45' : '-translate-y-[3.5px]'
-              }`}
-            />
-            <span
-              className={`absolute h-[2px] w-5 rounded-full bg-current transition-all duration-300 ease-out ${
-                menuOpen ? '-rotate-45' : 'translate-y-[3.5px]'
-              }`}
-            />
-          </button>
+          <div className="flex items-center gap-1 md:hidden">
+            <Link
+              href={diagnosticHref}
+              onClick={() => trackDiagnosticClick('header_mobile')}
+              className={`${menuOpen ? 'hidden' : 'inline-flex'} items-center justify-center whitespace-nowrap rounded-xl brand-button-primary px-3 py-2 text-xs font-semibold leading-none text-white transition-shadow ${focusRing}`}
+            >
+              {mobileDiagnosticLabel}
+            </Link>
+            <button
+              ref={menuButtonRef}
+              type="button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className={`relative -mr-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white ${focusRing}`}
+              aria-label={menuOpen
+                ? isEnglish ? 'Close menu' : 'Cerrar menú'
+                : isEnglish ? 'Open menu' : 'Abrir menú'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+            >
+              <span className={`absolute h-0.5 w-5 rounded-full bg-current transition-transform duration-200 motion-reduce:transition-none ${menuOpen ? 'rotate-45' : '-translate-y-1'}`} />
+              <span className={`absolute h-0.5 w-5 rounded-full bg-current transition-transform duration-200 motion-reduce:transition-none ${menuOpen ? '-rotate-45' : 'translate-y-1'}`} />
+            </button>
+          </div>
         </nav>
       </div>
     </header>

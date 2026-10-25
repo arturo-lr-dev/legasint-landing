@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import QrLandingClient from "./QrLandingClient";
 
 export const metadata: Metadata = {
-  title: "Conecta con nosotros",
-  description: "Guarda nuestro contacto, visita nuestra web o escríbenos por WhatsApp.",
+  title: "Contacto y diagnóstico gratuito",
+  description: "Solicita un diagnóstico gratuito de 30 minutos, guarda nuestro contacto o visita los proyectos de Legasint.",
   robots: {
     index: false,
     follow: false,

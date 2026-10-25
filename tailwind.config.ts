@@ -10,6 +10,16 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        brand: {
+          canvas: '#111831',
+          surface: '#1B2540',
+          heading: '#F5F7FA',
+          body: '#C3CBDD',
+          violet: '#8B5CF6',
+          blue: '#60A5FA',
+        },
+      },
       animation: {
         'fadeIn': 'fadeIn 0.8s ease-out forwards',
         'fadeInUp': 'fadeInUp 0.8s ease-out forwards',

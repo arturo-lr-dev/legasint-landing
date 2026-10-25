@@ -1,249 +1,74 @@
 'use client';
-import { fadeInUp } from '@/lib/animations';
-import { trackOutboundContact, GA_EVENTS } from '@/lib/analytics';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { useIsMobile, usePrefersReducedMotion } from '@/lib/device';
-import { homeCopy, Locale } from '@/i18n/home-copy';
 
-const AnimatedLanding = ({ locale = 'es' }: { locale?: Locale }) => {
+import { GA_EVENTS, trackEvent, trackOutboundContact } from '@/lib/analytics';
+import { homeCopy, type Locale } from '@/i18n/home-copy';
+import HeroProcessVisual from './HeroProcessVisual';
+
+export default function AnimatedLanding({ locale = 'es' }: { locale?: Locale }) {
   const t = homeCopy[locale].hero;
-  const whatsappUrl = locale === 'es'
-    ? 'https://wa.me/34649355701?text=Hola%20Arturo%2C%20vi%20vuestra%20web%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto.%20%C2%BFCu%C3%A1ndo%20tienes%20un%20hueco%3F'
-    : 'https://wa.me/34649355701?text=Hi%20Arturo%2C%20I%20saw%20your%20website%20and%20would%20like%20to%20discuss%20a%20project.%20When%20do%20you%20have%20time%3F';
-  const emailUrl = 'mailto:arturo@legasint.com';
-  const letters = "Legasint".split("");
-  const tagline = t.tagline.split(" ");
-  const isMobile = useIsMobile();
-  const prefersReducedMotion = usePrefersReducedMotion();
-  const mainRef = useRef<HTMLElement>(null);
-
-  // Hero exit choreography: content drifts up and fades as it scrolls away
-  const { scrollYProgress } = useScroll({
-    target: mainRef,
-    offset: ['start start', 'end start'],
-  });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const cueOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const whatsappMessage = locale === 'es'
+    ? 'Hola Arturo, me gustaría solicitar un diagnóstico gratuito de 30 minutos sobre un proceso de mi empresa.'
+    : 'Hi Arturo, I would like to request a free 30-minute assessment about a process in my company.';
+  const whatsappUrl = `https://wa.me/34649355701?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <main
-      ref={mainRef}
-      className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden"
+    <section
+      className="relative overflow-hidden px-4 pb-16 pt-32 sm:pt-36 lg:flex lg:h-[100svh] lg:min-h-[720px] lg:items-center lg:px-8 lg:pb-10 lg:pt-24 xl:px-4"
+      style={{ background: 'linear-gradient(115deg, #0b2254 0%, #111831 48%, #2b1058 100%)' }}
+      aria-labelledby="hero-title"
     >
-      {/* Texture layer blending against the page-wide gradient underneath */}
       <div
-        className="absolute inset-0"
+        className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: `url("${isMobile ? '/bg-mobile.svg' : '/bg.svg'}")`,
-          backgroundSize: isMobile ? 'cover' : 'auto',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          mixBlendMode: 'overlay',
+          background: 'radial-gradient(circle at 78% 22%, rgba(124,58,237,0.3), transparent 44%), radial-gradient(circle at 8% 12%, rgba(37,99,235,0.25), transparent 40%)',
         }}
         aria-hidden="true"
       />
-      <motion.div
-        className="relative z-10 text-center"
-        style={prefersReducedMotion ? undefined : { y: contentY, opacity: contentOpacity }}
-      >
-        <h1 className="sr-only">
-          {t.h1}
-        </h1>
-
-        {/* Logo / Company Name */}
-        <motion.div variants={fadeInUp} className="mb-6">
-          <span className="font-mono text-sm text-white tracking-widest uppercase">
-            {"<"} Software Solutions {"/>"}
-          </span>
-        </motion.div>
-
-        {/* Logo Animation */}
-        <div
-          className="flex items-center justify-center"
-          aria-label="Legasint animated logo"
-        >
-          {letters.map((letter, index) => (
-            <span
-              key={index}
-              className="notranslate text-7xl font-bold text-white animate-fadeInUp"
-              style={{
-                opacity: 0,
-                animationDelay: `${index * 150}ms`,
-                animationFillMode: 'forwards'
-              }}
-              aria-hidden="true"
+      <div className="pointer-events-none absolute inset-0 bg-[url('/bg.svg')] bg-cover bg-center opacity-[0.055]" aria-hidden="true" />
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 xl:gap-16">
+        <div className="max-w-2xl">
+          <h1 id="hero-title" className="text-balance text-4xl font-bold leading-[1.08] tracking-tight text-brand-heading sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
+            {t.h1}
+          </h1>
+          <p className="mt-6 max-w-[62ch] text-pretty text-base leading-relaxed text-brand-body sm:text-lg">
+            {t.description}
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-nowrap">
+            <a
+              href="#diagnostico"
+              onClick={() => trackEvent(GA_EVENTS.CONTACT_CLICK, { event_category: 'lead', event_label: 'home_hero_diagnostic' })}
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-[linear-gradient(120deg,#2563eb_0%,#7c3aed_100%)] px-5 py-3.5 text-center text-sm font-semibold text-white shadow-[0_12px_35px_-12px_rgba(37,99,235,0.65)] transition-shadow hover:shadow-[0_16px_40px_-12px_rgba(124,58,237,0.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-canvas sm:w-auto xl:px-6 xl:text-base"
             >
-              {letter}
-            </span>
-          ))}
-        </div>
-
-        {/* Tagline Animation */}
-        <div
-          className="flex items-center justify-center gap-3 mt-4 mb-22"
-          aria-label="Company tagline"
-        >
-          {tagline.map((word, index) => (
-            <span
-              key={index}
-              className="text-xl text-blue-300 font-light tracking-wide animate-fadeInUp"
-              style={{
-                opacity: 0,
-                animationDelay: `${(letters.length * 150) + (index * 200)}ms`,
-                animationFillMode: 'forwards'
-              }}
+              {t.primaryCta}
+            </a>
+            <a
+              href="#casos"
+              onClick={() => trackEvent('case_study_click', { event_category: 'navigation', event_label: 'home_hero_cases' })}
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-white/20 bg-white/[0.06] px-5 py-3.5 text-center text-sm font-semibold text-brand-heading transition-colors hover:border-brand-blue/45 hover:bg-white/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-canvas sm:w-auto xl:px-6 xl:text-base"
             >
-              {word}
-            </span>
-          ))}
-        </div>
-
-        {/* Decorative Line */}
-        <div
-          className="mb-4 animate-fadeIn mt-[67px] sm:mt-[130px]"
-          style={{
-            opacity: 0,
-            animationDelay: `${(letters.length * 150) + (tagline.length * 200) + 200}ms`,
-            animationFillMode: 'forwards'
-          }}
-          aria-hidden="true"
-        >
-          <div className="h-1 w-48 mx-auto bg-blue-400 rounded-full animate-pulse" />
-        </div>
-
-        <motion.p
-          variants={fadeInUp}
-          className="text-lg md:text-xl text-blue-100 max-w-2xl p-4 mx-auto mb-10 mt-4 animate-fadeInUp"
-          style={{
-            opacity: 0,
-            animationDelay: `400ms`,
-            animationFillMode: 'forwards'
-          }}
-        >
-          {t.description}
-        </motion.p>
-
-        {/* Contact Buttons */}
-        <div
-          className="animate-fadeIn flex flex-row items-center justify-center gap-4"
-          style={{
-            opacity: 0,
-            animationDelay: `${(letters.length * 150) + (tagline.length * 200) + 400}ms`,
-            animationFillMode: 'forwards'
-          }}
-        >
-          {/* WhatsApp Button */}
+              {t.secondaryCta}
+            </a>
+          </div>
+          <p className="mt-4 max-w-lg text-pretty text-sm leading-relaxed text-brand-body/90">
+            {t.microcopy}
+          </p>
           <a
             href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative px-8 py-4 text-xl font-bold text-white rounded-full overflow-hidden transition-all duration-300 animate-bounce-gentle shadow-[0_0_20px_rgba(34,197,94,0.5)] hover:shadow-[0_0_35px_rgba(34,197,94,0.7)] hover:scale-105"
-            style={{
-              background: 'linear-gradient(135deg, #22c55e 0%, #15803d 50%, #166534 100%)',
-            }}
             aria-label={t.whatsappAria}
-            onClick={(e) => {
-              e.preventDefault();
-              trackOutboundContact(whatsappUrl, GA_EVENTS.WHATSAPP_CLICK, 'whatsapp_button');
+            onClick={(event) => {
+              event.preventDefault();
+              trackOutboundContact(whatsappUrl, GA_EVENTS.WHATSAPP_CLICK, 'home_hero');
             }}
+            className="mt-4 inline-flex items-center gap-2 rounded text-sm font-medium text-green-300 underline decoration-green-300/40 underline-offset-4 transition-colors hover:text-green-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
           >
-            {/* Animated glow ring */}
-            <div
-              className="absolute -inset-1 bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 rounded-full opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500 animate-pulse"
-              aria-hidden="true"
-            />
-
-            {/* Shine effect */}
-            <div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
-              aria-hidden="true"
-            />
-
-            {/* Button content */}
-            <span className="relative flex items-center justify-center gap-2 drop-shadow-lg">
-              <svg
-                className="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-
-            </span>
-          </a>
-
-          {/* Email Button */}
-          <a
-            href={emailUrl}
-            className="group relative px-8 py-4 text-xl font-bold text-white rounded-full overflow-hidden transition-all duration-300 animate-bounce-gentle shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_35px_rgba(139,92,246,0.7)] hover:scale-105"
-            style={{
-              animationDelay: '0.15s',
-              background: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #4f46e5 100%)',
-            }}
-            aria-label={t.emailAria}
-            onClick={(e) => {
-              e.preventDefault();
-              trackOutboundContact(emailUrl, GA_EVENTS.EMAIL_CLICK, 'email_button');
-            }}
-          >
-            {/* Animated glow ring */}
-            <div
-              className="absolute -inset-1 bg-gradient-to-r from-violet-400 via-purple-300 to-indigo-500 rounded-full opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500 animate-pulse"
-              aria-hidden="true"
-            />
-
-            {/* Shine effect */}
-            <div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
-              aria-hidden="true"
-            />
-
-            {/* Button content */}
-            <span className="relative flex items-center justify-center gap-2 drop-shadow-lg">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-
-            </span>
+            <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+            </svg>
+            {t.whatsappLabel}
           </a>
         </div>
-      </motion.div>
-
-      {/* Scroll cue */}
-      <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
-        style={prefersReducedMotion ? undefined : { opacity: cueOpacity }}
-        aria-hidden="true"
-      >
-        <div className="animate-bounce-gentle text-blue-300">
-          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </motion.div>
-
-      {/* Technology Stack - Hidden visually but good for SEO */}
-      <div className="sr-only">
-        <p>{t.seoParagraph}</p>
-        <p>{t.techStack}</p>
-        <p>{t.industries}</p>
+        <HeroProcessVisual visual={t.visual} locale={locale} />
       </div>
-    </main>
+    </section>
   );
-};
-
-export default AnimatedLanding;
+}

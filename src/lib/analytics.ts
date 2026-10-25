@@ -167,5 +167,6 @@ export const GA_EVENTS = {
   SOCIAL_CLICK: 'social_click',
   LINKEDIN_CLICK: 'linkedin_click',
   INSTAGRAM_CLICK: 'instagram_click',
+  FORM_START: 'form_start',
   GENERATE_LEAD: 'generate_lead',
 } as const;

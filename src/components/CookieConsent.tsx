@@ -84,35 +84,35 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-6"
+          className="fixed bottom-0 left-0 right-0 z-[100] px-2 pt-2 pb-[calc(0.5rem_+_env(safe-area-inset-bottom))] md:px-6 md:pt-6 md:pb-[calc(1.5rem_+_env(safe-area-inset-bottom))]"
           role="dialog"
           aria-live="polite"
           aria-label={locale === 'en' ? 'Cookie preferences' : 'Preferencias de cookies'}
         >
-          <div className="max-w-5xl mx-auto bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+          <div className="max-w-5xl mx-auto bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-xl md:rounded-2xl shadow-2xl p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
             <div className="flex-1">
               <p className="text-white font-semibold text-sm md:text-base mb-1">{t.title}</p>
               <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
                 {t.description}{' '}
                 <a
                   href={privacyHref}
-                  className="text-blue-300 hover:text-white underline underline-offset-2 transition-colors"
+                  className="text-blue-300 hover:text-white underline underline-offset-2 rounded-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 >
                   {t.moreInfo}
                 </a>
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+            <div className="flex w-full shrink-0 flex-row flex-wrap gap-2 sm:gap-3 md:w-auto">
               <button
                 onClick={handleDeny}
-                className="px-5 py-2.5 rounded-full text-sm font-semibold text-white border border-white/20 hover:bg-white/10 transition-colors"
+                className="flex-1 whitespace-nowrap rounded-xl border border-white/20 px-3 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 sm:px-5 sm:text-sm md:flex-none"
               >
                 {t.deny}
               </button>
               <button
                 onClick={handleAccept}
-                className="px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 shadow-lg shadow-violet-900/30 transition-all hover:scale-105"
+                className="brand-button-primary flex-1 whitespace-nowrap rounded-xl px-3 py-2.5 text-xs font-semibold text-white transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 sm:px-5 sm:text-sm md:flex-none"
               >
                 {t.accept}
               </button>

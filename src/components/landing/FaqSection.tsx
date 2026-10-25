@@ -1,71 +1,82 @@
 'use client';
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Reveal from './Reveal';
-import { homeCopy, Locale } from '@/i18n/home-copy';
 
-const FaqSection: React.FC<{ locale?: Locale }> = ({ locale = 'es' }) => {
-  const copy = homeCopy[locale].faq;
+import { useId, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import Reveal from './Reveal';
+import { usePrefersReducedMotion } from '@/lib/device';
+import { homeCopy, type HomeCopy, type Locale } from '@/i18n/home-copy';
+
+type FaqSectionProps = {
+  locale?: Locale;
+  content?: HomeCopy['faq'];
+  id?: string;
+};
+
+export default function FaqSection({ locale = 'es', content, id = 'faq' }: FaqSectionProps) {
+  const copy = content ?? homeCopy[locale].faq;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const baseId = useId();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <div className="relative w-full py-20 -mt-1 overflow-hidden">
-      <div className="relative z-10 max-w-3xl mx-auto px-4 w-full">
-        <Reveal>
-          <div className="text-center mb-12">
-            <h2 className="font-mono text-2xl font-bold text-white mb-4">
-              {copy.title}
-            </h2>
-            <p className="text-blue-200/80 text-lg">{copy.subtitle}</p>
-          </div>
-        </Reveal>
+    <section id={id} className="px-4 py-16 md:py-24" aria-labelledby={`${id}-title`}>
+      <Reveal className="mx-auto w-full max-w-3xl">
+        <div>
+          <h2 id={`${id}-title`} className="text-balance text-3xl font-bold tracking-tight text-brand-heading md:text-4xl">
+            {copy.title}
+          </h2>
+          <p className="mt-4 text-pretty text-base leading-relaxed text-brand-body md:text-lg">{copy.subtitle}</p>
+        </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="mt-8 divide-y divide-white/10 border-y border-white/10">
           {copy.items.map((item, index) => {
             const isOpen = openIndex === index;
+            const buttonId = `${baseId}-button-${index}`;
+            const panelId = `${baseId}-panel-${index}`;
             return (
-              <Reveal key={index} delay={index * 100} index={index}>
-                <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-lg overflow-hidden">
-                  <button
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left"
-                    aria-expanded={isOpen}
+              <div key={item.question}>
+                <button
+                  id={buttonId}
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="flex w-full items-center justify-between gap-4 rounded-sm px-1 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                >
+                  <span className="text-pretty font-semibold text-brand-heading">{item.question}</span>
+                  <svg
+                    className={`h-5 w-5 shrink-0 text-brand-blue transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
-                    <span className="text-white font-semibold">{item.question}</span>
-                    <svg
-                      className={`w-5 h-5 shrink-0 text-blue-300 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m19 9-7 7-7-7" />
+                  </svg>
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={buttonId}
+                      initial={prefersReducedMotion ? false : { height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: prefersReducedMotion ? 0 : 0.2, ease: 'easeInOut' }}
+                      className="overflow-hidden"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: 'easeInOut' }}
-                      >
-                        <p className="px-6 pb-5 text-blue-200 leading-relaxed">
-                          {item.answer}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </Reveal>
+                      <p className="px-1 pb-5 text-pretty text-sm leading-relaxed text-brand-body sm:text-base">
+                        {item.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             );
           })}
         </div>
-      </div>
-    </div>
+      </Reveal>
+    </section>
   );
-};
-
-export default FaqSection;
+}

@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { trackLead, trackGoogleAdsConversion } from '@/lib/analytics';
+import { useEffect, useId, useRef, useState } from 'react';
+import { GA_EVENTS, trackEvent, trackGoogleAdsConversion, trackLead } from '@/lib/analytics';
 
 type ContactFormProps = {
   locale?: 'es' | 'en';
+  variant?: 'default' | 'diagnostic';
+  location?: string;
 };
 
 const copy = {
@@ -17,12 +18,12 @@ const copy = {
     phone: 'Teléfono (opcional)',
     company: 'Empresa (opcional)',
     message: '¿En qué podemos ayudarte?',
-    messagePlaceholder: 'Describe brevemente tu proyecto, necesidades o plazo...',
+    messagePlaceholder: 'Describe brevemente tu proyecto, necesidades o plazo…',
     namePlaceholder: 'María García',
     emailPlaceholder: 'maria@empresa.com',
     companyPlaceholder: 'Tu empresa S.L.',
     submit: 'Enviar mensaje',
-    sending: 'Enviando...',
+    sending: 'Enviando…',
     success: '¡Mensaje enviado! Te contactamos pronto.',
     error: 'Hubo un error. Inténtalo de nuevo o escríbenos por WhatsApp.',
     required: 'Campo obligatorio',
@@ -39,12 +40,12 @@ const copy = {
     phone: 'Phone (optional)',
     company: 'Company (optional)',
     message: 'How can we help?',
-    messagePlaceholder: 'Briefly describe your project, needs or timeline...',
+    messagePlaceholder: 'Briefly describe your project, needs or timeline…',
     namePlaceholder: 'Jane Doe',
     emailPlaceholder: 'jane@company.com',
     companyPlaceholder: 'Your company Ltd.',
     submit: 'Send message',
-    sending: 'Sending...',
+    sending: 'Sending…',
     success: 'Message sent! We will contact you soon.',
     error: 'Something went wrong. Please try again or reach us on WhatsApp.',
     required: 'Required field',
@@ -55,11 +56,65 @@ const copy = {
   },
 };
 
-export default function ContactForm({ locale = 'es' }: ContactFormProps) {
-  const t = copy[locale];
+const diagnosticCopy = {
+  es: {
+    title: 'Solicita tu diagnóstico gratuito de 30 minutos',
+    subtitle: 'Analizaremos el proceso que quieres mejorar y te responderemos en menos de 24 horas.',
+    message: '¿Qué proceso te gustaría mejorar?',
+    messagePlaceholder: 'Describe brevemente el proceso, las tareas que más tiempo consumen o el problema que quieres resolver…',
+    submit: 'Solicitar diagnóstico gratuito',
+    success: '¡Solicitud enviada! Te responderemos en menos de 24 horas para coordinar tu diagnóstico gratuito.',
+  },
+  en: {
+    title: 'Request your free 30-minute assessment',
+    subtitle: 'We will review the process you want to improve and get back to you within 24 hours.',
+    message: 'Which process would you like to improve?',
+    messagePlaceholder: 'Briefly describe the process, the most time-consuming tasks or the problem you want to solve…',
+    submit: 'Request free assessment',
+    success: 'Request sent! We will get back to you within 24 hours to arrange your free assessment.',
+  },
+};
+
+export default function ContactForm({
+  locale = 'es',
+  variant = 'default',
+  location = 'contact_form',
+}: ContactFormProps) {
+  const t = variant === 'diagnostic'
+    ? { ...copy[locale], ...diagnosticCopy[locale] }
+    : copy[locale];
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [messageLength, setMessageLength] = useState(0);
+  const formId = useId();
+  const titleId = `${formId}-title`;
+  const subtitleId = `${formId}-subtitle`;
+  const nameId = `${formId}-name`;
+  const emailId = `${formId}-email`;
+  const phoneId = `${formId}-phone`;
+  const companyId = `${formId}-company`;
+  const messageId = `${formId}-message`;
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const messageInputRef = useRef<HTMLTextAreaElement>(null);
+  const hasTrackedFormStart = useRef(false);
+
+  useEffect(() => {
+    if (errors.name) nameInputRef.current?.focus();
+    else if (errors.email) emailInputRef.current?.focus();
+    else if (errors.message) messageInputRef.current?.focus();
+  }, [errors]);
+
+  const handleFieldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (hasTrackedFormStart.current || !event.nativeEvent.isTrusted) return;
+
+    hasTrackedFormStart.current = true;
+    trackEvent(GA_EVENTS.FORM_START, {
+      event_category: 'lead',
+      event_label: location,
+      offer: variant,
+    });
+  };
 
   const validate = (formData: FormData) => {
     const nextErrors: Record<string, string> = {};
@@ -81,8 +136,6 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus('submitting');
-    setErrors({});
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -93,6 +146,9 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
       setStatus('idle');
       return;
     }
+
+    setErrors({});
+    setStatus('submitting');
 
     try {
       const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
@@ -120,7 +176,7 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
 
       if (data.success) {
         setStatus('success');
-        trackLead('contact_form');
+        trackLead(location, { offer: variant });
         trackGoogleAdsConversion(undefined, { value: 1.0, currency: 'EUR' });
         form.reset();
       } else {
@@ -133,27 +189,27 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
 
   if (status === 'success') {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-green-500/10 border border-green-500/30 rounded-2xl p-8 text-center"
+      <div
+        className="rounded-2xl border border-green-500/20 bg-green-500/10 p-8 text-center"
+        role="status"
+        aria-atomic="true"
       >
-        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
-          <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10">
+          <svg className="h-8 w-8 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-white mb-2">{t.success}</h3>
-      </motion.div>
+        <h2 className="mb-2 text-xl font-bold text-brand-heading">{t.success}</h2>
+      </div>
     );
   }
 
   return (
-    <motion.form
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+    <form
       onSubmit={handleSubmit}
-      className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20"
+      className="brand-card rounded-2xl border border-white/10 p-6 shadow-[0_24px_70px_-35px_rgba(37,99,235,0.45)] md:p-8"
+      aria-labelledby={titleId}
+      aria-describedby={subtitleId}
       noValidate
     >
       <div className="grid md:grid-cols-2 gap-5">
@@ -163,88 +219,121 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
         </div>
 
         <div className="md:col-span-2">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{t.title}</h3>
-          <p className="text-blue-200 mb-6">{t.subtitle}</p>
+          <h2 id={titleId} className="mb-2 text-2xl font-bold text-brand-heading md:text-3xl">{t.title}</h2>
+          <p id={subtitleId} className="mb-6 text-brand-body">{t.subtitle}</p>
         </div>
 
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-blue-100 mb-1.5">
+          <label htmlFor={nameId} className="mb-1.5 block text-sm font-medium text-brand-heading">
             {t.name} <span className="text-red-300" aria-hidden="true">*</span>
           </label>
           <input
-            id="name"
+            ref={nameInputRef}
+            id={nameId}
             name="name"
             type="text"
             required
             minLength={2}
-            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+            autoComplete="name"
+            onChange={handleFieldChange}
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? `${nameId}-error` : undefined}
+            className="w-full rounded-xl border border-white/15 bg-brand-canvas/60 px-4 py-3 text-brand-heading placeholder:text-brand-body/70 transition-[border-color,box-shadow] duration-200 focus:outline-none focus-visible:border-brand-blue focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface"
             placeholder={t.namePlaceholder}
           />
-          {errors.name && <p className="mt-1.5 text-sm text-red-300">{errors.name}</p>}
+          {errors.name && (
+            <p id={`${nameId}-error`} role="alert" className="mt-1.5 text-sm text-red-300">
+              {errors.name}
+            </p>
+          )}
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-blue-100 mb-1.5">
+          <label htmlFor={emailId} className="mb-1.5 block text-sm font-medium text-brand-heading">
             {t.email} <span className="text-red-300" aria-hidden="true">*</span>
           </label>
           <input
-            id="email"
+            ref={emailInputRef}
+            id={emailId}
             name="email"
             type="email"
             required
-            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+            autoComplete="email"
+            inputMode="email"
+            spellCheck={false}
+            onChange={handleFieldChange}
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? `${emailId}-error` : undefined}
+            className="w-full rounded-xl border border-white/15 bg-brand-canvas/60 px-4 py-3 text-brand-heading placeholder:text-brand-body/70 transition-[border-color,box-shadow] duration-200 focus:outline-none focus-visible:border-brand-blue focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface"
             placeholder={t.emailPlaceholder}
           />
-          {errors.email && <p className="mt-1.5 text-sm text-red-300">{errors.email}</p>}
+          {errors.email && (
+            <p id={`${emailId}-error`} role="alert" className="mt-1.5 text-sm text-red-300">
+              {errors.email}
+            </p>
+          )}
         </div>
 
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-blue-100 mb-1.5">
+          <label htmlFor={phoneId} className="mb-1.5 block text-sm font-medium text-brand-heading">
             {t.phone}
           </label>
           <input
-            id="phone"
+            id={phoneId}
             name="phone"
             type="tel"
-            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+            autoComplete="tel"
+            inputMode="tel"
+            onChange={handleFieldChange}
+            className="w-full rounded-xl border border-white/15 bg-brand-canvas/60 px-4 py-3 text-brand-heading placeholder:text-brand-body/70 transition-[border-color,box-shadow] duration-200 focus:outline-none focus-visible:border-brand-blue focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface"
             placeholder="+34 600 000 000"
           />
         </div>
 
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-blue-100 mb-1.5">
+          <label htmlFor={companyId} className="mb-1.5 block text-sm font-medium text-brand-heading">
             {t.company}
           </label>
           <input
-            id="company"
+            id={companyId}
             name="company"
             type="text"
-            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+            autoComplete="organization"
+            onChange={handleFieldChange}
+            className="w-full rounded-xl border border-white/15 bg-brand-canvas/60 px-4 py-3 text-brand-heading placeholder:text-brand-body/70 transition-[border-color,box-shadow] duration-200 focus:outline-none focus-visible:border-brand-blue focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface"
             placeholder={t.companyPlaceholder}
           />
         </div>
 
         <div className="md:col-span-2">
-          <label htmlFor="message" className="block text-sm font-medium text-blue-100 mb-1.5">
+          <label htmlFor={messageId} className="mb-1.5 block text-sm font-medium text-brand-heading">
             {t.message} <span className="text-red-300" aria-hidden="true">*</span>
           </label>
           <textarea
-            id="message"
+            ref={messageInputRef}
+            id={messageId}
             name="message"
             rows={4}
             required
             minLength={10}
-            onChange={(e) => setMessageLength(e.target.value.length)}
-            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300/50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all resize-none"
+            onChange={(e) => {
+              handleFieldChange(e);
+              setMessageLength(e.target.value.length);
+            }}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={errors.message ? `${messageId}-error` : undefined}
+            className="w-full resize-none rounded-xl border border-white/15 bg-brand-canvas/60 px-4 py-3 text-brand-heading placeholder:text-brand-body/70 transition-[border-color,box-shadow] duration-200 focus:outline-none focus-visible:border-brand-blue focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface"
             placeholder={t.messagePlaceholder}
           />
-          <div className="flex items-center justify-between mt-1.5">
+          <div className="mt-1.5 flex items-center justify-between">
             {errors.message ? (
-              <p className="text-sm text-red-300">{errors.message}</p>
+              <p id={`${messageId}-error`} role="alert" className="text-sm text-red-300">
+                {errors.message}
+              </p>
             ) : (
               <span />
             )}
-            <p className={`text-xs ${messageLength < 10 ? 'text-blue-300/70' : 'text-green-300/80'}`}>
+            <p className={`text-xs ${messageLength < 10 ? 'text-brand-body/80' : 'text-green-300'}`}>
               {messageLength} {t.chars}
             </p>
           </div>
@@ -254,21 +343,32 @@ export default function ContactForm({ locale = 'es' }: ContactFormProps) {
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="group relative w-full md:w-auto px-8 py-3.5 text-lg font-bold text-white rounded-full overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(139,92,246,0.5)] hover:shadow-[0_0_35px_rgba(139,92,246,0.7)] hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 bg-gradient-to-r from-violet-600 to-indigo-600"
+            aria-busy={status === 'submitting'}
+            className="brand-button-primary w-full rounded-xl px-8 py-3.5 text-base font-semibold text-white transition-shadow duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface disabled:cursor-not-allowed disabled:opacity-70 md:w-auto"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" aria-hidden="true" />
-            <span className="relative">{status === 'submitting' ? t.sending : t.submit}</span>
+            <span className="inline-flex items-center justify-center gap-2">
+              {status === 'submitting' && (
+                <svg className="h-5 w-5 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                </svg>
+              )}
+              <span>{status === 'submitting' ? t.sending : t.submit}</span>
+            </span>
           </button>
+          <span className="sr-only" role="status">
+            {status === 'submitting' ? t.sending : ''}
+          </span>
         </div>
 
         {status === 'error' && (
           <div className="md:col-span-2">
-            <p className="text-red-300 text-sm bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+            <p role="alert" className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-300">
               {t.error}
             </p>
           </div>
         )}
       </div>
-    </motion.form>
+    </form>
   );
 }
