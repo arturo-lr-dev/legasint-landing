@@ -32,7 +32,7 @@ const chipIcons = [
 export default function HeroProcessVisual({ visual, locale }: HeroProcessVisualProps) {
   const [transformed, setTransformed] = useState(false);
   const prefersReducedMotion = useReducedMotion();
-  const project = homeCopy[locale].portfolio.projects.find((item) => item.title === 'Smart Stadium Pricing');
+  const project = homeCopy[locale].portfolio.projects.find((item) => item.title === 'Cronos');
   const labels = locale === 'es'
     ? { flow: 'Del trabajo disperso a un sistema compartido' }
     : { flow: 'From scattered work to one shared system' };
@@ -141,7 +141,7 @@ export default function HeroProcessVisual({ visual, locale }: HeroProcessVisualP
             className="relative mt-4 aspect-[2/1] overflow-hidden rounded-2xl border border-violet-400/25"
           >
             <Image
-              src="/projects/smart-stadium-pricing.webp"
+              src="/projects/cronos.webp"
               alt={`${project.title}: ${project.description}`}
               fill
               priority
@@ -155,7 +155,7 @@ export default function HeroProcessVisual({ visual, locale }: HeroProcessVisualP
                 <p className="mt-0.5 hidden text-xs text-blue-100/85 sm:block">{project.description}</p>
               </div>
               <a
-                href="https://github.com/arturo-lr-dev/stadium-smart-pricing"
+                href="https://academiacronos.es"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent('case_study_click', { event_category: 'navigation', event_label: 'home_hero_visual' })}
