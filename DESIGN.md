@@ -246,13 +246,9 @@ No se publican cifras sin fuente. La propiedad del código se describe como cond
 
 ### Entrada de secciones
 
-`Reveal` utiliza:
-
-- Desplazamiento: 10 px.
-- Duración: 400 ms.
-- `viewport.once: true`.
-- Sin alternancia izquierda/derecha en móvil.
-- Sin delays encadenados.
+- `Reveal` renderiza un `div` estático: el contenido esencial es visible desde el HTML y no depende de JavaScript ni de `IntersectionObserver`.
+- Las animaciones de entrada no pueden dejar secciones con `opacity: 0` cuando falla la hidratación.
+- La animación se reserva para interacciones y para la transición del hero, que tiene contenido visible desde el primer render incluso si JavaScript no está disponible.
 
 ### Global
 

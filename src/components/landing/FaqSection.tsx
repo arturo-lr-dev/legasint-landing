@@ -60,7 +60,7 @@ export default function FaqSection({ locale = 'es', content, id = 'faq' }: FaqSe
                       id={panelId}
                       role="region"
                       aria-labelledby={buttonId}
-                      initial={prefersReducedMotion ? false : { height: 0, opacity: 0 }}
+                      initial={false}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: prefersReducedMotion ? 0 : 0.2, ease: 'easeInOut' }}

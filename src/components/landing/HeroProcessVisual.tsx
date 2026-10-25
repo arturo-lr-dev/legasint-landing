@@ -51,7 +51,7 @@ export default function HeroProcessVisual({ visual, locale }: HeroProcessVisualP
 
   return (
     <motion.figure
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: prefersReducedMotion ? 0 : 0.55, ease: 'easeOut' }}
       className="relative mx-auto w-full max-w-2xl"
@@ -105,7 +105,7 @@ export default function HeroProcessVisual({ visual, locale }: HeroProcessVisualP
               ) : (
                 <motion.div
                   key="before"
-                  initial={prefersReducedMotion ? false : { opacity: 0 }}
+                  initial={false}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
@@ -135,7 +135,7 @@ export default function HeroProcessVisual({ visual, locale }: HeroProcessVisualP
           </div>
 
           <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.02 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.7, delay: prefersReducedMotion ? 0 : 0.25 }}
             className="relative mt-4 aspect-[2/1] overflow-hidden rounded-2xl border border-violet-400/25"
