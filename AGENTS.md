@@ -22,7 +22,7 @@ Cuenta GA: **LEGASINT** (`accounts/341886678`)
 ### 2. `google-ads-mcp` (Google Ads API)
 | Customer ID | Notas |
 |---|---|
-| `4456914784` | ⭐ Cuenta principal, vinculada a GA4 `473775622`. Campañas: `Performance Max-1` (⏸️ pausada 29-ago-2026, tráfico basura) y `Search - Leads B2B` (✅ activa desde 29-ago-2026, 8 €/día, solo Search) |
+| `4456914784` | ⭐ Cuenta principal, vinculada a GA4 `473775622`. Campañas: `Performance Max-1` (⏸️ pausada 29-ago-2026, tráfico basura) y `Search - Leads B2B` (✅ activa desde 29-ago-2026, 8 €/día, solo Search; grupo `Automatizaciones IA` pausado 11-sept-2026 — quedan `Software a medida` y `CTO externo`) |
 | `6804435656` | Segunda cuenta accesible, sin campañas conocidas ni vinculación GA4 |
 
 - ⚠️ Developer token nivel **test accounts** → la API devuelve error con cuentas reales. Para datos de Ads usar la UI (navegador) o GA4. Subir a Basic en: MCC → Admin → Centro de API.
@@ -37,8 +37,11 @@ Cuenta GA: **LEGASINT** (`accounts/341886678`)
 ## Memoria de sesiones
 - Skill `load-mcp-legasint` (`~/.claude/skills/load-mcp-legasint`) — restaura `~/.kimi/mcp.json` con los MCP de Legasint, verifica auth ADC y documenta el relogin con cliente OAuth propio. Usar si se cambia a la config de otra entidad o hay 403 de scopes.
 - `memory/google-ads-2026-08-29.md` — historia completa PMax→Search, errores cometidos, checklist de revisión
+- `memory/google-ads-2026-09-11.md` — 0 leads en 2 semanas de Search; concordancia amplia atraía marcas ajenas; grupo "Automatizaciones IA" pausado (64% del gasto, 0 conv.); lista de keywords negativas propuesta (§5); prueba de 1 semana con los otros 2 grupos
 - `docs/SEARCH-CAMPAIGN-SETUP.md` — guía de la campaña Search (keywords, anuncios, negativas)
 - `docs/ADS-2026-08-29.md` — diagnóstico PMax
+- `docs/negative-keywords-2026-09-11.md` — lista de keywords negativas para pegar en Google Ads (nivel campaña)
+- `docs/LEAD-GEN-PLAYBOOK.md` — plan de captación sin ads (25-sept-2026): oferta diagnóstico gratuito, LinkedIn outbound (2 verticales + plantillas), partnerships, Kit Digital (convocatoria pendiente de reabrir, requisito 100k€ facturación)
 
 ## Browser automation (kimi-webbridge)
 - El usuario trabaja con Google Ads en SU navegador vía WebBridge (daemon `http://127.0.0.1:10086`, skill `~/.claude/skills/kimi-webbridge`)
