@@ -27,10 +27,11 @@ export default function SocialImpactSection({ locale = 'es' }: { locale?: Locale
         </div>
         <div className="mt-10 grid gap-8 md:grid-cols-3">
           {copy.causes.map((cause, index) => {
-            const isViolet = index % 2 === 1;
+            const borders = ['border-brand-blue/40', 'border-brand-cyan/40', 'border-brand-violet/40'];
+            const colors = ['text-brand-blue', 'text-brand-cyan', 'text-violet-300'];
             return (
-              <div key={cause.title} className={`border-t pt-6 ${isViolet ? 'border-brand-violet/30' : 'border-brand-blue/30'}`}>
-                <div className={isViolet ? 'text-violet-300' : 'text-brand-blue'}>{icons[index]}</div>
+              <div key={cause.title} className={`border-t pt-6 ${borders[index]}`}>
+                <div className={colors[index]}>{icons[index]}</div>
                 <h3 className="mt-4 text-lg font-semibold text-brand-heading">{cause.title}</h3>
                 <p className="mt-2 text-pretty text-sm leading-relaxed text-brand-body">{cause.description}</p>
               </div>

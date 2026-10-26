@@ -91,12 +91,120 @@
 
   .brand-section-blue {
     background-color: #111831;
-    background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.075), rgba(37, 99, 235, 0.015) 55%, rgba(124, 58, 237, 0.04));
+    background-image: linear-gradient(115deg, rgba(37, 99, 235, 0.22), rgba(17, 24, 49, 0.35) 58%, rgba(34, 211, 238, 0.08));
   }
 
   .brand-section-violet {
     background-color: #111831;
-    background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(124, 58, 237, 0.075));
+    background-image: linear-gradient(115deg, rgba(124, 58, 237, 0.2), rgba(17, 24, 49, 0.38) 60%, rgba(37, 99, 235, 0.12));
+  }
+
+  .section-transition {
+    --transition-start: rgba(37, 99, 235, 0.65);
+    --transition-mid: rgba(34, 211, 238, 0.32);
+    --transition-end: rgba(124, 58, 237, 0.08);
+    position: relative;
+    height: 4.5rem;
+    overflow: hidden;
+  }
+
+  .section-transition--violet {
+    --transition-start: rgba(124, 58, 237, 0.68);
+    --transition-mid: rgba(96, 165, 250, 0.3);
+    --transition-end: rgba(34, 211, 238, 0.07);
+  }
+
+  .section-transition::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 4%, var(--transition-start) 34%, var(--transition-mid) 56%, var(--transition-end) 78%, transparent 96%);
+    clip-path: polygon(0 62%, 100% 4%, 100% 42%, 0 100%);
+  }
+
+  .section-transition__inner {
+    position: relative;
+    width: 100%;
+    max-width: 72rem;
+    height: 100%;
+    margin-inline: auto;
+  }
+
+  .section-transition__track {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+    width: 44%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #60a5fa 22%, #22d3ee 70%, #8b5cf6);
+  }
+
+  .section-transition__node {
+    position: absolute;
+    top: calc(50% - 0.25rem);
+    left: calc(51% - 0.3rem);
+    width: 0.65rem;
+    height: 0.65rem;
+    border: 2px solid #67e8f9;
+    background: #111831;
+    transform: rotate(45deg);
+  }
+
+  .section-transition--right::before,
+  .section-transition--right .section-transition__inner {
+    transform: scaleX(-1);
+  }
+
+  .process-track::before {
+    content: '';
+    position: absolute;
+    top: 1.1rem;
+    bottom: 1.1rem;
+    left: 1.05rem;
+    width: 2px;
+    background: linear-gradient(180deg, #60a5fa, #22d3ee 38%, #8b5cf6 72%, #2563eb);
+  }
+
+  .process-step__node {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    width: 2.2rem;
+    height: 2.2rem;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px;
+    border-radius: 9999px;
+    background: #17223f;
+  }
+
+  @media (min-width: 1024px) {
+    .process-track::before {
+      top: 1.05rem;
+      right: 1.1rem;
+      bottom: auto;
+      width: auto;
+      height: 2px;
+      background: linear-gradient(90deg, #60a5fa, #22d3ee 38%, #8b5cf6 72%, #2563eb);
+    }
+  }
+
+  .diagnostic-section {
+    position: relative;
+    background-color: #111831;
+    background-image: linear-gradient(125deg, rgba(37, 99, 235, 0.18), rgba(124, 58, 237, 0.2) 52%, rgba(34, 211, 238, 0.09));
+  }
+
+  .diagnostic-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #22d3ee 48%, #7c3aed);
   }
 
   .brand-card {

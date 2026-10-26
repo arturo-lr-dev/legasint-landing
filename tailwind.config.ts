@@ -18,6 +18,7 @@ export default {
           body: '#C3CBDD',
           violet: '#8B5CF6',
           blue: '#60A5FA',
+          cyan: '#22D3EE',
         },
       },
       animation: {

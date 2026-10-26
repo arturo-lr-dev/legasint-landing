@@ -15,13 +15,18 @@ export default function ProcessSection({ locale = 'es' }: { locale?: Locale }) {
             {copy.subtitle}
           </p>
         </div>
-        <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="process-track relative mt-12 grid gap-10 lg:grid-cols-4 lg:gap-8">
           {copy.steps.map((item, index) => {
-            const isViolet = index % 2 === 1;
+            const accents = [
+              'border-brand-blue/60 text-brand-blue',
+              'border-brand-cyan/60 text-brand-cyan',
+              'border-brand-violet/60 text-violet-300',
+              'border-brand-blue/60 text-brand-blue',
+            ];
             return (
-              <li key={item.step} className={`border-t-2 pt-5 ${isViolet ? 'border-brand-violet/45' : 'border-brand-blue/45'}`}>
-                <span className={`font-mono text-sm font-semibold ${isViolet ? 'text-violet-300' : 'text-brand-blue'}`}>{item.step}</span>
-                <h3 className="mt-3 text-lg font-semibold text-brand-heading">{item.title}</h3>
+              <li key={item.step} className="process-step relative pl-14 lg:pl-0 lg:pt-16">
+                <span className={`process-step__node font-mono text-sm font-semibold ${accents[index]}`}>{item.step}</span>
+                <h3 className="text-lg font-semibold text-brand-heading">{item.title}</h3>
                 <p className="mt-2 text-pretty text-sm leading-relaxed text-brand-body">{item.description}</p>
               </li>
             );

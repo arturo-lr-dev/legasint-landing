@@ -6,6 +6,7 @@ import PortfolioSection from '@/components/landing/PortfolioSection';
 import ProcessSection from '@/components/landing/ProcessSection';
 import SocialImpactSection from '@/components/landing/SocialSection';
 import FaqSection from '@/components/landing/FaqSection';
+import SectionTransition from '@/components/landing/SectionTransition';
 import ContactForm from '@/components/ContactForm';
 import ConsoleEasterEgg from '@/components/landing/ConsoleEasterEgg';
 import { ServiceJsonLd, FaqPageJsonLd } from '@/components/seo/JsonLd';
@@ -42,11 +43,14 @@ export default function Home() {
       <main id="main-content" className="brand-page">
         <AnimatedLanding locale="es" />
         <ProblemsSection locale="es" />
+        <SectionTransition tone="blue" direction="left" />
         <PortfolioSection locale="es" />
         <ServicesSection locale="es" />
+        <SectionTransition tone="violet" direction="right" />
         <ProcessSection locale="es" />
         <FaqSection locale="es" />
-        <section id="diagnostico" aria-label="Diagnóstico gratuito" className="brand-section-violet scroll-mt-20 px-4 py-16 md:py-24">
+        <SectionTransition tone="blue" direction="left" />
+        <section id="diagnostico" aria-label="Diagnóstico gratuito" className="diagnostic-section scroll-mt-20 px-4 py-16 md:py-24">
           <div className="mx-auto max-w-3xl">
             <ContactForm locale="es" variant="diagnostic" location="home_es_form" />
           </div>
