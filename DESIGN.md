@@ -62,10 +62,10 @@ Definidas en `src/app/globals.css` dentro de `@layer components`.
 | Clase | Función | Dónde se usa |
 |---|---|---|
 | `brand-page` | Fondo continuo azul/morado, sin movimiento | Home, servicios, QR y menú móvil |
-| `brand-section-blue` | Sección azul diferenciada, con matiz cian | Casos y proceso |
-| `brand-section-violet` | Sección violeta diferenciada, con matiz azul | Servicios y prueba |
-| `section-transition` | Banda diagonal azul/cian/violeta entre cambios clave de home | Home ES/EN |
-| `diagnostic-section` | Superficie cromática y marco superior del diagnóstico | Home ES/EN |
+| `brand-section-blue` | Superficie azul oscura y silenciosa | Casos |
+| `brand-section-violet` | Superficie violeta oscura y silenciosa | Servicios y prueba |
+| `process-section` | Bloque azul cobalto de máximo énfasis | Proceso de home |
+| `diagnostic-section` | Superficie índigo del diagnóstico | Home ES/EN |
 | `brand-card` | Tarjeta oscura con tinte azul | Servicios, casos, formularios y QR |
 | `brand-card-violet` | Tarjeta oscura con tinte morado | Alternancia de tarjetas |
 | `brand-button-primary` | CTA azul → morado, hover y sombra | Header, servicios, formulario y cookies |
@@ -204,12 +204,13 @@ Los elementos interactivos pueden cambiar borde, color o elevación. No se utili
 - Imagen real con `next/image`, dimensiones reservadas y `priority` por estar above the fold.
 - Con `prefers-reduced-motion`, se muestra directamente el estado final.
 
-### Transiciones y proceso
+### Ritmo entre secciones, proceso y FAQ
 
-- Las transiciones de home son decorativas, estáticas y usan `aria-hidden`; no sustituyen la jerarquía ni el espaciado del contenido.
-- Se colocan solo en cambios clave, alternando dirección para evitar una repetición mecánica.
-- El proceso usa una lista ordenada con nodos numerados y una pista vertical en móvil y horizontal desde `lg`.
-- El cian se limita a nodos, iconos y detalles gráficos; no cambia el color de párrafos ni controles.
+- Los cambios de sección se expresan mediante superficies y composición, sin bandas o separadores decorativos independientes.
+- El proceso es el único bloque con azul cobalto saturado; usa texto blanco y azul claro para conservar el contraste.
+- La lista ordenada presenta número, fase y descripción en columnas desde `md`, sin nodos, conectores ni tarjetas.
+- La FAQ de home puede usar `split` para situar el encabezado y el acordeón en dos columnas desde `lg`; otras páginas conservan la composición apilada.
+- El cian se limita a iconos y detalles gráficos; no cambia el color de párrafos ni controles.
 
 ### Casos
 
@@ -354,7 +355,6 @@ En QA no se envían leads reales: se bloquea analítica y se simula Web3Forms. L
 | Hero | `src/components/landing/AnimatedLanding.tsx` |
 | Visual del hero | `src/components/landing/HeroProcessVisual.tsx` |
 | Problemas | `src/components/landing/ProblemsSection.tsx` |
-| Transiciones cromáticas | `src/components/landing/SectionTransition.tsx` |
 | Casos | `src/components/landing/PortfolioSection.tsx` |
 | Servicios en home | `src/components/landing/ServicesSection.tsx` |
 | Proceso | `src/components/landing/ProcessSection.tsx` |

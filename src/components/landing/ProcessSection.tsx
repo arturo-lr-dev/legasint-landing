@@ -5,32 +5,24 @@ export default function ProcessSection({ locale = 'es' }: { locale?: Locale }) {
   const copy = homeCopy[locale].process;
 
   return (
-    <section className="brand-section-blue border-y border-brand-blue/10 px-4 py-16 md:py-24" aria-labelledby="process-title">
-      <Reveal className="mx-auto w-full max-w-6xl">
-        <div className="max-w-3xl">
-          <h2 id="process-title" className="text-balance text-3xl font-bold tracking-tight text-brand-heading md:text-4xl">
+    <section className="process-section px-4 py-16 md:py-24" aria-labelledby="process-title">
+      <Reveal className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
+        <div className="max-w-md">
+          <h2 id="process-title" className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
             {copy.title}
           </h2>
-          <p className="mt-4 text-pretty text-base leading-relaxed text-brand-body md:text-lg">
+          <p className="mt-4 text-pretty text-base leading-relaxed text-blue-100 md:text-lg">
             {copy.subtitle}
           </p>
         </div>
-        <ol className="process-track relative mt-12 grid gap-10 lg:grid-cols-4 lg:gap-8">
-          {copy.steps.map((item, index) => {
-            const accents = [
-              'border-brand-blue/60 text-brand-blue',
-              'border-brand-cyan/60 text-brand-cyan',
-              'border-brand-violet/60 text-violet-300',
-              'border-brand-blue/60 text-brand-blue',
-            ];
-            return (
-              <li key={item.step} className="process-step relative pl-14 lg:pl-0 lg:pt-16">
-                <span className={`process-step__node font-mono text-sm font-semibold ${accents[index]}`}>{item.step}</span>
-                <h3 className="text-lg font-semibold text-brand-heading">{item.title}</h3>
-                <p className="mt-2 text-pretty text-sm leading-relaxed text-brand-body">{item.description}</p>
-              </li>
-            );
-          })}
+        <ol className="border-t border-blue-200/30">
+          {copy.steps.map((item) => (
+            <li key={item.step} className="grid gap-3 border-b border-blue-200/30 py-6 sm:grid-cols-[2.5rem_1fr] md:grid-cols-[2.5rem_10rem_1fr] md:gap-5">
+              <span className="font-mono text-sm font-semibold text-blue-200">{item.step}</span>
+              <h3 className="text-pretty text-lg font-semibold text-white">{item.title}</h3>
+              <p className="text-pretty text-sm leading-relaxed text-blue-100 sm:col-start-2 md:col-start-auto">{item.description}</p>
+            </li>
+          ))}
         </ol>
       </Reveal>
     </section>

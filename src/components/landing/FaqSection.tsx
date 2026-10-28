@@ -10,9 +10,10 @@ type FaqSectionProps = {
   locale?: Locale;
   content?: HomeCopy['faq'];
   id?: string;
+  split?: boolean;
 };
 
-export default function FaqSection({ locale = 'es', content, id = 'faq' }: FaqSectionProps) {
+export default function FaqSection({ locale = 'es', content, id = 'faq', split = false }: FaqSectionProps) {
   const copy = content ?? homeCopy[locale].faq;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const baseId = useId();
@@ -20,15 +21,15 @@ export default function FaqSection({ locale = 'es', content, id = 'faq' }: FaqSe
 
   return (
     <section id={id} className="px-4 py-16 md:py-24" aria-labelledby={`${id}-title`}>
-      <Reveal className="mx-auto w-full max-w-3xl">
-        <div>
+      <Reveal className={split ? 'mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20' : 'mx-auto w-full max-w-3xl'}>
+        <div className="max-w-md">
           <h2 id={`${id}-title`} className="text-balance text-3xl font-bold tracking-tight text-brand-heading md:text-4xl">
             {copy.title}
           </h2>
           <p className="mt-4 text-pretty text-base leading-relaxed text-brand-body md:text-lg">{copy.subtitle}</p>
         </div>
 
-        <div className="mt-8 divide-y divide-white/10 border-y border-white/10">
+        <div className={`mt-8 divide-y divide-white/10 border-y border-white/10 ${split ? 'lg:mt-0' : ''}`}>
           {copy.items.map((item, index) => {
             const isOpen = openIndex === index;
             const buttonId = `${baseId}-button-${index}`;
