@@ -6,7 +6,7 @@ const projectMeta: Record<string, { imageUrl: string; projectUrl: string }> = {
   'Valle Hub': { imageUrl: '/projects/offpeaks.webp', projectUrl: 'https://www.vallehub.com/' },
   'SF Education': { imageUrl: '/projects/sfeducation.webp', projectUrl: 'https://sfeducation.es' },
   LeCrep: { imageUrl: '/projects/lacrep.webp', projectUrl: 'https://la-crep-webapp.web.app' },
-  Cronos: { imageUrl: '/projects/cronos.webp', projectUrl: 'https://academiacronos.es' },
+  Cronos: { imageUrl: '/projects/cronos.jpg', projectUrl: 'https://academiacronos.es' },
   'Smart Stadium Pricing': { imageUrl: '/projects/smart-stadium-pricing.webp', projectUrl: 'https://github.com/arturo-lr-dev/stadium-smart-pricing' },
   'Ambar PRO': { imageUrl: '/projects/ambarpro.webp', projectUrl: 'https://ambarpro.net' },
 };
