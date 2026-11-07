@@ -118,10 +118,14 @@ node scripts/generate-blog-images.mjs
 
 ### generate-missing-blog-images.mjs
 
-Genera las imágenes de posts cuyo `image: "/blog-images/*.png"` referencia un archivo que no existe (usa el `title` del post como texto).
+Genera las imágenes de posts cuyo `image: "/blog-images/*.png"` referencia un archivo que no existe (usa el `title` del post como texto). Acepta valores YAML con o sin comillas y títulos en bloque (`>-`).
 
 ```bash
+# Solo portadas que no existen
 node scripts/generate-missing-blog-images.mjs
+
+# Regenerar todas las portadas con el título correcto
+node scripts/generate-missing-blog-images.mjs --force
 ```
 
 ### add-translation-keys.mjs (one-off, ya ejecutado)

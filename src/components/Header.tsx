@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -42,7 +43,28 @@ export const Header: React.FC = () => {
     });
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMenuOpen(false);
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+
+      const menuLinks = Array.from(menuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? []);
+      const focusableElements = [...menuLinks, ...(menuButton ? [menuButton] : [])];
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (!focusableElements.includes(activeElement as HTMLElement)) {
+        event.preventDefault();
+        firstElement?.focus();
+      } else if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement?.focus();
+      } else if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement?.focus();
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
 
@@ -65,6 +87,7 @@ export const Header: React.FC = () => {
     pathname === '/privacy-policy' ||
     !!pathname?.startsWith('/blog/en');
   const isBlogPage = !!pathname?.startsWith('/blog');
+  const isHome = pathname === '/' || pathname === '/en' || pathname === '/servicios' || pathname === '/services' || pathname === '/erp-a-medida' || pathname === '/custom-erp' || !!pathname?.startsWith('/blog');
 
   const homeHref = isEnglish ? '/en' : '/';
   const servicesHref = isEnglish ? '/services' : '/servicios';
@@ -140,7 +163,7 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${isHome ? 'dispatch-header' : ''} ${
         scrolled && !menuOpen
           ? 'border-b border-white/10 bg-brand-canvas/90 backdrop-blur-lg'
           : 'border-b border-transparent bg-transparent'
@@ -156,7 +179,7 @@ export const Header: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="brand-page fixed inset-0 z-40 h-[100dvh] overflow-y-auto overscroll-contain md:hidden"
+            className={`${isHome ? 'dispatch-mobile-menu' : 'brand-page'} fixed inset-0 z-40 h-[100dvh] overflow-y-auto overscroll-contain md:hidden`}
           >
             <nav className="mx-auto flex min-h-full w-full max-w-sm flex-col justify-center px-6 py-24" aria-label={isEnglish ? 'Mobile navigation' : 'Navegación móvil'}>
               <ul className="divide-y divide-white/10 border-y border-white/10">
@@ -223,9 +246,13 @@ export const Header: React.FC = () => {
           <Link
             href={homeHref}
             onClick={() => setMenuOpen(false)}
-            className={`shrink-0 rounded-sm font-mono text-lg font-bold text-white transition-colors hover:text-brand-blue md:text-xl ${focusRing}`}
+            className={`${isHome ? 'dispatch-logo' : ''} shrink-0 rounded-sm font-mono text-lg font-bold text-white transition-colors hover:text-brand-blue md:text-xl ${focusRing}`}
           >
-            {'<'}Legasint{'/>'}
+            {isHome ? (
+              <><Image src="/legasint-logo.png" alt="" width={36} height={34} className="dispatch-logo__mark" aria-hidden="true" />Legasint</>
+            ) : (
+              <><Image src="/legasint-logo.png" alt="" width={36} height={34} className="header-logo__mark" aria-hidden="true" /><span>{'<'}Legasint{'/>'}</span></>
+            )}
           </Link>
 
           <div className="hidden items-center gap-4 md:flex lg:gap-6">

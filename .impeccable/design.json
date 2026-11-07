@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T11:22:55Z",
+  "title": "Design System: Legasint — La línea de expedición",
+  "extensions": {
+    "scope": {
+      "status": "final",
+      "mode": "Persuade",
+      "routes": ["/", "/en", "/servicios", "/services", "/erp-a-medida", "/custom-erp", "/blog", "/blog/en", "/blog/tag/[tag]", "/blog/en/tag/[tag]", "/blog/[slug]", "/blog/en/[slug]"],
+      "surfaceBrief": ".impeccable/surfaces/src-app-es-page-tsx.md",
+      "activation": {
+        "main": "dispatch-home en home; services-page en servicios; erp-page en ERP; blog-index-page en índices/tags; blog-article-page en artículos",
+        "header": "dispatch-header y dispatch-mobile-menu en home, servicios, ERP y todo /blog",
+        "cookie": "dispatch-cookie en home, servicios, ERP y todo /blog; inglés cuando pathname empieza por /en o /blog/en, y también en /services y /custom-erp"
+      },
+      "sectionOrder": ["hero", "problems", "sectors", "cases", "services", "fit", "process", "faq", "diagnostic", "social"],
+      "servicePages": {
+        "sharedHeroComponent": "src/components/landing/ServiceHero.tsx",
+        "homeVisualComponents": ["src/components/landing/HeroProcessVisual.tsx", "src/components/landing/HeroMachineScene.tsx"],
+        "services": {
+          "routes": ["/servicios", "/services"],
+          "routeFiles": ["src/app/(es)/servicios/page.tsx", "src/app/(en)/services/page.tsx"],
+          "contentComponent": "src/components/services/ServicesPageContent.tsx",
+          "visualComponents": ["src/components/landing/ServicesHeroVisual.tsx"],
+          "mainClass": "dispatch-home services-page",
+          "hero": "ServiceHero variant=services con catálogo interactivo de cuatro áreas, sin máquina ni conveyor",
+          "order": ["ServiceHero", "service-navigation", "services-detail", "service-proof", "process", "services-faq", "final-cta", "diagnostic-form"]
+        },
+        "erp": {
+          "routes": ["/erp-a-medida", "/custom-erp"],
+          "routeFiles": ["src/app/(es)/erp-a-medida/page.tsx", "src/app/(en)/custom-erp/page.tsx"],
+          "contentComponent": "src/components/erp/ErpPageContent.tsx",
+          "visualComponents": ["src/components/landing/ErpHeroVisual.tsx", "src/components/landing/ErpNetworkScene.tsx"],
+          "mainClass": "dispatch-home erp-page",
+          "hero": "ServiceHero variant=erp con núcleo ERP y seis módulos radiales conectados, sin conveyor",
+          "order": ["ServiceHero", "erp-problem", "erp-modules", "erp-five-step-process", "erp-pricing", "erp-faq", "default-form"]
+        },
+        "blog": {
+          "indexRoutes": ["/blog", "/blog/en"],
+          "tagRoutes": ["/blog/tag/[tag]", "/blog/en/tag/[tag]"],
+          "articleRoutes": ["/blog/[slug]", "/blog/en/[slug]"],
+          "mainClasses": { "index": "dispatch-home blog-index-page", "article": "dispatch-home blog-article-page" },
+          "serverComponents": ["src/components/blog/BlogPostView.tsx", "src/components/blog/MDXContent.tsx"],
+          "clientComponents": ["src/components/blog/BlogList.tsx", "src/components/blog/BlogCard.tsx", "src/components/blog/BlogImage.tsx", "src/components/blog/TableOfContents.tsx", "src/components/blog/BlogPostInteractions.tsx"],
+          "contentSource": "post.content mediante next-mdx-remote/rsc",
+          "indexOrder": ["dark-circuit-hero", "clear-filters", "featured-card", "editorial-grid", "load-more"],
+          "articleOrder": ["hero-meta", "image", "paper-reading", "toc", "share-copy", "prev-next", "related"],
+          "fallbackImage": "/og-image.png"
+        }
+      },
+      "outOfScope": "Contacto, QR y demás rutas conservan el sistema anterior basado en brand-*, tokens Tailwind y Montserrat.",
+      "implementationNotes": [
+        "La home conserva HeroProcessVisual + HeroMachineScene y su animación original de documentos.",
+        "ServiceHero selecciona ServicesHeroVisual o ErpHeroVisual mediante variant; ninguna variante reutiliza la máquina de la home.",
+        "BlogPostView y MDXContent son server components; filtros, TOC, progreso, share/copy y fallback de imagen permanecen en componentes client específicos.",
+        "El CTA usa el degradado normal y hover; el proceso es una banda independiente con la variante profunda; ninguno comparte la superficie 135deg del hero.",
+        "Los overrides finales de globals.css prevalecen sobre las declaraciones anteriores de las mismas propiedades."
+      ]
+    },
+    "textures": {
+      "sourceAssets": ["public/bg.svg", "public/circuit.svg", "public/network.svg"],
+      "static": true,
+      "usageScope": "Solo héroes oscuros",
+      "animationRemoved": ["animate", "animateTransform", "bloques style de animación"],
+      "darkTreatment": "Trazas blancas preexistentes",
+      "hero": {
+        "selector": "dispatch-hero--machine::before",
+        "mixBlendMode": "screen",
+        "opacityDesktop": 0.18,
+        "opacityMobile": 0.13,
+        "backgroundSize": "cover",
+        "backgroundPositionDesktop": "center",
+        "backgroundPositionMobile": "58% center",
+        "pointerEvents": "none"
+      },
+      "blogHeroes": {
+        "selectors": [".dispatch-blog-hero", ".dispatch-article-hero"],
+        "texture": "/textures/circuit-dark.svg",
+        "treatment": "Degradado tinta/violeta sobre textura estática; filtros, cards y lectura sin textura"
+      },
+      "editorialSections": {
+        "selectors": [".dispatch-sectors", ".dispatch-services-detail", ".dispatch-pricing", ".dispatch-erp-problem"],
+        "backgroundImage": "none"
+      },
+      "assets": [
+        { "file": "public/textures/bg-dark.svg", "variant": "dark", "usage": "Hero de home", "sidecar": "public/textures/bg-dark.svg.json" },
+        { "file": "public/textures/circuit-dark.svg", "variant": "dark", "usage": "Héroes de servicios y de índices/tags/artículos del blog", "sidecar": "public/textures/circuit-dark.svg.json" },
+        { "file": "public/textures/network-dark.svg", "variant": "dark", "usage": "Hero de ERP", "sidecar": "public/textures/network-dark.svg.json" }
+      ]
+    },
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Papel azulado", "canonical": "#F5F7FA", "tonalRamp": ["oklch(0.25 0.025 250)", "oklch(0.35 0.025 250)", "oklch(0.46 0.022 250)", "oklch(0.57 0.018 250)", "oklch(0.69 0.014 250)", "oklch(0.80 0.010 250)", "oklch(0.91 0.006 250)", "oklch(0.97 0.003 250)"] },
+      "heading": { "role": "neutral", "displayName": "Heading claro", "canonical": "#F5F7FA", "tonalRamp": ["oklch(0.25 0.025 250)", "oklch(0.35 0.025 250)", "oklch(0.46 0.022 250)", "oklch(0.57 0.018 250)", "oklch(0.69 0.014 250)", "oklch(0.80 0.010 250)", "oklch(0.91 0.006 250)", "oklch(0.97 0.003 250)"] },
+      "ink": { "role": "neutral", "displayName": "Tinta corporativa", "canonical": "#111831", "tonalRamp": ["oklch(0.17 0.045 265)", "oklch(0.25 0.055 265)", "oklch(0.35 0.050 265)", "oklch(0.46 0.040 265)", "oklch(0.58 0.030 265)", "oklch(0.70 0.020 265)", "oklch(0.84 0.010 265)", "oklch(0.96 0.004 265)"] },
+      "surface": { "role": "neutral", "displayName": "Superficie oscura", "canonical": "#1B2540", "tonalRamp": ["oklch(0.19 0.045 265)", "oklch(0.27 0.050 265)", "oklch(0.36 0.045 265)", "oklch(0.47 0.037 265)", "oklch(0.58 0.029 265)", "oklch(0.70 0.020 265)", "oklch(0.84 0.010 265)", "oklch(0.96 0.004 265)"] },
+      "surface-hover": { "role": "neutral", "displayName": "Superficie hover / máquina", "canonical": "#253354", "tonalRamp": ["oklch(0.21 0.050 265)", "oklch(0.30 0.055 265)", "oklch(0.39 0.050 265)", "oklch(0.49 0.041 265)", "oklch(0.60 0.031 265)", "oklch(0.72 0.021 265)", "oklch(0.85 0.011 265)", "oklch(0.96 0.004 265)"] },
+      "steel": { "role": "neutral", "displayName": "Acero azulado", "canonical": "#DDE5F2", "tonalRamp": ["oklch(0.27 0.040 255)", "oklch(0.37 0.038 255)", "oklch(0.47 0.034 255)", "oklch(0.58 0.028 255)", "oklch(0.69 0.022 255)", "oklch(0.79 0.017 255)", "oklch(0.89 0.012 255)", "oklch(0.96 0.006 255)"] },
+      "blue": { "role": "primary", "displayName": "Azul corporativo", "canonical": "#2563EB", "tonalRamp": ["oklch(0.25 0.090 264)", "oklch(0.32 0.120 264)", "oklch(0.42 0.160 264)", "oklch(0.55 0.215 264)", "oklch(0.62 0.190 264)", "oklch(0.71 0.140 264)", "oklch(0.82 0.085 264)", "oklch(0.95 0.025 264)"] },
+      "blue-light": { "role": "secondary", "displayName": "Azul claro", "canonical": "#60A5FA", "tonalRamp": ["oklch(0.28 0.075 264)", "oklch(0.38 0.105 264)", "oklch(0.49 0.145 264)", "oklch(0.60 0.180 264)", "oklch(0.70 0.150 264)", "oklch(0.78 0.110 264)", "oklch(0.87 0.060 264)", "oklch(0.96 0.020 264)"] },
+      "blue-deep": { "role": "secondary", "displayName": "Azul profundo", "canonical": "#1D4ED8", "tonalRamp": ["oklch(0.22 0.090 264)", "oklch(0.29 0.120 264)", "oklch(0.38 0.170 264)", "oklch(0.49 0.220 264)", "oklch(0.58 0.190 264)", "oklch(0.69 0.135 264)", "oklch(0.81 0.080 264)", "oklch(0.95 0.025 264)"] },
+      "violet": { "role": "primary", "displayName": "Morado corporativo", "canonical": "#7C3AED", "tonalRamp": ["oklch(0.22 0.080 294)", "oklch(0.30 0.120 294)", "oklch(0.40 0.180 294)", "oklch(0.51 0.240 294)", "oklch(0.59 0.210 294)", "oklch(0.69 0.155 294)", "oklch(0.81 0.090 294)", "oklch(0.95 0.025 294)"] },
+      "violet-light": { "role": "secondary", "displayName": "Morado claro", "canonical": "#8B5CF6", "tonalRamp": ["oklch(0.25 0.080 294)", "oklch(0.35 0.125 294)", "oklch(0.45 0.180 294)", "oklch(0.57 0.220 294)", "oklch(0.65 0.190 294)", "oklch(0.74 0.135 294)", "oklch(0.85 0.075 294)", "oklch(0.96 0.020 294)"] },
+      "violet-deep": { "role": "secondary", "displayName": "Morado profundo", "canonical": "#6D28D9", "tonalRamp": ["oklch(0.20 0.080 294)", "oklch(0.27 0.120 294)", "oklch(0.35 0.180 294)", "oklch(0.45 0.230 294)", "oklch(0.54 0.210 294)", "oklch(0.66 0.150 294)", "oklch(0.80 0.085 294)", "oklch(0.95 0.025 294)"] },
+      "cyan": { "role": "tertiary", "displayName": "Cian de escena", "canonical": "#22D3EE", "tonalRamp": ["oklch(0.25 0.050 220)", "oklch(0.35 0.070 220)", "oklch(0.46 0.090 220)", "oklch(0.58 0.110 220)", "oklch(0.70 0.120 220)", "oklch(0.79 0.100 220)", "oklch(0.88 0.065 220)", "oklch(0.96 0.025 220)"] },
+      "indigo-light": { "role": "tertiary", "displayName": "Índigo claro de escena", "canonical": "#818CF8", "tonalRamp": ["oklch(0.25 0.070 278)", "oklch(0.35 0.100 278)", "oklch(0.46 0.140 278)", "oklch(0.58 0.175 278)", "oklch(0.68 0.145 278)", "oklch(0.77 0.100 278)", "oklch(0.87 0.055 278)", "oklch(0.96 0.018 278)"] },
+      "secondary-text": { "role": "neutral", "displayName": "Texto secundario sobre papel", "canonical": "#46536B", "tonalRamp": ["oklch(0.22 0.035 260)", "oklch(0.32 0.040 260)", "oklch(0.42 0.038 260)", "oklch(0.52 0.032 260)", "oklch(0.63 0.026 260)", "oklch(0.74 0.019 260)", "oklch(0.85 0.012 260)", "oklch(0.96 0.004 260)"] },
+      "body": { "role": "neutral", "displayName": "Cuerpo sobre oscuro", "canonical": "#C3CBDD", "tonalRamp": ["oklch(0.26 0.030 260)", "oklch(0.36 0.030 260)", "oklch(0.47 0.027 260)", "oklch(0.58 0.023 260)", "oklch(0.69 0.018 260)", "oklch(0.79 0.014 260)", "oklch(0.89 0.010 260)", "oklch(0.96 0.005 260)"] },
+      "dark-section-body": { "role": "secondary", "displayName": "Cuerpo editorial sobre tinta", "canonical": "#D5DEE2", "tonalRamp": ["oklch(0.26 0.025 230)", "oklch(0.36 0.024 230)", "oklch(0.47 0.022 230)", "oklch(0.58 0.019 230)", "oklch(0.69 0.015 230)", "oklch(0.79 0.012 230)", "oklch(0.88 0.010 230)", "oklch(0.96 0.004 230)"] },
+      "process-body": { "role": "secondary", "displayName": "Cuerpo sobre proceso", "canonical": "#DBEAFE", "tonalRamp": ["oklch(0.26 0.055 255)", "oklch(0.36 0.070 255)", "oklch(0.47 0.075 255)", "oklch(0.58 0.065 255)", "oklch(0.69 0.050 255)", "oklch(0.79 0.037 255)", "oklch(0.89 0.025 255)", "oklch(0.96 0.015 255)"] },
+      "hero-mid": { "role": "neutral", "displayName": "Azul intermedio del hero", "canonical": "#162044", "tonalRamp": ["oklch(0.18 0.050 265)", "oklch(0.26 0.060 265)", "oklch(0.35 0.055 265)", "oklch(0.46 0.045 265)", "oklch(0.58 0.032 265)", "oklch(0.70 0.021 265)", "oklch(0.84 0.011 265)", "oklch(0.96 0.004 265)"] },
+      "hero-violet": { "role": "neutral", "displayName": "Violeta espacial del hero", "canonical": "#241347", "tonalRamp": ["oklch(0.18 0.065 294)", "oklch(0.26 0.075 294)", "oklch(0.35 0.070 294)", "oklch(0.46 0.055 294)", "oklch(0.58 0.038 294)", "oklch(0.70 0.024 294)", "oklch(0.84 0.012 294)", "oklch(0.96 0.004 294)"] },
+      "white": { "role": "neutral", "displayName": "Blanco", "canonical": "#FFFFFF", "tonalRamp": ["oklch(0.22 0.010 250)", "oklch(0.33 0.009 250)", "oklch(0.44 0.008 250)", "oklch(0.56 0.007 250)", "oklch(0.68 0.005 250)", "oklch(0.80 0.003 250)", "oklch(0.91 0.002 250)", "oklch(1 0 0)"] },
+      "success": { "role": "tertiary", "displayName": "Verde funcional", "canonical": "#146C43", "tonalRamp": ["oklch(0.20 0.045 155)", "oklch(0.28 0.065 155)", "oklch(0.38 0.085 155)", "oklch(0.49 0.105 155)", "oklch(0.60 0.105 155)", "oklch(0.71 0.085 155)", "oklch(0.83 0.055 155)", "oklch(0.95 0.020 155)"] },
+      "success-light": { "role": "tertiary", "displayName": "Verde claro sobre oscuro", "canonical": "#86EFAC", "tonalRamp": ["oklch(0.25 0.045 155)", "oklch(0.36 0.065 155)", "oklch(0.48 0.090 155)", "oklch(0.60 0.115 155)", "oklch(0.72 0.130 155)", "oklch(0.81 0.110 155)", "oklch(0.90 0.070 155)", "oklch(0.97 0.025 155)"] },
+      "error": { "role": "tertiary", "displayName": "Rojo funcional", "canonical": "#A32121", "tonalRamp": ["oklch(0.20 0.065 28)", "oklch(0.28 0.095 28)", "oklch(0.38 0.135 28)", "oklch(0.48 0.170 28)", "oklch(0.58 0.160 28)", "oklch(0.69 0.120 28)", "oklch(0.81 0.070 28)", "oklch(0.95 0.020 28)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Hero desktop", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "clamp(3.75rem, 5.6vw, 5.4rem)", "fontWeight": 600, "lineHeight": 0.94, "letterSpacing": "-0.025em", "purpose": "H1 del hero, máximo 14ch." },
+      "display-mobile": { "displayName": "Hero móvil", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "clamp(3.25rem, 13vw, 4.75rem)", "fontWeight": 600, "lineHeight": 0.94, "letterSpacing": "-0.025em", "purpose": "H1 bajo 768px, máximo 12ch." },
+      "section": { "displayName": "Sección", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "clamp(3rem, 5.4vw, 4.75rem)", "fontWeight": 600, "lineHeight": 0.94, "letterSpacing": "-0.025em", "purpose": "H2 principales de la home." },
+      "sector-title": { "displayName": "Título de sector", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "42px", "fontWeight": 600, "lineHeight": 1, "letterSpacing": "-0.02em", "purpose": "H3 de sectores; 36px bajo 768px." },
+      "fit-title": { "displayName": "Título de encaje", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "34px", "fontWeight": 600, "lineHeight": 1.05, "letterSpacing": "0em", "purpose": "H3 de herramienta estándar y desarrollo a medida." },
+      "diagnostic-title": { "displayName": "Título de diagnóstico", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "46px", "fontWeight": 600, "lineHeight": 0.98, "letterSpacing": "-0.02em", "purpose": "H2 del aside de entregables." },
+      "service-title": { "displayName": "Detalle de servicio", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "40px", "fontWeight": 600, "lineHeight": 1, "letterSpacing": "-0.02em", "purpose": "H2 de artículos en /servicios y /services." },
+      "pricing-title": { "displayName": "Importe pricing ERP", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "38px", "fontWeight": 600, "lineHeight": 1, "letterSpacing": "-0.02em", "purpose": "Importes orientativos de los tres niveles ERP." },
+      "module-title": { "displayName": "Título de módulo ERP", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "28px", "fontWeight": 600, "lineHeight": 1.05, "letterSpacing": "0em", "purpose": "H3 de los seis módulos ERP." },
+      "service-body": { "displayName": "Cuerpo de servicio", "fontFamily": "Barlow, sans-serif", "fontSize": "17px", "fontWeight": 400, "lineHeight": 1.55, "letterSpacing": "0em", "purpose": "Problema ERP y subtítulo de formulario." },
+      "service-small": { "displayName": "Descripción compacta", "fontFamily": "Barlow, sans-serif", "fontSize": "15px", "fontWeight": 400, "lineHeight": 1.55, "letterSpacing": "0em", "purpose": "Prueba, módulos y descripciones de servicios." },
+      "service-label": { "displayName": "Navegación de servicio", "fontFamily": "Barlow, sans-serif", "fontSize": "13px", "fontWeight": 500, "lineHeight": 1.25, "letterSpacing": "0em", "purpose": "Enlaces de la navegación de servicios." },
+      "service-meta": { "displayName": "Metadato de servicio", "fontFamily": "Barlow, sans-serif", "fontSize": "12px", "fontWeight": 600, "lineHeight": 1.25, "letterSpacing": "0em", "purpose": "Texto compacto de estado y metadatos." },
+      "service-step-label": { "displayName": "Guía compacta", "fontFamily": "Barlow, sans-serif", "fontSize": "11px", "fontWeight": 600, "lineHeight": 1.2, "letterSpacing": "0em", "purpose": "Guía y footer compacto en móvil." },
+      "title": { "displayName": "Título de registro", "fontFamily": "Barlow Condensed, sans-serif", "fontSize": "30px", "fontWeight": 600, "lineHeight": 1.05, "letterSpacing": "-0.015em", "purpose": "Servicios y títulos compactos; casos usan 44px o 38px." },
+      "lede": { "displayName": "Lede de hero", "fontFamily": "Barlow, sans-serif", "fontSize": "18px", "fontWeight": 400, "lineHeight": 1.55, "letterSpacing": "0em", "purpose": "Descripción de hasta 50ch; 17px en móvil." },
+      "body": { "displayName": "Cuerpo", "fontFamily": "Barlow, sans-serif", "fontSize": "16px", "fontWeight": 400, "lineHeight": 1.55, "letterSpacing": "0em", "purpose": "Lectura general y descripciones." },
+      "label": { "displayName": "Control / anotación", "fontFamily": "Barlow, sans-serif", "fontSize": "14px", "fontWeight": 600, "lineHeight": 1.25, "letterSpacing": "0em", "purpose": "Controles, tabs, replay y etiquetas; variantes de 10–13px." }
+    },
+    "gradients": [
+      { "name": "hero-background", "value": "linear-gradient(135deg, #111831 0%, #162044 58%, #241347 100%)", "textColor": "#F5F7FA", "purpose": "Fondo inmersivo exclusivo del hero." },
+      { "name": "action", "value": "linear-gradient(120deg, #2563EB, #7C3AED)", "textColor": "#FFFFFF", "purpose": "CTA, tab activa, núcleo del fallback y etiqueta de salida." },
+      { "name": "action-hover", "value": "linear-gradient(120deg, #1D4ED8, #6D28D9)", "textColor": "#FFFFFF", "purpose": "Hover de CTA." },
+      { "name": "process", "value": "linear-gradient(120deg, #1D4ED8, #6D28D9)", "textColor": "#FFFFFF", "purpose": "Banda independiente de proceso; no es la superficie del hero ni del CTA." }
+    ],
+    "shadows": [
+      { "name": "scene-contact", "value": "ContactShadows opacity 0.5; scale 13; blur 2.2; far 6; resolution 256; frames 1; color #050816", "purpose": "Anclar la geometría sin animación ambiental." },
+      { "name": "machine-controls", "value": "0 24px 60px -30px rgb(2 6 23 / 85%)", "purpose": "Separar los controles de la escena." },
+      { "name": "machine-annotations", "value": "0 12px 30px -18px rgb(2 6 23 / 90%)", "purpose": "Legibilidad de etiquetas flotantes." },
+      { "name": "hero-heading", "value": "0 12px 42px rgb(5 8 22 / 35%)", "purpose": "Sombra de texto del H1, sin glow de color." },
+      { "name": "cookie-elevation", "value": "0 20px 50px -24px rgb(16 24 32 / 55%)", "purpose": "Elevación funcional del banner de cookies." }
+    ],
+    "motion": [
+      { "name": "machine-states", "value": "01 Trabajo disperso; 02 Fuentes conectadas; 03 Proceso organizado; 04 Sistema en marcha", "purpose": "Cuatro estados explícitos seleccionables y con texto de fase." },
+      { "name": "machine-sequence", "value": "~4.9s: 1500ms + 1700ms + 1700ms; parada en 04", "purpose": "Avance automático por proceso o replay, sin repetición en bucle." },
+      { "name": "machine-guide", "value": "ol de cuatro botones; aria-current=step; selección manual detiene autoplay", "purpose": "Navegación directa y programática entre estados." },
+      { "name": "machine-progress", "value": "step / 3: 0 / 33 / 67 / 100%; width 400ms cubic-bezier(0.16,1,0.3,1)", "purpose": "Barra decorativa de 3px sincronizada con la fase." },
+      { "name": "machine-controls", "value": "selector + pasos + progreso + footer único de 44px; estado 12px y replay 12px/36px; ambos 11px en móvil", "purpose": "Una sola línea compacta de estado + replay, sin fila duplicada ni meta Pedido confirmado/Cronos." },
+      { "name": "machine-interpolation", "value": "grupo documents único; X 3.8 / 1.75 / 0.55 / -3.3; escala 1 / 1 / 0.45 / 1; damp 3.8 posición y 4.5 escala/documentos", "purpose": "Los mismos tres documentos cambian posición, escala, orientación y apilado de 01 a 04; no hay grupos separados de entrada y salida." },
+      { "name": "machine-screen", "value": "emissiveIntensity 0.16 / 0.35 / 0.9 / 0.48; barras oscilan solo en 03 y quedan completas en 04", "purpose": "Distinguir disperso, conexión, procesado y sistema en marcha sin loop ambiental." },
+      { "name": "machine-annotations", "value": "fuentes → Organizando… en 03 → primer resultado en 04; 300ms", "purpose": "Sincronizar anotaciones visuales con la fase." },
+      { "name": "pointer-parallax", "value": "rotationY -0.32 + pointer.x × 0.12; rotationX -0.08 - pointer.y × 0.045; lerp 0.055", "purpose": "Respuesta limitada al puntero, sin loop de contenido." },
+      { "name": "viewport-pause", "value": "useInView margin 160px; temporizador detenido; active always / inactive demand", "purpose": "Pausar avance automático y render continuo fuera de pantalla." },
+      { "name": "reduced-or-no-webgl", "value": "gpuTier off; estado inicial 04; sin Canvas ni replay; cuatro estados estáticos en fallback", "purpose": "Mantener toda la narrativa navegable sin animación ni WebGL." },
+      { "name": "fallback-transition", "value": "350ms ease-out", "purpose": "Cambiar manualmente entre estados estáticos sin autoplay." },
+      { "name": "services-catalog-enter", "value": "300ms cubic-bezier(0.16,1,0.3,1); selección manual; animation none con movimiento reducido", "purpose": "Actualizar detalle, features y enlace del catálogo HTML sin Canvas, autoplay ni conveyor." },
+      { "name": "erp-network-deploy", "value": "2.2s; easing de cuarto orden; nodos del centro a seis posiciones radiales; escala 0.35 a 1", "purpose": "Desplegar una vez el núcleo ERP y sus módulos conectados, sin conveyor." },
+      { "name": "erp-network-fallback", "value": "gpuTier off; núcleo ERP estático + lista accesible de seis módulos; Canvas aria-hidden; pausa demand fuera de viewport", "purpose": "Conservar nombres, numeración y relaciones con movimiento reducido o sin WebGL." },
+      { "name": "static-textures", "value": "sin animate, animateTransform, keyframes ni estilos de animación; opacidad hero 0.18 desktop / 0.13 móvil", "purpose": "Añadir textura sin loops ambientales ni dependencia de las escenas R3F." },
+      { "name": "blog-interactions", "value": "scroll real en #article-content; TOC con IntersectionObserver; share explícito; confirmación copy 2s", "purpose": "Comunicar progreso y acciones sin loops ambientales ni convertir el contenido server en una aplicación client." },
+      { "name": "control", "value": "160–180ms ease-out", "purpose": "Cambios de fondo, color y subrayado." },
+      { "name": "faq", "value": "200ms ease-in-out; 0ms con movimiento reducido", "purpose": "Apertura del acordeón." },
+      { "name": "menu", "value": "enter 200ms ease-out; exit 150ms ease-in", "purpose": "Opacidad del menú móvil." },
+      { "name": "cookie", "value": "400ms ease-out", "purpose": "Entrada del banner de consentimiento." }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "480px", "purpose": "Ajustes compactos editoriales, acciones apiladas y proceso ERP de cinco pasos a una columna." },
+      { "name": "camera-small", "value": "600px", "purpose": "Home: zoom 38 por debajo y 54 entre 600–899px; red ERP: zoom 42 por debajo y 60 desde este ancho." },
+      { "name": "mobile", "value": "767px", "purpose": "Home: escena de 520px; catálogo en flujo con tabs a dos columnas; red ERP de 500px; blog/cards destacadas, prev/next y related a una columna; lectura 17px e imagen 16:10." },
+      { "name": "section-stack", "value": "900px", "purpose": "Diagnóstico a una columna; home usa zoom 72 desde este ancho." },
+      { "name": "erp-grid", "value": "1000px", "purpose": "Módulos ERP a dos columnas, proceso ERP a tres y rejilla del blog a dos." },
+      { "name": "wide-adjustment", "value": "1100px", "purpose": "Copy, acciones y anotaciones se recolocan; TOC de artículo pasa de sidebar sticky a inline." }
+    ],
+    "rendering": {
+      "library": "React Three Fiber + drei + Three.js",
+      "camera": "Home: ortográfica [7,5,8], zoom 38 / 54 / 72; red ERP: ortográfica [7,5,8], zoom 42 / 60",
+      "dpr": [1, 1.5],
+      "ssr": false,
+      "webgl": "webgl2 o webgl; fallback cuando no está disponible",
+      "gpuTiers": ["off", "lite", "full"],
+      "serviceVisuals": {
+        "services": "ServicesHeroVisual: catálogo HTML interactivo de cuatro áreas; sin Canvas, máquina ni conveyor",
+        "erp": "ErpHeroVisual + ErpNetworkScene: núcleo ERP, seis módulos radiales conectados, despliegue 2.2s, lista accesible y fallback estático"
+      }
+    },
+    "qaViewports": ["390x844", "1366x768", "1440x900", "1920x1080"]
+  },
+  "components": [
+    {
+      "name": "CTA primario",
+      "kind": "button",
+      "description": "Acción de diagnóstico con degradado normal, hover profundo y texto blanco.",
+      "html": "<a class=\"ds-button-primary\" href=\"#diagnostico\">Solicitar diagnóstico gratuito de 30 min</a>",
+      "css": ".ds-button-primary { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 13px 18px; border: 1px solid #111831; border-radius: 2px; background: linear-gradient(120deg, #2563EB, #7C3AED); color: #FFFFFF; font-family: Barlow, sans-serif; font-size: 15px; font-weight: 700; line-height: 1.25; text-align: center; text-decoration: none; transition: background 180ms ease-out; } .ds-button-primary:hover { background: linear-gradient(120deg, #1D4ED8, #6D28D9); } .ds-button-primary:focus-visible { outline: 3px solid #2563EB; outline-offset: 4px; }"
+    },
+    {
+      "name": "CTA secundario de hero",
+      "kind": "button",
+      "description": "Acción alternativa oscura con borde azul claro y hover surface-hover.",
+      "html": "<a class=\"ds-button-hero-secondary\" href=\"#casos\">Ver proyectos reales</a>",
+      "css": ".ds-button-hero-secondary { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 13px 18px; border: 1px solid rgb(96 165 250 / 55%); border-radius: 2px; background: #1B2540; color: #F5F7FA; font-family: Barlow, sans-serif; font-size: 15px; font-weight: 700; text-decoration: none; transition: background-color 180ms ease-out; } .ds-button-hero-secondary:hover { background: #253354; } .ds-button-hero-secondary:focus-visible { outline: 3px solid #60A5FA; outline-offset: 4px; }"
+    },
+    {
+      "name": "Navegación oscura de home",
+      "kind": "nav",
+      "description": "Header de tinta con texto claro, página activa azul claro, idioma y CTA. En todas las páginas usa /legasint-logo.png junto al nombre, 36×34px y alt vacío por decorativo. Recorte de 448×424 del JPEG corporativo de 1024×1024 confirmado en /Users/artuleg/Documents/Empresa/LegaSint/[LS] Docs/Docs/logo.jpeg, con fondo gris eliminado y bordes suavizados. Procedencia PNG tEXt impeccable:prompt.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navegación principal\"><a class=\"ds-nav-logo\" href=\"/\"><img src=\"/legasint-logo.png\" alt=\"\" width=\"36\" height=\"34\" aria-hidden=\"true\">Legasint</a><div class=\"ds-nav-links\"><a href=\"/\" aria-current=\"page\">Inicio</a><a href=\"/servicios\">Servicios</a><a href=\"/erp-a-medida\">ERP a medida</a><a href=\"/blog\">Blog</a></div><a class=\"ds-nav-cta\" href=\"#diagnostico\">Diagnóstico gratuito</a></nav>",
+      "css": ".ds-nav { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 24px; padding: 0 16px; border-bottom: 1px solid #1B2540; background: rgb(17 24 49 / 94%); color: #F5F7FA; font-family: Barlow, sans-serif; } .ds-nav-logo { display: inline-flex; align-items: center; gap: 10px; color: #F5F7FA; font-size: 22px; font-weight: 700; letter-spacing: -0.025em; text-decoration: none; } .ds-nav-logo img { display: block; width: 36px; height: 34px; object-fit: contain; } .ds-nav-links { display: flex; align-items: center; gap: 22px; } .ds-nav-links a { color: #F5F7FA; font-size: 14px; font-weight: 500; text-decoration: none; } .ds-nav-links a[aria-current='page'] { text-decoration: underline; text-decoration-color: #60A5FA; text-decoration-thickness: 2px; text-underline-offset: 6px; } .ds-nav-cta { padding: 9px 14px; border: 1px solid #111831; border-radius: 2px; background: linear-gradient(120deg, #2563EB, #7C3AED); color: #FFFFFF; font-size: 13px; font-weight: 600; text-decoration: none; } .ds-nav-cta:hover { background: linear-gradient(120deg, #1D4ED8, #6D28D9); } .ds-nav a:focus-visible { outline: 3px solid #60A5FA; outline-offset: 4px; }"
+    },
+    {
+      "name": "Fallback de línea de expedición",
+      "kind": "custom",
+      "description": "Alternativa estática con los mismos cuatro estados, guía aria-current=step, progreso y texto de fase; replay permanece oculto sin WebGL.",
+      "html": "<figure class=\"ds-machine ds-machine--step-3\"><div class=\"ds-machine-flow\"><div class=\"ds-machine-inputs\"><span>Excel</span><span>Correo</span><span>WhatsApp</span></div><div class=\"ds-machine-core\">Legasint</div><div class=\"ds-machine-outputs\"><span>Pedido confirmado</span><span>Stock reservado</span><span>Albarán preparado</span></div></div><div class=\"ds-machine-tabs\" role=\"group\" aria-label=\"Elige un proceso\"><button aria-pressed=\"true\">Pedidos</button><button aria-pressed=\"false\">Expedientes</button><button aria-pressed=\"false\">Integraciones</button></div><ol class=\"ds-machine-steps\" aria-label=\"Pasos de la transformación\"><li><button><span>01</span>Entrada</button></li><li><button><span>02</span>Conexión</button></li><li><button><span>03</span>Orden</button></li><li><button aria-current=\"step\"><span>04</span>Resultado</button></li></ol><div class=\"ds-machine-progress\" aria-hidden=\"true\"><span style=\"width:100%\"></span></div><p class=\"ds-machine-status\">Sistema en marcha</p><figcaption>Sistema en marcha. Pedidos: Excel, Correo, WhatsApp → Pedido confirmado, Stock reservado, Albarán preparado.</figcaption></figure>",
+      "css": ".ds-machine { margin: 0; padding: 28px; background: linear-gradient(135deg, #111831 0%, #162044 58%, #241347 100%); color: #F5F7FA; font-family: Barlow, sans-serif; } .ds-machine-flow { display: grid; grid-template-columns: auto auto auto; align-items: center; justify-content: center; gap: 28px; min-height: 260px; } .ds-machine-inputs, .ds-machine-outputs { display: flex; flex-direction: column; gap: 12px; transition: opacity 350ms ease-out, transform 350ms ease-out; } .ds-machine-flow span, .ds-machine-core { display: block; min-width: 132px; padding: 14px 18px; border: 1px solid #60A5FA; background: #1B2540; color: #F5F7FA; font-size: 13px; font-weight: 600; text-align: center; } .ds-machine-core { display: grid; min-width: 150px; min-height: 150px; place-items: center; border-color: #8B5CF6; background: linear-gradient(120deg, #2563EB, #7C3AED); font: 600 30px Barlow Condensed, sans-serif; } .ds-machine--step-0 .ds-machine-core { opacity: 0.35; } .ds-machine--step-0 .ds-machine-outputs, .ds-machine--step-1 .ds-machine-outputs { opacity: 0; transform: translateX(24px); } .ds-machine--step-1 .ds-machine-inputs { transform: translateX(28px); } .ds-machine--step-2 .ds-machine-inputs { opacity: 0.2; } .ds-machine--step-2 .ds-machine-outputs span:not(:first-child) { opacity: 0.25; } .ds-machine--step-3 .ds-machine-inputs { opacity: 0; transform: translateX(30px); } .ds-machine-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid rgb(96 165 250 / 38%); background: #1B2540; } .ds-machine-tabs button { min-height: 50px; padding: 12px 14px; border: 0; border-right: 1px solid rgb(96 165 250 / 20%); background: transparent; color: #C3CBDD; font: 600 14px Barlow, sans-serif; } .ds-machine-tabs button:last-child { border-right: 0; } .ds-machine-tabs button:hover { background: #253354; color: #F5F7FA; } .ds-machine-tabs button[aria-pressed='true'] { background: linear-gradient(120deg, #2563EB, #7C3AED); color: #FFFFFF; } .ds-machine-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; border-top: 1px solid rgb(96 165 250 / 20%); list-style: none; } .ds-machine-steps button { display: flex; width: 100%; min-height: 54px; align-items: center; justify-content: center; gap: 5px; padding: 8px 5px; border: 0; border-right: 1px solid rgb(96 165 250 / 16%); background: transparent; color: #C3CBDD; font: 600 11px/1.2 Barlow, sans-serif; } .ds-machine-steps button > span { color: #60A5FA; font-size: 10px; font-variant-numeric: tabular-nums; } .ds-machine-steps button:hover, .ds-machine-steps button[aria-current='step'] { background: #253354; color: #FFFFFF; } .ds-machine-steps button[aria-current='step'] { box-shadow: inset 0 -2px #8B5CF6; } .ds-machine-steps button[aria-current='step'] > span { color: #22D3EE; } .ds-machine button:focus-visible { outline: 3px solid #60A5FA; outline-offset: 3px; } .ds-machine-progress { height: 3px; background: #334155; } .ds-machine-progress > span { display: block; height: 100%; background: linear-gradient(90deg, #2563EB, #7C3AED); transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-machine-status { display: flex; min-height: 44px; align-items: center; margin: 0; padding: 6px 12px; border-top: 1px solid rgb(96 165 250 / 20%); background: #162044; color: #DBEAFE; font-size: 12px; font-weight: 600; } .ds-machine figcaption { margin-top: 14px; color: #C3CBDD; font-size: 12px; }"
+    },
+    {
+      "name": "Registro de sector",
+      "kind": "custom",
+      "description": "Artículo editorial de casos de uso por sector con flechas y descripciones concretas.",
+      "html": "<article class=\"ds-sector\"><h3>Industria y logística</h3><p class=\"ds-sector-intro\">Menos perseguir datos y más visibilidad entre pedido, almacén y entrega.</p><ul><li><span aria-hidden=\"true\">→</span><div><h4>Pedidos que generan trabajo</h4><p>Una entrada validada puede crear tareas, reservar stock y preparar el albarán desde un mismo flujo.</p></div></li><li><span aria-hidden=\"true\">→</span><div><h4>Una única versión del stock</h4><p>Almacén y oficina consultan los mismos datos.</p></div></li></ul></article>",
+      "css": ".ds-sector { padding-top: 26px; border-top: 2px solid #111831; background: #F5F7FA; color: #111831; font-family: Barlow, sans-serif; } .ds-sector h3 { margin: 0; font: 600 42px/1 Barlow Condensed, sans-serif; letter-spacing: -0.02em; } .ds-sector-intro { max-width: 52ch; margin: 12px 0 0; color: #46536B; font-size: 17px; line-height: 1.5; } .ds-sector ul { margin: 26px 0 0; padding: 0; list-style: none; } .ds-sector li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 14px; padding: 18px 0; border-top: 1px solid rgb(17 24 49 / 20%); } .ds-sector li > span { color: #2563EB; font-size: 20px; } .ds-sector h4 { margin: 0; font-size: 17px; font-weight: 600; } .ds-sector li p { margin: 5px 0 0; color: #46536B; font-size: 15px; line-height: 1.5; }"
+    },
+    {
+      "name": "Comparación de encaje",
+      "kind": "custom",
+      "description": "Dos criterios oscuros para distinguir herramienta estándar y desarrollo a medida.",
+      "html": "<section class=\"ds-fit\"><h2>No siempre hace falta desarrollar más software</h2><div class=\"ds-fit-grid\"><article><h3>Una herramienta estándar puede bastar</h3><ul><li>Tu proceso encaja con sus flujos habituales.</li><li>Quieres validar una necesidad antes de invertir más.</li></ul></article><article><h3>El desarrollo a medida aporta cuando</h3><ul><li>✓ Tu forma de trabajar tiene reglas que un producto genérico no admite.</li><li>✓ Necesitas integrar sistemas o automatizar decisiones.</li></ul></article></div><p class=\"ds-fit-note\">Si una solución existente ya resuelve tu caso, te lo diremos en el diagnóstico.</p></section>",
+      "css": ".ds-fit { padding: 32px; background: #111831; color: #F5F7FA; font-family: Barlow, sans-serif; } .ds-fit > h2 { max-width: 14ch; margin: 0 0 36px; font: 600 clamp(3rem, 5.4vw, 4.75rem)/0.94 Barlow Condensed, sans-serif; letter-spacing: -0.025em; } .ds-fit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; } .ds-fit article { padding-top: 24px; border-top: 1px solid rgb(195 203 221 / 40%); } .ds-fit article:last-child { border-top-color: #60A5FA; } .ds-fit h3 { max-width: 20ch; margin: 0; font: 600 34px/1.05 Barlow Condensed, sans-serif; } .ds-fit ul { margin: 22px 0 0; padding: 0; list-style: none; } .ds-fit li { padding: 13px 0; border-top: 1px solid rgb(195 203 221 / 14%); color: #C3CBDD; font-size: 16px; line-height: 1.5; } .ds-fit article:last-child li { color: #C3CBDD; } .ds-fit article:last-child li::first-letter { color: #60A5FA; } .ds-fit-note { margin: 36px 0 0; padding: 20px 22px; border: 1px solid rgb(96 165 250 / 35%); background: #1B2540; color: #DBEAFE; font-size: 17px; line-height: 1.5; }"
+    },
+    {
+      "name": "Aside de diagnóstico",
+      "kind": "custom",
+      "description": "Entregables de la llamada con checks azul claro y alternativa directa de WhatsApp.",
+      "html": "<aside class=\"ds-diagnostic-aside\"><h2>Lo que te llevas en 30 minutos</h2><ul><li>✓ Un mapa claro del proceso actual y sus principales bloqueos.</li><li>✓ Oportunidades de automatización priorizadas por impacto y complejidad.</li><li>✓ Recomendaciones concretas para avanzar, hagamos un proyecto después o no.</li></ul><a href=\"https://wa.me/34649355701\">También puedes pedirlo directamente por WhatsApp.</a></aside>",
+      "css": ".ds-diagnostic-aside { padding: 24px 0; border-top: 2px solid #60A5FA; background: #111831; color: #F5F7FA; font-family: Barlow, sans-serif; } .ds-diagnostic-aside h2 { max-width: 12ch; margin: 0; font: 600 46px/0.98 Barlow Condensed, sans-serif; letter-spacing: -0.02em; } .ds-diagnostic-aside ul { margin: 26px 0 0; padding: 0; list-style: none; } .ds-diagnostic-aside li { padding: 14px 0; border-top: 1px solid rgb(195 203 221 / 18%); color: #C3CBDD; font-size: 15px; line-height: 1.5; } .ds-diagnostic-aside li::first-letter { color: #60A5FA; } .ds-diagnostic-aside a { display: inline-block; min-height: 44px; margin-top: 16px; padding-top: 10px; color: #86EFAC; font-size: 14px; font-weight: 600; text-underline-offset: 5px; } .ds-diagnostic-aside a:focus-visible { outline: 3px solid #60A5FA; outline-offset: 4px; }"
+    },
+    {
+      "name": "Registro de caso real",
+      "kind": "card",
+      "description": "Caso editorial con etiquetas y lista de definición, sin tarjeta SaaS.",
+      "html": "<article class=\"ds-case\"><h3>Cronos</h3><p class=\"ds-case-description\">Aula virtual marca blanca para academias de oposiciones.</p><ul class=\"ds-case-tags\"><li>Aula virtual</li><li>Multi-tenant</li><li>SaaS</li></ul><dl><div><dt>El reto</dt><dd>Disponer de un aula virtual de marca blanca sin depender de una experiencia formativa genérica.</dd></div><div><dt>La solución</dt><dd>Una plataforma SaaS multi-tenant para centralizar contenidos y adaptar la experiencia a cada academia.</dd></div><div><dt>Resultado funcional</dt><dd>Un entorno de aprendizaje bajo la marca de cada academia.</dd></div></dl><a href=\"https://academiacronos.es\">Visitar proyecto</a></article>",
+      "css": ".ds-case { padding-top: 26px; border-top: 2px solid #111831; background: #F5F7FA; color: #111831; font-family: Barlow, sans-serif; } .ds-case h3 { margin: 0; font: 600 44px/1 Barlow Condensed, sans-serif; letter-spacing: -0.02em; } .ds-case-description { max-width: 60ch; margin: 10px 0 0; color: #46536B; font-size: 17px; line-height: 1.5; } .ds-case-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 0; padding: 0; list-style: none; } .ds-case-tags li { padding: 4px 8px; border: 1px solid #46536B; font-size: 12px; } .ds-case dl { margin: 22px 0 0; } .ds-case dl > div { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid rgb(17 24 49 / 25%); } .ds-case dt { font-size: 14px; font-weight: 600; } .ds-case dd { margin: 0; color: #46536B; font-size: 14px; line-height: 1.5; } .ds-case > a { display: inline-block; min-height: 44px; margin-top: 16px; padding-top: 10px; color: #1D4ED8; font-size: 15px; font-weight: 700; text-underline-offset: 5px; } .ds-case > a:focus-visible { outline: 3px solid #2563EB; outline-offset: 4px; }"
+    },
+    {
+      "name": "Banda de proceso",
+      "kind": "custom",
+      "description": "Lista ordenada de cuatro pasos sobre una banda profunda independiente del hero y de los CTA.",
+      "html": "<section class=\"ds-process\"><h2>De un proceso concreto a una herramienta que tu equipo puede usar</h2><ol><li><span>01</span><h3>Diagnóstico</h3><p>Revisamos el proceso y detectamos el cuello de botella.</p></li><li><span>02</span><h3>Propuesta</h3><p>Definimos alcance, entregables y precio antes de empezar.</p></li><li><span>03</span><h3>Desarrollo</h3><p>Entregamos avances funcionales por sprints.</p></li><li><span>04</span><h3>Puesta en marcha</h3><p>Desplegamos, documentamos y acordamos soporte.</p></li></ol></section>",
+      "css": ".ds-process { padding: 48px 24px; background: linear-gradient(120deg, #1D4ED8, #6D28D9); color: #FFFFFF; font-family: Barlow, sans-serif; } .ds-process > h2 { max-width: 14ch; margin: 0 0 40px; font: 600 clamp(3rem, 5.4vw, 4.75rem)/0.94 Barlow Condensed, sans-serif; letter-spacing: -0.025em; } .ds-process ol { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin: 0; padding: 22px 0 0; border-top: 2px solid #FFFFFF; list-style: none; } .ds-process li > span { font: 500 56px/1 Barlow Condensed, sans-serif; font-variant-numeric: tabular-nums; } .ds-process h3 { margin: 18px 0 0; font: 600 26px/1.05 Barlow Condensed, sans-serif; } .ds-process li p { margin: 12px 0 0; font-size: 15px; line-height: 1.5; }"
+    },
+    {
+      "name": "ServiceHero + ServicesHeroVisual",
+      "kind": "custom",
+      "description": "ServiceHero variant=services con catálogo HTML de cuatro áreas, detalle/features/enlace y botones aria-pressed; sin máquina, Canvas ni conveyor.",
+      "html": "<section class=\"ds-service-hero\"><div class=\"ds-service-hero-copy\"><h1>Servicios tecnológicos adaptados a tu operación</h1><p>Software, integraciones y automatización alrededor de los procesos reales de tu empresa.</p><div class=\"ds-service-hero-actions\"><a href=\"#formulario\">Solicitar diagnóstico</a><a href=\"#servicios-lista\">Explorar servicios</a></div></div><div class=\"ds-catalog\"><div class=\"ds-catalog-tabs\" role=\"group\" aria-label=\"Explorar servicios\"><button aria-pressed=\"true\"><span>01</span>Software a medida</button><button aria-pressed=\"false\"><span>02</span>APIs e integraciones</button><button aria-pressed=\"false\"><span>03</span>Automatización e IA</button><button aria-pressed=\"false\"><span>04</span>CTO externo</button></div><div class=\"ds-catalog-detail\"><h2>Software a medida</h2><p>Herramientas adaptadas a la operación de cada empresa.</p><ul><li>✓ ERP y sistemas internos</li><li>✓ Aplicaciones web</li><li>✓ MVP y prototipos</li></ul><a href=\"#software\">Ver software a medida</a></div></div></section>",
+      "css": ".ds-service-hero { display: grid; min-height: min(860px, 100svh); grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: center; gap: 40px; padding: 96px 48px 48px; background: linear-gradient(135deg, #111831 0%, #162044 58%, #241347 100%); color: #F5F7FA; font-family: Barlow, sans-serif; } .ds-service-hero-copy h1 { max-width: 14ch; margin: 0; font: 600 clamp(3.75rem, 5.6vw, 5.4rem)/0.94 Barlow Condensed, sans-serif; letter-spacing: -0.025em; } .ds-service-hero-copy > p { max-width: 50ch; margin-top: 24px; color: #C3CBDD; font-size: 18px; line-height: 1.55; } .ds-service-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; } .ds-service-hero-actions a { display: inline-flex; min-height: 52px; align-items: center; padding: 13px 18px; border: 1px solid #111831; border-radius: 2px; background: linear-gradient(120deg, #2563EB, #7C3AED); color: #FFFFFF; font-weight: 700; text-decoration: none; } .ds-service-hero-actions a + a { border-color: rgb(96 165 250 / 55%); background: #1B2540; } .ds-service-hero-actions a + a:hover { background: #253354; } .ds-catalog { display: grid; grid-template-columns: 195px minmax(0, 1fr); border: 1px solid rgb(96 165 250 / 38%); background: #1B2540; box-shadow: 0 24px 60px -30px rgb(2 6 23 / 85%); } .ds-catalog-tabs { display: flex; flex-direction: column; border-right: 1px solid rgb(96 165 250 / 20%); } .ds-catalog-tabs button { display: flex; min-height: 64px; align-items: center; gap: 10px; padding: 14px; border: 0; border-bottom: 1px solid rgb(96 165 250 / 16%); background: transparent; color: #C3CBDD; font: 600 14px Barlow, sans-serif; text-align: left; } .ds-catalog-tabs button > span { color: #60A5FA; font-size: 11px; font-variant-numeric: tabular-nums; } .ds-catalog-tabs button:hover { background: #253354; color: #F5F7FA; } .ds-catalog-tabs button[aria-pressed='true'] { background: linear-gradient(120deg, #2563EB, #7C3AED); color: #FFFFFF; } .ds-catalog-tabs button[aria-pressed='true'] > span { color: #22D3EE; } .ds-catalog button:focus-visible, .ds-catalog-detail a:focus-visible, .ds-service-hero-actions a:focus-visible { outline: 3px solid #60A5FA; outline-offset: 4px; } .ds-catalog-detail { padding: 28px; animation: ds-catalog-enter 300ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-catalog-detail h2 { margin: 0; font: 600 38px/1 Barlow Condensed, sans-serif; letter-spacing: -0.02em; } .ds-catalog-detail > p { margin: 14px 0 0; color: #C3CBDD; font-size: 15px; line-height: 1.55; } .ds-catalog-detail ul { margin: 20px 0 0; padding: 0; list-style: none; } .ds-catalog-detail li { padding: 7px 0; color: #F5F7FA; font-size: 13px; } .ds-catalog-detail li::first-letter { color: #60A5FA; } .ds-catalog-detail > a { display: inline-block; margin-top: 22px; color: #60A5FA; font-size: 14px; font-weight: 600; text-underline-offset: 5px; } @keyframes ds-catalog-enter { from { opacity: 0.35; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } } @media (prefers-reduced-motion: reduce) { .ds-catalog-detail { animation: none; } }"
+    },
+    {
+      "name": "ErpHeroVisual + ErpNetworkScene",
+      "kind": "custom",
+      "description": "ServiceHero variant=erp con núcleo ERP y seis módulos radiales conectados, despliegue de 2.2s, Canvas aria-hidden y fallback estático con lista accesible; sin conveyor.",
+      "html": "<div class=\"ds-erp-network\"><div class=\"ds-erp-core\" aria-hidden=\"true\">ERP</div><ul class=\"ds-erp-modules\" aria-label=\"Módulos conectados\"><li><span>01</span>Ventas</li><li><span>02</span>Compras</li><li><span>03</span>Almacén</li><li><span>04</span>Producción</li><li><span>05</span>RRHH</li><li><span>06</span>Finanzas</li></ul></div>",
+      "css": ".ds-erp-network { padding: 32px; background: linear-gradient(135deg, #111831 0%, #162044 58%, #241347 100%); color: #F5F7FA; font-family: Barlow, sans-serif; } .ds-erp-core { display: grid; width: 150px; height: 150px; place-items: center; margin: 0 auto 28px; border: 1px solid #8B5CF6; background: linear-gradient(120deg, #2563EB, #7C3AED); font: 600 42px Barlow Condensed, sans-serif; } .ds-erp-modules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; border: 1px solid rgb(96 165 250 / 30%); background: #1B2540; list-style: none; } .ds-erp-modules li { display: flex; min-height: 48px; align-items: center; gap: 8px; padding: 10px 12px; border-right: 1px solid rgb(96 165 250 / 16%); border-bottom: 1px solid rgb(96 165 250 / 16%); color: #C3CBDD; font-size: 12px; } .ds-erp-modules li:nth-child(3n) { border-right: 0; } .ds-erp-modules li:nth-child(n + 4) { border-bottom: 0; } .ds-erp-modules li > span { color: #60A5FA; font-size: 10px; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Navegación de servicios",
+      "kind": "nav",
+      "description": "Barra surface con cuatro anclas editoriales, enlaces de 42px/13px y hover surface-hover.",
+      "html": "<nav class=\"ds-service-navigation\" aria-label=\"Explorar servicios\"><h2>Explorar servicios</h2><ul><li><a href=\"#software\">Software</a></li><li><a href=\"#apis\">Integraciones</a></li><li><a href=\"#ia\">Automatización e IA</a></li><li><a href=\"#consultoria\">CTO externo</a></li></ul></nav>",
+      "css": ".ds-service-navigation { padding: 24px; border-top: 1px solid rgb(96 165 250 / 25%); background: #1B2540; color: #F5F7FA; font-family: Barlow, sans-serif; } .ds-service-navigation h2 { margin: 0; font-size: 16px; font-weight: 600; } .ds-service-navigation ul { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0; padding: 0; list-style: none; } .ds-service-navigation a { display: inline-flex; min-height: 42px; align-items: center; padding: 9px 14px; border: 1px solid rgb(96 165 250 / 30%); color: #C3CBDD; font-size: 13px; font-weight: 500; text-decoration: none; transition: background-color 160ms ease-out, color 160ms ease-out; } .ds-service-navigation a:hover { background: #253354; color: #F5F7FA; } .ds-service-navigation a:focus-visible { outline: 3px solid #60A5FA; outline-offset: 4px; }"
+    },
+    {
+      "name": "Detalle editorial de servicio",
+      "kind": "custom",
+      "description": "Artículo de servicios con H2 de 40px, features, entregable y línea estructural, sin tarjeta SaaS.",
+      "html": "<article class=\"ds-service-detail\"><h2>Software a medida</h2><p class=\"ds-service-detail-description\">Herramientas adaptadas a la operación de cada empresa.</p><ul><li>✓ ERP y sistemas internos</li><li>✓ Aplicaciones web</li><li>✓ MVP y prototipos</li></ul><div class=\"ds-service-deliverable\"><h3>Qué puedes esperar</h3><p>Una solución definida alrededor de tu proceso, con entregas funcionales y documentación.</p></div><a href=\"#formulario\">Hablemos de tu proceso</a></article>",
+      "css": ".ds-service-detail { display: flex; flex-direction: column; padding-top: 26px; border-top: 2px solid #111831; background: #F5F7FA; color: #111831; font-family: Barlow, sans-serif; } .ds-service-detail h2 { margin: 0; font: 600 40px/1 Barlow Condensed, sans-serif; letter-spacing: -0.02em; } .ds-service-detail-description { margin: 12px 0 0; color: #46536B; font-size: 16px; line-height: 1.55; } .ds-service-detail ul { margin: 20px 0 0; padding: 0; list-style: none; } .ds-service-detail li { padding: 7px 0; font-size: 14px; } .ds-service-detail li::first-letter { color: #2563EB; } .ds-service-deliverable { margin-top: 22px; padding-top: 16px; border-top: 1px solid rgb(17 24 49 / 22%); } .ds-service-deliverable h3 { margin: 0; font-size: 14px; } .ds-service-deliverable p { margin: 7px 0 0; color: #46536B; font-size: 14px; line-height: 1.5; } .ds-service-detail > a { display: inline-block; min-height: 44px; margin-top: 16px; padding-top: 10px; color: #1D4ED8; font-size: 15px; font-weight: 700; text-underline-offset: 5px; } .ds-service-detail > a:focus-visible { outline: 3px solid #2563EB; outline-offset: 4px; }"
+    },
+    {
+      "name": "Proceso ERP de cinco pasos",
+      "kind": "custom",
+      "description": "Variante ERP de la banda profunda con cinco columnas: análisis, propuesta, desarrollo, implantación y evolución.",
+      "html": "<section class=\"ds-erp-process\"><h2>Cómo trabajamos</h2><ol><li><span>01</span><h3>Análisis</h3><p>Mapeamos procesos y alcance del ERP.</p></li><li><span>02</span><h3>Propuesta</h3><p>Módulos, integraciones, plazos y precio cerrado.</p></li><li><span>03</span><h3>Desarrollo</h3><p>Sprints con demos funcionales.</p></li><li><span>04</span><h3>Implantación</h3><p>Migración, formación y puesta en producción.</p></li><li><span>05</span><h3>Evolución</h3><p>Mantenimiento y nuevos módulos.</p></li></ol></section>",
+      "css": ".ds-erp-process { padding: 48px 24px; background: linear-gradient(120deg, #1D4ED8, #6D28D9); color: #FFFFFF; font-family: Barlow, sans-serif; } .ds-erp-process > h2 { margin: 0 0 40px; font: 600 clamp(3rem, 5.4vw, 4.75rem)/0.94 Barlow Condensed, sans-serif; letter-spacing: -0.025em; } .ds-erp-process ol { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; margin: 0; padding: 22px 0 0; border-top: 2px solid #FFFFFF; list-style: none; } .ds-erp-process li > span { font: 500 56px/1 Barlow Condensed, sans-serif; font-variant-numeric: tabular-nums; } .ds-erp-process h3 { margin: 18px 0 0; font: 600 26px/1.05 Barlow Condensed, sans-serif; } .ds-erp-process li p { margin: 12px 0 0; font-size: 15px; line-height: 1.5; }"
+    },
+    {
+      "name": "Módulos y pricing ERP",
+      "kind": "custom",
+      "description": "Retículas editoriales ERP con módulos de 28px e importes de 38px sobre papel.",
+      "html": "<div class=\"ds-erp-business\"><div class=\"ds-erp-modules\"><article><h3>Ventas y CRM</h3><p>Clientes, presupuestos, pedidos y facturación.</p></article><article><h3>Almacén e inventario</h3><p>Stock, ubicaciones, lotes y trazabilidad.</p></article><article><h3>Finanzas</h3><p>Tesorería, presupuestos y cierre contable.</p></article></div><div class=\"ds-erp-pricing\"><article><h3>ERP básico</h3><p class=\"ds-erp-amount\">desde 15.000 €</p><p>3-4 módulos, pyme pequeña</p></article><article><h3>ERP estándar</h3><p class=\"ds-erp-amount\">desde 30.000 €</p><p>5-6 módulos, empresa en crecimiento</p></article><article><h3>ERP complejo</h3><p class=\"ds-erp-amount\">desde 60.000 €</p><p>Multi-almacén, producción e integraciones</p></article></div></div>",
+      "css": ".ds-erp-business { display: grid; gap: 48px; padding: 32px; background: #F5F7FA; color: #111831; font-family: Barlow, sans-serif; } .ds-erp-modules, .ds-erp-pricing { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; } .ds-erp-business article { padding-top: 22px; border-top: 2px solid #2563EB; } .ds-erp-business article:nth-child(2) { border-top-color: #7C3AED; } .ds-erp-modules h3 { margin: 0; font: 600 28px/1.05 Barlow Condensed, sans-serif; } .ds-erp-modules p, .ds-erp-pricing p { margin: 10px 0 0; color: #46536B; font-size: 15px; line-height: 1.5; } .ds-erp-pricing h3 { margin: 0; color: #46536B; font-size: 15px; } .ds-erp-pricing .ds-erp-amount { color: #1D4ED8; font: 600 38px/1 Barlow Condensed, sans-serif; letter-spacing: -0.02em; } .ds-erp-pricing article > p:last-child { font-size: 14px; }"
+    },
+    {
+      "name": "CTA final de servicios",
+      "kind": "custom",
+      "description": "Banda azul/morado normal con texto claro y botón de tinta cuyo hover pasa a surface.",
+      "html": "<section class=\"ds-final-cta\"><h2>Empecemos por el proceso que más tiempo os cuesta</h2><p>En 30 minutos analizamos tu situación y te llevas recomendaciones concretas.</p><a href=\"#formulario\">Solicitar diagnóstico gratuito</a></section>",
+      "css": ".ds-final-cta { padding: 68px 24px; background: linear-gradient(120deg, #2563EB, #7C3AED); color: #FFFFFF; font-family: Barlow, sans-serif; } .ds-final-cta h2 { max-width: 15ch; margin: 0; font: 600 clamp(3rem, 5vw, 4.75rem)/0.94 Barlow Condensed, sans-serif; letter-spacing: -0.025em; } .ds-final-cta p { max-width: 62ch; margin: 18px 0 0; color: #DBEAFE; font-size: 18px; line-height: 1.55; } .ds-final-cta a { display: inline-flex; min-height: 52px; align-items: center; margin-top: 26px; padding: 13px 18px; border: 1px solid #FFFFFF; border-radius: 2px; background: #111831; color: #FFFFFF; font-weight: 700; text-decoration: none; } .ds-final-cta a:hover { background: #1B2540; } .ds-final-cta a:focus-visible { outline: 3px solid #60A5FA; outline-offset: 4px; }"
+    },
+    {
+      "name": "Índice editorial del blog",
+      "kind": "custom",
+      "description": "Hero oscuro con circuit-dark, filtros claros y card editorial; BlogList/BlogCard gestionan búsqueda, tags y seis posts por página.",
+      "html": "<main class=\"ds-blog-index\"><header class=\"ds-blog-index-hero\"><h1>Ideas & Código</h1><p>Artículos sobre tecnología, desarrollo y soluciones digitales.</p></header><section class=\"ds-blog-filters\" aria-label=\"Filtros de artículos\"><input type=\"search\" aria-label=\"Buscar artículos\" placeholder=\"Buscar artículos...\"><div role=\"group\" aria-label=\"Filtrar por tema\"><button aria-pressed=\"true\">Todos</button><button aria-pressed=\"false\">Software</button><button aria-pressed=\"false\">IA</button></div></section><div class=\"ds-blog-grid\"><a class=\"ds-blog-card\" href=\"/blog/ejemplo\"><article><div class=\"ds-blog-card-meta\"><time>7 nov 2026</time><span>8 min</span></div><h2>Diseñar software alrededor del proceso real</h2><p>Cómo convertir trabajo manual y fuentes dispersas en un sistema compartido.</p><span class=\"ds-blog-card-tag\">Software</span><span class=\"ds-blog-card-link\">Leer artículo</span></article></a></div></main>",
+      "css": ".ds-blog-index { background: #F5F7FA; color: #111831; font-family: Barlow, sans-serif; } .ds-blog-index-hero { padding: 64px 24px; background-color: #111831; background-image: linear-gradient(135deg, rgb(17 24 49 / 92%), rgb(36 19 71 / 88%)), url('/textures/circuit-dark.svg'); background-position: center; background-size: cover; color: #F5F7FA; } .ds-blog-index-hero h1 { max-width: 14ch; margin: 0; font: 600 clamp(3.75rem, 6.5vw, 6rem)/0.94 Barlow Condensed, sans-serif; letter-spacing: -0.025em; } .ds-blog-index-hero p { max-width: 56ch; margin: 20px 0 0; color: #C3CBDD; font-size: 18px; } .ds-blog-filters { padding: 24px; border-bottom: 1px solid rgb(17 24 49 / 20%); } .ds-blog-filters input { width: min(520px, 100%); min-height: 48px; padding: 12px 16px; border: 1px solid #718087; border-radius: 2px; background: #FFFFFF; color: #111831; font: 400 15px Barlow, sans-serif; } .ds-blog-filters div { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; } .ds-blog-filters button { min-height: 40px; padding: 8px 12px; border: 1px solid rgb(17 24 49 / 22%); background: transparent; color: #46536B; font: 500 13px Barlow, sans-serif; } .ds-blog-filters button:hover { background: #DDE5F2; } .ds-blog-filters button[aria-pressed='true'] { border-color: #111831; background: linear-gradient(120deg, #2563EB, #7C3AED); color: #FFFFFF; } .ds-blog-filters input:focus-visible, .ds-blog-filters button:focus-visible { outline: 3px solid #2563EB; outline-offset: 3px; } .ds-blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 42px 28px; padding: 40px 24px; } .ds-blog-card article { height: 100%; padding-top: 20px; border-top: 2px solid #111831; } .ds-blog-card { color: #111831; text-decoration: none; } .ds-blog-card-meta { display: flex; justify-content: space-between; color: #46536B; font-size: 12px; font-variant-numeric: tabular-nums; } .ds-blog-card h2 { margin: 10px 0 0; font: 600 27px/1.05 Barlow Condensed, sans-serif; letter-spacing: -0.015em; } .ds-blog-card:hover h2 { color: #1D4ED8; } .ds-blog-card p { color: #46536B; font-size: 14px; line-height: 1.55; } .ds-blog-card-tag { display: inline-block; padding: 4px 7px; border: 1px solid #9AA9C4; color: #46536B; font-size: 11px; } .ds-blog-card-link { display: block; min-height: 40px; margin-top: 12px; padding-top: 10px; color: #1D4ED8; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 5px; }"
+    },
+    {
+      "name": "Artículo editorial server",
+      "kind": "custom",
+      "description": "BlogPostView + MDXContent en servidor: hero/meta, lectura en papel, TOC, prev/next y related con post.content mediante next-mdx-remote/rsc.",
+      "html": "<main class=\"ds-article\"><header class=\"ds-article-hero\"><nav aria-label=\"Breadcrumb\"><a href=\"/blog\">Blog</a> / <span aria-current=\"page\">Diseñar software alrededor del proceso</span></nav><h1>Diseñar software alrededor del proceso real</h1><p>Una guía para convertir procesos manuales en herramientas compartidas.</p><div class=\"ds-article-meta\"><span>Legasint</span><time>7 de noviembre de 2026</time><span>8 min de lectura</span></div></header><div class=\"ds-article-layout\"><article class=\"ds-article-content\"><nav class=\"ds-article-toc\" aria-label=\"Contenido\"><h2>Contenido</h2><a href=\"#proceso\" aria-current=\"location\">El proceso</a><a href=\"#sistema\">El sistema</a></nav><h2 id=\"proceso\">El proceso</h2><p>Antes de elegir una tecnología, conviene entender qué trabajo repite el equipo y dónde pierde visibilidad.</p><nav class=\"ds-article-prevnext\" aria-label=\"Más artículos\"><a href=\"/blog/anterior\"><span>← Anterior</span><strong>Procesos manuales</strong></a><a href=\"/blog/siguiente\"><span>Siguiente →</span><strong>Integraciones útiles</strong></a></nav><section class=\"ds-article-related\"><h2>Artículos relacionados</h2><a href=\"/blog/relacionado\"><h3>Cómo conectar las herramientas que ya usas</h3><p>Integraciones antes que desarrollo nuevo.</p></a></section></article></div></main>",
+      "css": ".ds-article { background: #F5F7FA; color: #111831; font-family: Barlow, sans-serif; } .ds-article-hero { padding: 64px 24px; background-color: #111831; background-image: linear-gradient(135deg, rgb(17 24 49 / 94%), rgb(36 19 71 / 90%)), url('/textures/circuit-dark.svg'); background-position: center; background-size: cover; color: #F5F7FA; } .ds-article-hero nav { color: #C3CBDD; font-size: 13px; } .ds-article-hero nav a { color: #60A5FA; } .ds-article-hero h1 { max-width: 17ch; margin: 22px 0 0; font: 600 clamp(3rem, 5vw, 4.75rem)/0.94 Barlow Condensed, sans-serif; letter-spacing: -0.025em; } .ds-article-hero > p { max-width: 68ch; margin: 20px 0 0; color: #C3CBDD; font-size: 18px; line-height: 1.6; } .ds-article-meta { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 24px; color: #C3CBDD; font-size: 13px; } .ds-article-layout { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 64px; padding: 64px 24px 88px; } .ds-article-content { max-width: 760px; } .ds-article-content > p, .ds-article-content h2 { max-width: 72ch; } .ds-article-content h2 { font: 600 36px/1.1 Barlow Condensed, sans-serif; letter-spacing: -0.015em; } .ds-article-content > p { color: #334155; font-size: 18px; line-height: 1.75; } .ds-article-toc { margin-bottom: 28px; padding-left: 14px; border-left: 1px solid rgb(17 24 49 / 25%); } .ds-article-toc h2 { margin: 0 0 16px; font: 600 14px Barlow, sans-serif; } .ds-article-toc a { display: block; padding: 6px 0; color: #46536B; font-size: 13px; text-decoration: none; } .ds-article-toc a[aria-current='location'] { border-left: 2px solid #2563EB; margin-left: -15px; padding-left: 12px; color: #1D4ED8; font-weight: 600; } .ds-article-prevnext { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 36px; } .ds-article-prevnext a { display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid #111831; color: #111831; text-decoration: none; } .ds-article-prevnext span { color: #1D4ED8; font-size: 13px; } .ds-article-prevnext strong { font: 600 22px/1.15 Barlow Condensed, sans-serif; } .ds-article-related { margin-top: 52px; } .ds-article-related > h2 { font: 600 34px Barlow Condensed, sans-serif; } .ds-article-related a { display: block; padding-top: 16px; border-top: 1px solid #111831; color: #111831; text-decoration: none; } .ds-article-related h3 { font: 600 23px/1.1 Barlow Condensed, sans-serif; } .ds-article-related p { color: #46536B; font-size: 13px; }"
+    },
+    {
+      "name": "BlogPostInteractions",
+      "kind": "custom",
+      "description": "Componente client para progreso de lectura, share en X/LinkedIn/Facebook y copia de URL con confirmación de dos segundos.",
+      "html": "<div class=\"ds-article-interactions\"><div class=\"ds-reading-progress\" style=\"width:42%\"></div><div class=\"ds-article-share\"><span>Compartir</span><div><button aria-label=\"Share on X\">X</button><button aria-label=\"Share on LinkedIn\">in</button><button aria-label=\"Share on Facebook\">f</button><button aria-label=\"Copiar enlace\">Copiar enlace</button></div></div></div>",
+      "css": ".ds-reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #2563EB, #7C3AED); z-index: 100; transition: width 50ms linear; } .ds-article-share { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 44px; padding: 20px 0; border-top: 1px solid rgb(17 24 49 / 22%); border-bottom: 1px solid rgb(17 24 49 / 22%); color: #111831; font-family: Barlow, sans-serif; } .ds-article-share > span { color: #46536B; font-size: 14px; font-weight: 600; } .ds-article-share > div { display: flex; flex-wrap: wrap; gap: 8px; } .ds-article-share button { min-width: 40px; min-height: 40px; padding: 8px 12px; border: 1px solid rgb(17 24 49 / 25%); background: transparent; color: #111831; font: 600 13px Barlow, sans-serif; } .ds-article-share button:hover { background: #DDE5F2; } .ds-article-share button:focus-visible { outline: 3px solid #2563EB; outline-offset: 3px; }"
+    },
+    {
+      "name": "BlogImage con fallback",
+      "kind": "custom",
+      "description": "Componente client que cambia a /og-image.png en onError conservando alt, fill y priority cuando corresponde.",
+      "html": "<figure class=\"ds-blog-image-fallback\"><img src=\"/og-image.png\" alt=\"Diseñar software alrededor del proceso real\" width=\"640\" height=\"360\"><figcaption>Fallback editorial /og-image.png</figcaption></figure>",
+      "css": ".ds-blog-image-fallback { margin: 0; } .ds-blog-image-fallback img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid rgb(17 24 49 / 20%); border-radius: 2px; background: #DDE5F2; object-fit: cover; } .ds-blog-image-fallback figcaption { margin-top: 8px; color: #46536B; font: 400 12px Barlow, sans-serif; }"
+    },
+    {
+      "name": "Campo de diagnóstico",
+      "kind": "input",
+      "description": "Campo blanco con etiqueta visible, borde estructural y foco azul.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-field-name\">Nombre <span aria-hidden=\"true\">*</span></label><input id=\"ds-field-name\" name=\"name\" type=\"text\" autocomplete=\"name\" placeholder=\"María García\" required></div>",
+      "css": ".ds-field { padding: 20px; background: #F5F7FA; color: #111831; font-family: Barlow, sans-serif; } .ds-field label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 500; } .ds-field label span { color: #A32121; } .ds-field input { width: 100%; min-height: 50px; padding: 12px 16px; border: 1px solid #718087; border-radius: 2px; background: #FFFFFF; color: #111831; font: 400 16px Barlow, sans-serif; } .ds-field input::placeholder { color: #5D6A72; opacity: 1; } .ds-field input:focus-visible { border-color: #2563EB; outline: 3px solid #2563EB; outline-offset: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La línea de expedición",
+    "overview": "La home final abre con una línea de expedición inmersiva: Excel, correo, WhatsApp, documentos y datos atraviesan una máquina Legasint y salen convertidos en trabajo ordenado. El hero es una escena oscura a todo viewport construida con React Three Fiber; conveyor, documentos y máquina explican la transformación real del producto. El texto y las acciones ocupan la izquierda, mientras la escena atraviesa el centro y la derecha con controles en el margen inferior.\n\nFuera del hero, la metáfora se vuelve editorial: retículas de albarán, líneas de registro, etiquetas, listas de definición y bloques corporativos. Las nuevas secciones responden qué puede mejorar cada sector, cuándo una herramienta estándar es suficiente y qué recibe la persona en el diagnóstico. La prueba sigue siendo contenido concreto y proyectos reales, sin métricas ni testimonios inventados.\n\nLa adaptación final extiende el mismo sistema a servicios y ERP con dos variantes explícitas de ServiceHero. Servicios presenta un catálogo interactivo de cuatro áreas, sin máquina ni conveyor; ERP muestra un núcleo con seis módulos radiales conectados, también sin conveyor. La home conserva su animación original de documentos. Navegación, detalles, prueba, CTA final, módulos ERP, proceso de cinco pasos, pricing y formularios comparten las retículas editoriales dispatch en español e inglés.\n\nEl blog adopta una variante editorial propia dentro de dispatch: índices y tags combinan hero oscuro con circuit-dark, filtros claros y cards; los artículos usan hero/meta/imagen, lectura en papel, TOC, share, prev/next y related. BlogPostView y MDXContent renderizan en servidor con post.content; las interacciones quedan aisladas en componentes client.",
+    "keyCharacteristics": [
+      "Hero oscuro inmersivo con una línea 3D de documentos y máquina.",
+      "Secuencia guiada de cuatro estados y ~4,9s, sin loops ambientales.",
+      "Retículas de albarán y bloques corporativos fuera del hero.",
+      "Adaptación dispatch compartida en home, servicios, ERP y blog editorial.",
+      "Barlow Condensed para titulares; Barlow para lectura y controles.",
+      "CTA con degradado azul/morado; proceso como banda independiente en variante profunda.",
+      "Contenido por sector, criterio de encaje y entregables claros del diagnóstico."
+    ],
+    "rules": [
+      { "name": "The Corporate Palette Rule", "body": "La home usa el sistema azul/morado corporativo y sus variantes claras sobre oscuro. El cian queda confinado a detalles de la escena; no se introducen nuevos degradados ni acentos decorativos ajenos.", "section": "colors" },
+      { "name": "The Two Voices Rule", "body": "Barlow Condensed pertenece a titulares y números de proceso; Barlow pertenece a lectura, navegación, anotaciones y controles. Montserrat no se introduce dentro de dispatch-home.", "section": "typography" },
+      { "name": "The Narrative Sequence Rule", "body": "La escena demuestra primero la transformación; las secciones siguientes responden reconocimiento, prueba, encaje, proceso y conversión en ese orden. No se reordena el diagnóstico antes de explicar qué recibe la persona.", "section": "layout" },
+      { "name": "The Purposeful Depth Rule", "body": "La profundidad 3D pertenece al mecanismo del hero y las sombras a la legibilidad o elevación funcional. Las secciones editoriales no adoptan tilt, parallax ni tarjetas flotantes por imitación.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do limitar dispatch-home, dispatch-header, dispatch-mobile-menu y dispatch-cookie a /, /en, /servicios, /services, /erp-a-medida, /custom-erp y todo /blog.",
+      "Do mantener el hero oscuro, la línea 3D y el orden actual de secciones en ambos idiomas.",
+      "Do conservar la variante editorial del blog con circuit-dark solo en héroes, lectura en papel y separación server/client.",
+      "Do usar ServiceHero variant=services con catálogo y variant=erp con red radial, manteniendo la animación original de documentos solo en la home.",
+      "Do conservar los cuatro estados, el avance de ~4,9s, la guía con aria-current=step, DPR 1–1.5, cámara responsive y pausa fuera de viewport.",
+      "Do ofrecer los mismos cuatro estados estáticos en el fallback con movimiento reducido o sin WebGL, sin replay.",
+      "Do usar Barlow Condensed para titulares y Barlow para lectura, anotaciones y controles.",
+      "Do distinguir la banda de proceso de la superficie del hero y de los CTA.",
+      "Do probar ES y EN a 390×844 y 1440×900, con teclado, movimiento reducido y WebGL deshabilitado.",
+      "Do preservar anclas, rutas, contenido, eventos y el envío exitoso como único origen de leads."
+    ],
+    "donts": [
+      "Don't volver a describir o componer el hero como una hoja estática de texto + clasificador.",
+      "Don't aplicar la línea de expedición a QR u otras páginas fuera del alcance dispatch mediante estilos globales.",
+      "Don't añadir loops ambientales, rotación continua, partículas decorativas o parallax a las secciones editoriales.",
+      "Don't montar el Canvas con prefers-reduced-motion, sin WebGL ni en SSR.",
+      "Don't hacer que la información dependa solo de los colores o de las anotaciones 3D.",
+      "Don't introducir Montserrat dentro de las superficies dispatch ni convertir las secciones en grids de tarjetas SaaS.",
+      "Don't registrar generate_lead por clics, replay, selección de proceso, WhatsApp o inicio de formulario.",
+      "Don't inventar métricas, testimonios o condiciones comerciales para reforzar las nuevas secciones."
+    ]
+  }
+}

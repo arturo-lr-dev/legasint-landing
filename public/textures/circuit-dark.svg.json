@@ -1,0 +1,4 @@
+{
+  "prompt": "Texturas estáticas derivadas de los recursos corporativos preexistentes public/bg.svg, public/circuit.svg y public/network.svg. Se eliminaron únicamente las etiquetas animate y los bloques style de animación para evitar movimiento ambiental. Las variantes -dark conservan las trazas blancas; las variantes -light sustituyen el blanco por tinta corporativa #111831. Sin nuevas formas, iconos ni contenido generado.\n",
+  "createdAt": "2026-11-07T10:14:35.703Z"
+}

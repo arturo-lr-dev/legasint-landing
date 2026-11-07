@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import AnimatedLanding from '@/components/landing/AnimatedLanding';
 import ProblemsSection from '@/components/landing/ProblemsSection';
+import SectorUseCasesSection from '@/components/landing/SectorUseCasesSection';
+import FitSection from '@/components/landing/FitSection';
+import DiagnosticAside from '@/components/landing/DiagnosticAside';
 import ServicesSection from '@/components/landing/ServicesSection';
 import PortfolioSection from '@/components/landing/PortfolioSection';
 import ProcessSection from '@/components/landing/ProcessSection';
@@ -39,15 +42,18 @@ export default function HomeEn() {
       <ServiceJsonLd locale="en" />
       <FaqPageJsonLd items={homeCopy.en.faq.items} />
       <ConsoleEasterEgg />
-      <main id="main-content" className="brand-page">
+      <main id="main-content" className="dispatch-home">
         <AnimatedLanding locale="en" />
         <ProblemsSection locale="en" />
+        <SectorUseCasesSection locale="en" />
         <PortfolioSection locale="en" />
         <ServicesSection locale="en" />
+        <FitSection locale="en" />
         <ProcessSection locale="en" />
         <FaqSection locale="en" split />
-        <section id="diagnostico" aria-label="Free assessment" className="diagnostic-section scroll-mt-20 px-4 py-16 md:py-24">
-          <div className="mx-auto max-w-3xl">
+        <section id="diagnostico" aria-label="Free assessment" className="dispatch-diagnostic scroll-mt-20">
+          <div className="dispatch-container dispatch-diagnostic__inner">
+            <DiagnosticAside locale="en" />
             <ContactForm locale="en" variant="diagnostic" location="home_en_form" />
           </div>
         </section>

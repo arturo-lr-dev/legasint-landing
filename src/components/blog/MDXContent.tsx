@@ -1,7 +1,5 @@
-'use client';
-
 import React from 'react';
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import {
   MDXHeading,
   MDXCode,
@@ -10,10 +8,6 @@ import {
   MDXBlockquote,
   MDXImage,
 } from '@/components/mdx';
-
-interface MDXContentProps {
-  source: MDXRemoteSerializeResult;
-}
 
 const components = {
   h1: (props: React.ComponentPropsWithoutRef<'h1'>) => <MDXHeading level={1} {...props} />,
@@ -29,8 +23,8 @@ const components = {
   img: MDXImage,
 };
 
-export const MDXContent: React.FC<MDXContentProps> = ({ source }) => {
-  return <MDXRemote {...source} components={components} />;
-};
+export async function MDXContent({ source }: { source: string }) {
+  return <MDXRemote source={source} components={components} />;
+}
 
 export default MDXContent;

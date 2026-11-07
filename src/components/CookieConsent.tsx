@@ -28,7 +28,7 @@ const copy = {
 
 export default function CookieConsent() {
   const pathname = usePathname();
-  const locale = pathname?.startsWith('/en') ? 'en' : 'es';
+  const locale = pathname?.startsWith('/en') || pathname?.startsWith('/blog/en') || pathname === '/services' || pathname === '/custom-erp' ? 'en' : 'es';
   const t = copy[locale];
   const privacyHref = locale === 'en' ? '/privacy-policy' : '/politica-de-privacidad';
 
@@ -84,7 +84,7 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="fixed bottom-0 left-0 right-0 z-[100] px-2 pt-2 pb-[calc(0.5rem_+_env(safe-area-inset-bottom))] md:px-6 md:pt-6 md:pb-[calc(1.5rem_+_env(safe-area-inset-bottom))]"
+          className={`${pathname === '/' || pathname === '/en' || pathname === '/servicios' || pathname === '/services' || pathname === '/erp-a-medida' || pathname === '/custom-erp' || pathname?.startsWith('/blog') ? 'dispatch-cookie ' : ''}fixed bottom-0 left-0 right-0 z-[100] px-2 pt-2 pb-[calc(0.5rem_+_env(safe-area-inset-bottom))] md:px-6 md:pt-6 md:pb-[calc(1.5rem_+_env(safe-area-inset-bottom))]`}
           role="dialog"
           aria-live="polite"
           aria-label={locale === 'en' ? 'Cookie preferences' : 'Preferencias de cookies'}

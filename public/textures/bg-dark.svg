@@ -1,0 +1,358 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <!-- Gradiente blanco para flujo eléctrico -->
+    <linearGradient id="electricFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.4)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+      
+      
+    </linearGradient>
+
+    <!-- Gradiente secundario -->
+    <linearGradient id="electricFlow2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.3)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+      
+      
+    </linearGradient>
+
+    <!-- Gradiente radial blanco -->
+    <radialGradient id="componentGlow">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+
+    
+  </defs>
+
+  <!-- Grid de fondo PCB -->
+  <g stroke="rgba(255,255,255,0.03)" fill="none" stroke-width="0.5">
+    <path d="M0 0 L800 0 M0 50 L800 50 M0 100 L800 100 M0 150 L800 150 M0 200 L800 200 M0 250 L800 250 M0 300 L800 300 M0 350 L800 350 M0 400 L800 400 M0 450 L800 450 M0 500 L800 500 M0 550 L800 550"/>
+    <path d="M0 0 L0 600 M100 0 L100 600 M200 0 L200 600 M300 0 L300 600 M400 0 L400 600 M500 0 L500 600 M600 0 L600 600 M700 0 L700 600 M800 0 L800 600"/>
+  </g>
+
+  <!-- Buses de datos asimétricos -->
+  <g stroke="rgba(255,255,255,0.08)" fill="none" stroke-width="1.5">
+    <!-- Bus principal CPU (desplazado) -->
+    <path d="M80 320 L180 320 L230 270 L530 260 L580 310 L720 305"/>
+    <path d="M85 325 L185 325 L235 275 L535 265 L585 315 L725 310"/>
+
+    <!-- Lado izquierdo - más buses -->
+    <path d="M130 40 L130 180 L185 230 L185 480 L140 530 L140 590"/>
+    <path d="M90 100 L90 250 L140 300"/>
+    <path d="M170 120 L250 120 L280 150"/>
+
+    <!-- Lado derecho - diferentes trazos -->
+    <path d="M670 60 L670 190 L620 240 L620 420 L660 470 L660 580"/>
+    <path d="M710 150 L710 350 L680 380"/>
+    <path d="M580 180 L650 180"/>
+
+    <!-- Buses RAM (asimétrico) -->
+    <path d="M210 140 L210 255 M310 135 L310 250 M560 145 L560 255"/>
+
+    <!-- Conexiones diagonales -->
+    <path d="M200 460 L280 460 L330 410 M520 460 L600 460"/>
+    <path d="M250 180 L350 180 L380 210"/>
+  </g>
+
+  <!-- Líneas animadas de flujo -->
+  <g fill="none" stroke-width="2">
+    <path class="flowing-line-fast" stroke="url(#electricFlow)"
+          d="M80 320 L180 320 L230 270 L530 260 L580 310 L720 305"/>
+    <path class="flowing-line" stroke="url(#electricFlow2)"
+          d="M130 40 L130 180 L185 230 L185 480"/>
+    <path class="flowing-line-slow" stroke="url(#electricFlow)"
+          d="M670 60 L670 190 L620 240"/>
+    <path class="flowing-line-fast" stroke="url(#electricFlow2)"
+          d="M210 140 L210 255"/>
+    <path class="flowing-line" stroke="url(#electricFlow)"
+          d="M560 145 L560 255"/>
+  </g>
+
+  <!-- CPU Socket (ligeramente descentrado) -->
+  <g>
+    <rect x="360" y="250" width="120" height="120"
+          fill="rgba(255,255,255,0.05)"
+          stroke="rgba(255,255,255,0.18)"
+          stroke-width="2"/>
+    <rect x="370" y="260" width="100" height="100"
+          fill="rgba(255,255,255,0.06)"
+          stroke="rgba(255,255,255,0.2)"
+          stroke-width="1.5">
+      
+    </rect>
+    <g stroke="rgba(255,255,255,0.15)" stroke-width="1">
+      <path d="M380 280 L460 280 M380 290 L460 290 M380 300 L460 300 M380 310 L460 310"/>
+      <path d="M380 320 L460 320 M380 330 L460 330 M380 340 L460 340"/>
+    </g>
+    <circle cx="420" cy="310" r="50" fill="url(#componentGlow)" class="glow-pulse"/>
+  </g>
+
+  <!-- RAM Slots (distribución asimétrica) -->
+  <g>
+    <!-- RAM izquierda -->
+    <rect x="185" y="100" width="90" height="30"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5">
+      
+    </rect>
+    <rect x="190" y="105" width="80" height="20"
+          fill="rgba(255,255,255,0.03)"
+          stroke="rgba(255,255,255,0.12)"/>
+    <path d="M200 110 L200 120 M210 110 L210 120 M220 110 L220 120 M230 110 L230 120 M240 110 L240 120 M250 110 L250 120 M260 110 L260 120"
+          stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <rect x="285" y="95" width="90" height="30"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5">
+      
+    </rect>
+    <rect x="290" y="100" width="80" height="20"
+          fill="rgba(255,255,255,0.03)"
+          stroke="rgba(255,255,255,0.12)"/>
+    <path d="M300 105 L300 115 M310 105 L310 115 M320 105 L320 115 M330 105 L330 115 M340 105 L340 115 M350 105 L350 115 M360 105 L360 115"
+          stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- RAM derecha (solo 1) -->
+    <rect x="535" y="105" width="90" height="30"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5">
+      
+    </rect>
+    <rect x="540" y="110" width="80" height="20"
+          fill="rgba(255,255,255,0.03)"
+          stroke="rgba(255,255,255,0.12)"/>
+    <path d="M550 115 L550 125 M560 115 L560 125 M570 115 L570 125 M580 115 L580 125 M590 115 L590 125 M600 115 L600 125 M610 115 L610 125"
+          stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  </g>
+
+  <!-- Chipsets asimétricos -->
+  <g>
+    <!-- Chipset izquierdo (más grande) -->
+    <rect x="220" y="400" width="90" height="90"
+          fill="rgba(255,255,255,0.05)"
+          stroke="rgba(255,255,255,0.18)"
+          stroke-width="1.5">
+      
+    </rect>
+    <circle cx="265" cy="445" r="40" fill="url(#componentGlow)" class="glow-pulse"/>
+    <path d="M230 420 L300 420 M230 430 L300 430 M230 450 L300 450 M230 460 L300 460 M230 470 L300 470"
+          stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+    <!-- Chipset derecho (más pequeño) -->
+    <rect x="520" y="385" width="60" height="60"
+          fill="rgba(255,255,255,0.05)"
+          stroke="rgba(255,255,255,0.18)"
+          stroke-width="1.5">
+      
+    </rect>
+    <circle cx="550" cy="415" r="25" fill="url(#componentGlow)" class="glow-pulse"/>
+    <path d="M525 395 L575 395 M525 405 L575 405 M525 425 L575 425 M525 435 L575 435"
+          stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  </g>
+
+  <!-- PCIe Slots asimétricos -->
+  <g>
+    <!-- Lado izquierdo - 3 slots -->
+    <rect x="120" y="230" width="25" height="90"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5"/>
+    <path d="M125 235 L125 315 M130 235 L130 315 M135 235 L135 315 M140 235 L140 315"
+          stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+
+    <rect x="120" y="335" width="25" height="60"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5"/>
+    <path d="M125 340 L125 390 M130 340 L130 390 M135 340 L135 390 M140 340 L140 390"
+          stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+
+    <rect x="120" y="410" width="25" height="40"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5"/>
+    <path d="M125 415 L125 445 M130 415 L130 445 M135 415 L135 445 M140 415 L140 445"
+          stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+
+    <!-- Lado derecho - 2 slots diferentes -->
+    <rect x="655" y="250" width="25" height="70"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5"/>
+    <path d="M660 255 L660 315 M665 255 L665 315 M670 255 L670 315"
+          stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+
+    <rect x="655" y="360" width="25" height="50"
+          fill="rgba(255,255,255,0.04)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5"/>
+    <path d="M660 365 L660 405 M665 365 L665 405 M670 365 L670 405"
+          stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+  </g>
+
+  <!-- Capacitores asimétricos -->
+  <g>
+    <!-- Grupo izquierdo (más capacitores) -->
+    <g fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)">
+      <circle cx="310" cy="210" r="4">
+        
+      </circle>
+      <circle cx="320" cy="210" r="4">
+        
+      </circle>
+      <circle cx="330" cy="210" r="4">
+        
+      </circle>
+      <circle cx="340" cy="210" r="4">
+        
+      </circle>
+      <circle cx="350" cy="210" r="4">
+        
+      </circle>
+    </g>
+
+    <!-- Grupo derecho (menos capacitores) -->
+    <g fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)">
+      <circle cx="490" cy="215" r="4">
+        
+      </circle>
+      <circle cx="500" cy="215" r="4">
+        
+      </circle>
+    </g>
+
+    <!-- VRM fases (solo lado izquierdo) -->
+    <g fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.18)">
+      <rect x="310" y="180" width="8" height="15">
+        
+      </rect>
+      <rect x="325" y="180" width="8" height="15">
+        
+      </rect>
+      <rect x="340" y="180" width="8" height="15">
+        
+      </rect>
+      <rect x="355" y="180" width="8" height="15">
+        
+      </rect>
+    </g>
+  </g>
+
+  <!-- Panel I/O asimétrico -->
+  <g fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)">
+    <!-- Izquierdo más grande -->
+    <rect x="20" y="80" width="60" height="440" stroke-width="1.5"/>
+    <rect x="30" y="100" width="40" height="18" fill="rgba(255,255,255,0.08)"/>
+    <rect x="30" y="130" width="40" height="18" fill="rgba(255,255,255,0.08)"/>
+    <rect x="30" y="160" width="40" height="18" fill="rgba(255,255,255,0.08)"/>
+    <rect x="30" y="190" width="40" height="18" fill="rgba(255,255,255,0.08)"/>
+    <rect x="30" y="480" width="40" height="18" fill="rgba(255,255,255,0.08)"/>
+
+    <!-- Derecho más pequeño -->
+    <rect x="730" y="120" width="50" height="350" stroke-width="1.5"/>
+    <rect x="740" y="140" width="30" height="15" fill="rgba(255,255,255,0.08)"/>
+    <rect x="740" y="170" width="30" height="15" fill="rgba(255,255,255,0.08)"/>
+    <rect x="740" y="440" width="30" height="15" fill="rgba(255,255,255,0.08)"/>
+  </g>
+
+  <!-- Conectores SATA (solo izquierda) -->
+  <g>
+    <rect x="160" y="530" width="12" height="30"
+          fill="rgba(255,255,255,0.08)"
+          stroke="rgba(255,255,255,0.18)"
+          stroke-width="1"/>
+    <rect x="180" y="530" width="12" height="30"
+          fill="rgba(255,255,255,0.08)"
+          stroke="rgba(255,255,255,0.18)"
+          stroke-width="1"/>
+    <rect x="200" y="530" width="12" height="30"
+          fill="rgba(255,255,255,0.08)"
+          stroke="rgba(255,255,255,0.18)"
+          stroke-width="1"/>
+  </g>
+
+  <!-- M.2 Slots (2 en diferentes posiciones) -->
+  <g>
+    <rect x="360" y="190" width="110" height="18"
+          fill="rgba(255,255,255,0.06)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1">
+      
+    </rect>
+
+    <rect x="500" y="500" width="90" height="15"
+          fill="rgba(255,255,255,0.06)"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1">
+      
+    </rect>
+  </g>
+
+  <!-- Puntos de conexión pulsantes distribuidos asimétricamente -->
+  <g>
+    <circle cx="185" cy="320" r="3" fill="rgba(255,255,255,0.25)">
+      
+      
+    </circle>
+    <circle cx="420" cy="260" r="3" fill="rgba(255,255,255,0.25)">
+      
+      
+    </circle>
+    <circle cx="620" cy="310" r="3" fill="rgba(255,255,255,0.25)">
+      
+      
+    </circle>
+    <circle cx="265" cy="445" r="3" fill="rgba(255,255,255,0.25)">
+      
+      
+    </circle>
+    <circle cx="550" cy="415" r="3" fill="rgba(255,255,255,0.25)">
+      
+      
+    </circle>
+    <circle cx="130" cy="280" r="3" fill="rgba(255,255,255,0.25)">
+      
+      
+    </circle>
+  </g>
+
+  <!-- Chip BIOS (lado derecho, posición diferente) -->
+  <g>
+    <rect x="690" y="500" width="35" height="25"
+          fill="rgba(255,255,255,0.08)"
+          stroke="rgba(255,255,255,0.18)"
+          stroke-width="1">
+      
+    </rect>
+  </g>
+
+  <!-- Resistencias SMD distribuidas asimétricamente -->
+  <g fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)">
+    <rect x="280" y="225" width="6" height="3"/>
+    <rect x="290" y="225" width="6" height="3"/>
+    <rect x="300" y="225" width="6" height="3"/>
+    <rect x="310" y="225" width="6" height="3"/>
+    <rect x="540" y="230" width="6" height="3"/>
+    <rect x="550" y="230" width="6" height="3"/>
+  </g>
+
+  <!-- Componentes pequeños adicionales (lado derecho) -->
+  <g fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)">
+    <rect x="640" y="470" width="15" height="25"/>
+    <rect x="665" y="450" width="20" height="15"/>
+  </g>
+
+  <!-- Agujeros de montaje en esquinas -->
+  <g>
+    <circle cx="50" cy="50" r="8" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+    <circle cx="750" cy="50" r="8" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+    <circle cx="50" cy="550" r="8" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+    <circle cx="750" cy="550" r="8" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  </g>
+</svg>

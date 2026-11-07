@@ -35,6 +35,29 @@ export interface HomeCopy {
     subtitle: string;
     items: { title: string; description: string }[];
   };
+  sectors: {
+    title: string;
+    subtitle: string;
+    groups: {
+      title: string;
+      description: string;
+      items: { title: string; description: string }[];
+    }[];
+  };
+  fit: {
+    title: string;
+    subtitle: string;
+    standardTitle: string;
+    standardItems: string[];
+    customTitle: string;
+    customItems: string[];
+    note: string;
+  };
+  diagnostic: {
+    title: string;
+    items: string[];
+    directLabel: string;
+  };
   portfolio: {
     title: string;
     subtitle: string;
@@ -126,6 +149,44 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           description: 'ERP, CRM, ecommerce y hojas de cálculo no se comunican y tu equipo repite el mismo trabajo.',
         },
       ],
+    },
+    sectors: {
+      title: 'Tu operación no es genérica. El software tampoco debería serlo',
+      subtitle: 'Partimos de los flujos que tu equipo ya utiliza y elegimos qué conviene conectar, automatizar o reconstruir.',
+      groups: [
+        {
+          title: 'Industria y logística',
+          description: 'Menos perseguir datos y más visibilidad entre pedido, almacén y entrega.',
+          items: [
+            { title: 'Pedidos que generan trabajo', description: 'Una entrada validada puede crear tareas, reservar stock y preparar el albarán desde un mismo flujo.' },
+            { title: 'Una única versión del stock', description: 'Almacén y oficina consultan los mismos datos en lugar de reconciliar hojas de cálculo.' },
+            { title: 'Estados que se pueden seguir', description: 'Cada pedido muestra qué está pendiente, quién debe actuar y cuál es el siguiente paso.' },
+          ],
+        },
+        {
+          title: 'Despachos profesionales',
+          description: 'Documentación, estados e informes ordenados alrededor de cada expediente.',
+          items: [
+            { title: 'Documentos en su expediente', description: 'Correos y archivos quedan clasificados y vinculados al cliente o caso que corresponde.' },
+            { title: 'Menos correos para saber cómo va algo', description: 'El estado y las próximas acciones son visibles para todo el equipo.' },
+            { title: 'Informes sin copiar datos', description: 'La información registrada se reutiliza para preparar resúmenes e informes operativos.' },
+          ],
+        },
+      ],
+    },
+    fit: {
+      title: 'No siempre hace falta desarrollar más software',
+      subtitle: 'La solución correcta puede ser configurar una herramienta existente, conectar las que ya usas o construir algo específico.',
+      standardTitle: 'Una herramienta estándar puede bastar',
+      standardItems: ['Tu proceso encaja con sus flujos habituales.', 'Quieres validar una necesidad antes de invertir más.', 'No necesitas reglas propias ni integraciones especiales.'],
+      customTitle: 'El desarrollo a medida aporta cuando',
+      customItems: ['Tu forma de trabajar tiene reglas que un producto genérico no admite.', 'Copias datos entre herramientas o dependes de varias versiones del mismo documento.', 'Necesitas integrar sistemas, automatizar decisiones o dar visibilidad a todo el equipo.'],
+      note: 'Si una solución existente ya resuelve tu caso, te lo diremos en el diagnóstico.',
+    },
+    diagnostic: {
+      title: 'Lo que te llevas en 30 minutos',
+      items: ['Un mapa claro del proceso actual y sus principales bloqueos.', 'Oportunidades de automatización priorizadas por impacto y complejidad.', 'Recomendaciones concretas para avanzar, hagamos un proyecto después o no.'],
+      directLabel: 'También puedes pedirlo directamente por WhatsApp.',
     },
     portfolio: {
       title: 'Proyectos reales, explicados con claridad',
@@ -362,6 +423,44 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           description: 'ERP, CRM, ecommerce and spreadsheets do not communicate, so your team repeats the same work.',
         },
       ],
+    },
+    sectors: {
+      title: 'Your operation is not generic. Your software should not be either',
+      subtitle: 'We start with the workflows your team already uses and decide what to connect, automate or rebuild.',
+      groups: [
+        {
+          title: 'Industry and logistics',
+          description: 'Less time chasing data and more visibility across orders, stock and delivery.',
+          items: [
+            { title: 'Orders that create the next tasks', description: 'A validated order can create tasks, reserve stock and prepare the delivery note within one flow.' },
+            { title: 'One current version of stock', description: 'Warehouse and office teams consult the same data instead of reconciling spreadsheets.' },
+            { title: 'Statuses everyone can follow', description: 'Each order shows what is pending, who needs to act and what happens next.' },
+          ],
+        },
+        {
+          title: 'Professional firms',
+          description: 'Documents, statuses and reports organised around each case file.',
+          items: [
+            { title: 'Documents attached to the right case', description: 'Emails and files are classified and linked to the corresponding client or case.' },
+            { title: 'Fewer emails asking for an update', description: 'The current status and next actions are visible to the whole team.' },
+            { title: 'Reports without copying data', description: 'Recorded information is reused to prepare summaries and operational reports.' },
+          ],
+        },
+      ],
+    },
+    fit: {
+      title: 'More software is not always the answer',
+      subtitle: 'The right solution may be configuring an existing tool, connecting the ones you already use or building something specific.',
+      standardTitle: 'An off-the-shelf tool may be enough',
+      standardItems: ['Your process fits its standard workflows.', 'You want to validate a need before investing further.', 'You do not need custom rules or specialist integrations.'],
+      customTitle: 'Custom development adds value when',
+      customItems: ['Your working rules do not fit a generic product.', 'You copy data between tools or rely on several versions of the same document.', 'You need to integrate systems, automate decisions or give the whole team visibility.'],
+      note: 'If an existing solution already covers your needs, we will tell you during the assessment.',
+    },
+    diagnostic: {
+      title: 'What you take away in 30 minutes',
+      items: ['A clear map of your current process and its main blockers.', 'Automation opportunities prioritised by impact and complexity.', 'Practical next steps, whether we work together afterwards or not.'],
+      directLabel: 'You can also request it directly on WhatsApp.',
     },
     portfolio: {
       title: 'Real projects, explained clearly',

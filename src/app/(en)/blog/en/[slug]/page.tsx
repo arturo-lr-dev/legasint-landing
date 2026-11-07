@@ -83,7 +83,7 @@ export default async function BlogPostPageEN({ params }: PageProps) {
         ]}
       />
       <BlogPostView post={post} previousPost={previous} nextPost={next} relatedPosts={related} tocItems={tocItems}>
-        <MDXContent source={post.serialized!} />
+        <MDXContent source={post.content} />
       </BlogPostView>
     </>
   );

@@ -20,7 +20,7 @@ export default function FaqSection({ locale = 'es', content, id = 'faq', split =
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <section id={id} className="px-4 py-16 md:py-24" aria-labelledby={`${id}-title`}>
+    <section id={id} className={`${split ? 'dispatch-faq ' : ''}px-4 py-16 md:py-24`} aria-labelledby={`${id}-title`}>
       <Reveal className={split ? 'mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20' : 'mx-auto w-full max-w-3xl'}>
         <div className="max-w-md">
           <h2 id={`${id}-title`} className="text-balance text-3xl font-bold tracking-tight text-brand-heading md:text-4xl">

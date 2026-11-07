@@ -77,7 +77,27 @@ async function generateImage(slug, text, index) {
   console.log(`  Generated: ${slug}.png`);
 }
 
+function extractTitle(content, file) {
+  const frontmatter = content.split('---')[1] || content;
+  const match = frontmatter.match(/^title:\s*(.+)$/m);
+  if (!match) return file.replace('.mdx', '');
+
+  let value = match[1].trim();
+  if (['>', '>-', '|', '|-'].includes(value)) {
+    const followingLines = frontmatter.slice((match.index || 0) + match[0].length).split('\n');
+    const titleLines = [];
+    for (const line of followingLines) {
+      if (/^\S/.test(line)) break;
+      titleLines.push(line.trim());
+    }
+    value = titleLines.join(' ');
+  }
+
+  return value.replace(/^(['"])(.*)\1$/, '$2');
+}
+
 const blogDir = path.join(root, 'src', 'content', 'blog');
+const force = process.argv.includes('--force');
 let index = 0;
 
 for (const locale of ['es', 'en']) {
@@ -88,14 +108,13 @@ for (const locale of ['es', 'en']) {
 
   for (const file of files) {
     const content = fs.readFileSync(path.join(localeDir, file), 'utf8');
-    const imageMatch = content.match(/^image:\s*"(\/blog-images\/[^"]+\.png)"/m);
+    const imageMatch = content.match(/^image:\s*["']?(\/blog-images\/[^"'\n]+\.png)["']?/m);
     if (!imageMatch) continue;
 
     const imagePath = imageMatch[1];
-    if (fs.existsSync(path.join(root, 'public', imagePath))) continue;
+    if (!force && fs.existsSync(path.join(root, 'public', imagePath))) continue;
 
-    const titleMatch = content.match(/^title:\s*"(.+?)"/m) || content.match(/^title:\s*(.+?)$/m);
-    const text = titleMatch ? titleMatch[1] : file.replace('.mdx', '');
+    const text = extractTitle(content, file);
     const imageSlug = path.basename(imagePath, '.png');
     await generateImage(imageSlug, text, index++);
     console.log(`  (for ${locale}/${file})`);
