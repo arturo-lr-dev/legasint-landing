@@ -46,10 +46,10 @@ export const metadata: Metadata = {
     description: 'Custom software development, automation and AI for businesses.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image-en.png',
         width: 1200,
         height: 630,
-        alt: 'Legasint - Your Vision, Our Technology',
+        alt: 'Legasint - Custom software and automation for SMEs',
       },
     ],
   },
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     creator: '@legasint',
     title: 'Legasint - Custom Software Development & Tech Partner',
     description: 'Custom software development, automation and AI for businesses.',
-    images: ['/og-image.png'],
+    images: ['/og-image-en.png'],
   },
 
   // Google Search Console verification (set NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION)

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-07T11:22:55Z",
+  "generatedAt": "2026-11-07T13:02:49Z",
   "title": "Design System: Legasint — La línea de expedición",
   "extensions": {
     "scope": {
@@ -87,6 +87,42 @@
         { "file": "public/textures/circuit-dark.svg", "variant": "dark", "usage": "Héroes de servicios y de índices/tags/artículos del blog", "sidecar": "public/textures/circuit-dark.svg.json" },
         { "file": "public/textures/network-dark.svg", "variant": "dark", "usage": "Hero de ERP", "sidecar": "public/textures/network-dark.svg.json" }
       ]
+    },
+    "brandAssets": {
+      "sourceLogo": "/Users/artuleg/Documents/Empresa/LegaSint/[LS] Docs/Docs/logo.jpeg",
+      "favicons": {
+        "background": "#F5F7FA",
+        "provenance": "PNG tEXt impeccable:prompt; escalado LANCZOS; sin contenido generado por IA",
+        "icons": [
+          { "file": "public/favicon-16x16.png", "size": "16x16" },
+          { "file": "public/favicon-32x32.png", "size": "32x32" },
+          { "file": "public/favicon-48x48.png", "size": "48x48" },
+          { "file": "public/favicon/apple-touch-icon.png", "size": "180x180" },
+          { "file": "public/favicon/android-chrome-192x192.png", "size": "192x192" },
+          { "file": "public/favicon/android-chrome-512x512.png", "size": "512x512" },
+          { "file": "public/favicon.ico", "format": "ico", "sidecar": "public/favicon.ico.json" }
+        ],
+        "manifests": [
+          { "file": "src/app/manifest.json", "icons": ["/favicon/android-chrome-192x192.png", "/favicon/android-chrome-512x512.png"] },
+          { "file": "public/site.webmanifest", "icons": ["/favicon/android-chrome-192x192.png", "/favicon/android-chrome-512x512.png"] }
+        ]
+      },
+      "openGraph": {
+        "dimensions": [1200, 630],
+        "treatment": "Isotipo real, gradiente corporativo azul/morado y patrón de circuito; copy comercial actual; procedencia PNG tEXt impeccable:prompt",
+        "es": {
+          "file": "public/og-image.png",
+          "headline": "Software a medida y automatización para pymes",
+          "cta": "Diagnóstico gratuito de 30 minutos",
+          "domain": "legasint.com"
+        },
+        "en": {
+          "file": "public/og-image-en.png",
+          "headline": "Custom software & automation for SMEs",
+          "cta": "Free 30-minute assessment",
+          "domain": "legasint.com"
+        }
+      }
     },
     "colorMeta": {
       "paper": { "role": "neutral", "displayName": "Papel azulado", "canonical": "#F5F7FA", "tonalRamp": ["oklch(0.25 0.025 250)", "oklch(0.35 0.025 250)", "oklch(0.46 0.022 250)", "oklch(0.57 0.018 250)", "oklch(0.69 0.014 250)", "oklch(0.80 0.010 250)", "oklch(0.91 0.006 250)", "oklch(0.97 0.003 250)"] },
