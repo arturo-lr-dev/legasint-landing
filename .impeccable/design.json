@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-07T13:02:49Z",
+  "generatedAt": "2026-11-07T13:30:40Z",
   "title": "Design System: Legasint — La línea de expedición",
   "extensions": {
     "scope": {
@@ -109,7 +109,7 @@
       },
       "openGraph": {
         "dimensions": [1200, 630],
-        "treatment": "Isotipo real, gradiente corporativo azul/morado y patrón de circuito; copy comercial actual; procedencia PNG tEXt impeccable:prompt",
+        "treatment": "Isotipo real, gradiente corporativo azul/morado y patrón de circuito; copy comercial actual. ES/EN regeneradas con la máscara alfa limpia del logo: umbral de distancia al fondo, erosión mínima de 1px y componentes aislados <30px eliminados, sin alterar forma ni colores. Procedencia PNG tEXt impeccable:prompt",
         "es": {
           "file": "public/og-image.png",
           "headline": "Software a medida y automatización para pymes",
@@ -246,7 +246,7 @@
     {
       "name": "Navegación oscura de home",
       "kind": "nav",
-      "description": "Header de tinta con texto claro, página activa azul claro, idioma y CTA. En todas las páginas usa /legasint-logo.png junto al nombre, 36×34px y alt vacío por decorativo. Recorte de 448×424 del JPEG corporativo de 1024×1024 confirmado en /Users/artuleg/Documents/Empresa/LegaSint/[LS] Docs/Docs/logo.jpeg, con fondo gris eliminado y bordes suavizados. Procedencia PNG tEXt impeccable:prompt.",
+      "description": "Header de tinta con texto claro, página activa azul claro, idioma y CTA. En todas las páginas usa /legasint-logo.png junto al nombre, 36×34px y alt vacío por decorativo. Recorte de 448×424 del JPEG corporativo de 1024×1024 confirmado en /Users/artuleg/Documents/Empresa/LegaSint/[LS] Docs/Docs/logo.jpeg. Nueva máscara alfa sin halo blanco de 1px: umbral de distancia al fondo, erosión mínima de 1px y eliminación de componentes aislados menores de 30px, sin alterar forma ni colores. Procedencia PNG tEXt impeccable:prompt.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Navegación principal\"><a class=\"ds-nav-logo\" href=\"/\"><img src=\"/legasint-logo.png\" alt=\"\" width=\"36\" height=\"34\" aria-hidden=\"true\">Legasint</a><div class=\"ds-nav-links\"><a href=\"/\" aria-current=\"page\">Inicio</a><a href=\"/servicios\">Servicios</a><a href=\"/erp-a-medida\">ERP a medida</a><a href=\"/blog\">Blog</a></div><a class=\"ds-nav-cta\" href=\"#diagnostico\">Diagnóstico gratuito</a></nav>",
       "css": ".ds-nav { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 24px; padding: 0 16px; border-bottom: 1px solid #1B2540; background: rgb(17 24 49 / 94%); color: #F5F7FA; font-family: Barlow, sans-serif; } .ds-nav-logo { display: inline-flex; align-items: center; gap: 10px; color: #F5F7FA; font-size: 22px; font-weight: 700; letter-spacing: -0.025em; text-decoration: none; } .ds-nav-logo img { display: block; width: 36px; height: 34px; object-fit: contain; } .ds-nav-links { display: flex; align-items: center; gap: 22px; } .ds-nav-links a { color: #F5F7FA; font-size: 14px; font-weight: 500; text-decoration: none; } .ds-nav-links a[aria-current='page'] { text-decoration: underline; text-decoration-color: #60A5FA; text-decoration-thickness: 2px; text-underline-offset: 6px; } .ds-nav-cta { padding: 9px 14px; border: 1px solid #111831; border-radius: 2px; background: linear-gradient(120deg, #2563EB, #7C3AED); color: #FFFFFF; font-size: 13px; font-weight: 600; text-decoration: none; } .ds-nav-cta:hover { background: linear-gradient(120deg, #1D4ED8, #6D28D9); } .ds-nav a:focus-visible { outline: 3px solid #60A5FA; outline-offset: 4px; }"
     },

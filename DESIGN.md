@@ -367,13 +367,13 @@ Fuera de la escena, la silueta sigue siendo rectangular y afilada: hojas, imáge
 
 En la home, el header final es oscuro: tinta al 94%, borde `surface`, texto `heading` y subrayado activo azul claro. El idioma activo usa `surface`. El menú móvil también usa tinta, texto claro y divisiones de `body` al 22%. Mantiene CTA, navegación por teclado, foco inicial, contención de Tab, Escape y restauración de foco.
 
-En todas las páginas, el enlace de inicio combina `public/legasint-logo.png` con el nombre visible Legasint; ya no usa el cuadrado morado genérico. La imagen se renderiza a 36×34px con `alt=""` y `aria-hidden="true"` porque es decorativa y el texto aporta el nombre accesible. El PNG es un recorte de 448×424px del JPEG corporativo de 1024×1024px confirmado por el usuario en `/Users/artuleg/Documents/Empresa/LegaSint/[LS] Docs/Docs/logo.jpeg`, con fondo gris eliminado y bordes suavizados. Su procedencia está embebida en un chunk PNG `tEXt` (`impeccable:prompt`), sin alterar formas ni colores de marca.
+En todas las páginas, el enlace de inicio combina `public/legasint-logo.png` con el nombre visible Legasint; ya no usa el cuadrado morado genérico. La imagen se renderiza a 36×34px con `alt=""` y `aria-hidden="true"` porque es decorativa y el texto aporta el nombre accesible. El PNG es un recorte de 448×424px del JPEG corporativo de 1024×1024px confirmado por el usuario en `/Users/artuleg/Documents/Empresa/LegaSint/[LS] Docs/Docs/logo.jpeg`, con fondo gris eliminado y bordes suavizados. Su nueva máscara alfa elimina el halo blanco de 1px mediante umbral de distancia al fondo, erosión mínima de 1px y eliminación de componentes aislados menores de 30px, sin alterar forma ni colores. La procedencia está embebida en un chunk PNG `tEXt` (`impeccable:prompt`).
 
 ### Favicons, manifest y Open Graph
 
 Los favicons se regeneraron desde el mismo isotipo corporativo sobre fondo claro #F5F7FA. La serie incluye `favicon-16x16.png`, `favicon-32x32.png`, `favicon-48x48.png`, `favicon/apple-touch-icon.png` (180×180), `favicon/android-chrome-192x192.png`, `favicon/android-chrome-512x512.png` y `public/favicon.ico`. Los manifests `src/app/manifest.json` y `public/site.webmanifest` referencian los iconos Android de 192 y 512px.
 
-Open Graph usa dos composiciones de 1200×630px con isotipo real, gradiente corporativo azul/morado y patrón de circuito:
+Open Graph usa dos composiciones de 1200×630px con isotipo real, gradiente corporativo azul/morado y patrón de circuito. ES y EN fueron regeneradas con la misma máscara alfa limpia del logo, sin halo blanco:
 
 - **ES — `public/og-image.png`:** “Software a medida y automatización para pymes”, con CTA “Diagnóstico gratuito de 30 minutos” y `legasint.com`.
 - **EN — `public/og-image-en.png`:** “Custom software & automation for SMEs”, con CTA “Free 30-minute assessment” y `legasint.com`.
