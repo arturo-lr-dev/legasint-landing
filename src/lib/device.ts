@@ -26,6 +26,14 @@ export function usePrefersReducedMotion(): boolean {
   return useMediaQuery('(prefers-reduced-motion: reduce)');
 }
 
+export function useHydrated(): boolean {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => setHydrated(true), []);
+
+  return hydrated;
+}
+
 export function useIsTouch(): boolean {
   return useMediaQuery('(hover: none), (pointer: coarse)');
 }

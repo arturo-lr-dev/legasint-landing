@@ -1525,6 +1525,16 @@ html.lenis body {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+
+  .dispatch-header,
+  .dispatch-hero--machine .dispatch-machine-hero__copy > .dispatch-display,
+  .dispatch-hero--machine .dispatch-machine-hero__copy > p,
+  .dispatch-hero--machine .dispatch-machine-hero__actions,
+  .dispatch-hero--machine .dispatch-machine {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 
@@ -1840,6 +1850,49 @@ html.lenis body {
   max-width: 42ch;
   margin-top: 14px;
   color: #c3cbdd;
+}
+
+/* Hero entrance choreography (CSS-only: works without JS; reduced-motion guarded below) */
+@keyframes dispatch-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dispatch-hero-fall {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dispatch-header {
+  animation: dispatch-hero-fall 0.6s ease-out 0.05s backwards;
+}
+
+.dispatch-hero--machine .dispatch-machine-hero__copy > .dispatch-display {
+  animation: dispatch-hero-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
+}
+
+.dispatch-hero--machine .dispatch-machine-hero__copy > p {
+  animation: dispatch-hero-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
+}
+
+.dispatch-hero--machine .dispatch-machine-hero__actions {
+  animation: dispatch-hero-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.45s backwards;
+}
+
+.dispatch-hero--machine .dispatch-machine {
+  animation: dispatch-hero-rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.55s backwards;
 }
 
 .dispatch-machine-hero__actions .dispatch-whatsapp {

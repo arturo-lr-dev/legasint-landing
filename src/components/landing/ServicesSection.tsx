@@ -1,9 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import Reveal from './Reveal';
+import { useMotionEnabled } from './motion';
+import { dispatchStagger, dispatchStaggerItem, dispatchViewport } from '@/lib/animations';
 import { trackEvent } from '@/lib/analytics';
 import { homeCopy, type Locale } from '@/i18n/home-copy';
+
+const MotionServiceLink = motion.create(Link);
 
 const serviceIcons = [
   <svg key="software" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -24,49 +29,89 @@ const serviceIcons = [
 export default function ServicesSection({ locale = 'es' }: { locale?: Locale }) {
   const copy = homeCopy[locale].services;
   const servicesHref = locale === 'en' ? '/services' : '/servicios';
+  const motionEnabled = useMotionEnabled();
 
   return (
     <section className="dispatch-section dispatch-services" aria-labelledby="services-title">
-      <Reveal className="dispatch-container">
-        <div className="dispatch-section-heading">
+      <div className="dispatch-container">
+        <Reveal className="dispatch-section-heading">
           <h2 id="services-title" className="dispatch-display">{copy.title}</h2>
           <p>{copy.subtitle}</p>
-        </div>
+        </Reveal>
 
-        <div className="dispatch-service-list">
-          {copy.items.map((item, index) => (
-            <Link
-              key={item.id}
-              href={`${servicesHref}#${item.id}`}
-              onClick={() => trackEvent('service_click', { event_category: 'navigation', event_label: `home_${item.id}` })}
-              className="dispatch-service"
-            >
-              <span className="dispatch-service__icon">{serviceIcons[index]}</span>
-              <div className="dispatch-service__title">
-                <h3>{item.title}</h3>
-                <span>{item.cta}</span>
-              </div>
-              <div className="dispatch-service__content">
-                <p>{item.description}</p>
-                <ul>
-                  {item.features.map((feature) => (
-                    <li key={feature}>
-                      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m5 12 4 4L19 6" />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {motionEnabled ? (
+          <motion.div
+            className="dispatch-service-list"
+            variants={dispatchStagger(0.1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={dispatchViewport}
+          >
+            {copy.items.map((item, index) => (
+              <MotionServiceLink
+                key={item.id}
+                href={`${servicesHref}#${item.id}`}
+                onClick={() => trackEvent('service_click', { event_category: 'navigation', event_label: `home_${item.id}` })}
+                className="dispatch-service"
+                variants={dispatchStaggerItem}
+              >
+                <span className="dispatch-service__icon">{serviceIcons[index]}</span>
+                <div className="dispatch-service__title">
+                  <h3>{item.title}</h3>
+                  <span>{item.cta}</span>
+                </div>
+                <div className="dispatch-service__content">
+                  <p>{item.description}</p>
+                  <ul>
+                    {item.features.map((feature) => (
+                      <li key={feature}>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m5 12 4 4L19 6" />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </MotionServiceLink>
+            ))}
+          </motion.div>
+        ) : (
+          <div className="dispatch-service-list">
+            {copy.items.map((item, index) => (
+              <Link
+                key={item.id}
+                href={`${servicesHref}#${item.id}`}
+                onClick={() => trackEvent('service_click', { event_category: 'navigation', event_label: `home_${item.id}` })}
+                className="dispatch-service"
+              >
+                <span className="dispatch-service__icon">{serviceIcons[index]}</span>
+                <div className="dispatch-service__title">
+                  <h3>{item.title}</h3>
+                  <span>{item.cta}</span>
+                </div>
+                <div className="dispatch-service__content">
+                  <p>{item.description}</p>
+                  <ul>
+                    {item.features.map((feature) => (
+                      <li key={feature}>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m5 12 4 4L19 6" />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
 
         <Link href={servicesHref} className="dispatch-text-link dispatch-services__all">
           {locale === 'en' ? 'See all services' : 'Ver todos los servicios'}
         </Link>
-      </Reveal>
+      </div>
     </section>
   );
 }

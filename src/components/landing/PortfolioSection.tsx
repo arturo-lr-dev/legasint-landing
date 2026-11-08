@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Reveal from './Reveal';
+import { StaggerGroup, StaggerItem } from './motion';
 import { homeCopy, type Locale } from '@/i18n/home-copy';
 
 const projectMeta: Record<string, { imageUrl: string; projectUrl: string }> = {
@@ -57,14 +60,14 @@ export default function PortfolioSection({ locale = 'es' }: { locale?: Locale })
 
   return (
     <section id="casos" className="dispatch-section dispatch-cases scroll-mt-20" aria-labelledby="cases-title">
-      <Reveal className="dispatch-container">
-        <div className="dispatch-section-heading">
+      <div className="dispatch-container">
+        <Reveal className="dispatch-section-heading">
           <h2 id="cases-title" className="dispatch-display">{copy.title}</h2>
           <p>{copy.subtitle}</p>
-        </div>
+        </Reveal>
 
         {featuredProject && (
-          <article id={`caso-${featuredProject.title.toLowerCase().replace(/\s+/g, '-')}`} className="dispatch-case dispatch-case--featured scroll-mt-24">
+          <Reveal as="article" id={`caso-${featuredProject.title.toLowerCase().replace(/\s+/g, '-')}`} className="dispatch-case dispatch-case--featured scroll-mt-24">
             <div className="dispatch-case__image">
               <Image
                 src={featuredProject.imageUrl}
@@ -89,12 +92,17 @@ export default function PortfolioSection({ locale = 'es' }: { locale?: Locale })
                 {copy.cta}
               </a>
             </div>
-          </article>
+          </Reveal>
         )}
 
-        <div className="dispatch-case-grid">
+        <StaggerGroup as="div" className="dispatch-case-grid" stagger={0.12}>
           {otherProjects.map((project) => (
-            <article key={project.title} id={`caso-${project.title.toLowerCase().replace(/\s+/g, '-')}`} className="dispatch-case scroll-mt-24">
+            <StaggerItem
+              as="article"
+              key={project.title}
+              id={`caso-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+              className="dispatch-case scroll-mt-24"
+            >
               <div className="dispatch-case__image">
                 <Image
                   src={project.imageUrl}
@@ -119,10 +127,10 @@ export default function PortfolioSection({ locale = 'es' }: { locale?: Locale })
                   {copy.cta}
                 </a>
               </div>
-            </article>
+            </StaggerItem>
           ))}
-        </div>
-      </Reveal>
+        </StaggerGroup>
+      </div>
     </section>
   );
 }

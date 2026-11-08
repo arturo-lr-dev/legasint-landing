@@ -11,6 +11,7 @@ import SocialImpactSection from '@/components/landing/SocialSection';
 import FaqSection from '@/components/landing/FaqSection';
 import ContactForm from '@/components/ContactForm';
 import ConsoleEasterEgg from '@/components/landing/ConsoleEasterEgg';
+import Reveal from '@/components/landing/Reveal';
 import { ServiceJsonLd, FaqPageJsonLd } from '@/components/seo/JsonLd';
 import { homeCopy } from '@/i18n/home-copy';
 
@@ -52,10 +53,10 @@ export default function Home() {
         <ProcessSection locale="es" />
         <FaqSection locale="es" split />
         <section id="diagnostico" aria-label="Diagnóstico gratuito" className="dispatch-diagnostic scroll-mt-20">
-          <div className="dispatch-container dispatch-diagnostic__inner">
+          <Reveal className="dispatch-container dispatch-diagnostic__inner">
             <DiagnosticAside locale="es" />
             <ContactForm locale="es" variant="diagnostic" location="home_es_form" />
-          </div>
+          </Reveal>
         </section>
         <SocialImpactSection locale="es" />
       </main>

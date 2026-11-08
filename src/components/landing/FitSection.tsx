@@ -1,24 +1,27 @@
+'use client';
+
 import { homeCopy, type Locale } from '@/i18n/home-copy';
 import Reveal from './Reveal';
+import { StaggerGroup, StaggerItem } from './motion';
 
 export default function FitSection({ locale = 'es' }: { locale?: Locale }) {
   const copy = homeCopy[locale].fit;
 
   return (
     <section className="dispatch-section dispatch-fit" aria-labelledby="fit-title">
-      <Reveal className="dispatch-container">
-        <div className="dispatch-section-heading dispatch-section-heading--dark">
+      <div className="dispatch-container">
+        <Reveal className="dispatch-section-heading dispatch-section-heading--dark">
           <h2 id="fit-title" className="dispatch-display">{copy.title}</h2>
           <p>{copy.subtitle}</p>
-        </div>
-        <div className="dispatch-fit-grid">
-          <article>
+        </Reveal>
+        <StaggerGroup as="div" className="dispatch-fit-grid" stagger={0.14}>
+          <StaggerItem as="article">
             <h3>{copy.standardTitle}</h3>
             <ul>
               {copy.standardItems.map((item) => <li key={item}>{item}</li>)}
             </ul>
-          </article>
-          <article>
+          </StaggerItem>
+          <StaggerItem as="article">
             <h3>{copy.customTitle}</h3>
             <ul>
               {copy.customItems.map((item) => (
@@ -30,10 +33,12 @@ export default function FitSection({ locale = 'es' }: { locale?: Locale }) {
                 </li>
               ))}
             </ul>
-          </article>
-        </div>
-        <p className="dispatch-fit__note">{copy.note}</p>
-      </Reveal>
+          </StaggerItem>
+        </StaggerGroup>
+        <Reveal className="dispatch-fit__note" y={16} delay={0.15}>
+          <p>{copy.note}</p>
+        </Reveal>
+      </div>
     </section>
   );
 }

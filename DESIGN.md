@@ -440,7 +440,10 @@ El formulario reutiliza `ContactForm` en variante `diagnostic`: superficie de pa
 - **Cuatro estados explícitos:** 01 Trabajo disperso, 02 Fuentes conectadas, 03 Proceso organizado y 04 Sistema en marcha. La guía numerada y el texto de fase mantienen visible el estado; `aria-current="step"` lo comunica programáticamente.
 - **Avance automático:** aproximadamente 4,9s en total —1500ms + 1700ms + 1700ms— y parada en 04. La selección de proceso reinicia desde 01; la selección manual de fase detiene el autoplay; replay vuelve a 01 y lo reanuda.
 - **Interpolación de escena:** un único grupo conserva los mismos tres documentos. Su posición X sigue 3.8 / 1.75 / 0.55 / −3.3 y su escala 1 / 1 / 0.45 / 1; posición, escala, rotaciones y apilado se interpolan con `THREE.MathUtils.damp` (3.8 para el desplazamiento del grupo y 4.5 para escala y documentos). La pantalla pasa por intensidades 0.16 / 0.35 / 0.9 / 0.48; en 03 las barras oscilan como indicador de procesado y en 04 quedan completas.
-- **Progreso y anotaciones:** la barra avanza 0 / 33 / 67 / 100% con transición de 400ms. Las anotaciones cambian de fuentes a “Organizando…” y después al primer resultado, con transiciones de 300ms.
+- **Entrada del hero (CSS puro):** header cae desde −10px (0.6s, delay 0.05s) y el copy/acciones/escena suben desde 26px —H1 0.85s en 0.15s, descripción 0.30s, acciones 0.45s, máquina 1.0s en 0.55s— con `cubic-bezier(0.22,1,0.36,1)` y `backwards`. Funciona sin JS y el bloque `prefers-reduced-motion` del CSS la anula con estado final visible.
+- **Reveals de secciones (framer-motion):** `Reveal` y las primitivas `StaggerGroup`/`StaggerItem` de `landing/motion.tsx` usan `whileInView` con `once:true` y margen −64px; easing `cubic-bezier(0.22,1,0.36,1)`; bloque 0.7s/28px e ítems 0.6s/24px con `staggerChildren` 0.09–0.14s. Todo está gateado por hidratación y `prefers-reduced-motion`: sin JS o con movimiento reducido el contenido se renderiza estático y visible.
+- **Scroll suave:** Lenis (`SmoothScroll` en `RootShell`, lerp 0.1) en todo el sitio; desmontado con movimiento reducido. Los anchors conservan su `scroll-mt`.
+- **Progreso y anotaciones:** la barra de la escena avanza 0 / 33 / 67 / 100% con transición de 400ms. Las anotaciones cambian de fuentes a “Organizando…” y después al primer resultado, con transiciones de 300ms.
 - **Sin loops ambientales:** la transformación termina en 04 y no se repite automáticamente. La oscilación de barras pertenece únicamente al estado de procesado; el render activo permite responder al puntero, no un ciclo de contenido infinito.
 - **Parallax limitado:** rotación Y `-0.32 + pointer.x × 0.12` y X `-0.08 - pointer.y × 0.045`, interpoladas suavemente.
 - **Pausa fuera de viewport:** `useInView` con margen 160px controla el temporizador, `active` y el `frameloop`; fuera de pantalla se detiene el avance automático y se renderiza por demanda.
@@ -512,6 +515,8 @@ En QA se bloquea analítica y se simula Web3Forms; la conversión se comprueba e
 | Progreso, share/copy y TOC | `src/components/blog/BlogPostInteractions.tsx`, `TableOfContents.tsx` |
 | Datos, TOC y componentes MDX | `src/lib/blog.ts`, `src/components/mdx/` |
 | Detección de movimiento reducido, WebGL y capacidad del dispositivo | `src/lib/device.ts` (`getGpuTier`) |
+| Reveals de secciones y stagger editorial gateados | `src/components/landing/Reveal.tsx`, `src/components/landing/motion.tsx` (`StaggerGroup`/`StaggerItem`/`useMotionEnabled`), presets en `src/lib/animations.ts` (`dispatchEase`, `dispatchViewport`, `dispatchReveal`, `dispatchStagger`, `dispatchStaggerItem`), gate de hidratación en `src/lib/device.ts` (`useHydrated`) |
+| Scroll suave site-wide | `src/components/landing/SmoothScroll.tsx` montado en `src/components/RootShell.tsx` |
 | Problemas | `src/components/landing/ProblemsSection.tsx` |
 | Sectores y casos de uso | `src/components/landing/SectorUseCasesSection.tsx` |
 | Casos reales | `src/components/landing/PortfolioSection.tsx` |
