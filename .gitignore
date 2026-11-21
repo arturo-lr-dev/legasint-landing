@@ -41,3 +41,6 @@ next-env.d.ts
 
 # generated blog index (rebuilt on prebuild)
 src/data/blog-index.json
+
+# subproyecto aparte (app de pruebas, no forma parte de la landing)
+try-legasint/
