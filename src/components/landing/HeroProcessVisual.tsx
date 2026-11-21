@@ -6,7 +6,7 @@ import { useInView } from 'framer-motion';
 import { getGpuTier, type GpuTier } from '@/lib/device';
 import type { HomeCopy, Locale } from '@/i18n/home-copy';
 
-const MachineScene = dynamic(() => import('./HeroMachineScene'), { ssr: false, loading: () => null });
+const MachineScene = dynamic(() => import('./HeroNucleusScene'), { ssr: false, loading: () => null });
 
 type HeroProcessVisualProps = {
   visual: HomeCopy['hero']['visual'];
@@ -94,24 +94,16 @@ export default function HeroProcessVisual({ visual, locale, initialProcess = 0 }
           </div>
         )}
         {gpuTier !== 'off' && (
-          <MachineScene processIndex={activeProcess} step={step} active={inView} onReady={() => setSceneReady(true)} />
+          <MachineScene
+            processIndex={activeProcess}
+            processes={copy.processes}
+            active={inView}
+            locale={locale}
+            onReady={() => setSceneReady(true)}
+          />
         )}
       </div>
       <div className="dispatch-machine__shade" aria-hidden="true" />
-
-      {sceneReady && gpuTier !== 'off' && (
-        <div className="dispatch-machine__annotations" aria-hidden="true">
-          <div className={`dispatch-machine__input-labels ${step === 3 ? 'is-hidden' : ''}`}>
-            {current.sources.map((source) => <span key={source}>{source}</span>)}
-          </div>
-          <div className={`dispatch-machine__output-label ${step >= 2 ? 'is-visible' : ''}`}>
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m5 12 4 4L19 6" />
-            </svg>
-            {step === 2 ? copy.processing : current.results[0]}
-          </div>
-        </div>
-      )}
 
       <div className="dispatch-machine__controls">
         <div className="dispatch-machine__tabs" role="group" aria-label={copy.selector}>

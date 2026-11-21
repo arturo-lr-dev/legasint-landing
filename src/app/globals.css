@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fuentes del lienzo 3D del hero (textos de las tarjetas del núcleo).
+   Van con nombre literal para poder usarlas desde ctx.font del canvas. */
+@font-face {
+  font-family: 'Barlow';
+  src: url('/assets/barlow.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/montserrat.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 @layer utilities {
   @keyframes fadeInUp {
     from {
@@ -1915,8 +1933,18 @@ html.lenis body {
 }
 
 .dispatch-machine__viewport canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
   pointer-events: auto;
+  cursor: grab;
   touch-action: pan-y;
+}
+
+.dispatch-machine__viewport canvas:active {
+  cursor: grabbing;
 }
 
 .dispatch-machine__shade {
@@ -2470,98 +2498,6 @@ html.lenis body {
 }
 
 
-.dispatch-machine__annotations {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.dispatch-machine__input-labels {
-  position: absolute;
-  bottom: 33%;
-  left: 36%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.dispatch-machine__input-labels span,
-.dispatch-machine__output-label {
-  display: inline-flex;
-  width: max-content;
-  align-items: center;
-  padding: 7px 10px;
-  border: 1px solid rgb(96 165 250 / 55%);
-  background: #1b2540;
-  color: #f5f7fa;
-  font-size: 12px;
-  font-weight: 600;
-  box-shadow: 0 12px 30px -18px rgb(2 6 23 / 90%);
-}
-
-.dispatch-machine__input-labels span::before {
-  width: 7px;
-  height: 7px;
-  margin-right: 7px;
-  background: #60a5fa;
-  content: "";
-}
-
-.dispatch-machine__input-labels span:nth-child(2)::before {
-  background: #8b5cf6;
-}
-
-.dispatch-machine__input-labels span:nth-child(3)::before {
-  background: #22d3ee;
-}
-
-.dispatch-machine__output-label {
-  position: absolute;
-  top: 24%;
-  right: 4%;
-  gap: 7px;
-  border-color: #8b5cf6;
-  background: linear-gradient(120deg, #2563eb, #7c3aed);
-  color: #ffffff;
-}
-
-.dispatch-machine__output-label svg {
-  width: 15px;
-  height: 15px;
-}
-
-@media (max-width: 1100px) {
-  .dispatch-machine__input-labels {
-    left: 32%;
-  }
-
-  .dispatch-machine__output-label {
-    right: 3%;
-  }
-}
-
-@media (max-width: 767px) {
-  .dispatch-machine__input-labels {
-    top: 14%;
-    bottom: auto;
-    left: 5%;
-  }
-
-  .dispatch-machine__input-labels span {
-    padding: 5px 8px;
-    font-size: 10px;
-  }
-
-  .dispatch-machine__output-label {
-    top: 10%;
-    right: 5%;
-    padding: 6px 8px;
-    font-size: 10px;
-  }
-}
-
-
 .dispatch-machine__steps {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2637,26 +2573,6 @@ html.lenis body {
   font-size: 13px;
   font-weight: 600;
   text-align: center;
-}
-
-.dispatch-machine__input-labels {
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
-}
-
-.dispatch-machine__input-labels.is-hidden {
-  opacity: 0;
-  transform: translateY(8px);
-}
-
-.dispatch-machine__output-label {
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
-}
-
-.dispatch-machine__output-label.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .dispatch-machine-fallback__inputs,
