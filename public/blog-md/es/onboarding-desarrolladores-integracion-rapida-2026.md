@@ -1,0 +1,173 @@
+---
+title: "Onboarding de Desarrolladores: Cómo Integrar Talentos Técnicos en 2 Semanas"
+date: "2026-11-26"
+language: "es"
+canonical: "https://legasint.com/blog/onboarding-desarrolladores-integracion-rapida-2026"
+tags: ["onboarding", "desarrollo a medida", "equipos técnicos", "mentoría", "gestión de equipos", "2026"]
+---
+
+# Onboarding de Desarrolladores: Cómo Integrar Talentos Técnicos en 2 Semanas
+
+Plan de onboarding técnico de 2 semanas: accesos, documentación, mentoría y primeras tareas para integrar desarrolladores rápido. Con casos reales y ROI.
+
+## Los 47 días que salieron del presupuesto
+
+En marzo de 2026, una empresa de logística de Valencia incorporó a un desarrollador con tres años de experiencia. Buen perfil, buen salario, buenas referencias. Su primera semana transcurrió así: el portátil llegó el día 3, el acceso al repositorio el día 4 y el entorno local compiló por primera vez el día 8. No tenía mentor asignado: recibió un "cualquier duda, pregunta" que en la práctica significaba interrumpir a quien menos prisa tuviera.
+
+Su primera tarea de código real llegó a la semana 5. Su primer despliegue propio, al día 47.
+
+A 42.000 €/año de salario (unas 810 €/semana), al menos 30 de esos 47 días fueron de salario casi improductivo: unos 3.500 €. Súmale al sénior que lo mentorizó sin querer serlo: una media de 4 horas semanales a 70 €/hora durante dos meses, 2.240 €. Total: casi 6.000 € por una incorporación que, con estructura, habría costado dos semanas.
+
+El problema no era el desarrollador. Era la ausencia de plan.
+
+Este artículo detalla ese plan de 14 días y los errores que alargan la integración sin que nadie los note en la nómina.
+
+## El problema: la integración improvisada cuesta dinero real
+
+El onboarding mal gestionado no aparece en ninguna cuenta de resultados: se esconde en el salario de las primeras semanas, en las horas del sénior interrumpido y en los errores de alguien que nadie orientó.
+
+Los síntomas que vemos con frecuencia en equipos que desarrollan software a medida:
+
+- El nuevo tarda días en tener accesos: correo, repositorio, gestor de tareas, entornos.
+- La documentación existe en teoría: un README de 2023 y el contexto repartido en cabezas.
+- No hay mentor asignado. Hay "gente disponible", que es otra cosa.
+- La primera tarea es demasiado grande o de juguete.
+- Nadie revisa su código con seriedad durante el primer mes.
+
+Si cada incorporación desperdicia 4 semanas de salario más 10 horas de sénior, una empresa que contrata a 4 desarrolladores al año pierde unos 20.000 € anuales en integración improvisada. Dinero que no compra ni una línea de código.
+
+## La solución: un plan de 14 días, escrito y medible
+
+La integración rápida no consiste en presionar al nuevo. Consiste en quitar los obstáculos antes de que aparezcan: preparación antes del día 1, una primera semana de entorno y contexto, y una segunda semana de tareas reales con red de seguridad.
+
+| Métrica | Onboarding improvisado | Plan de 2 semanas |
+|---------|------------------------|-------------------|
+| Tiempo hasta primera pull request | 2-4 semanas | Día 2-3 |
+| Tiempo hasta primera tarea real | 4-8 semanas | Día 4 |
+| Productividad plena estimada | 2-4 meses | 4-6 semanas |
+| Horas de mentor sénior | 30-40 h, sin control | 6-8 h, planificadas |
+| Coste de integración por contratación | 5.000-8.000 € | 1.700-2.500 € |
+| Sensación del nuevo en el primer mes | Caos | Progreso visible cada día |
+
+## Antes del día 1: la fase que decide el éxito
+
+El 80 % de un onboarding rápido ocurre antes de que el nuevo cruce la puerta. Este checklist es el mínimo viable:
+
+- [ ] **Equipo y cuentas creados:** correo, repositorio, gestor de tareas, chat y CI/CD, con sus licencias.
+- [ ] **Entorno local documentado y probado:** que un compañero lo levante desde cero el día anterior. Si tarda más de 2 horas, la guía está rota.
+- [ ] **Mentor asignado por nombre**, con 6-8 horas bloqueadas en su calendario.
+- [ ] **Plan de 14 días escrito** y compartido: el nuevo sabe qué se espera de él cada día.
+- [ ] **Primera tarea elegida:** pequeña, real y acotada.
+- [ ] **Acceso de solo lectura a producción y monitorización**, para ver el sistema real desde el día 1.
+
+Si alguna casilla falla, no es un problema del nuevo: es de la empresa.
+
+## Semana 1: entorno, contexto y una primera PR
+
+**Día 1: que todo funcione.** Un único objetivo operativo: entorno local corriendo y primer commit trivial antes de irse a casa. Nada de presentaciones maratonianas. Cerramos con 15 minutos de feedback: ¿qué falló al montar el entorno? Esa respuesta mejora la documentación para el siguiente.
+
+**Día 2: tour del sistema y primera pull request.** Por la mañana, el mentor pasea al nuevo por la arquitectura con un diagrama y un glosario del dominio: en software a medida, el vocabulario del cliente pesa tanto como el código. Por la tarde, primera PR real: un test que faltaba, un error en la documentación, una validación sencilla. El objetivo es recorrer el pipeline completo (rama, revisión, CI, fusión), no la complejidad. Quien fusiona algo el día 2 se siente parte del equipo.
+
+**Días 3-5: negocio y primera tarea con pair programming.**
+
+- **Día 3:** reunión con producto o con el responsable del cliente. Entender qué problema resuelve el software y quién lo usa.
+- **Día 4:** primera tarea real pequeña, en pair programming con el mentor escribiendo y explicando las convenciones del proyecto.
+- **Día 5:** la misma tarea, pero turnándose: escribe el nuevo. Cierre de semana con feedback en ambas direcciones.
+
+Resultado típico: entorno autónomo, una PR fusionada y un mapa mental del sistema.
+
+## Semana 2: tareas reales con red de seguridad
+
+La segunda semana sube la dificultad sin quitar la red. El nuevo ya no acompaña: produce.
+
+- **Días 6-7:** dos tareas del backlog de dificultad creciente, revisadas con el mismo estándar que el resto. El feedback llega en menos de 24 horas: si no, el nuevo consolida malos hábitos.
+- **Día 8:** sesión de pair con alguien que no sea su mentor.
+- **Día 9:** tarea de dificultad media con contacto directo con el negocio o el cliente.
+- **Día 10:** revisión del plan. Qué se ha cumplido, qué falta, qué ajustar. A partir de aquí, el desarrollador entra en el reparto normal de tareas.
+
+Al día 14 tenemos a alguien autónomo en tareas de dificultad media. La productividad plena llega entre la semana 4 y la 6, pero el trayecto ya no depende de la buena voluntad de nadie.
+
+## Los 6 errores que alargan la integración
+
+Ordenados por frecuencia en los proyectos que auditamos:
+
+1. **Los accesos tardan días.** Cada día sin repositorio son unos 160 € de salario improductivo, además del mensaje al nuevo: tu tiempo no es prioridad.
+2. **"La documentación está en la cabeza de…".** Cuando esa persona está de vacaciones o se marcha, el onboarding pasa de semanas a meses.
+3. **Mentoría declarada sin tiempo protegido.** Si el mentor no tiene horas bloqueadas, la mentoría se convierte en interrupciones resentidas.
+4. **Primera tarea mal elegida.** Demasiado grande genera bloqueo; de juguete, humillación silenciosa. La medida justa: algo real que un compañero hubiera hecho en 2-4 horas.
+5. **Nadie revisa su código durante semanas.** La primera revisión en serio debería llegar en los primeros 3 días.
+6. **Expectativas implícitas.** El nuevo no puede cumplir expectativas que nadie ha dicho en voz alta.
+
+## El ROI: qué se ahorra con un plan serio
+
+Con una contratación típica en España (salario de 42.000 €/año, unas 27 €/hora de coste):
+
+- **Salario improductivo recuperado:** pasar de 6 semanas de integración a 2 ahorra unas 4 semanas, unos 4.300 € por contratación.
+- **Horas de sénior optimizadas:** de 30-40 horas improvisadas a 6-8 planificadas, unas 2.400 € ahorradas por incorporación.
+- **Tasa de abandono en prueba:** integrar bien evita repetir el proceso, que cuesta de media el 30-50 % del salario anual en selección y tiempo perdido.
+
+En conjunto, el plan reduce el coste real de incorporar a un desarrollador de unos 6.000 € a unos 2.000 €. Una empresa que incorpora a 4 personas al año ahorra en torno a 16.000 € anuales y gana semanas de capacidad productiva que antes se evaporaban.
+
+## Casos reales con números
+
+### Caso 1: la logística de Valencia
+
+La empresa del inicio. Auditamos su proceso e implantamos la checklist de pre-incorporación, el plan de 14 días y mentoría con horas protegidas.
+
+- La siguiente contratación hizo su primera PR el día 2 y su primer despliegue propio el día 11.
+- El coste de integración bajó de unos 6.000 € a unos 2.100 €.
+- El desarrollador que tardó 47 días en desplegar ahora integra a los nuevos: el conocimiento quedó en la empresa, no en una cabeza.
+
+### Caso 2: legaltech con desarrollo externalizado
+
+Un despacho con portal a medida sufría un síntoma curioso: los desarrolladores del proveedor rotaban con frecuencia y cada rotación paralizaba el proyecto tres semanas, facturadas como desarrollo.
+
+Implantamos un onboarding documentado de proveedor: entorno de pruebas el mismo día, guía de arquitectura de 6 páginas, primera tarea estándar y revisión en 48 horas.
+
+- Cada nueva incorporación del proveedor pasa de 3 semanas de rampa a 4 días operativos.
+- Ahorro estimado: unas 60 horas facturables por rotación, unos 5.400 € al año solo en ese concepto.
+- La guía de arquitectura sirvió después al equipo interno del despacho para entender su propio sistema.
+
+### Caso 3: industrial con equipo interno pequeño
+
+Una fábrica con dos desarrolladores internos contrataba a un junior sin experiencia en su stack. Con dos personas, la mentoría improvisada era imposible.
+
+Adaptamos el plan: mentoría en bloques de 45 minutos, una sesión de pair diaria y tareas troceadas de medio día como máximo.
+
+- El junior fue productivo en tareas reales en dos semanas y medio.
+- El coste de mentoría quedó en 5 horas semanales, asumible sin descuidar el trabajo del equipo.
+- Al tercer mes, el junior empezó a integrar a la siguiente incorporación, cerrando el círculo.
+
+**¿Cuánto cuesta hoy la integración de cada desarrollador en tu empresa?** En Legasint medimos el tiempo real de onboarding en proyectos a medida y diseñamos el plan de 14 días adaptado a tu equipo, con documentación y mentoría incluidas. [Calcula el coste de tu onboarding actual →](/contacto)
+
+## Preguntas frecuentes
+
+### ¿Sirve este plan para perfiles junior sin experiencia?
+
+Sí, con un ajuste: trocear las tareas más (medios días en lugar de días completos) y añadir una sesión diaria de pair en la segunda semana. Cambia el tamaño de los pasos, no la estructura.
+
+### ¿Y para perfiles sénior?
+
+También. El sénior no necesita aprender a programar, pero sí el contexto de negocio, la arquitectura concreta y los criterios del equipo. Sin ellos, toma decisiones de diseño equivocadas durante semanas, y esas decisiones cuestan más que las de un junior.
+
+### ¿No es mucha inversión para una PYME que contrata poco?
+
+Al contrario: quien menos contrata, menos práctica tiene integrando y más cara le sale cada incorporación improvisada. El plan se documenta una vez y se reutiliza; a partir de la segunda contratación, el coste de preparación tiende a cero.
+
+### ¿Qué pasa si el desarrollador se marcha al mes siguiente?
+
+El riesgo existe siempre, pero el onboarding serio lo reduce: la primera sensación del nuevo sobre la empresa se forma en esos 14 días. Y el plan deja documentación que queda aunque la persona se vaya.
+
+### ¿Cómo sé si mi onboarding actual es lento?
+
+Mide tres cifras de tu última contratación: días hasta la primera pull request, días hasta la primera tarea real desplegada y horas de sénior dedicadas. Si la primera cifra supera los 10 días o las horas de sénior las 20, hay al menos 3.000 € recuperables por incorporación.
+
+## Conclusión
+
+Integrar a un desarrollador en dos semanas no es cuestión de suerte ni de contratar solo estrellas. Es quitar los obstáculos antes de que aparezcan: accesos listos el día 1, documentación que un compañero ha probado, un mentor con horas protegidas y una primera tarea real al alcance de la mano.
+
+El improvisado lo paga la empresa dos veces: en salario improductivo y en un nuevo que tarda en sentirse parte del equipo. El planificado se paga una sola vez y deja un activo reutilizable. La diferencia: unos 4.000 € por incorporación y varias semanas de capacidad productiva recuperadas.
+
+**¿Quieres calcular cuánto cuesta tu onboarding actual y montar un plan de 14 días para tu equipo?** En Legasint diseñamos planes de integración técnicos adaptados a proyectos a medida, con documentación, mentoría y métricas para que cada incorporación rinda desde el primer día. [Hablemos de tu equipo →](/contacto)
+
+Comparte este artículo con alguien cuyo último fichaje siga esperando acceso al repositorio.

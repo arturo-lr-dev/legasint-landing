@@ -1,0 +1,231 @@
+---
+title: 'Autenticación Moderna en Apps a Medida: OAuth, SSO y Passkeys'
+date: '2026-11-26'
+description: >-
+  Guía práctica para elegir la autenticación de tu aplicación a medida en 2026:
+  OAuth 2.0, OpenID Connect, SSO con SAML u OIDC, MFA y passkeys, con gestión
+  de sesiones, errores comunes de implementación y un plan de 90 días con números.
+tags:
+  - autenticación
+  - oauth
+  - sso
+  - passkeys
+  - seguridad
+  - desarrollo de software
+  - '2026'
+image: /blog-images/es-autenticacion-moderna-oauth-sso-passkeys.png
+translationKey: autenticacion-moderna-oauth-sso-passkeys
+---
+
+## 214 tickets al mes para resetear contraseñas
+
+Un grupo industrial de Valladolid con 340 empleados y cuatro aplicaciones internas desarrolladas en años distintos. Su equipo de soporte cerró 2025 con una media de 214 tickets mensuales relacionados con accesos: contraseñas olvidadas, cuentas bloqueadas, cambios de rol que nadie completó.
+
+Cada ticket consume unos 12 minutos entre diagnóstico y resolución. Son 43 horas al mes restableciendo credenciales, unas 11.300 euros anuales en salario de soporte que no genera valor.
+
+El gasto grande llegó en septiembre. Un empleado que dejó la empresa tres meses antes conservaba acceso a una aplicación donde su cuenta seguía activa. Modificó la cuenta bancaria de un proveedor habitual y desaparecieron 18.400 euros en dos transferencias.
+
+La factura del año: unos 30.000 euros por depender de contraseñas. Y el patrón se repite en la mayoría de las auditorías que hacemos.
+
+## El problema con las contraseñas
+
+La contraseña fue pensada para recordar algo. Hoy hay que recordar decenas, y el resultado se repite en casi todas las empresas: reutilización, notas adhesivas, cuentas compartidas por turnos.
+
+El informe DBIR de Verizon sitúa las credenciales robadas como factor en más del 80 % de los ataques a aplicaciones web. El atacante no rompe nada. Compra un lote de contraseñas filtradas y lo prueba hasta que una encaja, un trabajo que un bot repite miles de veces por hora.
+
+Sumemos el coste interno. Restablecer una contraseña cuesta entre 15 y 40 euros en tiempo de soporte según el tamaño de la empresa, y buena parte de esos tickets nace de bloqueos por intentos fallidos y de políticas de complejidad contraproducentes.
+
+## Autenticación, autorización y tokens: tres piezas que se confunden
+
+Tres preguntas distintas se mezclan en cada proyecto:
+
+- **Autenticación**: quién eres. El login responde a esto.
+- **Autorización**: qué puedes hacer una vez dentro. Los roles y permisos responden a esto.
+- **Token**: el justificante que la aplicación emite tras autenticarte y que presentas en cada petición.
+
+Confundirlas cuesta dinero. He visto proyectos donde el equipo implementó OAuth entero para un login de usuarios propios, cuando necesitaban algo mucho más simple: OIDC sobre un proveedor gestionado.
+
+El mapa rápido de piezas:
+
+| Pieza | Qué es | Qué resuelve |
+|---|---|---|
+| OAuth 2.0 | Marco de autorización | Que una app actúe por ti sin ver tu contraseña |
+| OpenID Connect (OIDC) | Capa de identidad sobre OAuth | Login de usuarios con tokens estándar |
+| JWT | Formato de token firmado | Transportar identidad y permisos con verificación local |
+| SAML | Protocolo de SSO clásico | Login único entre sistemas enterprise |
+| WebAuthn | Estándar de claves públicas | Passkeys resistentes a phishing |
+
+## OAuth 2.0 y OpenID Connect
+
+**OAuth 2.0** resuelve un problema concreto: permitir que una aplicación acceda a datos de otra sin compartir la contraseña. Cuando una app ofrece "iniciar sesión con Google", ahí hay OAuth funcionando.
+
+El flujo estándar hoy es el **código de autorización con PKCE**: el navegador recibe un código temporal y solo el backend lo canjea por tokens. PKCE bloquea ese canje si alguien intercepta el código, una protección obligatoria en apps web y móviles.
+
+**OpenID Connect (OIDC)** añade lo que OAuth no tiene: un token de identidad. Sobre el mismo flujo, el proveedor devuelve quién es el usuario (nombre, email, rol) en un **JWT** firmado.
+
+Los tres tokens que manejarás:
+
+| Token | Qué certifica | Vida típica | Dónde guardarlo |
+|---|---|---|---|
+| Access token | Permisos para llamar a la API | 5-60 minutos | Memoria |
+| ID token | Identidad del usuario | 5-60 minutos | Memoria |
+| Refresh token | Derecho a pedir tokens nuevos | Días, con rotación en cada uso | Cookie HttpOnly |
+
+La regla práctica: si tu app solo tiene usuarios propios, usa OIDC con un proveedor gestionado (Auth0, Entra External ID, Keycloak) y evita implementar el protocolo a mano. La superficie de ataque que introduces escribiendo OAuth casero no compensa el ahorro.
+
+## SSO: una sola identidad para todas las aplicaciones
+
+El **SSO** (inicio de sesión único) centraliza la identidad: la persona entra una vez en el proveedor de identidad (Entra ID, Google Workspace, Okta) y todas las aplicaciones confían en esa sesión.
+
+Dos protocolos dominan:
+
+| | SAML | OIDC |
+|---|---|---|
+| Formato | XML con assertions | JSON y JWT |
+| En uso desde | 2005 | 2014 |
+| Mejor encaje | Software enterprise heredado | Apps web, móviles y desarrollos nuevos |
+| Complejidad de integración | Alta | Media |
+| Soporte en proveedores actuales | Total | Total |
+
+En desarrollo a medida, OIDC gana casi siempre: menos código y mejor soporte móvil. SAML queda para cuando el cliente exige compatibilidad con sistemas antiguos que ya hablan XML.
+
+El retorno del SSO se ve en soporte. Donde lo hemos introducido, los tickets de acceso caen entre un 50 % y un 70 % el primer trimestre, porque desaparecen los resets de las aplicaciones secundarias.
+
+## MFA: el filtro que para casi todo
+
+La **MFA** exige un segundo factor además de la contraseña. Microsoft ha publicado que bloquea más del 99 % de los ataques automatizados de robo de credenciales, una cifra que coincide con lo que vemos en incidentes reales.
+
+Las opciones, de peor a mejor:
+
+1. **SMS**: vulnerable a suplantación de SIM y a la ingeniería social hacia operadores. Úsalo solo como última opción.
+2. **TOTP** (código de 6 dígitos tipo Google Authenticator): resiste la suplantación remota, no la aprobación engañosa.
+3. **Push con número**: el móvil muestra un número que el usuario confirma en pantalla. Frena el bombardeo de notificaciones.
+4. **Passkey o llave física FIDO2**: el factor y la credencial son la misma pieza. Resiste phishing por diseño.
+
+Un aviso práctico: la MFA por push clásica ha generado ataques de fatiga, donde el atacante bombardea al usuario con notificaciones hasta que acepta una. Si despliegas push, activa la coincidencia de números desde el primer día.
+
+## Passkeys y WebAuthn: la contraseña deja de existir
+
+Un **passkey** es una credencial criptográfica: el dispositivo guarda una clave privada y el servidor solo conoce la pública. Al registrarte, el dispositivo firma un desafío que el servidor verifica. Ninguna contraseña viaja por la red, y la firma solo vale para el dominio original, lo que vacía de sentido el phishing.
+
+El estándar detrás es **WebAuthn**, soportado por los navegadores y sistemas actuales. Apple, Google y Microsoft lo integran en sus sistemas operativos, y Entra ID, Google Workspace y Okta permiten desplegar passkeys en empresa.
+
+Google calcula que autenticarse con passkey es un 50 % más rápido que con contraseña y reduce de forma notable los casos de recuperación de cuenta. En los despliegues que hemos hecho con clientes, la adopción entre empleados supera el 60 % en tres meses si el alta se hace con QR durante el onboarding.
+
+Para una aplicación a medida, integrar WebAuthn hoy es viable con librerías estándar (SimpleWebAuthn, Passage, Spring Security WebAuthn). El trabajo de backend se concentra en verificar la firma y guardar la clave pública: días de desarrollo, no meses.
+
+## Sesiones y tokens: donde más se equivocan los equipos
+
+En nuestras auditorías, buena parte de los fallos graves de acceso vive aquí. Reglas mínimas:
+
+- **Rotación de refresh tokens**: cada uso emite uno nuevo e invalida el anterior. Un token robado caduca solo.
+- **Expiración absoluta**: aunque haya actividad, la sesión muere a las 8-12 horas, o a los 30 días en sistemas de baja criticidad.
+- **Revocación real al cerrar sesión**: borrar la cookie no basta; el servidor debe invalidar el token.
+- **Sesiones en servidor** para operaciones críticas como cambios de cuenta bancaria o altas de proveedores. Un JWT robado no debería poder mover dinero.
+- **Cookie HttpOnly, Secure y SameSite** si guardas tokens en cookies. Nada de localStorage: una XSS lo vacía.
+
+## Errores comunes de implementación
+
+Los que repetimos en cada revisión de código:
+
+- Validar la firma del JWT pero no `exp`, `iss` ni `aud`. Un token válido de otra aplicación pasa el control.
+- Guardar tokens en localStorage "porque es más fácil".
+- Sesiones eternas con un refresh token que nunca caduca ni rota.
+- MFA opcional para administradores.
+- Implementar OAuth a mano con librerías genéricas de HTTP.
+- Meter el secret de cliente en una app móvil o PWA. Las apps públicas no tienen secreto: usan PKCE.
+- "Cerrar sesión" que solo borra la cookie del navegador.
+
+Cada ítem de esa lista ha aparecido en alguna auditoría de este año. Todos cuestan menos de un día de trabajo corregir, y todos son puertas abiertas mientras existan.
+
+## Plan de implementación en 90 días
+
+Orden típico en un proyecto de desarrollo a medida:
+
+1. **Semanas 1-2. Inventario**: qué aplicaciones tienen login propio, qué cuentas compartidas existen, qué proveedor de identidad ya paga la empresa.
+2. **Semanas 3-4. Proveedor de identidad**: Entra ID, Google Workspace o Keycloak autoalojado. OIDC como estándar interno.
+3. **Semanas 5-8. SSO en las aplicaciones**: empezando por la que más usuarios tiene. Cada app migra su login a OIDC.
+4. **Semanas 9-10. MFA generalizada**: obligatoria para todos, con push de número o TOTP como transición.
+5. **Semanas 11-12. Piloto de passkeys**: un departamento voluntario, alta con QR, medición de adopción y tickets.
+6. **Continuo. Sesiones**: rotación de refresh tokens, expiración absoluta y revocación real, auditados dos veces al año.
+
+Con ese orden, al trimestre la empresa ha reducido su superficie de ataque a la mitad y dispone de datos para decidir el despliegue completo de passkeys.
+
+## Casos con números
+
+### Grupo industrial de Valladolid
+
+El del principio. Desplegamos SSO con OIDC sobre su Entra ID existente y migraron las cuatro aplicaciones en ocho semanas.
+
+- Tickets de acceso: de 214 al mes a 31.
+- Horas de soporte recuperadas: 37 al mes, unas 9.600 euros anuales.
+- Altas y bajas de empleados automáticas: cerrado el agujero que costó 18.400 euros.
+- Coste del proyecto: 16.200 euros. Retorno estimado: 10 meses.
+
+### Red de clínicas en Madrid
+
+Tenían 11 usuarios compartiendo la cuenta de recepción. Auditamos, migramos a login individual con OIDC y MFA por push de número, y activamos la rotación de refresh tokens en su aplicación de citas.
+
+- Eliminadas las 11 cuentas compartidas.
+- Accesos tras bajas laborales: de "no lo sabemos" a revocación automática en 24 horas.
+- Presupuesto de soporte de accesos: de 980 euros a 210 euros mensuales.
+- Coste del proyecto: 8.900 euros en cinco semanas.
+
+### Fabricante B2B en Bilbao
+
+Su app de pedidos pedía contraseña en cada visita y el 22 % de los carritos moría en la pantalla de login. Implementamos passkeys con WebAuthn y mantuvimos la contraseña como respaldo durante la transición.
+
+- Login con passkey: un 47 % más rápido de media.
+- Abandono en pantalla de acceso: de 22 % a 9 %.
+- Pedidos recuperados: unos 38.000 euros trimestrales según su análisis de embudo.
+- Adopción de passkeys: 54 % de sus compradores en cuatro meses.
+
+## ¿Cuánto cuesta?
+
+Rangos orientativos para una pyme con dos o tres aplicaciones:
+
+| Elemento | Coste estimado |
+|---|---|
+| Proveedor de identidad (Entra ID, Google Workspace) | 4-7 euros por usuario al mes |
+| Integración OIDC por aplicación | 4.000-9.000 euros |
+| Piloto de passkeys | 5.000-12.000 euros |
+| Auditoría de sesiones y tokens | 2.500-4.000 euros |
+| Mantenimiento anual | 1.500-3.000 euros |
+
+El otro lado de la cuenta: una empresa de 200 empleados gasta entre 8.000 y 15.000 euros al año solo en tickets de acceso, y un incidente de credenciales suele costar unos 20.000 euros en tiempo de respuesta y cuentas comprometidas, antes de cualquier sanción.
+
+**¿No sabes qué tiene hoy tu sistema de accesos?** En Legasint hacemos una auditoría de autenticación de una semana: revisamos login, tokens y sesiones, y te entregamos un plan de 90 días con costes y ahorro estimados. [Solicita la auditoría de autenticación →](/contacto)
+
+## Preguntas frecuentes
+
+### ¿OAuth 2.0 sirve para autenticar usuarios?
+
+OAuth es un marco de autorización: regula qué puede hacer una app con tus datos. Para login de usuarios se usa OpenID Connect, la capa de identidad construida encima. Si un proveedor te ofrece "OAuth para login", pregunta por OIDC.
+
+### ¿SAML u OIDC para el SSO de mi empresa?
+
+OIDC para casi todo: menos código y mejor soporte móvil. SAML solo si dependes de sistemas heredados que lo exigen, tipo ERP clásicos instalados en los años 2000.
+
+### ¿Qué pasa si un empleado pierde su passkey?
+
+El mismo proceso que con una tarjeta de acceso: se revoca la credencial perdida desde el panel del proveedor de identidad y se da de alta una nueva. Las contraseñas perdidas son silenciosas, en cambio: nadie sabe que están en poder de otra persona.
+
+### ¿Puedo añadir SSO a una aplicación que ya está en producción?
+
+Sí, y es lo habitual. La migración consiste en sustituir el login propio por OIDC manteniendo la tabla de usuarios, con un periodo de convivencia donde funcionan ambos métodos. Para una app estándar, entre cuatro y ocho semanas.
+
+### ¿Los passkeys funcionan en móviles y ordenadores?
+
+Sí. WebAuthn funciona en navegadores actuales, y los sistemas operativos sincronizan las credenciales entre dispositivos del mismo ecosistema (iCloud Keychain, Google Password Manager). También puedes usar el móvil como llave para el ordenador mediante QR.
+
+### ¿Cuánto tarda una implementación completa?
+
+Con SSO, MFA y piloto de passkeys, entre 10 y 12 semanas. La auditoría previa añade una semana. Los proyectos que más tardan son los que arrastran muchas aplicaciones heredadas con usuarios duplicados.
+
+## Conclusión
+
+La autenticación moderna ya no es un lujo de grandes corporaciones. Los estándares existen, las librerías también, y el coste de desplegarlos es una fracción del coste de gestionar contraseñas y de responder a un incidente.
+
+El orden importa: primero proveedor de identidad y SSO, después MFA obligatoria, después passkeys. Saltarse pasos es el error más caro, porque obliga a rehacer trabajo ya hecho.
+
+**¿Sigues apagando fuegos de contraseñas cada semana?** En Legasint diseñamos e implementamos el stack completo de autenticación sobre tus aplicaciones actuales, con plan de 90 días y retorno estimado antes de empezar. [Cuéntanos cómo acceden hoy tus equipos →](/contacto)

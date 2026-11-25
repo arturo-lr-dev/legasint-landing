@@ -1,0 +1,212 @@
+---
+title: 'GraphQL vs REST: Qué Elegir en 2026 (Con Casos Reales)'
+date: '2026-11-12'
+description: >-
+  Guía práctica para decidir entre GraphQL y REST en 2026: comparativa técnica,
+  costes reales de desarrollo y mantenimiento, casos de uso del sector legal y
+  un checklist para elegir sin arrepentimientos.
+tags:
+  - GraphQL
+  - REST
+  - APIs
+  - arquitectura software
+  - desarrollo a medida
+  - legal tech
+image: /blog-images/es-graphql-vs-rest-que-elegir-2026.png
+translationKey: graphql-vs-rest-que-elegir-2026
+---
+
+## Introducción
+
+En marzo de 2026 auditamos la API de una plataforma de gestión de despachos con 1.200 usuarios activos. La pantalla de detalle de expediente —la más usada de toda la aplicación— hacía **14 peticiones REST** para montarse. Resultado: 4,2 segundos de carga y 380 KB de datos transferidos para mostrar unos 40 KB de información útil.
+
+El 90 % del tráfico era ruido que el frontend descartaba. Seis semanas después, esa misma pantalla hace **1 petición GraphQL** y carga en 900 ms. El proyecto costó 18.400 €. La factura de infraestructura bajó un 31 % el primer mes.
+
+Este artículo explica cuándo merece la pena una migración así y cuándo es dinero tirado. Porque la respuesta honesta a "GraphQL o REST" en 2026 sigue siendo la misma de siempre: **depende**. Pero depende de cosas concretas que puedes evaluar antes de escribir una línea de código.
+
+---
+
+## 1. El problema: REST no muere, pero sangra por las costuras
+
+REST lleva veinte años siendo el estándar de facto, y no es casualidad. Es simple, predecible y cualquier desarrollador lo conoce. Pero en proyectos con frontends complejos —apps móviles, dashboards con decenas de vistas, integraciones con muchos consumidores— empiezan a aparecer fricciones que cuestan dinero cada sprint:
+
+- **Over-fetching**: los endpoints devuelven más datos de los que cada pantalla necesita. Pagas ancho de banda, serialización y parseo por datos que nadie usa.
+- **Under-fetching**: una vista necesita datos de 5 recursos, así que el frontend encadena 5 peticiones. La latencia se suma y la pantalla tarda segundos en móvil.
+- **Problema N+1 encubierto**: cada nueva vista obliga a crear un endpoint nuevo o a ensuciar uno existente con parámetros (`?include=cliente,facturas,notas`).
+- **Versionado traumático**: `/v1`, `/v2`, `/v2.1`... Mantener versiones antiguas para no romper consumidores multiplica el coste de mantenimiento.
+- **Acoplamiento equipos**: el frontend no puede avanzar sin que el backend despliegue el endpoint que necesita. Los sprints se sincronizan y la velocidad cae.
+
+Ninguno de estos problemas es grave por separado. Juntos, en un producto con dos años de vida, suponen **entre un 20 y un 35 % del esfuerzo de desarrollo** según nuestras auditorías en proyectos a medida del sector legal y SaaS B2B.
+
+---
+
+## 2. REST en 2026: cuándo sigue siendo la mejor opción
+
+Antes de declarar la muerte de REST, conviene ser honestos: para muchos proyectos sigue siendo la elección correcta. Incluso en 2026.
+
+Elige REST cuando:
+
+- **Tu API es simple y estable**. CRUD sobre unos pocos recursos, pocos consumidores, contratos que casi no cambian.
+- **Necesitas caching agresivo**. HTTP caching con `ETag`, `Cache-Control` y CDN es maduro y trivial con REST. Con GraphQL requiere trabajo extra.
+- **Sirves archivos**. Descargas de documentos, facturas en PDF, evidencias en vídeo. REST lo hace de forma nativa; GraphQL necesita hacks o servicios complementarios.
+- **Integras con terceros poco técnicos**. Un partner que consume tu API desde Postman o con un script de Python de 50 líneas se agradece una API REST documentada con OpenAPI.
+- **Tu equipo ya lo domina**. La productividad de un equipo experto en REST supera a la de un equipo novato en GraphQL durante los primeros 6-12 meses.
+
+En nuestros proyectos, una API REST bien diseñada sobre 6-8 recursos cuesta entre **8.000 y 15.000 €** y se mantiene con 4-8 horas mensuales. Es difícil justificar más complejidad que eso.
+
+---
+
+## 3. GraphQL: qué resuelve de verdad (y qué no)
+
+GraphQL no es "REST pero mejor". Es un paradigma distinto: el **cliente declara exactamente qué datos necesita** y el servidor lo resuelve mediante un esquema tipado.
+
+### Lo que resuelve
+
+- **Una petición por vista**, por más recursos que cruce. El frontend deja de orquestar llamadas.
+- **Contrato tipado fuerte**. El esquema es la fuente de verdad y el codegen genera tipos en cliente y servidor. Menos errores de integración, menos reuniones de alineación.
+- **Evolución sin versiones**. Se añaden campos y tipos nuevos; los campos obsoletos se deprecan con `@deprecated`. Los clientes antiguos siguen funcionando.
+- **Independencia de equipos**. El frontend pide lo que necesita sin esperar a que el backend cree un endpoint nuevo. En proyectos con 3+ consumidores esto acelera los sprints de forma visible.
+
+### Lo que no resuelve
+
+- **Caching**: olvida el caching HTTP por defecto. Necesitas persistencia normalizada (Apollo Client, Relay) o cache en capa de aplicación.
+- **El problema N+1 se muda al servidor**: un resolver mal escrito genera una consulta SQL por campo. Se mitiga con DataLoader, pero hay que saber hacerlo.
+- **Protección contra consultas abusivas**: un cliente puede pedir un árbol de datos gigante. Necesitas cost analysis y límites de profundidad.
+- **Curva de aprendizaje real**: 2-3 meses hasta que un equipo medianamente experimentado es productivo con el ecosistema completo.
+
+---
+
+## 4. Comparativa directa
+
+| Criterio | REST | GraphQL |
+|----------|------|---------|
+| **Coste inicial** | Bajo | Medio-alto |
+| **Mantenimiento (API grande)** | Creciente | Estable |
+| **Nº peticiones por pantalla** | Múltiples | 1 |
+| **Payload en móvil** | Alto (over-fetching) | Mínimo (a medida) |
+| **Versionado** | `/v1`, `/v2`... | Deprecación gradual |
+| **Caching** | Excelente (HTTP/CDN) | Complejo |
+| **Autonomía frontend** | Baja | Alta |
+| **Contrato tipado** | OpenAPI (opcional) | Nativo (obligatorio) |
+| **Subida de archivos** | Nativa | Complicada |
+| **Ideal para** | APIs simples, públicas, estáticas | Apps complejas, multi-cliente, móvil |
+
+---
+
+## 5. Cómo decidir en 5 pasos
+
+Antes de elegir tecnología, responde estas preguntas con datos de tu proyecto, no con opiniones:
+
+1. **Cuenta las peticiones por pantalla.** Abre las 5 vistas más usadas de tu app y cuenta llamadas API. Si la media supera 5-6, GraphQL te va a ahorrar tiempo de desarrollo de forma inmediata.
+2. **Mide el over-fetching.** Compara bytes transferidos con bytes renderizados. Un ratio superior a 3:1 es dinero quemado en infraestructura y latencia.
+3. **Evalúa el coste del versionado.** Si mantienes 2+ versiones en producción o el roadmap incluye "API v2", GraphQL elimina ese proyecto recurrente.
+4. **Analiza tus consumidores.** ¿Un solo frontend propio? REST probablemente basta. ¿Web, móvil, partners y reporting, cada uno pidiendo formas distintas de los mismos datos? GraphQL brilla ahí.
+5. **Audita al equipo.** Sin alguien que haya llevado GraphQL a producción, presupuesta 2-3 meses de rampa o un acompañamiento externo. La experiencia en errores de resolvers y cost analysis no se improvisa.
+
+**Puntuación rápida**: si respondes "sí" a 3 o más de estas condiciones — más de 5 peticiones por pantalla, ratio de over-fetching superior a 3:1, múltiples versiones activas, 3+ tipos de cliente —, GraphQL es una apuesta racional. En caso contrario, REST bien hecho te dará mejor ROI.
+
+---
+
+## 6. Casos reales con números
+
+### Caso 1: Plataforma SaaS de gestión de despachos
+
+**Problema**: dashboard de expedientes con 14 peticiones REST por vista, 4,2 s de carga, churn atribuible a la lentitud en onboarding.
+
+**Solución**: migración gradual a GraphQL con Apollo Server y codegen. Los endpoints REST quedaron como legacy durante 4 meses mientras el frontend migraba vista a vista.
+
+**Factura y resultados**:
+
+- Coste del proyecto: **18.400 €** (6 semanas, 2 desarrolladores)
+- Carga de la vista principal: de 4,2 s a 0,9 s (**-79 %**)
+- Transferencia de datos: de 380 KB a 41 KB por vista (**-89 %**)
+- Horas de desarrollo frontend ahorradas después: **~30 h/mes** en endpoints y alineación
+- Infraestructura: **-31 %** mensual desde el primer mes completo
+
+El retorno completo llegó al mes 8. Desde entonces, el ahorro es estructural.
+
+### Caso 2: App móvil de un marketplace legal
+
+**Problema**: app React Native con listados de servicios legales. Cada listado hacía 6 peticiones (categoría, profesional, precio, valoraciones, ubicación, disponibilidad). En 4G, 5,5 segundos de carga y alto abandono.
+
+**Decisión**: GraphQL solo para la capa de lectura de la app, REST para el resto. Un BFF (Backend for Frontend) GraphQL que agregaba los 6 servicios.
+
+**Factura y resultados**:
+
+- Coste: **12.700 €** (4 semanas)
+- Tiempo de carga en 4G: de 5,5 s a 1,6 s (**-71 %**)
+- Conversión de listado a contacto: **+22 %** en el trimestre siguiente
+- Peticiones al backend: **-64 %** (menos carga, menos coste de servidor)
+
+Aquí GraphQL no fue una religión: fue una capa puntual que resolvió un cuello de botella concreto en móvil.
+
+### Caso 3: API pública de un despacho para clientes enterprise
+
+**Problema**: el despacho quería exponer consultas de plazos procesales y estado de expedientes a clientes corporativos.
+
+**Decisión**: REST con OpenAPI, a pesar de que el equipo interno prefería GraphQL. Razón: los consumidores eran equipos de IT de bancos y aseguradoras que integrarían con Java y .NET en sistemas antiguos. Un contrato REST con Swagger les reducía la fricción a casi cero.
+
+**Factura y resultados**:
+
+- Coste: **9.800 €** (3 semanas)
+- Tiempo de integración del primer cliente: 4 días
+- Mantenimiento posterior: **3 h/mes**
+- Nuevas integraciones cliente desde el lanzamiento: 7
+
+La lección: la tecnología de tu API la elige en parte tu consumidor, no solo tu equipo.
+
+---
+
+## 7. Costes: lo que no te cuentan
+
+| Partida | REST (API mediana) | GraphQL (API mediana) |
+|---------|-------------------|----------------------|
+| Desarrollo inicial | 8.000-15.000 € | 14.000-25.000 € |
+| Mantenimiento mensual | 4-8 h | 6-10 h |
+| Infraestructura | Estándar | +10-20 % (persistencia, cost analysis) |
+| Formación equipo | Mínima | 2-3 meses de rampa |
+| Versionado (años) | Proyecto recurrente | Casi cero |
+
+La conclusión económica: GraphQL paga su sobreprecio inicial cuando el coste del problema (over-fetching, versionado, acoplamiento) supera de forma sostenida esos 6.000-10.000 € de diferencia. En nuestra experiencia, ese punto se alcanza con **3+ tipos de cliente, 15+ vistas complejas o 2 versiones API vivas**.
+
+**¿Tienes una API que sospechas que está costando más de lo que debería?** En Legasint hacemos auditorías API de 2 semanas: medimos peticiones por pantalla, over-fetching y coste de mantenimiento, y te entregamos un informe con la decisión justificada en números. [Pide la auditoría API →](/contacto)
+
+---
+
+## Conclusión
+
+- **REST** gana en APIs simples, públicas, con archivos o con equipos que ya lo dominan. Es la opción de menor riesgo y menor coste inicial.
+- **GraphQL** gana en productos con frontends complejos, múltiples clientes (web, móvil, partners) y APIs que cambian con frecuencia. Su coste inicial se amortiza con creces.
+- **El híbrido es la norma, no la excepción**: GraphQL como capa de agregación para el frontend, REST para webhooks, archivos y partners. Los tres casos reales de este artículo usan combinaciones distintas.
+
+No elijas por moda ni por el framework de turno. Elige midiendo peticiones, bytes y horas de tu proyecto real.
+
+**¿Estás diseñando una API nueva o manteniendo una que duele?** Cuéntanos cómo es hoy: te devolvemos un análisis de arquitectura con costes estimados en 48 horas. [Hablemos de tu API →](/contacto)
+
+---
+
+## FAQ
+
+### ¿GraphQL reemplaza a REST completamente?
+
+No. Webhooks, subida de archivos, caching con CDN e integraciones con sistemas legacy siguen siendo territorio REST (o gRPC, en comunicación interna entre microservicios). Lo habitual en 2026 es coexistencia: GraphQL para la capa de consumo de datos, REST para operaciones y archivos.
+
+### ¿Es GraphQL más caro de mantener?
+
+Al principio, sí: la capa de persistencia, el cost analysis y el tooling añaden horas. A partir de la segunda o tercera versión de API que *no* tienes que crear, la curva se invierte. En proyectos maduros observamos 20-30 % menos horas de mantenimiento que en APIs REST con múltiples versiones activas.
+
+### ¿Puedo migrar de REST a GraphQL de forma gradual?
+
+Sí, y es lo recomendable. El patrón habitual es levantar un servidor GraphQL que haga de proxy sobre los endpoints REST existentes e ir migrando resolvers a datos directos. Así la app funciona durante toda la transición. Las migraciones que hacemos suelen durar entre 4 y 8 semanas sin parones de servicio.
+
+### ¿Qué pasa con la seguridad en GraphQL?
+
+El esquema tipado reduce errores, pero abre vectores nuevos: consultas profundas o caras que agotan la base de datos. Mitigación estándar: límites de profundidad y complejidad, rate limiting por coste (no por petición) y autenticación a nivel de campo para datos sensibles, algo crítico en el sector legal.
+
+### ¿GraphQL es una moda que pasará?
+
+GraphQL lleva ya más de una década en producción en empresas como GitHub, Shopify o Stripe, y su adopción sigue creciendo en 2026 para capas de agregación. Lo que sí ha pasado es la euforia: hoy se adopta con criterio, para problemas concretos, no por defecto.
+
+---
+
+*Publicado el 12 de noviembre de 2026. Esta información tiene carácter orientativo y no constituye asesoramiento legal específico.*

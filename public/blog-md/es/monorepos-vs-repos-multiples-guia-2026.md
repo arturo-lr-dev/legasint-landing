@@ -1,0 +1,168 @@
+---
+title: "Monorepo o repos múltiples: guía práctica para equipos en 2026"
+date: "2026-11-26"
+language: "es"
+canonical: "https://legasint.com/blog/monorepos-vs-repos-multiples-guia-2026"
+tags: ["monorepo", "arquitectura software", "desarrollo a medida", "devops", "2026", "equipos de desarrollo"]
+---
+
+# Monorepo o repos múltiples: guía práctica para equipos en 2026
+
+¿Un repo o muchos? Guía práctica de monorepos vs polirrepos en 2026: cuándo elegir cada modelo, costes reales de migración, herramientas (Turborepo, Nx) y casos con números de factura.
+
+## El Cliente Que Pagaba 3.000 € al Mes por "Ordenar Repos"
+
+A principios de 2025, un cliente llegó a nosotros con un problema curioso: **34 repositorios** en GitHub para un producto que tenía 6 aplicaciones.
+
+Cada repo tenía su propio `package.json`, su pipeline de CI, su versión de Node, sus tests y —eso es lo importante— **su propio ciclo de despliegue**. Un desarrollador que tocaba la API y el frontend tenía que abrir dos PRs, esperar dos pipelines y coordinar dos despliegues para un solo cambio.
+
+Hicimos las cuentas con ellos: solo en esperas de CI y coordinación entre repos, el equipo de 5 personas **perdía unas 38 horas semanales**. A 55 €/hora, son **más de 3.000 € al mes en fricción pura**.
+
+Nada de eso aparecía en ninguna factura. Era coste invisible, pero coste al fin y al cabo.
+
+---
+
+## 1. El Problema: El "Repo por Microservicio" Se Salió de Madre
+
+Entre 2020 y 2024, la recomendación dominante era clara: *"un servicio, un repo"*. El modelo **polyrepo** (muchos repositorios) prometía autonomía, desacoplamiento y equipos independientes.
+
+Y funcionaba... hasta que dejaba de funcionar. Los síntomas habituales que vemos en auditorías:
+
+- **Cambios transversales multiplicados por N**: tocar una librería compartida implica PRs en 5, 10 o 20 repos.
+- **Versiones divergentes**: cada repo usa una versión distinta de TypeScript, React o la librería interna de utilidades.
+- **CI lento y caro**: cada repo ejecuta su pipeline completo, aunque solo cambiara una línea.
+- **Onboarding eterno**: un desarrollador nuevo tarda días en entender qué repos necesita clonar y en qué orden.
+- **Deuda de coordinación**: los despliegues dependen de actualizar versiones publicadas en el registro interno, y alguien siempre se olvida.
+
+El resultado es lo que llamamos **"caos organizado"**: cada repo está impecable, pero el conjunto es un dolor de cabeza.
+
+---
+
+## 2. La Solución: El Monorepo (Bien Entendido)
+
+Un **monorepo** no es meter todo el código en un repositorio gigante y cruzar los dedos. Es un modelo donde **todos los proyectos de una organización viven en un solo repo, pero con herramientas que entienden las fronteras entre ellos**.
+
+Herramientas como **Turborepo**, **Nx** o **Bazel** permiten:
+
+- **Cacheo inteligente de builds**: si no cambió nada en el módulo de facturación, no se vuelve a compilar ni a testear.
+- **Detección de dependencias afectadas**: un commit solo ejecuta los tests de lo que realmente impacta.
+- **Versionado atómico**: un solo commit puede actualizar API, frontend y librería compartida de forma coherente.
+- **Límites explícitos entre módulos**: el acoplamiento se controla con reglas, no con separación física.
+
+No es casualidad que Google, Meta, Microsoft y Airbnb trabajen así. Y desde 2023-2024, el ecosistema de herramientas open source ha madurado lo suficiente para que equipos de 5-50 personas puedan adoptarlo **sin un equipo de plataforma dedicado**.
+
+---
+
+## 3. Monorepo vs Polyrepo: Tabla Comparativa
+
+| Criterio | Polyrepo (un repo por proyecto) | Monorepo (repo único) |
+|---|---|---|
+| Cambios transversales | PRs múltiples, coordinación manual | Un solo commit atómico |
+| CI/CD | Pipeline por repo, builds duplicados | Build incremental con cacheo |
+| Consistencia de versiones | Difícil de mantener | Una sola versión por dependencia |
+| Onboarding de desarrolladores | Días (clonar, instalar, ordenar) | `git clone` + `npm install` |
+| Propiedad de código | Equipos aislados | Fronteras definidas por reglas |
+| Riesgo de acoplamiento | Bajo por diseño físico | Controlable con linting de dependencias |
+| Escala de gigantes (Google, Meta) | Imposible de gobernar | El modelo nativo |
+| Herramientas necesarias | Git + CI básico | Turborepo / Nx / Bazel |
+| Curva de aprendizaje | Baja | Media (1-2 semanas de adaptación) |
+
+---
+
+## 4. Pasos Prácticos para Migrar (Sin Parar el Mundo)
+
+Migrar a monorepo no es un big bang. Es un proceso gradual que puede hacerse **sin detener la producción**. Este es el orden que usamos en Legasint:
+
+### Fase 1: Auditoría y herramienta (1-2 semanas)
+
+Inventariar todos los repos: dependencias entre ellos, versiones divergentes y pipelines de CI. Sin este mapa, la migración es ciega. Después, elegir herramienta:
+
+- **Turborepo**: el estándar para ecosistemas JS/TS. Ligero, cacheo remoto excelente, ideal si tu stack es Node + React/Next.js.
+- **Nx**: más completo, con generadores de código y linting de fronteras entre módulos.
+- **Bazel**: solo para builds masivas (millones de líneas). Sobredimensionado para la mayoría.
+
+### Fase 2: Migración gradual (3-5 semanas)
+
+Empezar por las librerías internas (utils, componentes, tipos) como paquetes internos del monorepo — es el cambio de menor riesgo y mayor impacto inmediato. Después, cada app entra como un paquete más, **conservando el despliegue independiente**: monorepo no significa desplegar todo junto.
+
+### Fase 3: Optimización y reglas
+
+Activar el cacheo remoto y la detección de afectados: un cambio en el frontend deja de ejecutar los tests del backend si no hay dependencia. Ahí es donde aparecen las horas de ahorro. Y definir fronteras con ESLint y Nx/Turborepo (por ejemplo, que el módulo de pagos no importe código de notificaciones): el desacoplamiento se convierte en regla automatizada, no en costumbre.
+
+---
+
+## 5. Casos Reales: Los Números Que Importan
+
+### Caso A: Scale-up legaltech (6 apps, 34 repos → 1 monorepo)
+
+El cliente del inicio de este artículo. Migración completa en **6 semanas** con Turborepo. Número clave a los 3 meses: **~2.700 €/mes ahorrados** en coordinación (38 horas semanales → ~6). Como referencia adicional, el tiempo de CI bajó de 45-90 minutos por PR a **8-12 minutos**. Coste de la migración: ~18.000 €. **Payback en menos de 7 meses**.
+
+### Caso B: Consultora con apps para clientes (12 proyectos en repos separados)
+
+Proyectos "hermanos" para distintos clientes, con el 60 % de código duplicado (autenticación, facturación, informes). Migraron a un monorepo con un **paquete core compartido** y apps por cliente. Número clave: **~3.300 €/mes** de mantenimiento recuperado (~60 horas/mes), además de un fix en autenticación ya no requiere copiarlo a 12 repos.
+
+### Caso C: Cuando NO migrar (honestidad incluida)
+
+Un equipo de 2 personas con 3 repos pequeños y pocos cambios transversales. Les recomendamos **quedarse en polyrepo**: el coste de la migración no se justifica, y la fricción que tenían era mínima.
+
+La lección: el monorepo no es religión. Es una herramienta para un problema de **escala y coordinación**.
+
+---
+
+## 6. Señales de Que Necesitas un Monorepo (Checklist)
+
+Marca cuántas se cumplen en tu organización:
+
+- [ ] Tienes más de 5 repos con dependencias entre ellos.
+- [ ] Un mismo cambio te obliga a abrir PRs en 2+ repositorios.
+- [ ] Tienes versiones distintas de la misma dependencia en repos distintos.
+- [ ] Tu CI tarda más de 20 minutos por PR.
+- [ ] Un desarrollador nuevo tarda más de 1 día en tener el entorno funcionando.
+- [ ] Has copiado código de un repo a otro "temporalmente" (y ahí sigue).
+
+**3 o más → el monorepo te va a ahorrar dinero desde el primer mes.**
+5 o más → cada mes que esperas cuesta miles de euros en fricción.
+
+[Reservar auditoría de arquitectura](/contacto)
+
+---
+
+## 7. Conclusión
+
+La pregunta ya no es "¿monorepo o repos múltiples?" sino **"¿cuánto dinero estoy perdiendo por no haberlo decidido aún?"**.
+
+Los datos de nuestros proyectos son consistentes: equipos en crecimiento con más de 5-6 repositorios interdependientes recuperan el coste de migración en **6-9 meses** y a partir de ahí ahorran **2.000-4.000 €/mes** en fricción eliminada. A eso suma la velocidad: releases más rápidos, menos bugs por versiones divergentes y equipos que dejan de coordinar y empiezan a construir.
+
+### ¿Quieres saber cuánto te cuesta hoy tu estructura de repos?
+
+Pídenos una **auditoría de arquitectura de repositorios**: en una sesión de 45 minutos revisamos tus repos, tus pipelines y tus tiempos de CI, y te entregamos un informe con el ahorro estimado de migrar a monorepo — o con la confirmación de que no necesitas hacerlo. Sin compromiso y sin humo.
+
+[Reservar auditoría de arquitectura](/contacto)
+
+Y si estás empezando un producto nuevo desde cero, evita el problema antes de crearlo: **diseñamos tu monorepo inicial** con la estructura, herramientas y pipelines correctos desde el día uno.
+
+[Quiero arrancar mi producto bien](/contacto)
+
+---
+
+## FAQ
+
+### ¿Un monorepo no es más lento al clonar y compilar?
+
+Al contrario, si usas las herramientas adecuadas. Turborepo y Nx cachean builds completos: después del primer build, compilar "todo" tarda segundos porque casi nada se recompila. El checkout parcial (sparse checkout) también permite trabajar solo con los paquetes que necesitas.
+
+### ¿Perdemos la autonomía de los equipos?
+
+No, si defines fronteras por código. Cada equipo es dueño de sus paquetes dentro del monorepo, y las reglas de linting impiden que otros equipos importen lo que no deben. Pierdes autonomía de *despliegue coordinado manual*, ganas autonomía de *desarrollo*.
+
+### ¿Qué pasa con Git? ¿No se vuelve lento con tanto código?
+
+Para la escala de una empresa normal (cientos de miles de líneas), Git lo maneja sin problema. Los problemas de rendimiento de Git en monorepos gigantes (Google, Meta) no aplican a equipos de 5-100 personas.
+
+### ¿Y si un día queremos separar un módulo en su propio repo?
+
+Se puede. Los paquetes bien delimitados se extraen del monorepo en horas, no en semanas. El monorepo no es una celda: es una organización que además te deja la puerta abierta.
+
+### ¿Cuánto cuesta una migración típica?
+
+Depende del número de repos y del estado del código, pero el rango habitual en nuestros proyectos es de **12.000-25.000 €** de ingeniería, recuperado en 6-9 meses por ahorro de horas. Te lo desglosamos en la auditoría, con números reales de tu caso.

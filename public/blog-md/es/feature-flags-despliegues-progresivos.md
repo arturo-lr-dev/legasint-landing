@@ -1,0 +1,157 @@
+---
+title: "Feature Flags y Despliegues Progresivos: Cómo Reducir Riesgos en Producción"
+date: "2026-11-05"
+language: "es"
+canonical: "https://legasint.com/blog/feature-flags-despliegues-progresivos"
+tags: ["feature flags", "devops", "ci/cd", "despliegue progresivo", "desarrollo de software", "2026"]
+---
+
+# Feature Flags y Despliegues Progresivos: Cómo Reducir Riesgos en Producción
+
+Qué son los feature flags, las canary releases y el despliegue blue-green: cómo separar publicar de activar para reducir fallos en producción, con casos reales, números y un plan de implementación de 90 días.
+
+## Seis horas de caída por un cambio que afectaba al 5 % de la web
+
+Un distribuidor B2B de material eléctrico con sede en Zaragoza factura unos 8 millones de euros al año a través de su tienda online. Un lunes de mayo, a las 9:00, publicó un nuevo motor de recomendaciones de productos junto con una refactorización del carrito.
+
+A las 9:40 el checkout dejó de responder. Ninguna alarma saltó: el equipo lo descubrió a las 10:30, cuando un cliente mayorista llamó para avisar de que no podía cerrar su pedido. El rollback tardó 40 minutos más porque el despliegue incluía migraciones de base de datos difíciles de revertir.
+
+Cuenta final: seis horas de tienda parada, 22.000 euros en pedidos perdidos y dos ingenieros dedicando ocho horas a apagar el fuego.
+
+El dato que duele: el motor de recomendaciones era un experimento pensado para el 5 % de las visitas. El fallo lo provocó el cambio del carrito, que viajaba atado al mismo despliegue y se activó para todos los usuarios a la vez. Con un feature flag y una publicación canary, el fallo habría tocado a una fracción del tráfico y se habría revertido en menos de un minuto.
+
+## El problema de los despliegues de todo o nada
+
+En la mayoría de equipos que auditamos se repite el mismo patrón: varios cambios se acumulan en una rama, se publican juntos y se activan para todo el mundo en el mismo instante. Desplegar se convierte en un evento. Y los eventos fallan.
+
+El informe State of DevOps de DORA lleva años midiendo la diferencia entre equipos que publican a menudo y equipos que acumulan cambios. En su edición de 2021, los equipos de élite desplegaban 973 veces más frecuentemente y se recuperaban 6.570 veces más rápido de un fallo que los de nivel bajo. La diferencia está en el mecanismo, no en el talento.
+
+Cuando el despliegue es el único interruptor entre "el cambio no existe" y "el cambio está en producción para todos", cada publicación concentra riesgo de código y riesgo de activación en el mismo momento. Y la única vía de vuelta es volver a desplegar, con todo lo que cuesta.
+
+## Qué es un feature flag
+
+Un **feature flag** es una variable de configuración que consulta la aplicación en tiempo de ejecución para decidir si una funcionalidad está activa y para quién. El código nuevo se despliega en producción apagado. Encenderlo es un acto de configuración, no un acto de despliegue.
+
+Esto separa dos decisiones que en muchos equipos van atadas: cuándo publicar código y cuándo mostrar una función a los usuarios.
+
+| Tipo | Para qué sirve | Ejemplo |
+|------|----------------|---------|
+| Release flag | Encender una función terminada sin redeploy | Nuevo buscador de productos |
+| Experiment flag | Probar variantes con grupos de usuarios | Dos versiones del checkout |
+| Ops flag | Apagar partes del sistema bajo presión | Desactivar exportaciones pesadas en hora punta |
+| Permission flag | Funciones según plan, rol o cuenta | Informes avanzados solo en el plan Pro |
+
+Con estos cuatro mecanismos el riesgo de activar algo nuevo cae en picado: una función puede encenderse para empleados, para el 5 % de los clientes o para una única cuenta piloto antes de generalizarse.
+
+## Canary releases, blue-green y despliegue progresivo
+
+Un feature flag controla qué ve cada usuario. Las estrategias de despliegue controlan cómo llega el código nuevo a los servidores. Combinadas forman lo que se conoce como **despliegue progresivo**.
+
+- **Canary release:** la nueva versión se publica primero en una fracción pequeña del tráfico, por ejemplo el 5 %. Si las métricas aguantan, se amplía al 25 %, al 50 % y al 100 %.
+- **Blue-green deployment:** dos entornos de producción idénticos, azul y verde. El tráfico real va a uno; el otro recibe la nueva versión y se valida antes de conmutar. Volver atrás también toma segundos.
+- **Despliegue progresivo:** la combinación de ambas más métricas automáticas. La decisión de ampliar o revertir la toma el sistema según errores, latencia y conversión, no una persona mirando un gráfico a las 23:00.
+
+| Estrategia | Usuarios expuestos al inicio | Tiempo de rollback | Coste de infraestructura | Cuándo encaja |
+|------------|------------------------------|--------------------|--------------------------|----------------|
+| Big bang | 100 % | 30-60 min (redeploy) | Bajo | Casi nunca compensa |
+| Blue-green | 100 % tras el cambio | Segundos | Doble entorno | Necesitas volver atrás al instante |
+| Canary | 1-10 % | Segundos | Moderado | Validas errores y rendimiento |
+| Feature flags | 0 % hasta que decides | Inmediato | Bajo | Controlas quién ve qué y cuándo |
+
+## Un plan de implementación de 90 días
+
+### Semanas 1-2: mapa de cambios y primera flag
+
+Antes de comprar herramientas, lista qué partes de tu sistema se despliegan juntas pero podrían activarse por separado. Después pon la primera flag en producción sobre un cambio de bajo riesgo. Una variable de entorno o una tabla en base de datos con un endpoint interno de administración es suficiente para empezar. OpenFeature es el estándar abierto del sector, y Flagsmith y Unleash tienen versiones que puedes autoalojar por cero euros de licencia.
+
+### Semanas 3-6: canary en el pipeline
+
+Añade al pipeline de CI/CD una etapa que publique la nueva versión al 5 % del tráfico durante un periodo de observación. Define antes tres umbrales de rollback: tasa de errores 5xx, latencia p95 y una métrica de negocio (pedidos, registros, pagos). Si se superan, la pipeline revierte sola. Este automatismo es donde está el ahorro real.
+
+### Semanas 7-10: segmentos y dark launch
+
+Configura flags por segmento: empleados, clientes de un plan, una cuenta concreta. Empieza a hacer dark launch: desplegar funciones terminadas pero ocultas y probarlas en producción con cuentas internas durante varios días. Así detectarás problemas de integración con datos reales que ningún entorno de staging reproduce.
+
+### Semanas 11-13: gobernanza
+
+Cada flag necesita un nombre, un responsable y una fecha de caducidad. Sin esas tres cosas acumularás deuda de flags: ramas de código muertas que nadie se atreve a borrar. Documenta además un runbook de rollback por servicio crítico y revísalo con el equipo.
+
+## Qué cambia en números
+
+| Indicador | Con despliegues big bang | Con flags y canary (seis meses después) |
+|-----------|--------------------------|------------------------------------------|
+| Despliegues que fallan en producción | 15-25 % | 2-5 % |
+| Usuarios afectados por un fallo | 100 % | 1-10 % |
+| Tiempo medio de rollback | 30-60 minutos | Menos de 1 minuto |
+| Incidentes graves fuera de horario | 2-4 al mes | Menos de 1 al mes |
+| Horas del equipo en apagar fuegos | 20-30 h/mes | 4-8 h/mes |
+| Coste medio de un despliegue fallido | 5.000-30.000 € | Normalmente menos de 1.000 € |
+
+Un equipo de cuatro personas que recupere 20 horas mensuales y evite un incidente grave por trimestre se ahorra entre 40.000 y 80.000 euros al año, sumando horas, ventas perdidas y trabajo fuera de horario.
+
+## Casos reales con números
+
+### Caso 1: distribuidor eléctrico en Zaragoza
+
+El mismo del inicio. Tras el incidente de mayo montamos flags con Flagsmith autoalojado y canary al 5 % sobre GitHub Actions y contenedores en AWS ECS.
+
+- El rollback pasó de 40 minutos a 30 segundos.
+- Pasaron de 2 despliegues al mes a 12 por semana.
+- El siguiente Black Friday soportó cuatro veces su tráfico habitual sin una sola caída, algo que llevaban tres años sin lograr.
+- Coste de la implementación: 11.400 €, más unos 160 €/mes de infraestructura. Ahorro estimado el primer año: 58.000 € entre horas recuperadas, pedidos protegidos y campañas sin incidencias.
+
+### Caso 2: plataforma de reservas en Valencia
+
+Un cambio en el motor de precios entró en canary al 5 % de las reservas. En cuatro horas, la conversión de ese grupo cayó un 12 % mientras el resto del tráfico se comportaba con normalidad. La pipeline revirtió sola, sin intervención humana.
+
+Perdieron el 2 % de las reservas de ese día en lugar del 100 %: unos 9.000 euros en vez de los 180.000 que valía un día completo de ventas. Desde entonces despliegan entre 10 y 15 veces por semana, con dos incidentes graves en todo 2026 frente a los 14 del año anterior.
+
+### Caso 3: fintech en Barcelona
+
+La entidad reguladora les exigía publicar de noche, con ventanas de mantenimiento de dos horas. Montamos blue-green con conmutación en segundos y flags para las funciones reguladas.
+
+- Eliminaron el 95 % de las ventanas nocturnas.
+- Recuperaron 26 horas mensuales de coordinación entre desarrollo y operaciones: unos 24.000 € al año en coste salarial.
+- La última auditoría de su entidad de pago salió sin una sola observación sobre su proceso de cambios.
+
+## Cuánto cuesta no hacerlo
+
+Una implementación inicial con flags, canary y rollback automático suele costar entre 10.000 y 25.000 euros en una pyme con desarrollo propio. Las licencias van de cero (open source autoalojado) a 500-1.500 €/mes en herramientas comerciales.
+
+Ahora el otro lado: un despliegue fallido medio en una empresa que vende online cuesta entre 5.000 y 30.000 euros. Un equipo que pierde 25 horas mensuales en apagar fuegos pierde más de 18.000 euros anuales en salario. La mayoría de proyectos recuperan la inversión en 3 a 6 meses, muchas veces con el primer incidente evitado.
+
+**¿Quieres saber cuánto te cuestan hoy tus despliegues fallidos?** En Legasint hacemos una auditoría de despliegue: revisamos tu pipeline, medimos tu exposición real y te entregamos un plan de 90 días con costes y retorno estimados. [Solicita la auditoría de despliegue →](/contacto)
+
+## Preguntas frecuentes
+
+### ¿Los feature flags sustituyen a los tests?
+
+No. Los tests comprueban que el código hace lo previsto antes de publicar. Los flags limitan el daño cuando algo imprevisto ocurre en producción. Son capas complementarias: tests para prevenir, flags y canary para contener.
+
+### ¿No complican el código?
+
+Si se dejan sin gobernar, sí: acumulas flags muertas y condicionales que nadie borra. Con un responsable, una fecha de caducidad y una limpieza de una hora al mes, el coste es marginal comparado con lo que ahorran.
+
+### ¿Qué herramienta recomendáis?
+
+Para empezar, Flagsmith o Unleash autoalojadas, sin coste de licencia. Si necesitas segmentación avanzada, auditoría y soporte, LaunchDarkly o ConfigCat desde unos 500 €/mes. El patrón importa más que la herramienta: una tabla en base de datos bien gobernada sirve para el primer año.
+
+### ¿Funciona con un monolito?
+
+Sí. La mayor parte del beneficio viene de separar activación de despliegue, y eso aplica a monolitos, microservicios y aplicaciones móviles por igual.
+
+### ¿Canary release y A/B testing son lo mismo?
+
+No, aunque combinan bien. Canary mide estabilidad: errores, latencia, caídas. A/B mide comportamiento: qué variante convierte más. Un canary decide "esta versión es segura" y un experimento decide "esta variante vende más".
+
+### ¿Cuánto tarda?
+
+Una primera versión con flags básicas y canary al 5 %: entre 8 y 12 semanas. Cobertura completa con métricas de negocio y rollback automático: de 4 a 6 meses.
+
+## Conclusión
+
+Publicar código y activar funciones son decisiones distintas. Los equipos que las separan despliegan más a menudo, fallan menos y recuperan horas de trabajo. Los que no lo hacen siguen apostando el negocio entero cada vez que alguien pulsa "deploy".
+
+Empezar cuesta poco: una flag, un segmento pequeño de tráfico y una métrica que dispare el rollback automático. Todo lo demás se construye encima.
+
+**¿Sigues publicando cambios de todo o nada?** En Legasint montamos feature flags y despliegues progresivos sobre tu sistema actual, con un plan de 90 días y ROI estimado antes de escribir la primera línea. [Cuéntanos cómo despliegas hoy →](/contacto)

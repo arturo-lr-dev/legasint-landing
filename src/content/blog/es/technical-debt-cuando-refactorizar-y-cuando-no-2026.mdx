@@ -1,0 +1,224 @@
+---
+title: 'Technical debt: cuándo refactorizar y cuándo no: guía práctica 2026'
+date: '2026-10-28'
+description: >-
+  La deuda técnica no se paga toda de golpe ni nunca. Una guía práctica, con
+  casos reales y números, para decidir cuándo refactorizar, cuándo encapsular
+  y cuándo lo mejor es no tocar nada.
+tags:
+  - Desarrollo de Software
+  - Deuda Técnica
+  - Arquitectura
+  - Gestión Técnica
+  - Consultoría IT
+  - '2026'
+image: /blog-images/es-technical-debt-cuando-refactorizar-y-cuando-no-2026.png
+translationKey: technical-debt-cuando-refactorizar-y-cuando-no-2026
+---
+
+## Los dos meses en que LinkedIn no escribió ni una feature nueva
+
+En mayo de 2011, LinkedIn salió a bolsa. Dos meses después tomó una decisión que todavía se estudia: **paralizó todo el desarrollo de producto durante ocho semanas** para que sus equipos limpiaran deuda técnica. La iniciativa interna, conocida como *InVersion*, movilizó a cientos de ingenieros. Cero funcionalidades nuevas.
+
+¿La razón? La velocidad se había estancado. Cada feature tocaba sistemas frágiles. Cada despliegue era una lotería. La deuda había dejado de ser un problema técnico: era un problema de negocio.
+
+Vemos la versión PYME de esa historia cada mes. El año pasado, un CTO nos enseñó su factura de mantenimiento: **€3.100 al mes** por un ERP a medida que, en sus palabras, *"nadie se atreve a tocar"*. Sus tres desarrolladores invertían el **60% de su tiempo apagando incendios**.
+
+La lección no es "refactoriza todo". Es que **la deuda técnica tiene cuota mensual**, y la pregunta correcta no es si pagarla, sino *qué pagar, cuándo y qué ignorar*.
+
+Esta guía responde exactamente eso.
+
+---
+
+## ¿Qué es la deuda técnica (y qué no es)?
+
+Ward Cunningham acuñó el término en 1992 con una metáfora financiera: a veces entregas código "a crédito" para llegar antes al mercado, igual que pides un préstamo para abrir un local. El préstamo no es malo. **Lo malo es no saber que lo tienes o no pagar nunca las cuotas.**
+
+Y aquí está el primer malentendido: no todo código viejo es deuda. Hay código del 2015 que funciona perfectamente y código de hace seis meses que es una trampa. Martin Fowler lo resume en cuatro cuadrantes:
+
+| | **Deliberada** | **Inadvertida** |
+|---|---|---|
+| **Prudente** | *"Salgamos ya, ya limpiaremos después"* | *"Ahora entendemos el dominio mejor que cuando diseñamos esto"* |
+| **Imprudente** | *"No hay tiempo para tests ni para pensar"* | *"¿Arquitectura por capas? ¿Eso qué es?"* |
+
+Los dos cuadrantes prudentes son parte normal de construir software: son decisiones consciente. El peligroso es el **imprudente-deliberado**: atajos tomados sin plan, sin registro y sin intención de volver.
+
+Si tu equipo pide refactorizar, lo primero no es decir sí o no. Es clasificar la deuda en este cuadrante.
+
+---
+
+## La cuota mensual que no sale en ninguna factura
+
+Hagamos números con un equipo típico: 4 desarrolladores, coste completo de ~€55.000/año por persona. Son ~7.000 horas productivas al año. Si el **30% de ese tiempo va a bugs recurrentes, regresiones y "esto rompió lo de allá"**, estás pagando unos **€66.000 anuales en intereses**.
+
+Intereses que no generan valor nuevo. Que no llegan a producción. Que solo mantienen el barco a flote.
+
+Cómo detectarlo antes de que sea un LinkedIn en miniatura:
+
+| Señal | Cómo medirla | Zona de riesgo |
+|---|---|---|
+| Velocidad en caída | Funcionalidad por sprint, tendencia a 6 meses | −40% o más |
+| Onboarding eterno | Horas hasta el primer cambio productivo | >2 semanas |
+| Change failure rate | % de cambios que provocan incidente | >30% |
+| Miedo a desplegar | Frecuencia de despliegue | `<1 al mes` |
+| "Eso tardará días" | Estimaciones infladas siempre en el mismo módulo | Recurrente |
+
+Solo una de estas señales puede ser ruido. Tres o más, y ya estás pagando una hipoteca sin haber firmado nada.
+
+---
+
+## Cuándo NO refactorizar
+
+Empecemos por la parte incómoda, porque la presión de "refactorizarlo todo" suele venir de una mala lectura: **todo lo viejo no es deuda**.
+
+No refactorices cuando:
+
+- **El código casi no cambia.** Un módulo estable que tocas dos veces al año no consume intereses. Toquetearlo solo añade riesgo.
+- **No toca seguridad ni datos sensibles.** Una pantalla interna fea pero funcional no justifica semanas de trabajo.
+- **Está a punto de morir.** Si ese componente se reemplaza en la hoja de ruta de 2027, refactorizarlo es pintar una casa que va a derribarse.
+- **No tiene tests y romperlo sería catastrófico.** Primero se le ponen tests de red de seguridad, no se le da la vuelta entero.
+- **Es deuda deliberada con plan de pago.** El MVP que salió rápido para validar mercado hizo su trabajo. Se paga cuando toca, no antes por ansiedad.
+
+> **La regla del campamento:** refactoriza el código que tocas a diario, no el código que te da miedo.
+
+Hay un detalle importante, y aquí vamos de la mano con tu equipo técnico: cuando un desarrollador pide refactorizar, rara vez es pereza. Casi siempre es **dolor acumulado**. El error típico no es refactorizar de más, es forzar al equipo a trabajar meses con dolor y que la factura llegue multiplicada.
+
+---
+
+## Cuándo SÍ refactorizar (y por dónde empezar)
+
+Refactoriza cuando el interés supera al principal. Señales claras:
+
+- La velocidad del equipo cae trimestre a trimestre pese a mantener el tamaño
+- Cada estimación del mismo módulo crece: "eso antes eran 2 días, ahora son 2 semanas"
+- Los incidentes vienen siempre de las mismas tres carpetas del repo
+- Nadie nuevo es capaz de tocar el código sin supervisionarse dos semanas
+- El negocio deja de pedir mejoras en una zona "porque saben que es complicado"
+
+Con la señal localizada, aplica esta matriz de decisión:
+
+| Frecuencia de cambio | Riesgo si falla | Cobertura de tests | Decisión |
+|---|---|---|---|
+| Alta | Alto | Media-baja | **Refactorizar ya**, tests primero |
+| Alta | Bajo | Cualquiera | **Refactorizar** de forma incremental |
+| Baja | Alto | Alta | **No tocar**: encapsular y monitorizar |
+| Baja | Bajo | Cualquiera | **Ignorar**: no es deuda, es cemento |
+| Alta | Alto | Nula | **Modo InVersion**: 2-4 semanas solo esto |
+
+Fíjate en la última fila: ahí no hay atajo. Es la casilla de LinkedIn, y cuanto antes se acepte, más barata sale.
+
+---
+
+## Cómo refactorizar sin parar el negocio
+
+### 1. Mide la línea base
+
+Antes de tocar nada, anota cuatro números: horas por incidente, frecuencia de despliegue, change failure rate y velocidad. Son tu "antes". Sin ellos, no podrás demostrar el retorno después.
+
+### 2. Tests de caracterización primero
+
+En código legado sin tests, el primer paso no es mejorar el diseño: es **escribir tests que documenten el comportamiento actual**, incluso los bugs (conocidos como *characterization tests* o *golden master*). Después de eso, refactorizar deja de ser valiente y pasa a ser aburrido. La aburrición es el objetivo.
+
+### 3. Patrón Strangler Fig
+
+No reescribas el módulo entero: pon una fachada delante y **migra funcionalidad por funcionalidad**, como la hiedra que estrangula un árbol reemplazándolo rama a rama. Cada migra entra en producción sola, con feature flag, y si falla, se apaga sin dolor.
+
+### 4. Reserva fija: el 20%
+
+Pagar deuda de forma sostenible funciona mejor que parar el mundo. Reserva el **15-20% de cada sprint** a deuda técnica del módulo activo. En un año, eso son 8-10 semanas de refactorización continua sin cancelar ni una entrega.
+
+### 5. Regla Boy Scout
+
+Todo cambio deja el código un poco mejor que como lo encontró: un test añadido, una dependencia eliminada, un nombre que por fin se entiende. La deuda se paga con hábito, no con heroísmo.
+
+¿No sabes cuánta deuda tienes ni dónde empieza a pagarse? En LegaSInt hacemos auditorías de deuda técnica de dos semanas: mapa de deuda priorizada, estimación de esfuerzo y plan de pago por fases. **[Solicita una auditoría técnica →](/contacto)**
+
+---
+
+## Casos reales (con factura)
+
+### Caso 1: El módulo de facturación que frenaba a todo el equipo
+
+**Cliente:** distribuidora mayorista, 90 empleados, ERP a medida de 2019.
+
+El módulo de facturación acumulaba atajos de cuatro años. Cada cambio fiscal o de tarifa era un incidente: de media **6 incidentes al mes**, con **14 horas de resolución** entre diagnóstico, parche y consecuencias colaterales.
+
+**Intervención:** refactorización incremental del módulo, 6 semanas, **factura de €18.500**.
+
+**Resultado tras 6 meses:**
+
+- Tiempo medio por incidente: de 14h a **2h**
+- Incidentes: de 6 a **1-2 al mes**
+- Despliegues: de "cuando no queda remedio" a **semanales**
+- Ahorro estimado: ~72 horas/mes ≈ **€4.300/mes**
+
+**Recuperación de la inversión: ~4 meses.** ROI de unos 2,7x el primer año, y un equipo que volvió a pedir funcionalidades en vez de excusas.
+
+### Caso 2: La reescritura que nadie pidió
+
+**Cliente:** operador logístico, plataforma de rutas con 3 años de deuda acumulada.
+
+Su proveedor anterior propuso lo habitual: **reescritura total, €120.000 y 9 meses** sin entregas intermedias. Nosotros vimos algo distinto: el núcleo era sólido, la deuda estaba en la capa de integraciones.
+
+**Intervención:** patrón Strangler Fig sobre el sistema existente, migrando integración a integración. **4 meses, factura de €36.000.**
+
+**Resultado:**
+
+- **€84.000 ahorrados** frente a la reescritura propuesta
+- 5 meses antes de empezar a recoger valor
+- Cero downtime: la plataforma nunca dejó de operar
+- La reescritura total, de haberse hecho, habría replicado el 80% del comportamiento que ya funcionaba
+
+### Caso 3: La vez que recomendamos NO tocar nada
+
+**Cliente:** despacho profesional con un módulo de cálculo de honorarios sin tests desde 2017.
+
+Nos pidieron presupuesto de refactorización: **€38.000**. Tras auditarlo, la conclusión fue incómoda de decir: el módulo funcionaba bien, **llevaba 6 años sin cambios y nadie preveía cambiarlo**. Refactorizarlo era riesgo puro, con retorno cero.
+
+**Intervención:** tests de humo de red de seguridad, **factura de €4.200**. Nada más.
+
+**Resultado:** 14 meses después, cero incidencias en ese módulo y **€33.800 que no se gastaron**. La deuda técnica también se gestiona decidiendo qué no pagar.
+
+---
+
+## Preguntas frecuentes
+
+### ¿Toda la deuda técnica hay que pagarla?
+
+No. Como una hipoteca, se paga la que genera intereses que superan su utilidad. El código estable, sin cambios previstos y sin riesgo de seguridad es "cemento": dejarlo quieto es gratis. Pagar deuda que no cobra intereses es gastar capital en algo que no rinde.
+
+### ¿Cuánto debería presupuestar mi empresa para refactorizar?
+
+La referencia del sector es el **15-20% del presupuesto de desarrollo anual** dirigido a mantenimiento y mejora técnica continua. Si tu proyecto costó €60.000, habla de €9.000-€12.000/año. Menos que eso, y la deuda crece; mucho más de forma puntual, suele indicar que se dejó acumular demasiado tiempo.
+
+### ¿Refactorizar o reescribir desde cero?
+
+Casi siempre refactorizar. La reescritura solo se justifica cuando el stack es insostenible (fin de soporte, imposibilidad de contratar perfiles) o cuando el negocio que sirve el código cambió tanto que el modelo ya no representa nada real. Incluso entonces, migra por el patrón Strangler Fig: la reescritura a ciegas es como cambiar los cimientos con la casa llena.
+
+### ¿Cómo explico la deuda técnica a dirección sin que suene a capricho?
+
+Con la misma metáfora que usan ellos: finanzas. "Tenemos un préstamo de €66.000/año en intereses que no genera valor. Podemos seguir pagando cuota, o invertir €18.000 una vez para cancelarlo en 4 meses." Lleva siempre los cuatro números de la línea base y el objetivo. La deuda explicada con datos deja de ser una opinión técnica.
+
+### ¿La IA puede refactorizar el código en 2026?
+
+Acelera mucho, pero con una condición: **solo refactoriza con confianza el código que tiene tests que verifican el comportamiento**. Sin tests, una IA (como un humano) puede cambiar el comportamiento sin saberlo. El flujo sensato en 2026 es: tests de caracterización primero, refactor asistido después, revisión humana siempre.
+
+### ¿Qué pasa si decidimos no pagar la deuda nunca?
+
+Es una decisión legítima en algunos casos, pero hay que tomarla conscientemente: aceptas que el coste de cada cambio crecerá, que el equipo experimentado irá rotando sin reponer el conocimiento, y que en 3-5 años el reemplazo costará 2-3 veces más y con más riesgo. A veces el negocio lo justifica. Lo que no se puede es no decidir y que la factura decida por ti.
+
+---
+
+## Conclusión
+
+La deuda técnica no es el enemigo. Lo es **no saber cuánta tienes, dónde cobra intereses y qué partes puedes ignorar con tranquilidad**.
+
+Refactoriza el código que tocas a diario y duele. Encapsula el que es frágil pero estable. Ignora el cemento que aguanta sin quebrarse. Y cuando una zona crítica acumule demasiado, no temas un par de semanas de modo InVersion: salen mucho más baratas que un año de intereses compuestos.
+
+Los equipos técnicos no piden refactorizar para evitar trabajar: piden dejar de trabajar el doble por la misma funcionalidad. Escuchar esa señal temprano es, literalmente, ahorrar decenas de miles de euros.
+
+**¿Tienes un módulo que da pavor a tu equipo? [Cuéntanos cuál →](/contacto)** En 30 minutos te diremos si toca refactorizar, encapsular o si puedes olvidarte de él para siempre.
+
+---
+
+*¿Este artículo te ha servido para ordenar la conversación con tu equipo? Compártelo con quien tenga que leerlo antes de la próxima reunión de presupuesto.*

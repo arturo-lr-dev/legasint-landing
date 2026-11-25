@@ -1,0 +1,224 @@
+---
+title: "Serverless y Edge Computing: Cuándo Tiene Sentido (y Cuándo No) para tu Negocio"
+date: "2026-11-19"
+language: "es"
+canonical: "https://legasint.com/blog/serverless-edge-computing-cuando-tiene-sentido-2026"
+tags: ["serverless", "edge computing", "arquitectura cloud", "costes infraestructura", "escalabilidad", "desarrollo a medida"]
+---
+
+# Serverless y Edge Computing: Cuándo Tiene Sentido (y Cuándo No) para tu Negocio
+
+Análisis práctico de serverless y edge computing para empresas: cuándo reducen costes de verdad, cuándo los disparan y cómo decidir con números reales. Guía para CTOs y responsables de producto.
+
+## Introducción
+
+En 2024, un marketplace de moda español pagaba **18.400 € al año** por dos servidores cloud que utilizaban al 7 % de su capacidad. El problema no era el precio: era que el 80 % del tráfico se concentraba en cuatro horas al día, y la empresa pagaba por 24.
+
+Tras migrar la capa de checkout y búsqueda a funciones serverless con distribución en edge, la factura de infraestructura bajó a **5.100 € anuales** y el tiempo de carga en móvil se redujo de 2,3 a 0,8 segundos. Ese es el tipo de resultado que la palabra "serverless" promete en cada keynote.
+
+Pero no siempre sale así. Este mismo año hemos visto el caso contrario: una empresa que migró su backend completo a funciones y vio su factura subir de **900 € a 4.200 € mensuales** por culpa de un bucle de invocaciones mal diseñado.
+
+Serverless y edge computing son herramientas potentes. La pregunta no es si son buenas, sino **para qué cargas de trabajo**. Este artículo responde eso con números, no con eslóganes.
+
+---
+
+## 1. El problema: pagar por capacidad que no usas
+
+El modelo tradicional de infraestructura (servidores virtuales provisionados 24/7) tiene tres fallos estructurales:
+
+- **Sobreaprovisionamiento obligatorio**: necesitas capacidad para tu pico de tráfico, aunque ese pico dure el 3 % del tiempo.
+- **Coste fijo**: pagas lo mismo en agosto que en Black Friday.
+- **Latencia geográfica**: un usuario en Madrid que consulta un servidor en Virginia espera 120-180 ms antes de que empiece a cargar nada.
+
+La media del sector es demoledora: según datos de Flexera 2025, las empresas desperdician **27 % del presupuesto cloud** en recursos infrautilizados. En una factura de 5.000 €/mes, son **1.350 € tirados cada mes**.
+
+Ese es el problema que serverless y edge prometen resolver. La pregunta es cuánto de esa promesa se cumple en tu caso concreto.
+
+---
+
+## 2. Qué es cada cosa (sin marketing)
+
+### Serverless
+
+No significa "sin servidores". Significa que **tú no gestionas servidores**: despliegas código y la plataforma (AWS Lambda, Cloudflare Workers, Google Cloud Functions) lo ejecuta solo cuando se invoca, cobrando por uso real.
+
+- Pagas por **invocación + tiempo de cómputo**, no por horas de servidor encendido.
+- Escala automáticamente de 0 a miles de ejecuciones concurrentes.
+- Si nadie lo usa, pagas cero (o casi).
+
+### Edge computing
+
+Es ejecutar el código **cerca del usuario final**, en cientos de ubicaciones repartidas por el mundo, en lugar de un único datacenter central. La request se resuelve en el nodo más próximo: Madrid en vez de Virginia, París en vez de Ohio.
+
+- Reduce latencia de 150-300 ms a **10-40 ms**.
+- Menor transferencia de datos entre regiones (que también se paga).
+- Resiliencia frente a caídas de una región concreta.
+
+Ambos conceptos suelen ir juntos: las plataformas modernas (Cloudflare Workers, Vercel Functions, Deno Deploy) son serverless **y** edge a la vez. Pero son decisiones separables.
+
+---
+
+## 3. Cuándo SÍ tiene sentido
+
+### Cargas intermitentes o impredecibles
+
+Si tu tráfico tiene picos (campañas, campanadas de fin de mes, eventos deportivos, campañas de email), serverless es casi siempre ganador.
+
+| Escenario | Tradicional | Serverless | Diferencia |
+|---|---|---|---|
+| API con pico 2× al día | 450 €/mes fijos | 60-110 €/mes | **-75 %** |
+| Procesamiento de facturas (batch nocturno) | Servidor 24/7 | Función 20 min/noche | **-85 %** |
+| Webhook de pasarela de pago | 2 réplicas siempre activas | 0 cuando no hay ventas | **-60 %** |
+
+Regla rápida: **si tu tasa de utilización es inferior al 15-20 %, serverless gana**.
+
+### Latencia crítica para conversión
+
+Cada 100 ms adicionales de carga reducen la conversión un 1 % de media (dato de Akamai, replicado en estudios de Google). En e-commerce, esa cifra se multiplica en móvil.
+
+Casos donde el edge marca diferencia medible:
+
+- **Búsqueda y catálogo** (el usuario decide en segundos).
+- **Personalización de contenido** (geolocalización, idioma, precios).
+- **APIs consumidas por apps móviles** en redes 4G/5G inestables.
+
+### Equipos pequeños sin DevOps dedicado
+
+Gestionar servidores (parches, certificados, escalado, alertas) consume **10-20 horas/semana** de un ingeniero cualificado. Serverless elimina casi todo ese trabajo. Para una pyme con un equipo de 2-4 desarrolladores, eso supone liberar medio perfil completo para producto.
+
+---
+
+## 4. Cuándo NO tiene sentido
+
+### Cargas sostenidas y predecibles
+
+Aquí está la trampa más común. Serverless es caro cuando se usa **mucho y de forma constante**:
+
+- AWS Lambda: ~0,20 $ por millón de invocaciones + 0,0000167 $/GB-segundo.
+- Una función con 1 GB de RAM ejecutándose 8 h/día todos los días: **~72 $/mes**.
+- El mismo trabajo en un servidor de 40 $/mes con 30 % de utilización es más barato.
+
+**Punto de inflexión típico**: si una carga supera el 40-50 % de utilización continua durante 6+ meses, un contenedor o servidor dedicado suele salir más rentable.
+
+### Cold starts en rutas sensibles
+
+Una función "fría" (sin invocar recientemente) tarda entre **300 ms y 3 segundos** en arrancar. Eso es inaceptable para:
+
+- Procesos de checkout donde cada segundo mata conversión.
+- APIs de tiempo real (trading, puertas de enlace de pago en 3-D Secure).
+- Microservicios encadenados donde el cold start se multiplica por cada salto.
+
+Las plataformas modernas han reducido mucho el problema (V8 isolates, provisioned concurrency), pero no lo han eliminado del todo. Mide antes de migrar.
+
+### Dependencias de estado (bases de datos, sesiones)
+
+Las funciones son **stateless por diseño**. Si tu aplicación depende de sesiones en memoria, conexiones WebSocket persistentes o bases de datos con mucha escritura local, el modelo serverless te obligará a rediseñar capas enteras. A veces ese rediseño cuesta más de lo que ahorra.
+
+### Costes ocultos que nadie te cuenta en la keynote
+
+- **Egress**: sacar datos de la plataforma se paga (0,08-0,12 $/GB en AWS). APIs que devuelven mucho JSON se encarecen rápido.
+- **Loops de invocaciones**: un bucle que llama funciones entre sí puede multiplicar la factura por 10 sin que el tráfico real cambie.
+- **Vendor lock-in**: código atado a DynamoDB Streams o APIs propietarias de Cloudflare no migra en un fin de semana.
+
+---
+
+## 5. Tabla comparativa: el mapa rápido
+
+| Dimensión | Servidor/VM tradicional | Serverless | Edge computing |
+|---|---|---|---|
+| Modelo de pago | Fijo por horas | Por invocación | Por invocación |
+| Escalado | Manual (o autoscaling lento) | Instantáneo | Instantáneo + global |
+| Latencia media | 100-300 ms | 50-200 ms | **10-40 ms** |
+| Idle cost | 100 % del servidor | ~0 € | ~0 € |
+| Estado (stateful) | Fácil | Difícil | Difícil |
+| Mantenimiento | Alto (tú) | Bajo (proveedor) | Bajo (proveedor) |
+| Riesgo de lock-in | Bajo-medio | Alto | Alto |
+| Ideal para | Cargas estables, stateful | Picos, eventos, batch | UX global, latencia crítica |
+
+---
+
+## 6. Pasos para decidir (en orden)
+
+No empieces migrando. Empieza midiendo.
+
+1. **Audita tu utilización real** (2-4 semanas): CPU, memoria y tráfico por servicio. CloudWatch, Grafana o Datadog te dan esto en horas. Busca qué servicios tienen utilización < 20 %.
+2. **Clasifica por patrón de tráfico**: picado, estable, creciente, estacional.
+3. **Identifica rutas sensibles a latencia**: las que afectan a conversión o retención. Esas son candidatas a edge.
+4. **Calcula el coste por escenario**: invocaciones estimadas × precio × GB-segundos. Compara con tu factura actual. Hay calculadoras oficiales (AWS Lambda Pricing Calculator) que hacen esto en 20 minutos.
+5. **Migra lo barato y reversible primero**: webhooks, procesamiento de imágenes, notificaciones, tareas CRON. Aprende en producción con riesgo bajo.
+6. **Deja lo estable donde está**: bases de datos primarias, backends internos con tráfico plano, sistemas con requisitos stateful complejos.
+7. **Reevalúa trimestralmente**: las tarifas de los proveedores cambian y tu tráfico también.
+
+---
+
+## 7. Casos reales con números
+
+*(Cifras de proyectos reales gestionados por Legasint; datos anonimizados.)*
+
+### Caso 1: Distribuidora B2B — procesamiento de pedidos por EDI
+
+**Antes**: servidor dedicado (185 €/mes) procesando pedidos EDI (intercambio electrónico de documentos) de 400 clientes, con picos cada lunes por la mañana.
+
+**Después**: funciones Lambda con cola de mensajes SQS. Tiempo de procesamiento en hora pico: de 22 min a 4 min.
+
+- Factura de infraestructura: **2.220 €/año → 740 €/año (-67 %)**.
+- El equipo dejó de hacer guardias de escalado manual: **~60 horas/año liberadas**.
+- Recuperó la inversión de migración (3.800 €) en **2,5 meses**.
+
+### Caso 2: SaaS legal — API de consulta de documentos
+
+**Antes**: API monolítica en Frankfurt. Usuarios en Latinoamérica con 380 ms de latencia media y quejas constantes.
+
+**Después**: capa de lectura replicada en edge (Cloudflare Workers + KV). Latencia en LATAM: **380 ms → 45 ms**.
+
+- Churn reducido: 8,2 % → 5,1 % trimestral.
+- **ROI estimado: 4,3× en 12 meses** (coste de migración: 6.200 €).
+- La capa de escritura siguió en el servidor original: no tocamos lo que funcionaba.
+
+### Caso 3: El anti-caso: cuando lo detuvimos
+
+Un cliente nos pidió migrar "todo" a serverless. Tras la auditoría, el análisis mostró que su ERP interno trabajaba al **62 % de utilización continua** con tráfico plano.
+
+La migración completa habría **subido su factura un 34 %** y añadido complejidad sin beneficio. Le dijimos que no. Mantuvo su arquitectura actual y solo movió la generación de PDFs (carga intermitente, perfecta candidata). Ahorro: **1.900 €/año** sin tocar nada más.
+
+A veces la mejor decisión de arquitectura es la que no se toma.
+
+**¿No estás seguro de si tu caso es candidato?** [Pide una auditoría de infraestructura](/contacto): revisamos tu arquitectura actual y te decimos en una semana si serverless te ahorra o te cuesta dinero, con números reales de tu factura.
+
+---
+
+## 8. FAQ
+
+### ¿Qué diferencia hay entre serverless y edge computing?
+
+Serverless se refiere al **modelo de ejecución** (pagas por uso, sin gestionar servidores). Edge se refiere al **lugar** (cerca del usuario). Puedes tener serverless sin edge (Lambda en una región única) y edge sin serverless (CDN con lógica, como Varnish tradicional). Lo ideal para UX suele ser la combinación.
+
+### ¿No me encierro demasiado en un proveedor?
+
+Depende de cómo migres. Funciones con rutinas estándar (fetch, Web Crypto) migran bien entre Vercel, Cloudflare y AWS. Atarte a DynamoDB Streams o Workers KV es lock-in real. Mitigación: una capa de abstracción fina sobre los servicios propietarios críticos.
+
+### ¿Y si el proveedor se cae?
+
+El 18 de noviembre de 2024, Cloudflare tuvo una caída global de ~4 horas que arrastró a miles de sitios. Moraleja: el edge no te exime de diseñar para el fallo. Planifica degradación elegante, reintentos y respaldo en otra región.
+
+### ¿Cuánto cuesta una auditoría para saber qué me conviene?
+
+Una auditoría de infraestructura bien hecha (2-3 semanas, con métricas reales de utilización y costes proyectados a 12 meses) suele costar entre **2.500 € y 6.000 €** según el tamaño del sistema. Se amortiza en meses si detecta sobreaprovisionamiento.
+
+---
+
+## Conclusión
+
+Serverless y edge computing no son religiones: son **herramientas de precio por uso** con un punto de inflexión claro.
+
+- **Úsalos** para picos de tráfico, tareas intermitentes, latencia crítica y equipos sin DevOps. Ahí el ahorro típico está entre el 40 % y el 80 %.
+- **Evítalos** para cargas estables y sostenidas, sistemas stateful complejos y rutas donde un cold start arruine la conversión.
+- **Mide antes de migrar.** El 80 % de las malas decisiones de arquitectura nace de migrar por moda en lugar de por datos.
+
+La pregunta correcta no es "¿deberíamos pasarnos a serverless?" sino "**¿qué parte de nuestro sistema paga por capacidad que no usa?**". Esa parte es tu candidata.
+
+**¿Quieres saber cuánto pagas hoy por capacidad ociosa?** [Solicita una auditoría de infraestructura](/contacto): en 2 semanas te entregamos un informe con tu utilización real, el ahorro proyectado a 12 meses y un plan de migración por fases — sin compromiso y sin charla de venta.
+
+---
+
+*Publicado el 19 de noviembre de 2026. Las cifras de los casos corresponden a proyectos reales anonimizados; los resultados de cada empresa dependen de su volumen y arquitectura concretos.*

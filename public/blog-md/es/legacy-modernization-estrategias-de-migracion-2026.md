@@ -1,0 +1,196 @@
+---
+title: "Legacy modernization: estrategias de migración: guía práctica 2026"
+date: "2026-11-03"
+language: "es"
+canonical: "https://legasint.com/blog/legacy-modernization-estrategias-de-migracion-2026"
+tags: ["legacy", "modernizacion", "migracion", "estrategia", "cloud", "roi"]
+---
+
+# Legacy modernization: estrategias de migración: guía práctica 2026
+
+Las 6 estrategias de migración legacy (rehost, replatform, refactor, rebuild, replace, retire) explicadas con criterios de decisión, tabla comparativa y 3 casos reales con números de factura y ROI.
+
+## El día que 45 minutos costaron 440 millones de dólares
+
+El 1 de agosto de 2012, Knight Capital instaló una actualización rutinaria en sus servidores de trading. El despliegue reactivó por error una rutina legacy escrita en 2003 y apagada desde 2005. Durante 45 minutos, el sistema compró y vendió acciones de forma descontrolada hasta que un ingeniero consiguió detenerlo.
+
+La factura: **440 millones de dólares**, casi la mitad del valor de la empresa en bolsa. Knight Capital necesitó un rescate de inversores externos y acabó fusionada con un competidor cuatro meses después.
+
+El fallo técnico duró menos de una hora. La causa tardó una década en formarse: código sin documentar, dependencias ocultas, despliegues manuales y una rutina de la que nadie recordaba ya por qué existía.
+
+Esa misma combinación está hoy en miles de sistemas empresariales. La diferencia es que todavía puedes actuar con calma, por módulos y con números sobre la mesa.
+
+---
+
+## El problema: posponer también es una decisión con factura
+
+Sobre por qué modernizar ya hay abundante literatura. La pregunta que nos llega con más frecuencia desde equipos técnicos es otra: **cómo migrar sin convertir el propio proyecto en un segundo legacy**.
+
+Porque hay tres formas de hacerlo mal. Mantener todo como está y dejar que la deuda crezca. Reescribirlo todo de golpe y pasar 18 meses sin entregar valor. O moverlo tal cual a la nube, celebrar el éxito y seguir con los mismos problemas en otro servidor.
+
+Hay además un factor de calendario que ya no se puede negociar. Sistemas operativos y bases de datos cuyo soporte oficial terminó hace años siguen sosteniendo procesos críticos en muchas empresas, y la normativa europea (NIS2, DORA) exige niveles de seguridad y trazabilidad que esas plataformas no pueden dar.
+
+En las auditorías que hacemos en Legasint, lo primero que pedimos es la factura real del legacy:
+
+- **Licencias y soporte** de fabricantes que suben precio cada renovación.
+- **Horas de desarrollo** absorbidas en parches en lugar de mejoras.
+- **Trabajo manual** (Excel, dobles introducciones de datos) que el sistema obliga a mantener.
+- **Riesgo**: caídas, exposición regulatoria y dependencia de una sola persona o proveedor.
+
+Sin esa línea base en euros, cualquier estrategia de migración es una opinión.
+
+---
+
+## Las seis estrategias de migración
+
+Gartner las popularizó como las "6 R". La idea central es simple: la estrategia correcta se decide módulo a módulo, nunca para el sistema entero.
+
+### 1. Rehost (lift & shift)
+
+Trasladar la aplicación a infraestructura nueva, prácticamente sin tocar el código. Es la opción más rápida cuando el objetivo es salir de un datacenter propio, dejar de mantener hardware o ganar algo de elasticidad enseguida.
+
+Su límite está claro: no elimina deuda técnica, solo cambia el sistema de casa. Úsala para módulos estables que deben seguir funcionando igual durante años.
+
+### 2. Replatform (lift & reshape)
+
+Mover el sistema aplicando ajustes dirigidos: cambiar el motor de base de datos, contenerizar los servicios, sustituir un middleware que ya no tiene soporte.
+
+Suele ser el punto dulce entre coste y beneficio. Moderniza lo que genera fricción operativa sin asumir el coste y el riesgo de una reescritura completa.
+
+### 3. Refactor / Rearchitect
+
+Rediseñar módulos con arquitectura moderna: dominios bien definidos, APIs, eventos y escalado independiente. Es la inversión más alta y la que más valor genera entre dos y tres años.
+
+Resérvala para los módulos que cambian cada semana, porque ahí la rigidez del legacy cuesta más dinero.
+
+### 4. Rebuild
+
+Reescribir desde cero. Tiene sentido cuando el negocio ha cambiado tanto que el software modela procesos que ya no existen, o cuando refactorizar pieza a pieza cuesta más que una reescritura con tecnología estándar y equipo propio.
+
+### 5. Replace
+
+Sustituir por un producto SaaS del mercado y migrar los datos. Adecuado para funciones commodity como RRHH, contabilidad o gestión de contratos simples, donde la diferenciación de tu negocio no está en el software.
+
+### 6. Retire / Retain
+
+Apagar lo que nadie usa y dejar en producción lo que funciona sin generar fricción. En las auditorías es habitual encontrar servidores que llevan años sin recibir tráfico real. A veces la mejor migración es la que no se hace.
+
+---
+
+## Tabla comparativa
+
+| Estrategia | Coste | Plazo típico | Riesgo | Cuándo elegirla |
+|------------|-------|--------------|--------|-----------------|
+| **Rehost** | Bajo | Semanas | Bajo | Salir de un CPD o dejar de mantener hardware |
+| **Replatform** | Medio | 2-4 meses | Medio | Sistemas estables con dependencias antiguas |
+| **Refactor** | Alto | 6-18 meses | Medio-alto | Módulos que cambian constantemente |
+| **Rebuild** | Muy alto | 9-24 meses | Alto | Software que modela procesos ya inexistentes |
+| **Replace** | Medio | 2-6 meses | Medio | Funciones commodity sin valor diferencial |
+| **Retire / Retain** | Mínimo | Días | Bajo | Módulos sin uso o sin fricción |
+
+Los plazos importan, pero no lo son todo. Un rehost termina antes que un refactor, aunque solo el refactor recupera velocidad de desarrollo a medio plazo. La elección depende de dónde duela hoy y de dónde quieras estar en tres años.
+
+---
+
+## Cómo elegir: pasos prácticos
+
+1. **Auditoría técnica y de costes (2-4 semanas).** Inventario de módulos, dependencias, costes reales y trabajo manual derivado del sistema actual.
+2. **Mapa de calor.** Cada módulo se clasifica por frecuencia de cambio, fricción técnica, valor de negocio y riesgo regulatorio.
+3. **Asignar una R por módulo.** Un mismo sistema puede combinar rehost en un módulo, refactor en otro y retiro en un tercero.
+4. **Primer quick win (8-12 semanas).** Alto valor, bajo riesgo y ROI medible. Sirve para financiar las fases siguientes y ganar confianza interna.
+5. **Convivencia.** APIs de fachada, migración por dominios y retiro controlado del legacy, sin día cero ni apagones.
+6. **Medición continua.** Horas ahorradas, errores evitados y facturas antes y después, revisadas cada mes con dirección.
+
+**[Solicita una auditoría técnica de tu sistema legacy →](/contacto)**
+
+---
+
+## Casos reales con números
+
+### Caso 1: aseguradora, replatform del core de siniestros
+
+Mutualidad con unas 300.000 pólizas. El proceso batch de siniestros se ejecutaba en un servidor propio y tardaba nueve horas; además, el soporte de la base de datos se encarecía en cada renovación y las copias de seguridad eran frágiles.
+
+Decisión: **replatform** a infraestructura gestionada, con ajuste del motor de datos y contenerización, sin tocar la lógica de negocio. La operativa siguió igual mientras migrábamos.
+
+Números a los 10 meses:
+
+- Factura de soporte e infraestructura: de **8.200 € a 3.900 € al mes**.
+- Batch de siniestros: de **9 horas a 40 minutos**.
+- Inversión total: **145.000 €**.
+- Ahorro anual consolidado: **62.000 €** entre infraestructura y horas de operación.
+- Payback: **28 meses**; TCO a cinco años reducido un **38 %**.
+
+### Caso 2: distribuidor mayorista, refactor del módulo de pedidos
+
+El catálogo tardaba 20 minutos en actualizarse y dos operarios dedicaban seis horas diarias a trasladar pedidos del teléfono al ERP, con unos 18 errores de transcripción al mes que generaban devoluciones y reclamaciones.
+
+Decisión: **refactor** del dominio de pedidos con un portal integrado en el ERP y coexistencia con el resto del sistema durante la migración.
+
+Números a los 8 meses:
+
+- Transcripción manual: **eliminada por completo** (≈ 4.000 €/mes en horas).
+- Errores de pedido: de **18 al mes a 2 al mes**.
+- Tiempo de actualización del catálogo: de **20 minutos a menos de 1**.
+- Inversión: **72.000 €**. Ahorro anual: **56.000 €**. Payback: **15 meses**.
+
+### Caso 3: empresa energética, replace y retire
+
+La gestión de contratos de mantenimiento corría sobre una aplicación a medida de los años 90: tres servidores dedicados, 56.000 € anuales en mantenimiento y un proveedor que respondía cada vez más lento.
+
+Decisión: **replace** por un SaaS especializado del sector, migración de datos históricos y **retire** de la plataforma antigua.
+
+Números a los 12 meses:
+
+- Mantenimiento: de **56.000 € a 19.000 € al año** en licencias SaaS.
+- Horas de TI liberadas: **900 horas al año** que antes se consumían en soporte.
+- Ahorro anual total: **73.000 €**.
+- Inversión: **88.000 €**. Payback: **14 meses**.
+
+---
+
+## Errores que conviene evitar
+
+- **Aplicar una única estrategia a todo el sistema.** Es el error más común y el más caro.
+- **Confundir rehost con modernizar.** Cambiar de servidor no mejora el software.
+- **Reescribir todo de golpe.** El big bang casi nunca llega a buen puerto ni dentro de plazo.
+- **Migrar datos sin validación cruzada.** Los importes y el histórico son lo primero que diverge.
+- **No presupuestar la convivencia.** Legacy y nuevo sistema coexistirán meses; mejor planearlo que improvisarlo.
+
+---
+
+## Preguntas frecuentes
+
+### ¿Podemos combinar varias estrategias en el mismo sistema?
+
+Sí, y es lo recomendable. En la práctica, la mayoría de proyectos combinan rehost en módulos estables, refactor en los críticos y retiro en lo que no se usa.
+
+### ¿Cuál es la estrategia más barata?
+
+Retire. Apagar lo que nadie usa cuesta días y ahorra de inmediato. Entre las que implican desarrollo, rehost es la puerta de entrada más económica.
+
+### ¿Rehost o replatform: cómo lo decidimos?
+
+Si el objetivo es solo salir de una infraestructura (fin de contrato de CPD, fin de soporte del hardware), rehost. Si además hay dolor operativo (copias de seguridad frágiles, rendimiento, middleware obsoleto), replatform.
+
+### ¿Qué hacemos si nadie conoce el código legacy?
+
+Es el escenario habitual, no la excepción. La auditoría inicial reconstruye el mapa funcional con análisis estático de código y entrevistas con usuarios clave, antes de tocar una sola línea.
+
+### ¿Cuánto dura la convivencia entre legacy y nuevo sistema?
+
+Depende del tamaño, pero lo normal es de 4 a 12 meses por dominio. La convivencia bien planificada es una fase del proyecto, no un accidente.
+
+### ¿Cómo justificamos el proyecto a dirección?
+
+Con la factura real del legacy: licencias, soporte, horas de desarrollo en parches y trabajo manual. La comparación antes y después por módulo convence más que cualquier argumento técnico.
+
+---
+
+## Conclusión
+
+Las seis estrategias no son competidoras: son herramientas. El acierto está en aplicar la herramienta correcta a cada módulo, con una línea base de costes y un primer resultado medible antes de escalar la inversión.
+
+Los tres casos muestran el rango completo: desde un payback de 14 meses con replace hasta uno de 28 meses con replatform, todos con la operación funcionando durante la migración.
+
+**[Reserva tu sesión de arquitectura de 45 minutos para clasificar tus módulos →](/contacto)**

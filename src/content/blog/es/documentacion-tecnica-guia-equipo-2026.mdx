@@ -1,0 +1,190 @@
+---
+title: 'Cómo Documentar el Código: La Guía Que Tu Equipo Necesita (Y Tu Futuro Yo También)'
+date: '2026-11-05'
+description: >-
+  Guía práctica para documentar código sin frenar el desarrollo: documentación interna, APIs y ADRs con casos reales, ahorro de horas y retorno medible.
+tags:
+  - documentacion-tecnica
+  - adr
+  - apis
+  - gestion-tecnica
+  - software-a-medida
+image: /blog-images/es-documentacion-tecnica-guia-equipo.png
+translationKey: documentacion-tecnica-guia-equipo
+---
+
+# Cómo Documentar el Código: La Guía Que Tu Equipo Necesita
+
+En 2024, un operador logístico perdió a su desarrollador senior justo después del cierre fiscal. Era la única persona que entendía el módulo de facturación: qué reglas aplicaba en cada país, por qué ciertos clientes tenían descuentos que no aparecían en ningún panel, qué hacía exactamente esa función de 900 líneas.
+
+Cuando llegó el cambio de IVA, el sustituto tardó 11 días en completar un ajuste que antes se resolvía en 2. El coste saltó de 1.500 € a 8.000 €. Nadie cometió un error grave. El conocimiento se había marchado con la persona que lo llevaba en la cabeza.
+
+Historias así se repiten cada semana. El mantenimiento consume entre el 60 % y el 70 % del coste total de un sistema a lo largo de su vida, según estimaciones clásicas de IBM. Y Stripe calculó que el desarrollador medio dedica el 42 % de su tiempo a mantener y arreglar código existente. Buena parte de ese esfuerzo existe porque el contexto original desapareció.
+
+La documentación bien hecha ataca ese problema de frente, y cuesta mucho menos que lo que ya estás pagando por su ausencia.
+
+## El problema: un activo invisible que se evapora
+
+El software vive dos vidas. Una es el código, que está en el repositorio. La otra es el contexto: por qué se construyó así, qué alternativas se descartaron, qué clientes dependen de ese comportamiento y qué pasó la última vez que alguien tocó ese módulo.
+
+Ese contexto no se guarda en ningún sitio por defecto. Vive en conversaciones de Slack, en comentarios de un ticket cerrado o en la cabeza de quien lleva seis años en el proyecto. Cuando esa persona falta, el contexto desaparece con ella.
+
+Los equipos no dejan de documentar por desidia. Lo hacen porque nunca han visto un sistema de documentación que funcionara, y asumen que documentar consiste en escribir manuales que nadie leerá. Es una conclusión razonable construida sobre una mala experiencia. La alternativa es mucho menos dramática de lo que suena.
+
+## La solución: documentación mínima viable en tres capas
+
+Necesitas tres documentos cortos y vivos. Nada de wikis de 400 páginas.
+
+### 1. Documentación interna de producto
+
+Un README por repositorio y un runbook por proceso crítico. Qué hace esto, cómo se monta, cómo se ejecuta, qué hacer cuando falla, a quién preguntar. Una o dos páginas con comandos reales copiables.
+
+### 2. Documentación de API
+
+Si tu producto se integra con otros sistemas, la API es tu escaparate técnico. Contratos definidos con OpenAPI, ejemplos de peticiones y respuestas, códigos de error explicados y una guía de primeros pasos que un integrador externo pueda completar sin llamarte.
+
+### 3. Decisiones de arquitectura (ADRs)
+
+Un ADR (Architecture Decision Record) resume una decisión técnica importante en una sola página: contexto, decisión, alternativas descartadas y consecuencias. El formato lo popularizó Michael Nygard y se ha convertido en el estándar de facto en la industria.
+
+El valor del ADR está en el porqué. El qué ya se ve en el código; el porqué es lo que desaparece. Con dos años de ADRs, una persona nueva entiende en horas decisiones que antes costaban semanas de arqueología.
+
+## Seis pasos para implantarla sin frenar el desarrollo
+
+### 1. Documenta como código
+
+La documentación vive en el mismo repositorio, en Markdown, con el mismo flujo de pull requests y revisiones que el código. Se versiona, se busca desde el IDE y se actualiza en el mismo commit que el cambio. Si la doc vive en un wiki aparte, morirá desactualizada. Si vive junto al código, sobrevive.
+
+### 2. Incluye la documentación en el "terminado"
+
+Una tarea no está cerrada si cambia el comportamiento del sistema y deja la documentación vieja. No hace falta prosa: un README actualizado, un ejemplo nuevo en la API o un ADR si ha habido decisión nueva.
+
+### 3. Usa plantillas de una página
+
+Cortas, fijas y fáciles de rellenar. README: qué es, cómo se monta, cómo se despliega, quién responde. Runbook: pasos, señales de alarma, rollback. ADR: contexto, decisión, alternativas, consecuencias. Nadie tiene que escribir un tratado. Todo el mundo puede escribir una página.
+
+### 4. Escribe para tu yo de dentro de seis meses
+
+Piensa en lo que necesitarías saber si volvieras a tocar este código dentro de medio año. Eso es lo que va al documento. Frases cortas, comandos reales y el motivo de cada decisión.
+
+### 5. Prioriza lo nuevo y los puntos calientes
+
+Intentar documentar cinco años de código en un mes es el error clásico que mata el proyecto. Documenta todo lo nuevo desde hoy y reserva el resto del esfuerzo para los hotspots: los tres o cuatro módulos que más se tocan, más fallan o más miedo dan.
+
+### 6. Hazla visible y reparte la responsabilidad
+
+Encontrar la documentación debería tardar segundos: enlaces desde el README principal, nombres de archivo claros y una revisión ligera en cada PR. Y mantenerla es tarea de todos, con una rotación quincenal de quien responde las dudas del equipo.
+
+## Qué modelo elegir: comparativa de enfoques
+
+| Enfoque | Esfuerzo inicial | Se desactualiza | Se encuentra en segundos | Sirve al onboarding |
+|---|---|---|---|---|
+| **Sin documentación** | Cero | No aplica | No | No |
+| **Wiki aparte, páginas largas** | Alto | En semanas | Casi nunca | A medias |
+| **Doc-as-code mínima viable** | Bajo | Poco: vive junto al código | Sí | Sí |
+
+## Qué supone en cifras: el retorno de documentar bien
+
+Números, porque "documentar es bueno" no convence a nadie que administre un presupuesto:
+
+- **Onboarding más corto:** bajar de 8 semanas a 3 de rampa técnica, con un salario medio de 45.000 €, devuelve unos 4.300 € por cada persona incorporada.
+- **Menos interrupciones:** una persona senior recupera entre 4 y 6 horas semanales que hoy dedica a responder las mismas preguntas una y otra vez. En un equipo de seis, eso es un 10-15 % de la capacidad total.
+- **Reescrituras evitadas:** repetir una decisión que ya se descartó hace dos años cuesta entre 30.000 € y 60.000 € en refactor o en volver a empezar.
+- **Coste real:** documentar bien ocupa entre un 5 % y un 10 % del tiempo del sprint.
+
+Para un equipo de seis personas con un coste anual de unos 260.000 €, invertir un 10 % del tiempo y recuperar un 12 % de capacidad devuelve la inversión en el primer trimestre. El resto es margen.
+
+**[Pide una auditoría de documentación de 30 minutos: revisamos tus repositorios y te decimos dónde está el conocimiento huérfano →](/contacto)**
+
+Sales con una lista priorizada de qué documentar primero. Sin informes de 40 páginas.
+
+## Casos reales: equipos que documentaron y lo notaron en cifras
+
+### Caso 1: operador logístico (equipo de 7 desarrolladores)
+
+El del inicio de esta guía. Crearon el runbook del módulo de facturación, un mapa de dependencias entre servicios y dos ADRs, uno de ellos sobre el motor de cálculo fiscal. Desde entonces, todo lo nuevo se entrega con su documentación mínima.
+
+- **Onboarding:** de 8 semanas a 3.
+- **El siguiente cambio fiscal:** 2 días de trabajo y 1.200 €, en lugar de 11 días y 8.000 €.
+- **Producción:** cero paradas relacionadas con ese módulo en el año siguiente.
+
+### Caso 2: SaaS B2B con API pública (equipo de 10 desarrolladores)
+
+Las integraciones de partners dependían de llamadas y correos con el equipo técnico. Cada integración tardaba 6 semanas de media, y el 30 % de los tickets de soporte eran dudas de integración.
+
+- **Acciones:** contrato OpenAPI completo, guía de primeros pasos con ejemplos listos para copiar y un entorno de pruebas estable.
+- **Tiempo de integración:** de 6 semanas a 2.
+- **Tickets de integración:** -40 % en un trimestre.
+- **Negocio:** 3 partners nuevos ese trimestre, unos 180.000 € anuales de contrato que antes no podían atender.
+
+### Caso 3: fabricante industrial con ERP propio (equipo de 12 desarrolladores)
+
+Las decisiones de arquitectura se tomaban en reuniones sin acta. Dos años después, nadie recordaba por qué se había descartado migrar un módulo concreto a servicios.
+
+- **Acciones:** ADRs obligatorios para decisiones estructurales, empezando solo por las nuevas. Sin retro-documentar.
+- **Reescritura evitada:** una propuesta de refactor de unos 45.000 € se frenó al aparecer el ADR que explicaba por qué esa opción ya se había descartado.
+- **Reuniones de arquitectura:** de 60 minutos a 30, porque el contexto estaba escrito y solo había que discutir lo nuevo.
+
+## Errores comunes (y cómo evitarlos)
+
+### 1. Intentar documentarlo todo de golpe
+
+"El proyecto de la gran wiki" muere en el segundo mes, cuando el negocio pide features. Mejor un mínimo viable que se mantenga cinco años que una enciclopedia que se abandona en seis semanas.
+
+### 2. Guardar la documentación lejos del código
+
+El wiki que nadie abre. Si no está donde la persona desarrolla, no existe por mucho que esté "disponible".
+
+### 3. Documentar el qué y olvidar el porqué
+
+El qué ya se ve leyendo el código. El porqué (alternativas descartadas, restricciones del cliente) solo vive en la memoria, y la memoria se pierde. Ahí un ADR de una página aporta más que veinte diagramas.
+
+### 4. Escribir para impresionar en lugar de para usar
+
+Un manual de 60 páginas que nadie lee vale menos que una página que resuelve una duda en dos minutos. Premia lo corto y lo concreto.
+
+### 5. No asignarle tiempo real
+
+"Documentad cuando podáis" significa nunca. La documentación va en la planificación del sprint, con la misma naturaleza que los tests.
+
+## Preguntas frecuentes
+
+### ¿Cuánto tiempo debería dedicar el equipo a documentar?
+
+Entre un 5 % y un 10 % del tiempo del sprint. En la práctica devuelve más de lo que consume: solo en interrupciones recuperadas, una persona senior gana entre 4 y 6 horas semanales.
+
+### ¿No se queda desactualizada enseguida?
+
+Sí, si vive lejos del código. Por eso el enfoque doc-as-code: la documentación cambia en el mismo pull request que el código. Si no puedes actualizarla en el mismo PR, es que está demasiado lejos.
+
+### ¿Por dónde empezamos si tenemos años de código sin documentar?
+
+Por lo nuevo, desde hoy, y por los hotspots: los tres o cuatro módulos que más se tocan, más fallan o más miedo dan. Retro-documentar todo el pasado es una trampa que casi nunca termina.
+
+### ¿Qué herramientas hacen falta?
+
+Ninguna costosa. Markdown, el propio repositorio, plantillas de ADR, OpenAPI o Swagger para las APIs y, si necesitas un sitio público, MkDocs o Docusaurus. La herramienta importa poco; la disciplina importa mucho.
+
+### ¿Puede la IA escribir la documentación?
+
+Puede redactar el 80 % de los borradores: resúmenes de pull requests, descripciones de endpoints o primeras versiones de runbooks. Lo que no puede es decidir qué es importante ni reconstruir el porqué de decisiones que no vivió. La IA acelera el escribir; el criterio sigue siendo humano.
+
+### ¿Quién es responsable de mantenerla?
+
+Todos. Si la documentación tiene un único dueño, se convierte en cuello de botella. La definición de "terminado" y las revisiones de código reparten la tarea de forma natural.
+
+## Conclusión: documentar es recomprar el conocimiento de tu empresa
+
+Cada sistema que construyes contiene años de decisiones, errores corregidos y acuerdos tácitos. Sin documentación, ese valor pertenece a las personas que lo vivieron, y se marcha con ellas. Con documentación mínima viable, pasa a pertenecer a la empresa.
+
+Los equipos que documentan con este enfoque reducen el onboarding a la mitad, recuperan entre un 10 % y un 15 % de su capacidad y evitan reescrituras de cinco cifras. No por escribir más, sino por escribir lo justo donde tiene que estar.
+
+Tu yo de dentro de seis meses, el que tendrá que tocar ese código a las 18:45 de un viernes, ya te lo agradece.
+
+**[Agenda una sesión de documentación con nuestro equipo: salimos de ella con tus repositorios ordenados y a tu equipo formado →](/contacto)**
+
+En una semana dejamos la estructura mínima lista: plantillas, convenciones, primeros ADRs y runbooks de tus procesos críticos. Tu equipo solo tendrá que mantenerla.
+
+---
+
+*Comparte con alguien que esta semana ha dicho "eso solo lo sabe una persona".*

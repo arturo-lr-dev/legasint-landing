@@ -1,0 +1,207 @@
+---
+title: 'Database Optimization: índices, queries y escalado para pymes en 2026'
+date: '2026-11-03'
+description: >-
+  Caso real: una query de 47 segundos ejecutada 1.150 veces al día mantenía el
+  servidor de una pyme al 94% de CPU. El método completo para optimizar índices,
+  reescribir queries y escalar sin quemar presupuesto.
+tags:
+  - optimización de bases de datos
+  - índices
+  - queries
+  - escalado
+  - PostgreSQL
+  - PYMEs
+  - ROI
+image: /blog-images/es-database-optimization-indices-queries-escalado-2026.svg
+translationKey: database-optimization-indices-queries-escalado
+---
+
+## Una query de 47 segundos, 1.150 veces al día
+
+Una empresa logística de 90 empleados llegó con el diagnóstico ya hecho: "necesitamos un servidor más grande".
+
+Su base de datos iba al 94% de CPU desde primera hora. Los usuarios se quejaban de pantallas lentas, los informes nocturnos no terminaban y el comité había aprobado una ampliación de hardware de **32.000 €**.
+
+Antes de firmar nada, pedimos el listado de queries lentas. El culpable saltó a la vista: una consulta sobre la tabla de eventos de envío (**48 millones de filas**) que tardaba **47 segundos** y se ejecutaba unas **1.150 veces al día**.
+
+Multiplicación rápida: el servidor dedicaba **unas 15 horas diarias** a escanear esa tabla entera, una y otra vez.
+
+El `WHERE` filtraba por `carrier_id` y `created_at`. Ninguna columna tenía índice. La solución fue crear un índice compuesto y reescribir la query para que lo usara: **47 segundos → 180 milisegundos**. La CPU se estabilizó en el 22% y los 32.000 € de hardware se quedaron en el cajón.
+
+Esto es database optimization en la vida real: casi nunca es magia. Es **medir, indexar y reescribir, en ese orden**.
+
+---
+
+## 1. El problema: la base de datos es el cuello de botella invisible
+
+En la mayoría de aplicaciones empresariales, la base de datos responde por el **60-80% del tiempo de carga** de cada pantalla. Y sin embargo es la parte que menos se vigila: hay monitorización para el servidor, para la API y para el front… y para la base de datos, una gráfica de "la CPU va bien".
+
+Los síntomas le sonarán familiares a cualquier equipo técnico:
+
+- Pantallas rápidas a primera hora que se arrastran a media tarde
+- Informes nocturnos que a veces terminan y a veces no
+- Timeouts aleatorios que nadie consigue reproducir en local
+- "Reinicia la base de datos" como solución recurrente
+- Un servidor que crece cada año y nunca es suficiente
+
+La causa real casi siempre es un puñado de consultas concreto: **el 5% de las queries genera el 95% de la carga**. El equipo de desarrollo suele saberlo; lo que no tiene es telemetría, tiempo o confianza para tocar producción.
+
+Ahí está la buena noticia: optimizar una base de datos existente es de los proyectos con **menor riesgo y mayor ROI** que existen. No reescribes nada, no migras nada, no cambias de proveedor.
+
+> **¿Cuántas queries lentas tiene tu base de datos ahora mismo?** [Reserva un diagnóstico de 45 minutos →](/contacto) Analizamos tus slow queries reales, cuantificamos el coste de cada una y te entregamos un plan de acción priorizado en 48 horas. Si después ejecutas la optimización con nosotros, el diagnóstico se descuenta.
+
+---
+
+## 2. La solución: medir, indexar, reescribir y solo entonces escalar
+
+El error clásico es escalar hardware antes de optimizar software. Subir de instancia en la nube cuesta dinero cada mes; un índice bien puesto cuesta horas y se paga solo para siempre.
+
+El orden correcto es este:
+
+1. **Medir:** activar el registro de queries lentas y estadísticas de uso reales.
+2. **Diagnosticar:** explicar el plan de ejecución de las consultas pesadas.
+3. **Optimizar:** crear los índices que faltan y reescribir las queries que los ignoran.
+4. **Escalar:** solo lo que quede después, con criterio (réplicas, particionado, pool de conexiones).
+
+### La herramienta que lo cambia todo: el plan de ejecución
+
+Cada motor puede explicarte **cómo ejecuta** una query. En PostgreSQL, `EXPLAIN ANALYZE` muestra si la consulta usa un índice o escanea la tabla entera: un *seq scan* sobre millones de filas es el enemigo número uno.
+
+```sql
+EXPLAIN ANALYZE
+SELECT * FROM shipments
+WHERE carrier_id = 42
+ORDER BY created_at DESC;
+```
+
+```
+Seq Scan on shipments
+  Filter: (carrier_id = 42)
+  Rows Removed by Filter: 47999488
+  -- el motor lee TODA la tabla en cada consulta
+```
+
+### Los cuatro tipos de índice que resuelven el 90% de los casos
+
+| Tipo | Cuándo usarlo | Efecto típico |
+|---|---|---|
+| **B-tree simple** | Igualdad o rango (`=`, `<`, `BETWEEN`) | De 30 s a menos de 100 ms |
+| **Compuesto** | Filtros combinados (`carrier_id` + `created_at`) | Un índice sirve para toda la query |
+| **Parcial** | Filas que importan ("solo pedidos abiertos") | Índice pequeño y ultrarrápido |
+| **GIN / texto completo** | Texto en documentos, emails, nombres | De minutos a milisegundos |
+
+**Regla de oro:** un índice correcto cuesta horas y dura años. Un servidor nuevo cuesta miles de euros cada año.
+
+---
+
+## 3. Los pasos concretos, por orden de impacto
+
+### Paso 1 — Telemetría (días 1-2)
+
+Sin datos reales, optimizar es adivinar. Activamos `pg_stat_statements` (o su equivalente en MySQL o SQL Server) y el *slow query log*.
+
+El resultado es un ranking de queries por tiempo total consumido. En casi todas las bases de datos que auditamos, **las 10 primeras concentran más del 70% del problema**.
+
+### Paso 2 — Índices (días 3-7)
+
+- Crear los índices que las queries más costosas necesitan.
+- Revisar índices **duplicados o muertos**: cada índice extra ralentiza escrituras y ocupa disco.
+- Priorizar índices compuestos y parciales antes que añadir índices simples a todas las columnas.
+
+### Paso 3 — Reescritura de queries (días 8-14)
+
+- Eliminar `SELECT *`: traer solo las columnas necesarias.
+- Sustituir el patrón N+1 por consultas en lote.
+- Paginar con `LIMIT/OFFSET`, o con *keyset pagination* en tablas grandes.
+- Evitar funciones sobre columnas indexadas: `WHERE DATE(created_at) = '2026-11-03'` mata el índice.
+
+### Paso 4 — Escalado inteligente (días 15-21)
+
+Solo lo que quede después de optimizar:
+
+| Estrategia | Coste orientativo | Cuándo toca |
+|---|---|---|
+| **Pool de conexiones** (PgBouncer) | 0-500 € | Miles de conexiones simultáneas |
+| **Réplica de lectura** | ~el doble de infraestructura | Informes que saturan la principal |
+| **Particionado por mes o tenant** | 2-5 días de trabajo | Tablas de cientos de millones de filas |
+| **Más hardware** | 3.000-30.000 € | Cuando ya no queda nada que optimizar |
+
+**El 70-80% de las empresas se quedan en los pasos 2 y 3** y nunca necesitan el paso 4.
+
+---
+
+## 4. Casos reales, con factura
+
+### Caso 1 — Logística: la query de los 47 segundos
+
+- **Antes:** servidor al 94% de CPU, informes nocturnos fallidos, presupuesto aprobado de 32.000 € en hardware.
+- **Intervención:** 3 índices compuestos, reescritura de 6 queries y pool de conexiones.
+- **Después:** p95 de la aplicación de 8,2 s a 640 ms. CPU estable en el 25%.
+- **Factura del proyecto: 13.900 €.** Hardware evitado: 32.000 €.
+- **ROI: 6 semanas.**
+
+### Caso 2 — Gestoría con archivo documental
+
+- **Antes:** búsqueda de documentos por texto en 11,4 segundos; timeout en el 8% de las búsquedas.
+- **Intervención:** índice GIN de trigramas en PostgreSQL y ranking de relevancia.
+- **Después:** 11,4 s → 280 ms. Cero timeouts.
+- **Factura: 7.800 €.** Estimamos **2,5 horas semanales recuperadas** por administrativo.
+- **ROI: 3,5 meses**, además de la mejora de servicio percibida por los clientes.
+
+### Caso 3 — SaaS B2B en el cierre de mes
+
+- **Antes:** la facturación masiva de fin de mes colgaba la plataforma (p95 de 9,6 s) durante 3-4 horas.
+- **Intervención:** particionado mensual de la tabla de facturas, índice parcial de pendientes y réplica de lectura para reporting.
+- **Después:** p95 de 9,6 s a 420 ms durante el cierre.
+- **Factura: 19.400 €.** El incidente recurrente con clientes enterprise desapareció: estimamos **18.000 € anuales evitados** entre churn y horas de soporte.
+- **ROI: 5 meses.**
+
+---
+
+## 5. Checklist de la primera semana
+
+- [ ] Activar `pg_stat_statements` / slow query log
+- [ ] Listar las 10 queries que más tiempo total consumen
+- [ ] Ejecutar `EXPLAIN ANALYZE` en cada una
+- [ ] Crear los índices compuestos que falten
+- [ ] Eliminar índices duplicados o sin uso
+- [ ] Reescribir funciones que bloquean índices (`DATE()`, `LOWER()`…)
+- [ ] Configurar un pool de conexiones
+- [ ] Medir de nuevo y documentar la línea base
+
+---
+
+## 6. Preguntas frecuentes
+
+**¿No es arriesgado crear índices en producción?**
+
+Con el tamaño típico de una pyme, la mayoría de índices se crean en minutos sin bloqueo perceptible. En tablas muy grandes usamos creación concurrente y ventanas de mantenimiento. El riesgo real no es crear el índice: es seguir meses sin él.
+
+**¿Cuánto tarda una optimización completa?**
+
+Una base de datos de tamaño medio (10-100 GB, aplicación con años de historia) suele resolverse en **2-4 semanas** de trabajo por fases, sin detener el desarrollo ni la operativa.
+
+**¿Y si nuestra base de datos es MySQL o SQL Server en vez de PostgreSQL?**
+
+El método es el mismo; cambian las herramientas concretas (`performance_schema`, Query Store, índices columnstore…). Trabajamos habitualmente con los tres motores.
+
+**¿Cuándo sí toca escalar hardware?**
+
+Cuando la línea base lo demuestra: si tras optimizar queries e índices, el crecimiento legítimo de datos sigue saturando recursos, entonces réplicas o más potencia son la respuesta correcta. Escalar es la última opción, no la primera.
+
+**¿Cuánto cuesta una auditoría de base de datos?**
+
+Depende del volumen, pero una auditoría estándar —telemetría, ranking de queries e informe con plan de acción priorizado— suele estar entre **1.800 € y 4.000 €**, descontable si después ejecutas la optimización con nosotros.
+
+---
+
+## Conclusión
+
+Tu base de datos no es lenta: **es desconocida**. El servidor que "ya no da más" casi siempre esconde un puñado de queries sin índice que cualquier `EXPLAIN` delata en segundos.
+
+La buena noticia es que esto se arregla sin reescrituras, sin migraciones y sin parar la actividad. Se arregla con método.
+
+**La pregunta que importa no es "¿cuánto cuesta optimizar?", sino "¿cuánto estamos pagando cada mes por no hacerlo?".**
+
+[Agenda la auditoría de base de datos de 45 minutos →](/contacto) Analizamos tus queries lentas en producción, priorizamos por impacto y te entregamos un plan con ROI estimado. Y si el diagnóstico no encuentra nada mejorable, te lo decimos sin rodeos.

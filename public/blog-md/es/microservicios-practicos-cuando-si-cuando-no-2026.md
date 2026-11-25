@@ -1,0 +1,154 @@
+---
+title: "Microservicios prácticos: cuándo sí y cuándo no (guía 2026)"
+date: "2026-11-10"
+language: "es"
+canonical: "https://legasint.com/blog/microservicios-practicos-cuando-si-cuando-no-2026"
+tags: ["microservicios", "arquitectura software", "monolito", "migración software", "escalabilidad", "2026"]
+---
+
+# Microservicios prácticos: cuándo sí y cuándo no (guía 2026)
+
+Cuándo usar microservicios y cuándo no en 2026: criterios medibles, extracción incremental y 3 casos reales con ROI cuantificado.
+
+## Los 86.000 € que costó romper lo que funcionaba
+
+A mediados de 2025 una scale-up de operaciones jurídicas llegó a nosotros con un problema curioso: tenían 23 microservicios y liberar una feature sencilla tardaba seis semanas.
+
+El año anterior, su equipo de ocho personas había dedicado ocho meses a desmontar un monolito sano. Coste de la migración: 86.000 €. El resultado fue el contrario de lo buscado: los despliegues bajaron de uno por semana a uno cada tres, los incidentes se triplicaron y una feature que antes tardaba dos semanas empezó a tardar seis.
+
+Nadie en esa empresa había sido negligente. Habían seguido los manuales al pie de la letra: dominios, API gateway, eventos, Kubernetes. La pregunta que nadie formuló antes de empezar tenía una única palabra: ¿por qué?
+
+Seis semanas después consolidamos esos 23 servicios en 5. Los despliegues volvieron a ser semanales y los incidentes quedaron por debajo de los del monolito original. Coste de la vuelta atrás: otros 26.000 €.
+
+Esta guía recoge el criterio que a esa empresa le habría ahorrado seis cifras: cuándo dividir tu aplicación en microservicios, cuándo quedarte como estás y cómo hacerlo de forma incremental si toca.
+
+---
+
+## 1. El problema: decidir la arquitectura en una sala de reuniones
+
+En la mayoría de las auditorías de arquitectura que hacemos en 2026 aparece el mismo patrón: la decisión se tomó mirando una presentación, sin abrir un solo gráfico de producción.
+
+Los síntomas que solemos encontrar:
+
+- Un equipo de 5-6 desarrolladores mantiene 15-30 servicios, cada uno con su pipeline, su base de datos y sus contratos de API.
+- Los límites entre servicios copian los límites de un diagrama dibujado hace dos años, que ya no describen el negocio.
+- Cada feature nueva cruza cuatro o cinco repositorios, así que "desplegar de forma independiente" acaba significando coordinar cinco despliegues.
+
+El coste de esa complejidad se puede medir. En un equipo de ocho personas, el trabajo puramente distribuido (orquestación, esperas entre servicios, fallos de red, debugging que antes era un stack trace) consume entre 6 y 10 horas semanales por cabeza. A 45 €/hora, hablamos de unos 2.900 € semanales: **cerca de 120.000 € al año** en complejidad que no compra ninguna ventaja concreta.
+
+Dicho esto, los microservicios siguen siendo la respuesta correcta en muchos contextos. El fracaso llega cuando la decisión se toma por inercia.
+
+---
+
+## 2. La solución: decidir con umbrales medibles
+
+En Legasint aplicamos una regla de taller: cada microservicio debe existir para resolver un problema concreto y cuantificado. Si no puedes completar la frase "extraemos este servicio porque medimos que...", todavía no toca.
+
+### Cuándo sí
+
+- **Dos o más equipos se bloquean en cada release.** Si liberar cualquier cambio exige sincronizar a todo el departamento, los límites entre equipos son el primer criterio de división.
+- **Un componente necesita escalar por su cuenta.** El buscador que recibe treinta veces más tráfico durante un pico mientras el resto de la plataforma duerme.
+- **Ciclos de liberación distintos.** Un módulo regulado que certifica cada cambio no puede compartir despliegue con otro que se libera a diario.
+- **Aislamiento de fallos con historia.** Una integración externa inestable que tumba la aplicación completa dos veces al mes.
+- **Tecnología que no encaja.** Un pipeline de IA en Python dentro de una API en Node, por poner un caso habitual.
+
+### Cuándo no
+
+- **MVP o producto sin validar.** Estarías pagando complejidad distribuida por un problema de escala que quizá nunca llegue.
+- **Un solo equipo pequeño.** Con 6-8 desarrolladores, un monolito modular bien diseñado gana en velocidad casi siempre.
+- **Sin presión de escala demostrada.** "Crecemos mucho" es una opinión. "El percentil 95 de este endpoint (el tiempo bajo el que responde el 95% de las peticiones) se ha multiplicado por cuatro en seis meses" es un dato.
+- **Dominio mal entendido.** Si no sabes dónde pasan los límites del negocio, cortar servicios es cortar a ciegas.
+- **Sin base operativa.** Sin CI/CD sólido, observabilidad y alguien de guardia, los microservicios solo multiplican los sitios donde puede fallar algo.
+
+### Resumen en una tabla
+
+| Situación | Arquitectura recomendada |
+|---|---|
+| Un equipo, producto temprano | Monolito modular |
+| Equipo único con un componente de carga extrema | Monolito + 1-2 servicios extraídos |
+| 2-4 equipos que se estorban en cada release | Microservicios alineados a los equipos |
+| Módulo regulado o certificaciones externas | Servicio aislado con su propio ciclo |
+| Plataforma multi-producto enterprise | Microservicios o arquitectura por celdas |
+
+---
+
+## 3. Los pasos: extracción incremental, nunca big bang
+
+Cuando los umbrales dan el sí, el método importa tanto como la decisión. Las migraciones que salen bien casi siempre siguen este orden:
+
+1. **Modulariza el monolito primero.** Define límites internos por dominio y prohíbe los imports cruzados. Si no consigues dibujar los límites dentro del monolito, fuera tampoco podrás.
+2. **Empieza por el perímetro, nunca por el núcleo.** Notificaciones, generación de documentos, integraciones externas, reporting. Usuarios y facturación siempre al final.
+3. **Extrae con una capa anticorrupción.** El nuevo servicio envuelve la lógica existente en vez de reescribirla. Cada servicio es dueño de su base de datos; lo que necesite de otro, lo pide por API o por evento.
+4. **Observabilidad antes que tráfico real.** Trazas distribuidas, métricas por servicio y alertas desde el primer día. Un servicio que no puedes medir en producción es un cajón oscuro, no un servicio.
+5. **Evalúa con datos antes de seguir.** Solo se extrae el siguiente servicio si el primero cumple lo prometido: despliegues independientes reales, fallos aislados y coste de operación asumible.
+
+> **¿Tu equipo está ahora mismo debatiendo si dividir la aplicación?** [Reserva una sesión de decisión de arquitectura de 45 minutos →](/contacto) Analizamos tus métricas reales (tráfico, despliegues, incidentes, estructura de equipo) y en una semana te entregamos la recomendación: monolito, híbrido o microservicios, con plan de extracción priorizado y coste estimado. Si encargas después la migración, la sesión se descuenta.
+
+---
+
+## 4. Casos reales, con factura
+
+### Caso 1 — Cuándo sí: marketplace B2B de servicios
+
+- **Situación:** 40.000 usuarios y picos de tráfico treinta veces superiores los lunes por la mañana. El buscador compartía despliegue y base de datos con todo lo demás.
+- **Intervención:** extracción de búsqueda y matching a un servicio propio, con Elasticsearch y escalado independiente.
+- **Resultado:** el buscador pasa de 9,2 s a 1,1 s en hora pico; despliegues diarios en lugar de mensuales; los lunes dejaron de caerse (incidentes asociados: de 3-4 al mes a cero).
+- **Factura: 19.400 €.** La conversión en horas pico subió un 11%, unos 96.000 €/año con su margen medio. **ROI: 2,5 meses.**
+
+### Caso 2 — El punto medio: plataforma de operaciones jurídicas
+
+- **Situación:** 7 desarrolladores, monolito con dos dolores medidos: la generación masiva de documentos (35 minutos por lote, CPU al 100%) y una integración de firma electrónica que fallaba dos veces al mes y arrastraba toda la aplicación.
+- **Intervención:** monolito modular más dos satélites: un servicio de generación documental con cola y workers, y una puerta de enlace para la firma con circuit breaker y cola de reconciliación.
+- **Resultado:** los lotes bajan de 35 a 4 minutos; las caídas del proveedor dejan de ser visibles para el usuario; y no hubo que contratar DevOps adicional.
+- **Factura: 17.200 €.** El equipo operativo recupera 14 horas semanales de esperas y retrabajos, unos 30.000 €/año. **ROI: 7 meses.**
+
+### Caso 3 — Cuándo no: fabricante con ERP propio
+
+- **Situación:** 5 desarrolladores, ERP interno estable para unos 300 usuarios. El comité pedía "pasar a microservicios para escalar".
+- **Intervención:** auditoría de dos semanas. Los datos no justificaban la migración: tráfico plano desde hacía 18 meses, un solo equipo, ninguna necesidad de aislamiento. Recomendamos monolito modular y saneamiento de deuda.
+- **Resultado:** modernización por 11.600 €, frente a los ~65.000 € presupuestados para la migración. Dos años después, la arquitectura sigue sin ser su cuello de botella.
+- **Factura de la auditoría: 3.800 €.**
+
+El tercer caso es el que más nos gusta contar: la auditoría les ahorró unos 50.000 € y un año entero de distracción.
+
+---
+
+## 5. Preguntas frecuentes
+
+**¿Cuántos microservicios son demasiados?**
+
+Depende del tamaño del equipo, no de la aplicación. Una referencia útil: 6-8 personas pueden operar bien entre 3 y 6 servicios. Si ese mismo equipo mantiene veinte, cada desarrollador es dueño a medias de demasiadas cosas. Señal de alarma: tocar una feature simple exige desplegar cinco repositorios.
+
+**¿Monolito modular o microservicios desde el inicio?**
+
+Monolito modular como punto de partida, salvo que tengas varios equipos desde el día uno. Los límites internos te dan la parte difícil (los dominios) sin el coste distribuido. Si luego un módulo pide escala o autonomía, la extracción es un refactor de semanas, no una migración.
+
+**Nuestro monolito es un caos, ¿merece la pena extraer servicios?**
+
+Primero estabiliza, después extrae. Sacar servicios de un monolito caótico produce microservicios caóticos. El orden que funciona: tests de caracterización, límites internos claros y recién entonces el primer servicio perimetral.
+
+**¿Qué stack es el estándar en 2026?**
+
+Kubernetes sigue siendo el default para desplegar decenas de servicios. Para 2-10 servicios, las plataformas gestionadas (Cloud Run, ECS, App Service) dan despliegues independientes con la mitad de coste operativo. En observabilidad, OpenTelemetry con Grafana o Datadog; en mensajería, RabbitMQ para volúmenes medios y Kafka cuando el caudal lo justifica.
+
+**¿Cuánto cuesta una migración a microservicios?**
+
+La referencia de nuestros proyectos: la extracción de un primer servicio perimetral suele situarse entre 12.000 y 25.000 €, en 4-8 semanas. Una migración completa de una aplicación mediana ronda los 60.000-150.000 € y de 6 a 12 meses. Ocho de cada diez empresas que preguntan no necesitan la segunda fase.
+
+**¿Y si ya dividimos de más?**
+
+Consolidar también es arquitectura, y sale más barato de lo que parece. Fusionar servicios que comparten dueño y ciclo de liberación suele devolver semanas de velocidad en pocas iteraciones. Empezamos siempre por las parejas que comparten base de datos: casi siempre quisieron ser un solo servicio.
+
+---
+
+## Conclusión
+
+Los microservicios son una herramienta potente con un coste real y permanente. Antes de añadir uno, vale esta pregunta: ¿qué problema medido de mi sistema resuelve esta división?
+
+- Equipo pequeño y producto por validar: monolito modular, y a validar.
+- Picos localizados o equipos que se estorban: extrae solo lo que el dato mande.
+- División hecha de más: consolidar es una decisión tan profesional como dividir.
+
+Si en tu próxima reunión técnica nadie sabe decir cuánto cuesta operar la arquitectura actual ni qué problema resuelve cada servicio, ahí empieza el trabajo de verdad.
+
+[Cuéntanos tu caso →](/contacto) Describe en dos líneas tu stack, el tamaño del equipo y el dolor que sospechas que viene de la arquitectura. Respondemos en menos de 24 horas laborables con una primera lectura y, si tiene sentido, te proponemos la sesión de decisión con tus métricas reales.
